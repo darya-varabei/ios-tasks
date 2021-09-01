@@ -77,7 +77,7 @@ print("---Break retain cycle with weak modifier")
 
 
 class Song {
-    var name: String
+    let name: String
     weak var singer: Singer?
     
     init(name: String){
@@ -91,8 +91,8 @@ class Song {
 }
 
 class Singer {
-    var name: String
-    weak var song: Song?
+    let name: String
+    var song: Song?
     
     init(name: String){
         self.name = name
@@ -113,7 +113,7 @@ singer = Singer(name: "Hollywood Undead")
 song = Song(name: "Circles")
 
 //set up WEAK references between song and singer
-singer!.song = song
+singer!.song = song!
 song!.singer = singer
 
 //Song and singer will be deinitialized and deallocated successfully as weak references do not increase reference counter and after setting references on objects themselves to nil, their reference counters are set to 0 and object can be deinitialized
@@ -125,7 +125,7 @@ print("---Break retain cycle with unowned modifier")
 
 
 class User {
-    var name: String
+    let name: String
     var account: Account?
     
     init(name: String){
@@ -141,8 +141,8 @@ class User {
 //Account's lifespan is not longer than user's lifespan
 
 class Account {
-    var id: String
-    unowned var user: User?
+    let id: String
+    unowned let user: User?
     
     init(id: String, user: User){
         self.id = id
@@ -183,8 +183,8 @@ class Workout{
 }
 
 class Exercise{
-    var name: String
-    unowned var workout: Workout//Workout's lifespan is longer than exercise's lifespan
+    let name: String
+    unowned let workout: Workout//Workout's lifespan is longer than exercise's lifespan
     unowned var nextExercise: Exercise?//unowned optional reference, as it can be set to nil(for last exercise), but if we set a certain exercise next to a current, we should make sure it will not be deallocated
     
     init(name: String, workout: Workout){

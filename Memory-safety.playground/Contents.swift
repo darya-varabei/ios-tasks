@@ -37,7 +37,7 @@ computeTemp(&tempToFarengheit, &copyOfTempToFarengheit)//no error after using a 
 print("---Conflicting access to self")
 
 struct Phone{
-    var model: String
+    let model: String
     var number: String
     var currentCall: String?
     
