@@ -41,8 +41,13 @@ class Cookbook{
 }
 
 class Recipe{
-    var name: String = ""
-    var ingredients: [Ingredient] = []
+    var name: String
+    var ingredients: [Ingredient]
+    
+    init(name: String, ingredients: [Ingredient]){
+        self.name = name
+        self.ingredients = ingredients
+    }
     
     var numOfIngredients: Int {
         return ingredients.count
@@ -69,15 +74,18 @@ class Recipe{
 }
 
 class Ingredient{
-    var name: String?
-    var cost: Double?
+    let name: String?
+    let cost: Double?
+    
+    init(name: String, cost: Double){
+        self.name = name
+        self.cost = cost
+    }
 }
 
 let cookbook = Cookbook()
 
-let ingredient = Ingredient()
-ingredient.name = "Parmezan"
-ingredient.cost = 12.78
+let ingredient = Ingredient(name: "Parmezan", cost: 12.78)
 cookbook.dish?.ingredients.append(ingredient) // can not be appended
 print("Total cost is \(String(describing: cookbook.dish?.compTotalCost()))") //result is nil, as we have no reference from Cookbook to Recipe
 if cookbook.dish?.compTotalCost() != nil {
@@ -87,9 +95,7 @@ else {
     print("We can not compute total cost")// else statement works. Still no reference to Recipe from Cookbook
 }
 
-let recipe = Recipe() //create recipe entity and define its properties(not obvious, as they are optional)
-recipe.name = "Lasagna"
-recipe.ingredients = [ingredient]
+let recipe = Recipe(name: "Lasagna", ingredients: [ingredient]) //create recipe entity and define its properties(not obvious, as they are optional)
 cookbook.dish = recipe //pass reference from Cookbook to Recipe
 
 if cookbook.dish?.compTotalCost() != nil {
