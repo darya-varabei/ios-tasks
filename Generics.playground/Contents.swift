@@ -1,10 +1,10 @@
 import UIKit
 
 class Developer{
-    var name: String
-    var skills: [String]
-    var salaryPerMonth: [Double]
-    var accessFloors: [Int]
+    let name: String
+    let skills: [String]
+    let salaryPerMonth: [Double]
+    let accessFloors: [Int]
     
     init(name: String, skills: [String], incomeForSixMonth salaryPerMonth: [Double], accessFloors: [Int]){
         self.name = name
@@ -72,7 +72,7 @@ protocol Training{ //protocol for training programs
 
 class TrainieDeveloper: Developer, Training{// conforms to Training protocol and inherited from Developer superclass
     
-    var program: String
+    let program: String
     
     init(name: String, skills: [String], salaryPerMonth: [Double], accessFloors: [Int], program: String){
         self.program = program
@@ -116,10 +116,10 @@ struct myArray<Element>: FormArray { // elements of different types can form arr
     }
 }
 
-var intArray = myArray<Int>(items: [1, 4, 7, 9, 12, 24, 878])
-var stringArray = myArray<String>(items: ["swift", "python", "java", "ruby", "c++"])
-var doubleArray = myArray<Double>(items: [1.865, 4.58678, 7.8476, 9.953, 12.74, 24.3456, 878.768567])
-var anyArray = myArray<Any>(items: [1, "objective-c", 7.37687, ["c++", "c#"], 12, [24, 23, 44], 878])//array may contain different types at the same time
+let intArray = myArray<Int>(items: [1, 4, 7, 9, 12, 24, 878])
+let stringArray = myArray<String>(items: ["swift", "python", "java", "ruby", "c++"])
+let doubleArray = myArray<Double>(items: [1.865, 4.58678, 7.8476, 9.953, 12.74, 24.3456, 878.768567])
+let anyArray = myArray<Any>(items: [1, "objective-c", 7.37687, ["c++", "c#"], 12, [24, 23, 44], 878])//array may contain different types at the same time
 
 //implemented methods work for arrays with different types
 anyArray.count
