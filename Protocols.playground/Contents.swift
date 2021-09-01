@@ -2,9 +2,9 @@ import UIKit
 
 // MARK: Part 1
 class Tutor {
-    var firstName: String
-    var surname: String
-    var rank: String
+    let firstName: String
+    let surname: String
+    let rank: String
     
     init(firstName: String, surname: String, rank: String){
         self.firstName = firstName
@@ -33,8 +33,8 @@ protocol Lecture {
 }
 
 class Programming: Course{
-    var fullName: String
-    var tutor: Tutor
+    let fullName: String
+    let tutor: Tutor
     
     init(fullName: String, tutor: Tutor){
         self.fullName = fullName
@@ -42,7 +42,7 @@ class Programming: Course{
     }
 }
 
-var oop = Programming(fullName: "Object Oriented Programming", tutor: Tutor(firstName: "Name", surname: "Surname", rank: "Professor"))
+let oop = Programming(fullName: "Object Oriented Programming", tutor: Tutor(firstName: "Name", surname: "Surname", rank: "Professor"))
 
 extension Programming: LaboratoryWork, Lecture{
     var equipment: String {
@@ -57,7 +57,7 @@ class GameDevelopment: Programming{
     let description: String = "Develop Games"
 }
 
-var game = GameDevelopment(fullName: "Game Development", tutor: Tutor(firstName: "Name", surname: "Surname", rank: "Professor"))
+let game = GameDevelopment(fullName: "Game Development", tutor: Tutor(firstName: "Name", surname: "Surname", rank: "Professor"))
 
 
 // MARK: Part 2
@@ -98,7 +98,7 @@ class Employee: MeetingAttending{ // all Employees may have common responsibilit
 }
 
 class Developers: Employee, Developer{ // Developers is inherited from Employee and conforms DEveloper protocol
-    var language: String
+    let language: String
     
     init(language: String){
         self.language = language
@@ -121,7 +121,7 @@ class SeniorDeveloper: Developers, Mentoring {// class inherits two protocols(an
 
 class Designer: Employee, Designing { // inherits Employee and conforms Designing protocol
     
-    var specialization: String
+    let specialization: String
     
     init(specialization: String){
         self.specialization = specialization
