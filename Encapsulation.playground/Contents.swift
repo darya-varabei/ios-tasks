@@ -11,10 +11,10 @@ class Person {
     var age: Int
     var height: Double
     var weight: Double
-    let illnessDifficulty: Int
+    var illnessDifficulty: Int
     var medicication: Medication?
     
-    public lazy var massIndex: Double = {//public modificator added as Medication needs to uses this property for computations
+    private(set) lazy var massIndex: Double = {//public modificator added as Medication needs to uses this property for computations
         return weight / (height * height)
     }()
     
