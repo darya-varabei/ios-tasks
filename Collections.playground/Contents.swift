@@ -159,4 +159,4 @@ for code in httpResponseCodes { // if key from responseMessages is found in http
     print("Response \(code): \(message)")
 }
 
-
+responseMessages.allSatisfy { $0.key > 100 }

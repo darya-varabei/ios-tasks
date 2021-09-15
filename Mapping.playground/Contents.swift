@@ -97,4 +97,3 @@ let european = countriesAndContinents.filter { $0.value == "Europe" }.map { (key
     return key.capitalized
 }
 
-print(european)
