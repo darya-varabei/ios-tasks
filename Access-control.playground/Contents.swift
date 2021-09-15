@@ -115,13 +115,6 @@ let accounts = Accounts()
 accounts.credit()
 accounts.pattern()
 
-// MARK: One more example using 'where' keyword
-let views: [UIView] = [UIButton(), UILabel(), UIScrollView(), UILabel()]
-
-for view in views where view is UILabel {
-    print("view class: \(view.self)")
-}
-
 // MARK: Class is defined as open in other source file(MyFramework.swift)
 let newCart = Cart()
 newCart.newPurchase(name: "Mac Pro", price: 2999)
