@@ -8,17 +8,17 @@ enum Decode {
 
 class Person {
     let name: String
-    var age: Int
-    var height: Double
-    var weight: Double
-    var illnessDifficulty: Int
+    fileprivate var age: Int
+    fileprivate var height: Double
+    fileprivate var weight: Double
+    fileprivate var illnessDifficulty: Int
     var medicication: Medication?
     
     private(set) lazy var massIndex: Double = {//public modificator added as Medication needs to uses this property for computations
         return weight / (height * height)
     }()
     
-    init(name: String, age: Int, height: Double, weight: Double, illnessDifficulty: Int){
+    public init(name: String, age: Int, height: Double, weight: Double, illnessDifficulty: Int){
         self.name = name
         self.age = age
         self.height = height
