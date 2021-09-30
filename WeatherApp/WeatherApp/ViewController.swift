@@ -19,15 +19,15 @@ class ViewController: UIViewController {
     @IBOutlet private weak var temperature: UILabel?
     @IBOutlet private weak var condition: UILabel?
     @IBOutlet private weak var switchTablesButton: UIButton!
+    
     private var numOfHours = 24
     private var numOfDays = 16
-    private var cityTemp: String?
-    
-    var location: String? 
+    var location: String?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var cities: [FeaturedCity]?
     private var citiesData = [Weather]()
+    
     private var showCurrentDay: Bool = true {
         didSet {
             tableView.reloadData()
@@ -50,17 +50,13 @@ class ViewController: UIViewController {
                 self.windStrength?.text = "\(self.weatherData[0].current.windKph) mph"
                 self.numOfHours = 0
                 self.numOfDays = 0
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-                self.collectionView.delegate = self
-                self.collectionView.dataSource = self
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
             }
         }
     }
     
-    private var forecastData = [Welcome]() {
+    private var forecastData = [DaysForecast]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.delegate = self
@@ -83,9 +79,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getData()
         fetchCities()
         getFeaturedData()
+        
         self.weatherWidget.layer.cornerRadius = 15
         view.addSubview(tableView)
         view.addSubview(collectionView)
@@ -108,10 +106,8 @@ class ViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
         tableView.showsVerticalScrollIndicator = false
-        
     }
-    
-    
+
     func getData() {
         
         var weatherRequest = WeatherRequest(location: self.location ?? "")
@@ -123,7 +119,7 @@ class ViewController: UIViewController {
                 self?.weatherData.append(contentsOf: weather)
             }
         }
-        weatherRequest.fetchData { [weak self] (result : Result<[Welcome],WeatherError>) in
+        weatherRequest.fetchData { [weak self] (result : Result<[DaysForecast],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -193,10 +189,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.data = self.citiesData[indexPath.item]
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // self.location = self.citiesData[indexPath.item].location.name
-    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -232,11 +224,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         }
-    }
-}
-
-extension Collection where Indices.Iterator.Element == Index {
-    subscript (safe index: Index) -> Iterator.Element? {
-        return indices.contains(index) ? self[index] : nil
     }
 }

@@ -133,6 +133,7 @@ class TableCell: UITableViewCell {
         iv.layer.cornerRadius = 12
         return iv
     }()
+    
     fileprivate let daytime: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -185,6 +186,7 @@ class ForecastCell: UITableViewCell {
     
     static let identifier = "cell2"
     let timeRange = 11...15
+    
     var data: Datum? {
         didSet {
             guard let data = data else { return }

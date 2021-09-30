@@ -100,6 +100,7 @@ class ChooseCityViewController: UIViewController {
 
 extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         return CGSize(width: 150, height: 70)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,21 +118,22 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
 
 extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableWeatherView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
     
-    func tableView(_ tableWeatherView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
     
-    func tableView(_ tableWeatherView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var ifFeatured = false
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.text = cities[indexPath.row]
         for i in 0..<(featuredCities?.count ?? 1){
+            
             if featuredCities![i].cityName == self.cities[indexPath.row] {
                 ifFeatured = true
             }
@@ -143,7 +145,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableWeatherView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let viewController = storyboard?.instantiateViewController(identifier: "LocationVC") as? ViewController {
             viewController.location = cities[indexPath.row]

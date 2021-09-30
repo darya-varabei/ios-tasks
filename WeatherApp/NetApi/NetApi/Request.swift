@@ -39,7 +39,7 @@ public struct WeatherRequest {
 
     public mutating func fetchData<T: Decodable>(completion: @escaping(Result<[T], WeatherError>) -> Void) {
         
-        if String(describing: T.self) == "Welcome" {
+        if String(describing: T.self) == "DaysForecast" {
             self.resourceURL = self.forecastURL
         }
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in

@@ -19,7 +19,7 @@ public struct Current: Codable {
     public var condition: Condition
     public var windKph: Double
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case lastUpdated = "last_updated"
         case tempC = "temp_c"
         case condition
@@ -41,7 +41,7 @@ public struct Forecastday: Codable {
     public var day: Day
     public var hour: [Hour]
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case date
         case day, hour
     }
@@ -52,7 +52,7 @@ public struct Day: Codable {
     public var maxwindKph: Double
     public var condition: Condition
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case maxtempC = "maxtemp_c"
         case mintempC = "mintemp_c"
         case maxwindKph = "maxwind_kph"
@@ -66,7 +66,7 @@ public struct Hour: Codable {
     public var condition: Condition
     public var windKph: Double
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case time
         case tempC = "temp_c"
         case condition
@@ -78,7 +78,7 @@ public struct Location: Codable {
     public var name: String
     public var localtime: String
 
-    public enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case name
         case localtime
     }
