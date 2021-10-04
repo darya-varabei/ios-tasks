@@ -25,8 +25,6 @@
 		4B9AB2C826FDC0100084780F /* FeaturedCity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9AB2C626FDC0100084780F /* FeaturedCity+CoreDataProperties.swift */; };
 		4BA64EDA270ADF0600DAF846 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA64ED8270ADF0600DAF846 /* CustomCollectionViewCell.swift */; };
 		4BA64EDB270ADF0600DAF846 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA64ED9270ADF0600DAF846 /* CustomCollectionViewCell.xib */; };
-		4BA64EDE270ADF3600DAF846 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA64EDC270ADF3600DAF846 /* TextTableViewCell.swift */; };
-		4BA64EDF270ADF3600DAF846 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA64EDD270ADF3600DAF846 /* TextTableViewCell.xib */; };
 		4BA64EE3270AE02700DAF846 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA64EE1270AE02700DAF846 /* WeatherTableViewCell.swift */; };
 		4BA64EE4270AE02700DAF846 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA64EE2270AE02700DAF846 /* WeatherTableViewCell.xib */; };
 		4BA64EE7270AE04100DAF846 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA64EE5270AE04100DAF846 /* ForecastTableViewCell.swift */; };
@@ -79,8 +77,6 @@
 		4B9AB2C626FDC0100084780F /* FeaturedCity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FeaturedCity+CoreDataProperties.swift"; path = "WeatherApp/FeaturedCity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4BA64ED8270ADF0600DAF846 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BA64ED9270ADF0600DAF846 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
-		4BA64EDC270ADF3600DAF846 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
-		4BA64EDD270ADF3600DAF846 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
 		4BA64EE1270AE02700DAF846 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		4BA64EE2270AE02700DAF846 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		4BA64EE5270AE04100DAF846 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 				4BA64EE6270AE04100DAF846 /* ForecastTableViewCell.xib */,
 				4BA64EE1270AE02700DAF846 /* WeatherTableViewCell.swift */,
 				4BA64EE2270AE02700DAF846 /* WeatherTableViewCell.xib */,
-				4BA64EDC270ADF3600DAF846 /* TextTableViewCell.swift */,
-				4BA64EDD270ADF3600DAF846 /* TextTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,7 +246,6 @@
 				4B487C3A26F4B14200098BF7 /* Main.storyboard in Resources */,
 				4B487C8E26F4E13900098BF7 /* NotoSans-Medium.ttf in Resources */,
 				4BA64EDB270ADF0600DAF846 /* CustomCollectionViewCell.xib in Resources */,
-				4BA64EDF270ADF3600DAF846 /* TextTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +262,6 @@
 				4BA64EE3270AE02700DAF846 /* WeatherTableViewCell.swift in Sources */,
 				4B9AB2C826FDC0100084780F /* FeaturedCity+CoreDataProperties.swift in Sources */,
 				D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */,
-				4BA64EDE270ADF3600DAF846 /* TextTableViewCell.swift in Sources */,
 				D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */,
 				4B9AB2C726FDC0100084780F /* FeaturedCity+CoreDataClass.swift in Sources */,
 				4B487C3726F4B14200098BF7 /* ViewController.swift in Sources */,

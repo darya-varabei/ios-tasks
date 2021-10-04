@@ -30,12 +30,6 @@ class ViewController: UIViewController {
     private var showCurrentDay: Bool = true {
         didSet {
             tableView.reloadData()
-//            if self.showCurrentDay {
-//                tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
-//            }
-//            else {
-//                tableView.register(ForecastCell.self, forCellReuseIdentifier: "cell2")
-//            }
         }
     }
     
@@ -84,6 +78,7 @@ class ViewController: UIViewController {
         getFeaturedData()
         
         self.weatherWidget.layer.cornerRadius = 15
+        self.tableView.layer.cornerRadius = 15
         view.addSubview(tableView)
         view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -197,7 +192,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showCurrentDay {
-            return self.numOfHours
+            print("**********\(self.weatherData[0].forecast.forecastday[0].hour.count)****************")
+            return self.weatherData[0].forecast.forecastday[0].hour.count
         }
         else {
             return self.numOfDays
@@ -215,7 +211,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.layer.cornerRadius = 10
             let timestr = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time)
             let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
-            cell.picture.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
+            cell.picture.image = UIImage(named: String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].condition.code))
             cell.time.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time.suffix(from:index4))
             cell.temperature.text = String("\(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC) °C")
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
