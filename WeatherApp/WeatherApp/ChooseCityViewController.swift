@@ -135,7 +135,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         var ifFeatured = false
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
-        cell.text = cities[indexPath.row]
+        cell.texts = cities[indexPath.row]
         
         for i in 0..<(featuredCities?.count ?? 1) {
             

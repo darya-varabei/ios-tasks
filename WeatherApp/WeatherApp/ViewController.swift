@@ -30,12 +30,12 @@ class ViewController: UIViewController {
     private var showCurrentDay: Bool = true {
         didSet {
             tableView.reloadData()
-            if self.showCurrentDay {
-                tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
-            }
-            else {
-                tableView.register(ForecastCell.self, forCellReuseIdentifier: "cell2")
-            }
+//            if self.showCurrentDay {
+//                tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
+//            }
+//            else {
+//                tableView.register(ForecastCell.self, forCellReuseIdentifier: "cell2")
+//            }
         }
     }
     
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        //cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
+        cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
         return cv
     }()
     
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
+       // tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
         tableView.sectionIndexColor = .clear
         tableView.backgroundColor = .clear
         tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 50).isActive = true
@@ -213,18 +213,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if showCurrentDay {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
-            cell.backgroundColor = .clear
-            if weatherData.count != 0 {
-                cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
-            }
+            let cell = Bundle.main.loadNibNamed("WeatherTableViewCell", owner: self, options: nil)?.first as! WeatherTableViewCell
+            cell.layer.cornerRadius = 10
+            cell.picture.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
+            cell.time.text = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time
+            cell.temperature.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
+//            cell.backgroundColor = .clear
+//            if weatherData.count != 0 {
+//                cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
+//            }
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ForecastCell
-            cell.backgroundColor = .clear
+            let cell = Bundle.main.loadNibNamed("ForecastTableViewCell", owner: self, options: nil)?.first as! ForecastTableViewCell
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ForecastCell
+            //cell.backgroundColor = .clear
             if self.forecastData[0].data.count != 0 {
-                cell.data = self.forecastData[0].data[indexPath.row]
+                cell.layer.cornerRadius = 10
+                //cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
+                cell.date.text = self.weatherData[0].forecast.forecastday[0].date
+                cell.weather.text = String("\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)")
+               // return cell
             }
             return cell
         }

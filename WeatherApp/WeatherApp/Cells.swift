@@ -18,9 +18,9 @@ class TextCell: UITableViewCell {
             markButton.setImage(marker.image, for: .normal)
         }
     }
-    public var text: String? {
+    public var texts: String? {
         didSet{
-            daytime.text = text
+            daytime.text = texts
         }
     }
     
@@ -78,10 +78,10 @@ class TextCell: UITableViewCell {
     @IBAction func switchStar(_ sender: UIButton) {
         let city = FeaturedCity(context: context)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeaturedCity")
-        fetchRequest.predicate = NSPredicate(format: "cityName = %@", self.text!)
+        fetchRequest.predicate = NSPredicate(format: "cityName = %@", self.texts!)
         if sender.currentImage == UIImage(named: "star"){
             sender.setImage(UIImage(named: "star.fill"), for: .normal)
-            city.cityName = self.text
+            city.cityName = self.texts
             
             do {
                 try context.save()
