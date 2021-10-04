@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
+        //cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
         return cv
     }()
     
@@ -182,10 +182,15 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.backgroundColor = UIColor(named: "DarkBackground")
+        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.first as! CustomCollectionViewCell
         cell.layer.cornerRadius = 10
-        cell.data = self.citiesData[indexPath.item]
+        cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
+        cell.location.text = self.citiesData[indexPath.item].location.name
+        cell.condition.text = self.citiesData[indexPath.item].current.condition.text
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
+//        cell.backgroundColor = UIColor(named: "DarkBackground")
+//        cell.layer.cornerRadius = 10
+//        cell.data = self.citiesData[indexPath.item]
         return cell
     }
 }

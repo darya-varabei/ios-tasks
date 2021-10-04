@@ -8,16 +8,16 @@
 import Foundation
 
 public struct Weather: Decodable {
-    public var location: Location
-    public var current: Current
-    public var forecast: Forecast
+    public let location: Location
+    public let current: Current
+    public let forecast: Forecast
 }
 
 public struct Current: Decodable {
-    public var lastUpdated: String
-    public var tempC: Double
-    public var condition: Condition
-    public var windKph: Double
+    public let lastUpdated: String
+    public let tempC: Double
+    public let condition: Condition
+    public let windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case lastUpdated = "last_updated"
@@ -28,18 +28,18 @@ public struct Current: Decodable {
 }
 
 public struct Condition: Decodable {
-    public var code: Int
-    public var text: String
+    public let code: Int
+    public let text: String
 }
 
 public struct Forecast: Decodable {
-    public var forecastday: [Forecastday]
+    public let forecastday: [Forecastday]
 }
 
 public struct Forecastday: Decodable {
-    public var date: String
-    public var day: Day
-    public var hour: [Hour]
+    public let date: String
+    public let day: Day
+    public let hour: [Hour]
 
     enum CodingKeys: String, CodingKey {
         case date
@@ -48,9 +48,9 @@ public struct Forecastday: Decodable {
 }
 
 public struct Day: Decodable {
-    public var maxtempC, mintempC: Double
-    public var maxwindKph: Double
-    public var condition: Condition
+    public let maxtempC, mintempC: Double
+    public let maxwindKph: Double
+    public let condition: Condition
 
     enum CodingKeys: String, CodingKey {
         case maxtempC = "maxtemp_c"
@@ -61,10 +61,10 @@ public struct Day: Decodable {
 }
 
 public struct Hour: Decodable {
-    public var time: String
-    public var tempC: Double
-    public var condition: Condition
-    public var windKph: Double
+    public let time: String
+    public let tempC: Double
+    public let condition: Condition
+    public let windKph: Double
 
     enum CodingKeys: String, CodingKey {
         case time
@@ -75,8 +75,8 @@ public struct Hour: Decodable {
 }
 
 public struct Location: Decodable {
-    public var name: String
-    public var localtime: String
+    public let name: String
+    public let localtime: String
 
     enum CodingKeys: String, CodingKey {
         case name

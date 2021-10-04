@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Medium.ttf">
+            <string>NotoSans-Medium</string>
+        </array>
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCell" id="gTV-IL-0wX" customClass="CustomCollectionViewCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="140" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UOK-lh-KL8">
+                        <rect key="frame" x="11" y="12" width="36" height="36"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiC-Kf-IV5">
+                        <rect key="frame" x="89" y="0.0" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="0.0"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOT-Od-Kq3">
+                        <rect key="frame" x="87" y="5" width="39" height="14"/>
+                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
+                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="highlightedColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56F-rc-qZo">
+                        <rect key="frame" x="77" y="21" width="49" height="18"/>
+                        <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="13"/>
+                        <color key="textColor" name="BasicYellow"/>
+                        <color key="highlightedColor" name="BasicYellow"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08J-jL-eit">
+                        <rect key="frame" x="99" y="41" width="26" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="10"/>
+                        <color key="textColor" name="OpaqueWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="DarkBackground"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UOK-lh-KL8" secondAttribute="bottom" constant="12" id="2r2-xp-yUC"/>
+                <constraint firstItem="UOK-lh-KL8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="844-1c-Y82"/>
+                <constraint firstItem="UOK-lh-KL8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="CEb-sO-2OE"/>
+                <constraint firstAttribute="bottom" secondItem="56F-rc-qZo" secondAttribute="bottom" constant="21" id="K7x-bE-ujl"/>
+                <constraint firstItem="LOT-Od-Kq3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Njo-yq-vCj"/>
+                <constraint firstItem="56F-rc-qZo" firstAttribute="leading" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="30" id="OhG-Vf-8gp"/>
+                <constraint firstAttribute="trailing" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="93" id="Sbb-TZ-K3v"/>
+                <constraint firstAttribute="trailing" secondItem="56F-rc-qZo" secondAttribute="trailing" constant="14" id="Uwh-P5-tBN"/>
+                <constraint firstItem="LOT-Od-Kq3" firstAttribute="leading" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="40" id="YLd-13-iAE"/>
+                <constraint firstAttribute="trailing" secondItem="LOT-Od-Kq3" secondAttribute="trailing" constant="14" id="bA7-0R-8ZP"/>
+                <constraint firstAttribute="bottom" secondItem="LOT-Od-Kq3" secondAttribute="bottom" constant="41" id="chR-aC-dvK"/>
+            </constraints>
+            <connections>
+                <outlet property="condition" destination="08J-jL-eit" id="H0n-aV-fg2"/>
+                <outlet property="image" destination="UOK-lh-KL8" id="b3G-9A-XLk"/>
+                <outlet property="location" destination="LOT-Od-Kq3" id="ZHN-Yf-jGj"/>
+                <outlet property="temperature" destination="56F-rc-qZo" id="Ryh-qg-eU5"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BasicYellow">
+            <color red="0.99599999189376831" green="0.7839999794960022" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkBackground">
+            <color red="0.28600001335144043" green="0.29800000786781311" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OpaqueWhite">
+            <color red="1" green="1" blue="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

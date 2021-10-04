@@ -31,7 +31,7 @@ class ChooseCityViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
+       // cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
     
@@ -100,15 +100,22 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
         
         return CGSize(width: 150, height: 70)
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return citiesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.backgroundColor = UIColor(named: "DarkBackground")
-        cell.layer.cornerRadius = 15
-        cell.data = self.citiesData[indexPath.item]
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
+//        cell.backgroundColor = UIColor(named: "DarkBackground")
+//        cell.layer.cornerRadius = 15
+//        cell.data = self.citiesData[indexPath.item]
+        
+        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.first as! CustomCollectionViewCell
+        cell.layer.cornerRadius = 10
+        cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
+        cell.location.text = self.citiesData[indexPath.item].location.name
+        cell.condition.text = self.citiesData[indexPath.item].current.condition.text
         return cell
     }
 }
