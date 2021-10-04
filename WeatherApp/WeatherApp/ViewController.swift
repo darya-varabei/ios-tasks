@@ -70,10 +70,10 @@ class ViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "custom")
+        return collectionView
     }()
     
     override func viewDidLoad() {
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-       // tableView.register(TableCell.self, forCellReuseIdentifier: "cell1")
+        //tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather")
         tableView.sectionIndexColor = .clear
         tableView.backgroundColor = .clear
         tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 50).isActive = true
@@ -182,15 +182,13 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.first as! CustomCollectionViewCell
+        
+        let cell : CustomCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "custom", for: indexPath) as! CustomCollectionViewCell
+        
         cell.layer.cornerRadius = 10
         cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
         cell.location.text = self.citiesData[indexPath.item].location.name
         cell.condition.text = self.citiesData[indexPath.item].current.condition.text
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-//        cell.backgroundColor = UIColor(named: "DarkBackground")
-//        cell.layer.cornerRadius = 10
-//        cell.data = self.citiesData[indexPath.item]
         return cell
     }
 }
@@ -215,9 +213,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if showCurrentDay {
             let cell = Bundle.main.loadNibNamed("WeatherTableViewCell", owner: self, options: nil)?.first as! WeatherTableViewCell
             cell.layer.cornerRadius = 10
+            let timestr = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time)
+            let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
             cell.picture.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
-            cell.time.text = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time
-            cell.temperature.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC)
+            cell.time.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time.suffix(from:index4))
+            cell.temperature.text = String("\(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC) °C")
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
 //            cell.backgroundColor = .clear
 //            if weatherData.count != 0 {
@@ -227,14 +227,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else {
             let cell = Bundle.main.loadNibNamed("ForecastTableViewCell", owner: self, options: nil)?.first as! ForecastTableViewCell
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ForecastCell
-            //cell.backgroundColor = .clear
             if self.forecastData[0].data.count != 0 {
                 cell.layer.cornerRadius = 10
-                //cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
                 cell.date.text = self.weatherData[0].forecast.forecastday[0].date
-                cell.weather.text = String("\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)")
-               // return cell
+                cell.weather.text = String("\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)°C")
             }
             return cell
         }

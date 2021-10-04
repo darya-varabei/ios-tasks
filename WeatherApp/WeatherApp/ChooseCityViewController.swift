@@ -29,10 +29,10 @@ class ChooseCityViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-       // cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "custom")
+        return collectionView
     }()
     
     override func viewDidLoad() {
@@ -106,12 +106,9 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-//        cell.backgroundColor = UIColor(named: "DarkBackground")
-//        cell.layer.cornerRadius = 15
-//        cell.data = self.citiesData[indexPath.item]
         
-        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.first as! CustomCollectionViewCell
+        let cell : CustomCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "custom", for: indexPath) as! CustomCollectionViewCell
+        
         cell.layer.cornerRadius = 10
         cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
         cell.location.text = self.citiesData[indexPath.item].location.name

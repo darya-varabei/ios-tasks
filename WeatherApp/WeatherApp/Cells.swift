@@ -18,35 +18,36 @@ class TextCell: UITableViewCell {
             markButton.setImage(marker.image, for: .normal)
         }
     }
+    
     public var texts: String? {
-        didSet{
+        didSet {
             daytime.text = texts
         }
     }
     
     private let markButton: UIButton = {
-        let iv = UIButton()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.clipsToBounds = true
-        return iv
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        return button
     }()
     
     private let marker: UIImageView = {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        iv.tintColor = UIColor(named: "BasicYellow")
-        iv.clipsToBounds = true
-        return iv
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.tintColor = UIColor(named: "BasicYellow")
+        image.clipsToBounds = true
+        return image
     }()
     
     private let daytime: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Regular", size: 14)
-        iv.textAlignment = .left
-        return iv
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: "BasicWhite")
+        label.font = UIFont(name: "NotoSans-Regular", size: 14)
+        label.textAlignment = .left
+        return label
     }()
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -111,226 +112,226 @@ class TextCell: UITableViewCell {
     }
 }
 
-class TableCell: UITableViewCell {
-    
-    public var data: Hour? {
-        didSet {
-            let timestr = String(data?.time ?? "")
-            let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
-            guard let data = data else { return }
-            bg.image = UIImage(named: String(data.condition.code))
-            daytime.text = String(data.time.suffix(from:index4))
-            temp.text = String("\(data.tempC)°C")
-        }
-    }
-    
-    private let timeRange = 11...15
-    
-    private let bg: UIImageView = {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
-        iv.layer.cornerRadius = 12
-        return iv
-    }()
-    
-    private let daytime: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
-        iv.textAlignment = .left
-        return iv
-    }()
-    
-    private let temp: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Medium", size: 22)
-        return iv
-    }()
-    
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(bg)
-        
-        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
-        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
-        
-        contentView.addSubview(daytime)
-        
-        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
-        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -240).isActive = true
-        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
-        
-        contentView.addSubview(temp)
-        
-        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        temp.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 222).isActive = true
-        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -65).isActive = true
-        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-class ForecastCell: UITableViewCell {
-    
-    public var data: Datum? {
-        didSet {
-            guard let data = data else { return }
-            bg.image = UIImage(named: String(data.weather.code))
-            daytime.text = data.validDate
-            temp.text = String("\(data.minTemp)°C - \(data.maxTemp)°C")
-        }
-    }
-    
-    private let bg: UIImageView = {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
-        iv.layer.cornerRadius = 12
-        return iv
-    }()
-    
-    private let daytime: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
-        iv.textAlignment = .left
-        return iv
-    }()
-    
-    private let temp: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
-        return iv
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(bg)
-        
-        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
-        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
-        
-        contentView.addSubview(daytime)
-        
-        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
-        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -240).isActive = true
-        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
-        
-        contentView.addSubview(temp)
-        
-        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        temp.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 170).isActive = true
-        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -65).isActive = true
-        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class CustomCell: UICollectionViewCell {
-    
-    public var data: Weather? {
-        didSet {
-            guard let data = data else { return }
-            bg.image = UIImage(named: String(data.current.condition.code))
-            city.text = data.location.name
-            temp.text = String((data.current.tempC)) + "°C"
-            condition.text = data.current.condition.text
-        }
-    }
-    
-    private let bg: UIImageView = {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        iv.layer.cornerRadius = 12
-        return iv
-    }()
-    
-    private let city: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicWhite")
-        iv.font = UIFont(name: "NotoSans-Regular", size: 12)
-        iv.textAlignment = .right
-        return iv
-    }()
-    
-    private let temp: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "BasicYellow")
-        iv.font = UIFont(name: "NotoSans-Medium", size: 13)
-        return iv
-    }()
-    
-    private let condition: UILabel = {
-        let iv = UILabel()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.textColor = UIColor(named: "OpaqueWhite")
-        iv.font = UIFont(name: "NotoSans-Regular", size: 10)
-        iv.textAlignment = .right
-        return iv
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        
-        contentView.addSubview(bg)
-        
-        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        bg.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 11).isActive = true
-        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -93).isActive = true
-        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
-        
-        contentView.addSubview(city)
-        
-        city.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        city.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 70).isActive = true
-        city.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
-        city.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -38).isActive = true
-        
-        contentView.addSubview(temp)
-        
-        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24).isActive = true
-        temp.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
-        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -21).isActive = true
-        
-        contentView.addSubview(condition)
-        
-        condition.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 42).isActive = true
-        condition.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 40).isActive = true
-        condition.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
-        condition.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6).isActive = true
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
+//class TableCell: UITableViewCell {
+//
+//    public var data: Hour? {
+//        didSet {
+//            let timestr = String(data?.time ?? "")
+//            let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
+//            guard let data = data else { return }
+//            bg.image = UIImage(named: String(data.condition.code))
+//            daytime.text = String(data.time.suffix(from:index4))
+//            temp.text = String("\(data.tempC)°C")
+//        }
+//    }
+//
+//    private let timeRange = 11...15
+//
+//    private let bg: UIImageView = {
+//        let iv = UIImageView()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.contentMode = .scaleAspectFit
+//        iv.clipsToBounds = true
+//        iv.layer.cornerRadius = 12
+//        return iv
+//    }()
+//
+//    private let daytime: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicWhite")
+//        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
+//        iv.textAlignment = .left
+//        return iv
+//    }()
+//
+//    private let temp: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicWhite")
+//        iv.font = UIFont(name: "NotoSans-Medium", size: 22)
+//        return iv
+//    }()
+//
+//
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        contentView.addSubview(bg)
+//
+//        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+//        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
+//        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
+//
+//        contentView.addSubview(daytime)
+//
+//        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+//        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+//        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -240).isActive = true
+//        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+//
+//        contentView.addSubview(temp)
+//
+//        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+//        temp.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 222).isActive = true
+//        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -65).isActive = true
+//        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+//
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
+//
+//
+//class ForecastCell: UITableViewCell {
+//
+//    public var data: Datum? {
+//        didSet {
+//            guard let data = data else { return }
+//            bg.image = UIImage(named: String(data.weather.code))
+//            daytime.text = data.validDate
+//            temp.text = String("\(data.minTemp)°C - \(data.maxTemp)°C")
+//        }
+//    }
+//
+//    private let bg: UIImageView = {
+//        let iv = UIImageView()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.contentMode = .scaleAspectFit
+//        iv.clipsToBounds = true
+//        iv.layer.cornerRadius = 12
+//        return iv
+//    }()
+//
+//    private let daytime: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicWhite")
+//        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
+//        iv.textAlignment = .left
+//        return iv
+//    }()
+//
+//    private let temp: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicWhite")
+//        iv.font = UIFont(name: "NotoSans-Medium", size: 18)
+//        return iv
+//    }()
+//
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        contentView.addSubview(bg)
+//
+//        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+//        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
+//        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
+//
+//        contentView.addSubview(daytime)
+//
+//        daytime.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+//        daytime.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+//        daytime.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -240).isActive = true
+//        daytime.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+//
+//        contentView.addSubview(temp)
+//
+//        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
+//        temp.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 170).isActive = true
+//        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -65).isActive = true
+//        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19).isActive = true
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
+//
+//class CustomCell: UICollectionViewCell {
+//
+//    public var data: Weather? {
+//        didSet {
+//            guard let data = data else { return }
+//            bg.image = UIImage(named: String(data.current.condition.code))
+//            city.text = data.location.name
+//            temp.text = String((data.current.tempC)) + "°C"
+//            condition.text = data.current.condition.text
+//        }
+//    }
+//
+//    private let bg: UIImageView = {
+//        let iv = UIImageView()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.contentMode = .scaleAspectFill
+//        iv.clipsToBounds = true
+//        iv.layer.cornerRadius = 12
+//        return iv
+//    }()
+//
+//    private let city: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicWhite")
+//        iv.font = UIFont(name: "NotoSans-Regular", size: 12)
+//        iv.textAlignment = .right
+//        return iv
+//    }()
+//
+//    private let temp: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "BasicYellow")
+//        iv.font = UIFont(name: "NotoSans-Medium", size: 13)
+//        return iv
+//    }()
+//
+//    private let condition: UILabel = {
+//        let iv = UILabel()
+//        iv.translatesAutoresizingMaskIntoConstraints = false
+//        iv.textColor = UIColor(named: "OpaqueWhite")
+//        iv.font = UIFont(name: "NotoSans-Regular", size: 10)
+//        iv.textAlignment = .right
+//        return iv
+//    }()
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: .zero)
+//
+//        contentView.addSubview(bg)
+//
+//        bg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+//        bg.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 11).isActive = true
+//        bg.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -93).isActive = true
+//        bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12).isActive = true
+//
+//        contentView.addSubview(city)
+//
+//        city.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+//        city.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 70).isActive = true
+//        city.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
+//        city.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -38).isActive = true
+//
+//        contentView.addSubview(temp)
+//
+//        temp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24).isActive = true
+//        temp.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//        temp.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
+//        temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -21).isActive = true
+//
+//        contentView.addSubview(condition)
+//
+//        condition.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 42).isActive = true
+//        condition.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 40).isActive = true
+//        condition.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -14).isActive = true
+//        condition.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6).isActive = true
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
+//
