@@ -92,7 +92,6 @@ class ViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        //tableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "weather")
         tableView.sectionIndexColor = .clear
         tableView.backgroundColor = .clear
         tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 50).isActive = true
@@ -192,7 +191,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showCurrentDay {
-            print("**********\(self.weatherData[0].forecast.forecastday[0].hour.count)****************")
             return self.weatherData[0].forecast.forecastday[0].hour.count
         }
         else {
@@ -214,13 +212,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.picture.image = UIImage(named: String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].condition.code))
             cell.time.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time.suffix(from:index4))
             cell.temperature.text = String("\(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC) °C")
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
-//            cell.backgroundColor = .clear
-//            if weatherData.count != 0 {
-//                cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
-//            }
             return cell
         }
+        
         else {
             let cell = Bundle.main.loadNibNamed("ForecastTableViewCell", owner: self, options: nil)?.first as! ForecastTableViewCell
             if self.forecastData[0].data.count != 0 {

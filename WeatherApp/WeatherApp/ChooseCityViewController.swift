@@ -12,10 +12,10 @@ import CoreData
 
 class ChooseCityViewController: UIViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var featured: UILabel!
-    @IBOutlet weak var tableWeatherView: UITableView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var featured: UILabel!
+    @IBOutlet private weak var tableWeatherView: UITableView!
     
     private let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnius", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
     
