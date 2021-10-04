@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct Weather: Codable {
+public struct Weather: Decodable {
     public var location: Location
     public var current: Current
     public var forecast: Forecast
 }
 
-public struct Current: Codable {
+public struct Current: Decodable {
     public var lastUpdated: String
     public var tempC: Double
     public var condition: Condition
@@ -27,16 +27,16 @@ public struct Current: Codable {
     }
 }
 
-public struct Condition: Codable {
+public struct Condition: Decodable {
     public var code: Int
     public var text: String
 }
 
-public struct Forecast: Codable {
+public struct Forecast: Decodable {
     public var forecastday: [Forecastday]
 }
 
-public struct Forecastday: Codable {
+public struct Forecastday: Decodable {
     public var date: String
     public var day: Day
     public var hour: [Hour]
@@ -47,7 +47,7 @@ public struct Forecastday: Codable {
     }
 }
 
-public struct Day: Codable {
+public struct Day: Decodable {
     public var maxtempC, mintempC: Double
     public var maxwindKph: Double
     public var condition: Condition
@@ -60,7 +60,7 @@ public struct Day: Codable {
     }
 }
 
-public struct Hour: Codable {
+public struct Hour: Decodable {
     public var time: String
     public var tempC: Double
     public var condition: Condition
@@ -74,7 +74,7 @@ public struct Hour: Codable {
     }
 }
 
-public struct Location: Codable {
+public struct Location: Decodable {
     public var name: String
     public var localtime: String
 

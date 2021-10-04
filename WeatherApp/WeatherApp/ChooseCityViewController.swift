@@ -15,19 +15,18 @@ class ChooseCityViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var featured: UILabel!
+    @IBOutlet weak var tableWeatherView: UITableView!
     
     private let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnius", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var featuredCities: [FeaturedCity]?
     private var citiesData = [Weather]()
     private var feat: [String]?
     private var weatherData = [Forecastday]()
     private var result: String?
     
-    let citiesIdentifier = "ShowCity"
-    
-    fileprivate let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -35,8 +34,6 @@ class ChooseCityViewController: UIViewController {
         cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-    
-    @IBOutlet weak var tableWeatherView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,9 +61,9 @@ class ChooseCityViewController: UIViewController {
         self.tableWeatherView.dataSource = self
     }
     
-    func getFeaturedData() {
+    private func getFeaturedData() {
         
-        for city in featuredCities!{
+        for city in featuredCities! {
             var weatherRequest = WeatherRequest(location: city.cityName ?? "London")
             
             weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
@@ -80,7 +77,7 @@ class ChooseCityViewController: UIViewController {
         }
     }
     
-    func fetchCities() {
+    private func fetchCities() {
         
         do {
             self.featuredCities = try context.fetch(FeaturedCity.fetchRequest())
@@ -132,7 +129,8 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.text = cities[indexPath.row]
-        for i in 0..<(featuredCities?.count ?? 1){
+        
+        for i in 0..<(featuredCities?.count ?? 1) {
             
             if featuredCities![i].cityName == self.cities[indexPath.row] {
                 ifFeatured = true

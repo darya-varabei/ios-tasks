@@ -5,7 +5,7 @@
 //  Created by Darya on 9/27/21.
 //
 
-public struct DaysForecast: Codable {
+public struct DaysForecast: Decodable {
     public let data: [Datum]
     public let cityName: String
 
@@ -15,7 +15,7 @@ public struct DaysForecast: Codable {
     }
 }
 
-public struct Datum: Codable {
+public struct Datum: Decodable {
    
     public let validDate: String
     public let weather: WeatherCondition
@@ -30,7 +30,7 @@ public struct Datum: Codable {
     }
 }
 
-public struct WeatherCondition: Codable {
+public struct WeatherCondition: Decodable {
     public let code: Int
 
     enum CodingKeys: String, CodingKey {

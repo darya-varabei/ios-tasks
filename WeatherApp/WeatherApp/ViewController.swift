@@ -13,18 +13,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var weatherWidget: UIView!
     @IBOutlet private weak var windStrength: UILabel?
-    private let tableView = UITableView()
     @IBOutlet private weak var cityName: UILabel?
     @IBOutlet private weak var date: UILabel?
     @IBOutlet private weak var temperature: UILabel?
     @IBOutlet private weak var condition: UILabel?
     @IBOutlet private weak var switchTablesButton: UIButton!
     
+    public var location: String?
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var numOfHours = 24
     private var numOfDays = 16
-    var location: String?
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let tableView = UITableView()
     private var cities: [FeaturedCity]?
     private var citiesData = [Weather]()
     
@@ -68,7 +67,7 @@ class ViewController: UIViewController {
         }
     }
     
-    fileprivate let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -107,8 +106,8 @@ class ViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -94).isActive = true
         tableView.showsVerticalScrollIndicator = false
     }
-
-    func getData() {
+    
+    private func getData() {
         
         var weatherRequest = WeatherRequest(location: self.location ?? "")
         weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
@@ -129,7 +128,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func getFeaturedData() {
+    private func getFeaturedData() {
         if cities?.count != nil {
             for city in cities! {
                 var weatherRequest = WeatherRequest(location: city.cityName ?? "")
@@ -145,7 +144,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchCities() {
+    private func fetchCities() {
         
         do {
             self.cities = try context.fetch(FeaturedCity.fetchRequest())
@@ -212,7 +211,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! TableCell
             cell.backgroundColor = .clear
             if weatherData.count != 0 {
-            cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
+                cell.data = self.weatherData[0].forecast.forecastday[0].hour[indexPath.row]
             }
             return cell
         }
@@ -220,7 +219,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ForecastCell
             cell.backgroundColor = .clear
             if self.forecastData[0].data.count != 0 {
-            cell.data = self.forecastData[0].data[indexPath.row]
+                cell.data = self.forecastData[0].data[indexPath.row]
             }
             return cell
         }

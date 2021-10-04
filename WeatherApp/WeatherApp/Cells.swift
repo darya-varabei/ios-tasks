@@ -12,28 +12,26 @@ import NetApi
 
 class TextCell: UITableViewCell {
     
-    static let identifier = "text"
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var mark: Bool? {
+    public var mark: Bool? {
         didSet {
             marker.image = (self.mark == true ? UIImage(named: "star.fill") : UIImage(named: "star"))
             markButton.setImage(marker.image, for: .normal)
         }
     }
-    var text: String? {
+    public var text: String? {
         didSet{
             daytime.text = text
         }
     }
     
-    fileprivate let markButton: UIButton = {
+    private let markButton: UIButton = {
         let iv = UIButton()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
         return iv
     }()
     
-    fileprivate let marker: UIImageView = {
+    private let marker: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
@@ -42,7 +40,7 @@ class TextCell: UITableViewCell {
         return iv
     }()
     
-    fileprivate let daytime: UILabel = {
+    private let daytime: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
@@ -50,6 +48,8 @@ class TextCell: UITableViewCell {
         iv.textAlignment = .left
         return iv
     }()
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -82,6 +82,7 @@ class TextCell: UITableViewCell {
         if sender.currentImage == UIImage(named: "star"){
             sender.setImage(UIImage(named: "star.fill"), for: .normal)
             city.cityName = self.text
+            
             do {
                 try context.save()
             }
@@ -112,9 +113,7 @@ class TextCell: UITableViewCell {
 
 class TableCell: UITableViewCell {
     
-    static let identifier = "cell1"
-    let timeRange = 11...15
-    var data: Hour? {
+    public var data: Hour? {
         didSet {
             let timestr = String(data?.time ?? "")
             let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
@@ -125,7 +124,9 @@ class TableCell: UITableViewCell {
         }
     }
     
-    fileprivate let bg: UIImageView = {
+    private let timeRange = 11...15
+    
+    private let bg: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
@@ -134,7 +135,7 @@ class TableCell: UITableViewCell {
         return iv
     }()
     
-    fileprivate let daytime: UILabel = {
+    private let daytime: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
@@ -143,13 +144,14 @@ class TableCell: UITableViewCell {
         return iv
     }()
     
-    fileprivate let temp: UILabel = {
+    private let temp: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
         iv.font = UIFont(name: "NotoSans-Medium", size: 22)
         return iv
     }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
@@ -184,10 +186,7 @@ class TableCell: UITableViewCell {
 
 class ForecastCell: UITableViewCell {
     
-    static let identifier = "cell2"
-    let timeRange = 11...15
-    
-    var data: Datum? {
+    public var data: Datum? {
         didSet {
             guard let data = data else { return }
             bg.image = UIImage(named: String(data.weather.code))
@@ -196,7 +195,7 @@ class ForecastCell: UITableViewCell {
         }
     }
     
-    fileprivate let bg: UIImageView = {
+    private let bg: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
@@ -205,7 +204,7 @@ class ForecastCell: UITableViewCell {
         return iv
     }()
     
-    fileprivate let daytime: UILabel = {
+    private let daytime: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
@@ -214,7 +213,7 @@ class ForecastCell: UITableViewCell {
         return iv
     }()
     
-    fileprivate let temp: UILabel = {
+    private let temp: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
@@ -253,7 +252,7 @@ class ForecastCell: UITableViewCell {
 
 class CustomCell: UICollectionViewCell {
     
-    var data: Weather? {
+    public var data: Weather? {
         didSet {
             guard let data = data else { return }
             bg.image = UIImage(named: String(data.current.condition.code))
@@ -263,7 +262,7 @@ class CustomCell: UICollectionViewCell {
         }
     }
     
-    fileprivate let bg: UIImageView = {
+    private let bg: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
@@ -272,7 +271,7 @@ class CustomCell: UICollectionViewCell {
         return iv
     }()
     
-    fileprivate let city: UILabel = {
+    private let city: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicWhite")
@@ -281,7 +280,7 @@ class CustomCell: UICollectionViewCell {
         return iv
     }()
     
-    fileprivate let temp: UILabel = {
+    private let temp: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "BasicYellow")
@@ -289,7 +288,7 @@ class CustomCell: UICollectionViewCell {
         return iv
     }()
     
-    fileprivate let condition: UILabel = {
+    private let condition: UILabel = {
         let iv = UILabel()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.textColor = UIColor(named: "OpaqueWhite")
