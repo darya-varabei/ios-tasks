@@ -14,7 +14,7 @@ struct City {
 
 class FileManagement {
     var citiesAndMarks: [City] = []
-    let filename = "cities.txt"
+    let filename = "/Users/darya/Desktop/ios-tasks/WeatherApp/WeatherApp/cities.txt"
     
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -26,16 +26,16 @@ class FileManagement {
         var tempCity: City = City(city: "Minsk", isMarked: "1")
         
         do {
-            if let path = Bundle.main.path(forResource: self.filename, ofType: "txt"){
-                let data = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+            if let path = Bundle.main.url(forResource: "cities", withExtension: "txt"){
+                let data = try String(contentsOf:path, encoding: String.Encoding.utf8)
                 arrayOfStrings = data.components(separatedBy: "\n")
             }
-        } catch let err as NSError {
-            print(err)
+        } catch {
+            print(error.localizedDescription)
         }
         
         if !(arrayOfStrings?.isEmpty ?? false) {
-            for i in 0..<arrayOfStrings!.count {
+            for i in 0..<18 {
                 let tempStr = arrayOfStrings?[i].components(separatedBy: "  ")
                 tempCity.city = tempStr?[0] ?? "City"
                 tempCity.isMarked = tempStr?[1] ?? "0"

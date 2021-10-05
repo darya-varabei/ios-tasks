@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B089A42270C6F4B000C77D4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B089A41270C6F4B000C77D4 /* FileManager.swift */; };
+		4B089A44270C8D6D000C77D4 /* cities.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B089A43270C8D6D000C77D4 /* cities.txt */; };
 		4B2ADE23270212F800E80A09 /* NetApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2ADE22270212F800E80A09 /* NetApi.framework */; };
 		4B2ADE24270212F800E80A09 /* NetApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2ADE22270212F800E80A09 /* NetApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B4168D326FC56A300EEDD9A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4168D226FC56A300EEDD9A /* CoreServices.framework */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		4B089A41270C6F4B000C77D4 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		4B089A43270C8D6D000C77D4 /* cities.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = cities.txt; sourceTree = "<group>"; };
 		4B2ADE22270212F800E80A09 /* NetApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4168D226FC56A300EEDD9A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4B487C2F26F4B14200098BF7 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 				4B487C3226F4B14200098BF7 /* AppDelegate.swift */,
 				4B487C3426F4B14200098BF7 /* SceneDelegate.swift */,
 				4B487C3626F4B14200098BF7 /* ViewController.swift */,
+				4B089A43270C8D6D000C77D4 /* cities.txt */,
 				4B089A41270C6F4B000C77D4 /* FileManager.swift */,
 				D5DFC47F26F7B2390020ED62 /* Cells.swift */,
 				4BA64EE0270ADFD600DAF846 /* Cells */,
@@ -242,6 +245,7 @@
 				4BA64EE8270AE04100DAF846 /* ForecastTableViewCell.xib in Resources */,
 				4B487C9026F4E14400098BF7 /* NotoSans-Regular.ttf in Resources */,
 				4B487C8C26F4E12500098BF7 /* NotoSans-Bold.ttf in Resources */,
+				4B089A44270C8D6D000C77D4 /* cities.txt in Resources */,
 				4BA64EE4270AE02700DAF846 /* WeatherTableViewCell.xib in Resources */,
 				4B487C9226F4E14C00098BF7 /* NotoSans-SemiBold.ttf in Resources */,
 				4B487C4226F4B14200098BF7 /* LaunchScreen.storyboard in Resources */,

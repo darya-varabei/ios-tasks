@@ -81,8 +81,9 @@ class TextCell: UITableViewCell {
     
     @IBAction func switchStar(_ sender: UIButton) {
         
-        if !(data?.isEmpty ?? false) {
-            for i in 0..<data!.count {
+        //if !(data?.isEmpty ?? false) {
+        if data?.count != 0 {
+            for i in 0..<18 {
                 if data![i].city == texts {
                     if sender.currentImage == UIImage(named: "star"){
                         sender.setImage(UIImage(named: "star.fill"), for: .normal)

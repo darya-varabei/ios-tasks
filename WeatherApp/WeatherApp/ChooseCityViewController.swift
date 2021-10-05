@@ -17,7 +17,7 @@ class ChooseCityViewController: UIViewController {
     @IBOutlet private weak var featured: UILabel!
     @IBOutlet private weak var tableWeatherView: UITableView!
     
-    private var cities = [City]()//["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnius", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
+    private var cities = [City]()
     private let manager = FileManagement()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var featuredCities: [FeaturedCity]?
@@ -38,6 +38,7 @@ class ChooseCityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cities = manager.readData()
+        print(self.cities)
         fetchCities()
         getFeaturedData()
         view.addSubview(collectionView)
@@ -131,9 +132,11 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var ifFeatured = false
+        let manager = FileManagement()
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.texts = cities[indexPath.row].city
+        cell.data = manager.readData()
         
         for i in 0..<(featuredCities?.count ?? 1) {
             
