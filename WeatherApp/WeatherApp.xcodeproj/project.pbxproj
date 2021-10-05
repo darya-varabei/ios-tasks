@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B089A42270C6F4B000C77D4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B089A41270C6F4B000C77D4 /* FileManager.swift */; };
 		4B2ADE23270212F800E80A09 /* NetApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2ADE22270212F800E80A09 /* NetApi.framework */; };
 		4B2ADE24270212F800E80A09 /* NetApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2ADE22270212F800E80A09 /* NetApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B4168D326FC56A300EEDD9A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4168D226FC56A300EEDD9A /* CoreServices.framework */; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B089A41270C6F4B000C77D4 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		4B2ADE22270212F800E80A09 /* NetApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4168D226FC56A300EEDD9A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4B487C2F26F4B14200098BF7 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,10 +123,11 @@
 				4B487C3226F4B14200098BF7 /* AppDelegate.swift */,
 				4B487C3426F4B14200098BF7 /* SceneDelegate.swift */,
 				4B487C3626F4B14200098BF7 /* ViewController.swift */,
-				4B9AB2C426FDBC230084780F /* Model */,
+				4B089A41270C6F4B000C77D4 /* FileManager.swift */,
 				D5DFC47F26F7B2390020ED62 /* Cells.swift */,
 				4BA64EE0270ADFD600DAF846 /* Cells */,
 				D5011A3426F725E500125A4A /* ChooseCityViewController.swift */,
+				4B9AB2C426FDBC230084780F /* Model */,
 				4B487C8A26F4E11600098BF7 /* Fonts */,
 				4B487C3826F4B14200098BF7 /* Main.storyboard */,
 				4B487C3E26F4B14200098BF7 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 				4BA64EE7270AE04100DAF846 /* ForecastTableViewCell.swift in Sources */,
 				4B487C3D26F4B14200098BF7 /* WeatherApp.xcdatamodeld in Sources */,
 				4BA64EDA270ADF0600DAF846 /* CustomCollectionViewCell.swift in Sources */,
+				4B089A42270C6F4B000C77D4 /* FileManager.swift in Sources */,
 				4BA64EE3270AE02700DAF846 /* WeatherTableViewCell.swift in Sources */,
 				4B9AB2C826FDC0100084780F /* FeaturedCity+CoreDataProperties.swift in Sources */,
 				D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */,

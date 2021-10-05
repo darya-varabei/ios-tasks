@@ -17,8 +17,8 @@ class ChooseCityViewController: UIViewController {
     @IBOutlet private weak var featured: UILabel!
     @IBOutlet private weak var tableWeatherView: UITableView!
     
-    private let cities = ["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnius", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
-    
+    private var cities = [City]()//["Minsk", "Moskou", "London", "Paris", "Riga", "Vilnius", "Warsaw", "Stockholm", "Oslo", "Helsinki", "Copenhagen", "Madrid", "Rome", "Bristol", "Berlin", "Munich", "Stambul", "Antalya"]
+    private let manager = FileManagement()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var featuredCities: [FeaturedCity]?
     private var citiesData = [Weather]()
@@ -37,6 +37,7 @@ class ChooseCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cities = manager.readData()
         fetchCities()
         getFeaturedData()
         view.addSubview(collectionView)
@@ -132,11 +133,11 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         var ifFeatured = false
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
-        cell.texts = cities[indexPath.row]
+        cell.texts = cities[indexPath.row].city
         
         for i in 0..<(featuredCities?.count ?? 1) {
             
-            if featuredCities![i].cityName == self.cities[indexPath.row] {
+            if featuredCities![i].cityName == self.cities[indexPath.row].city {
                 ifFeatured = true
             }
             else {
@@ -150,7 +151,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let viewController = storyboard?.instantiateViewController(identifier: "LocationVC") as? ViewController {
-            viewController.location = cities[indexPath.row]
+            viewController.location = cities[indexPath.row].city
             show(viewController, sender: nil)
         }
         

@@ -12,14 +12,17 @@ import NetApi
 
 class TextCell: UITableViewCell {
     
-    public var mark: Bool? {
+    var manager: FileManagement = FileManagement()
+    var data: [City]?
+    
+    var mark: Bool? {
         didSet {
             marker.image = (self.mark == true ? UIImage(named: "star.fill") : UIImage(named: "star"))
             markButton.setImage(marker.image, for: .normal)
         }
     }
     
-    public var texts: String? {
+    var texts: String? {
         didSet {
             daytime.text = texts
         }
@@ -77,38 +80,56 @@ class TextCell: UITableViewCell {
     }
     
     @IBAction func switchStar(_ sender: UIButton) {
-        let city = FeaturedCity(context: context)
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeaturedCity")
-        fetchRequest.predicate = NSPredicate(format: "cityName = %@", self.texts!)
-        if sender.currentImage == UIImage(named: "star"){
-            sender.setImage(UIImage(named: "star.fill"), for: .normal)
-            city.cityName = self.texts
-            
-            do {
-                try context.save()
-            }
-            catch {
-                context.rollback()
-            }
-        }
-        else {
-            sender.setImage(UIImage(named: "star"), for: .normal)
-            
-            do {
-                let test = try context.fetch(fetchRequest)
-                
-                let objectToDelete = test[0] as! NSManagedObject
-                context.delete(objectToDelete)
-                
-                do {
-                    try context.save()
-                } catch {
-                    context.rollback()
+        
+        if !(data?.isEmpty ?? false) {
+            for i in 0..<data!.count {
+                if data![i].city == texts {
+                    if sender.currentImage == UIImage(named: "star"){
+                        sender.setImage(UIImage(named: "star.fill"), for: .normal)
+                        
+                        data![i].isMarked = "1"
+                    }
+                    else {
+                        sender.setImage(UIImage(named: "star"), for: .normal)
+                        data![i].isMarked = "0"
+                    }
+                    manager.citiesAndMarks = data ?? []
+                    manager.saveData()
                 }
-            } catch {
-                print("Context save failure")
             }
         }
+//        let city = FeaturedCity(context: context)
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeaturedCity")
+//        fetchRequest.predicate = NSPredicate(format: "cityName = %@", self.texts!)
+//        if sender.currentImage == UIImage(named: "star"){
+//            sender.setImage(UIImage(named: "star.fill"), for: .normal)
+//            city.cityName = self.texts
+//
+//            do {
+//                try context.save()
+//            }
+//            catch {
+//                context.rollback()
+//            }
+//        }
+//        else {
+//            sender.setImage(UIImage(named: "star"), for: .normal)
+//
+//            do {
+//                let test = try context.fetch(fetchRequest)
+//
+//                let objectToDelete = test[0] as! NSManagedObject
+//                context.delete(objectToDelete)
+//
+//                do {
+//                    try context.save()
+//                } catch {
+//                    context.rollback()
+//                }
+//            } catch {
+//                print("Context save failure")
+//            }
+//        }
     }
 }
 

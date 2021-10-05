@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var switchTablesButton: UIButton!
     
     public var location: String?
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   // private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var numOfHours = 24
     private var numOfDays = 16
     private let tableView = UITableView()
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
     private func fetchCities() {
         
         do {
-            self.cities = try context.fetch(FeaturedCity.fetchRequest())
+            //self.cities = try context.fetch(FeaturedCity.fetchRequest())
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
