@@ -20,7 +20,6 @@ class ChooseCityViewController: UIViewController {
     private var cities = [City]()
     private let manager = FileManagement()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var featuredCities: [FeaturedCity]?
     private var citiesData = [Weather]()
     private var feat: [String]?
     private var weatherData = [Forecastday]()
@@ -39,8 +38,6 @@ class ChooseCityViewController: UIViewController {
         super.viewDidLoad()
         self.cities = manager.readData()
         print(self.cities)
-        fetchCities()
-        getFeaturedData()
         view.addSubview(collectionView)
         view.addSubview(tableWeatherView)
         collectionView.backgroundColor = .clear
@@ -61,39 +58,6 @@ class ChooseCityViewController: UIViewController {
         tableWeatherView.register(TextCell.self, forCellReuseIdentifier: "text")
         self.tableWeatherView.delegate = self
         self.tableWeatherView.dataSource = self
-    }
-    
-    private func getFeaturedData() {
-        
-        for city in featuredCities! {
-            var weatherRequest = WeatherRequest(location: city.cityName ?? "London")
-            
-            weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let weather):
-                    self?.citiesData.append(contentsOf: weather)
-                }
-            }
-        }
-    }
-    
-    private func fetchCities() {
-        
-        do {
-            self.featuredCities = try context.fetch(FeaturedCity.fetchRequest())
-            for i in 1...5 {
-                self.feat?.append(self.featuredCities![i].cityName ?? " ")
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-        catch {
-            print("Cities fetch failed")
-        }
     }
 }
 
@@ -135,12 +99,12 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         let manager = FileManagement()
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
         cell.backgroundColor = UIColor(named: "DarkBackground")
-        cell.texts = cities[indexPath.row].city
+        cell.texts = manager.readData()[indexPath.row].city
         cell.data = manager.readData()
         
-        for i in 0..<(featuredCities?.count ?? 1) {
+        for i in 0..<manager.readData().count {
             
-            if featuredCities![i].cityName == self.cities[indexPath.row].city {
+            if manager.citiesAndMarks[i].isMarked == "1"{
                 ifFeatured = true
             }
             else {
