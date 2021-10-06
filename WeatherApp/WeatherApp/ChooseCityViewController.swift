@@ -19,7 +19,8 @@ class ChooseCityViewController: UIViewController {
     
     private var cities = [City]()
     private let manager = FileManagement()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //private var featuredCities: [FeaturedCity]?
     private var citiesData = [Weather]()
     private var feat: [String]?
     private var weatherData = [Forecastday]()
@@ -38,6 +39,8 @@ class ChooseCityViewController: UIViewController {
         super.viewDidLoad()
         self.cities = manager.readData()
         print(self.cities)
+//        fetchCities()
+       getFeaturedData()
         view.addSubview(collectionView)
         view.addSubview(tableWeatherView)
         collectionView.backgroundColor = .clear
@@ -58,6 +61,25 @@ class ChooseCityViewController: UIViewController {
         tableWeatherView.register(TextCell.self, forCellReuseIdentifier: "text")
         self.tableWeatherView.delegate = self
         self.tableWeatherView.dataSource = self
+    }
+    
+    private func getFeaturedData() {
+        
+        for city in cities {
+            
+            if city.isMarked == "1"{
+                var weatherRequest = WeatherRequest(location: city.city)
+                
+                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
+                    switch result {
+                    case .failure(let error):
+                        print(error)
+                    case .success(let weather):
+                        self?.citiesData.append(contentsOf: weather)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -108,7 +130,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
                 ifFeatured = true
             }
             else {
-                continue
+                ifFeatured = false
             }
         }
         cell.mark = ifFeatured

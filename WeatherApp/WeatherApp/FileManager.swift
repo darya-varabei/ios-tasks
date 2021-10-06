@@ -45,17 +45,17 @@ class FileManagement {
         return self.citiesAndMarks
     }
     
-    func saveData() {
-        let str = self.citiesAndMarks.map { $0.city + "  " + String($0.isMarked)}.joined(separator: "\n")
-        
-        let url = self.getDocumentsDirectory().appendingPathComponent(self.filename)
+    func saveData(_ arrayOfCountries: [City]) {
+        let str = arrayOfCountries.map { $0.city + "  " + String($0.isMarked)}.joined(separator: "\n")
         
         do {
-            try str.write(to: url, atomically: true, encoding: .utf8)
-            let input = try String(contentsOf: url)
-            print(input)
+            if let path = Bundle.main.url(forResource: "cities", withExtension: "txt"){
+                print(path)
+                try str.write(toFile: String(contentsOf: path), atomically: true, encoding: .utf8)
+            }
         } catch {
             print(error.localizedDescription)
         }
+        
     }
 }

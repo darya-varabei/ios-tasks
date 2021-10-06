@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     private var numOfHours = 24
     private var numOfDays = 16
     private let tableView = UITableView()
-    private var cities: [FeaturedCity]?
+    private var cities: [City]?
     private var citiesData = [Weather]()
     
     private var showCurrentDay: Bool = true {
@@ -74,8 +74,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getData()
-        fetchCities()
-        getFeaturedData()
+//        fetchCities()
+//        getFeaturedData()
         
         self.weatherWidget.layer.cornerRadius = 15
         self.tableView.layer.cornerRadius = 15
@@ -122,34 +122,34 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getFeaturedData() {
-        if cities?.count != nil {
-            for city in cities! {
-                var weatherRequest = WeatherRequest(location: city.cityName ?? "")
-                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
-                    switch result {
-                    case .failure(let error):
-                        print(error)
-                    case .success(let weather):
-                        self?.citiesData.append(contentsOf: weather)
-                    }
-                }
-            }
-        }
-    }
-    
-    private func fetchCities() {
-        
-        do {
-            //self.cities = try context.fetch(FeaturedCity.fetchRequest())
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        } catch {
-            print("Cities fetch failed")
-        }
-    }
+//    private func getFeaturedData() {
+//        if cities?.count != nil {
+//            for city in cities! {
+//                var weatherRequest = WeatherRequest(location: city.cityName ?? "")
+//                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
+//                    switch result {
+//                    case .failure(let error):
+//                        print(error)
+//                    case .success(let weather):
+//                        self?.citiesData.append(contentsOf: weather)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    private func fetchCities() {
+//
+//        do {
+//            //self.cities = try context.fetch(FeaturedCity.fetchRequest())
+//
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        } catch {
+//            print("Cities fetch failed")
+//        }
+//    }
     
     @IBAction func switchTables(_ sender: UIButton) {
         if self.switchTablesButton.title(for: .normal) == "16 Days forecast" {
