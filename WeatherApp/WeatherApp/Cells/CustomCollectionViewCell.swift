@@ -13,11 +13,4 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var condition: UILabel!
-    
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-
 }

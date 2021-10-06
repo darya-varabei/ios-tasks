@@ -63,7 +63,7 @@ class ChooseCityViewController: UIViewController {
         
         for city in cities {
             
-            if city.isMarked == "1"{
+            if city.isMarked == "1" {
                 var weatherRequest = WeatherRequest(location: city.city)
                 
                 weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
@@ -117,13 +117,14 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         var ifFeatured = false
         let manager = FileManagement()
         let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
+        
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.texts = manager.readData()[indexPath.row].city
         cell.data = manager.readData()
         
         for i in 0..<manager.readData().count {
             
-            if manager.citiesAndMarks[i].isMarked == "1"{
+            if manager.citiesAndMarks[i].isMarked == "1" {
                 ifFeatured = true
             }
             else {
@@ -140,7 +141,5 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
             viewController.location = cities[indexPath.row].city
             show(viewController, sender: nil)
         }
-        
-        self.performSegue(withIdentifier: "showCity", sender: self)
     }
 }

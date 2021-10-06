@@ -29,6 +29,9 @@ public struct WeatherRequest {
             resurceString = "https://api.weatherapi.com/v1/forecast.json?key=\(API_KEY)&q=Minsk&days=1&aqi=no&alerts=no"
             forecastString = "https://api.weatherbit.io/v2.0/forecast/daily?city=Minsk&key=\(API_KEY2)"
         }
+        else {
+          
+        }
         guard let resourceURL = URL(string: resurceString) else { fatalError() }
         guard let forecastURL = URL(string: forecastString) else { fatalError() }
         

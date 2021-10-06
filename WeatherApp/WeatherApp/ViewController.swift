@@ -11,7 +11,7 @@ import CoreData
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var weatherWidget: UIView!
+    @IBOutlet private weak var weatherWidget: UIView!
     @IBOutlet private weak var windStrength: UILabel?
     @IBOutlet private weak var cityName: UILabel?
     @IBOutlet private weak var date: UILabel?
@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet private weak var condition: UILabel?
     @IBOutlet private weak var switchTablesButton: UIButton!
     
-    public var location: String?
+    var location: String?
+    
     private let manager = FileManagement()
-   // private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var numOfHours = 24
     private var numOfDays = 16
     private let tableView = UITableView()
@@ -75,7 +75,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getData()
-//        fetchCities()
         self.cities = manager.readData()
         getFeaturedData()
         
@@ -106,7 +105,7 @@ class ViewController: UIViewController {
     private func getData() {
         
         var weatherRequest = WeatherRequest(location: self.location ?? "")
-        weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
+        weatherRequest.fetchData { [weak self] (result: Result<[Weather],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -114,7 +113,8 @@ class ViewController: UIViewController {
                 self?.weatherData.append(contentsOf: weather)
             }
         }
-        weatherRequest.fetchData { [weak self] (result : Result<[DaysForecast],WeatherError>) in
+        
+        weatherRequest.fetchData { [weak self] (result: Result<[DaysForecast],WeatherError>) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -128,7 +128,7 @@ class ViewController: UIViewController {
         if cities?.count != nil {
             for city in cities! {
                 var weatherRequest = WeatherRequest(location: city.city)
-                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
+                weatherRequest.fetchData { [weak self] (result: Result<[Weather],WeatherError>) in
                     switch result {
                     case .failure(let error):
                         print(error)
@@ -139,21 +139,9 @@ class ViewController: UIViewController {
             }
         }
     }
-//
-//    private func fetchCities() {
-//
-//        do {
-//            //self.cities = try context.fetch(FeaturedCity.fetchRequest())
-//
-//            DispatchQueue.main.async {
-//                self.collectionView.reloadData()
-//            }
-//        } catch {
-//            print("Cities fetch failed")
-//        }
-//    }
     
     @IBAction func switchTables(_ sender: UIButton) {
+        
         if self.switchTablesButton.title(for: .normal) == "16 Days forecast" {
             self.switchTablesButton.setTitle("Day forecast", for: .normal)
             self.showCurrentDay = false
@@ -210,8 +198,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if showCurrentDay {
             let cell = Bundle.main.loadNibNamed("WeatherTableViewCell", owner: self, options: nil)?.first as! WeatherTableViewCell
             cell.layer.cornerRadius = 10
+            
             let timestr = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time)
             let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
+            
             cell.picture.image = UIImage(named: String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].condition.code))
             cell.time.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time.suffix(from:index4))
             cell.temperature.text = String("\(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC) °C")
@@ -223,7 +213,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             if self.forecastData[0].data.count != 0 {
                 cell.layer.cornerRadius = 10
                 cell.date.text = self.weatherData[0].forecast.forecastday[0].date
-                cell.weather.text = String("\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)°C")
+                cell.weather.text = "\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)°C"
             }
             return cell
         }

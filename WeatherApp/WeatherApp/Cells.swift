@@ -84,7 +84,7 @@ class TextCell: UITableViewCell {
         if data?.count != 0 {
             for i in 0..<18 {
                 if data![i].city == texts {
-                    if sender.currentImage == UIImage(named: "star"){
+                    if sender.currentImage == UIImage(named: "star") {
                         sender.setImage(UIImage(named: "star.fill"), for: .normal)
                         
                         data![i].isMarked = "1"
