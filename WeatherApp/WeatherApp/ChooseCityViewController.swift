@@ -19,8 +19,6 @@ class ChooseCityViewController: UIViewController {
     
     private var cities = [City]()
     private let manager = FileManagement()
-    //private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    //private var featuredCities: [FeaturedCity]?
     private var citiesData = [Weather]()
     private var feat: [String]?
     private var weatherData = [Forecastday]()
@@ -38,9 +36,7 @@ class ChooseCityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cities = manager.readData()
-        print(self.cities)
-//        fetchCities()
-       getFeaturedData()
+        getFeaturedData()
         view.addSubview(collectionView)
         view.addSubview(tableWeatherView)
         collectionView.backgroundColor = .clear
@@ -100,6 +96,7 @@ extension ChooseCityViewController: UICollectionViewDelegateFlowLayout, UICollec
         cell.layer.cornerRadius = 10
         cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
         cell.location.text = self.citiesData[indexPath.item].location.name
+        cell.temperature.text = "\(self.citiesData[indexPath.item].current.tempC)°C"
         cell.condition.text = self.citiesData[indexPath.item].current.condition.text
         return cell
     }

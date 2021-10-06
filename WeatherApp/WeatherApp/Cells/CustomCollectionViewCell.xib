@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOT-Od-Kq3">
-                        <rect key="frame" x="87" y="5" width="39" height="14"/>
+                        <rect key="frame" x="72" y="5" width="54" height="14"/>
                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                         <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="highlightedColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,7 +72,7 @@
                 <constraint firstAttribute="trailing" secondItem="08J-jL-eit" secondAttribute="trailing" constant="14" id="QGo-CD-H8e"/>
                 <constraint firstAttribute="trailing" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="93" id="Sbb-TZ-K3v"/>
                 <constraint firstAttribute="trailing" secondItem="56F-rc-qZo" secondAttribute="trailing" constant="14" id="Uwh-P5-tBN"/>
-                <constraint firstItem="LOT-Od-Kq3" firstAttribute="leading" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="40" id="YLd-13-iAE"/>
+                <constraint firstItem="LOT-Od-Kq3" firstAttribute="leading" secondItem="UOK-lh-KL8" secondAttribute="trailing" constant="25" id="YLd-13-iAE"/>
                 <constraint firstAttribute="trailing" secondItem="LOT-Od-Kq3" secondAttribute="trailing" constant="14" id="bA7-0R-8ZP"/>
                 <constraint firstAttribute="bottom" secondItem="LOT-Od-Kq3" secondAttribute="bottom" constant="41" id="chR-aC-dvK"/>
                 <constraint firstAttribute="bottom" secondItem="08J-jL-eit" secondAttribute="bottom" constant="5" id="yaf-8t-FGW"/>

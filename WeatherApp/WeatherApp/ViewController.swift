@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var switchTablesButton: UIButton!
     
     public var location: String?
+    private let manager = FileManagement()
    // private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var numOfHours = 24
     private var numOfDays = 16
@@ -75,7 +76,8 @@ class ViewController: UIViewController {
         
         getData()
 //        fetchCities()
-//        getFeaturedData()
+        self.cities = manager.readData()
+        getFeaturedData()
         
         self.weatherWidget.layer.cornerRadius = 15
         self.tableView.layer.cornerRadius = 15
@@ -122,21 +124,21 @@ class ViewController: UIViewController {
         }
     }
     
-//    private func getFeaturedData() {
-//        if cities?.count != nil {
-//            for city in cities! {
-//                var weatherRequest = WeatherRequest(location: city.cityName ?? "")
-//                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
-//                    switch result {
-//                    case .failure(let error):
-//                        print(error)
-//                    case .success(let weather):
-//                        self?.citiesData.append(contentsOf: weather)
-//                    }
-//                }
-//            }
-//        }
-//    }
+    private func getFeaturedData() {
+        if cities?.count != nil {
+            for city in cities! {
+                var weatherRequest = WeatherRequest(location: city.city)
+                weatherRequest.fetchData { [weak self] (result : Result<[Weather],WeatherError>) in
+                    switch result {
+                    case .failure(let error):
+                        print(error)
+                    case .success(let weather):
+                        self?.citiesData.append(contentsOf: weather)
+                    }
+                }
+            }
+        }
+    }
 //
 //    private func fetchCities() {
 //
@@ -182,6 +184,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.layer.cornerRadius = 10
         cell.image.image = UIImage(named: String(self.citiesData[indexPath.item].current.condition.code))
         cell.location.text = self.citiesData[indexPath.item].location.name
+        cell.temperature.text = "\(self.citiesData[indexPath.item].current.tempC)°C"
         cell.condition.text = self.citiesData[indexPath.item].current.condition.text
         return cell
     }
