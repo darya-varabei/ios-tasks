@@ -4,7 +4,7 @@ import UIKit
 enum TrafficLight {
     case red, yellow, green
     
-    mutating func changeColor() {
+    mutating func changeColor() { // func with mutating keyword is able to change an initial state of class property
         switch self {
         case .red:
             self = .yellow
@@ -19,7 +19,7 @@ enum TrafficLight {
 struct Employee {
     var salary = 0
     
-    mutating func increaseSalary(increment: Int) {
+    mutating func increaseSalary(increment: Int) { // mutating keyword works for structs, classes and enums
         salary = salary + increment
     }
 }
@@ -32,7 +32,7 @@ accountant.salary
 var trafficLight = TrafficLight.red
 trafficLight.changeColor()
 
-@dynamicCallable
+@dynamicCallable // methods of struct attributed with dynamicallyCallable can be called without turning to func name, as if it were a function
 struct Rows {
     func dynamicallyCall(withKeywordArguments pairs: KeyValuePairs<String, Int>) -> String {
         return pairs.map { label, count in
@@ -47,7 +47,7 @@ print(showRows(c: 7, d: 6, e: 5, f: 4, g: 3, h: 2, i: 1))
 class Students {
     static var value = 0
     
-    static func increment() {
+    static func increment() { // func which performs common computations for all class instances
         value += 1;
         print(value)
     }
@@ -61,7 +61,7 @@ Students.increment()
 print(Students.value)
 
 class ReferenceMath {
-    class func sqrt(of value: Int) -> Int {
+    class func sqrt(of value: Int) -> Int { //class atribute can be used instead of static to call method for the whole group of class instances
         if value >= 0 {
             return value * value
         } else {
@@ -71,7 +71,7 @@ class ReferenceMath {
 }
 
 struct ValueMath {
-    static func sqrt(of value: Int) -> Int {
+    static func sqrt(of value: Int) -> Int { // same for @class attribute, but can be used in structs
         if value >= 0 {
             return value * value
         } else {
