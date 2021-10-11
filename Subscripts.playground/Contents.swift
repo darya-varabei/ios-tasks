@@ -53,12 +53,13 @@ week[5]
 week[6]
 
 class MealPlan {
-    enum Meal{
-        case Breakfast
-        case Lunch
-        case Snack
-        case Dinner
-        case Supper
+    
+    enum Meal {
+        case breakfast
+        case lunch
+        case snack
+        case dinner
+        case supper
     }
     
     var meals: [Meal: String] = [:]
@@ -79,9 +80,9 @@ class MealPlan {
 }
 
 let today = MealPlan()
-today[.Dinner] = "Salad"
-today[.Snack] = "Banana"
-today[.Supper] = "Yoghurt"
+today[.dinner] = "Salad"
+today[.snack] = "Banana"
+today[.supper] = "Yoghurt"
 
 class Classroom {
     var zero: String?
@@ -123,27 +124,27 @@ extension String {
 
 let char = input[3]
 
-class Book{
+class Book {
      
     var name: String
-    init(name: String){
+    init(name: String) {
          
         self.name = name
     }
 }
 
-class Bookshelf{
+class Bookshelf {
      
     var books: [Book] = [Book]()
      
-    init(){
+    init() {
          
         books.append(Book(name: "The fault in our stars"))
         books.append(Book(name: "Carry"))
         books.append(Book(name: "Green mile"))
     }
      
-    subscript(index: Int) -> Book{
+    subscript(index: Int) -> Book {
          
         return books[index]
     }
