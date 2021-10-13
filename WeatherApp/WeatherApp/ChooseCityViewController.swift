@@ -54,7 +54,7 @@ class ChooseCityViewController: UIViewController {
         self.collectionView.layer.cornerRadius = 15
         tableWeatherView.backgroundColor = .clear
         tableWeatherView.translatesAutoresizingMaskIntoConstraints = false
-        tableWeatherView.register(TextCell.self, forCellReuseIdentifier: "text")
+        tableWeatherView.register(FeaturedCityCell.self, forCellReuseIdentifier: "text")
         self.tableWeatherView.delegate = self
         self.tableWeatherView.dataSource = self
     }
@@ -116,7 +116,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource {
         
         var ifFeatured = false
         let manager = FileManagement()
-        let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! TextCell
+        let cell = tableWeatherView.dequeueReusableCell(withIdentifier: "text", for: indexPath) as! FeaturedCityCell
         
         cell.backgroundColor = UIColor(named: "DarkBackground")
         cell.texts = manager.readData()[indexPath.row].city

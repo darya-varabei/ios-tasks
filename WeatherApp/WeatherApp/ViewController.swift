@@ -181,8 +181,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard !weatherData.isEmpty else { return 0 }
+        
         if showCurrentDay {
-            return self.weatherData[0].forecast.forecastday[0].hour.count
+            return self.weatherData.first?.forecast.forecastday.first?.hour.count ?? 0
         }
         else {
             return self.numOfDays
@@ -199,21 +201,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = Bundle.main.loadNibNamed("WeatherTableViewCell", owner: self, options: nil)?.first as! WeatherTableViewCell
             cell.layer.cornerRadius = 10
             
-            let timestr = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time)
+            let timestr = String(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].time ?? "")
             let index4 = timestr.index(timestr.startIndex, offsetBy: 11)
             
-            cell.picture.image = UIImage(named: String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].condition.code))
-            cell.time.text = String(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].time.suffix(from:index4))
-            cell.temperature.text = String("\(self.weatherData[0].forecast.forecastday[0].hour[indexPath.row].tempC) °C")
+            cell.picture.image = UIImage(named: String(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].condition.code ?? 1003))
+            cell.time.text = String(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].time.suffix(from:index4) ?? "")
+            cell.temperature.text = String("\(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].tempC) °C")
             return cell
         }
         
         else {
             let cell = Bundle.main.loadNibNamed("ForecastTableViewCell", owner: self, options: nil)?.first as! ForecastTableViewCell
-            if self.forecastData[0].data.count != 0 {
+            
+            if self.forecastData.first?.data.count != 0 {
                 cell.layer.cornerRadius = 10
-                cell.date.text = self.weatherData[0].forecast.forecastday[0].date
-                cell.weather.text = "\(self.weatherData[0].forecast.forecastday[0].day.mintempC) - \(self.weatherData[0].forecast.forecastday[0].day.maxtempC)°C"
+                cell.date.text = self.weatherData.first?.forecast.forecastday.first?.date
+                cell.weather.text = "\(String(describing: self.weatherData.first?.forecast.forecastday.first?.day.mintempC)) - \(self.weatherData.first?.forecast.forecastday.first?.day.maxtempC)°C"
             }
             return cell
         }

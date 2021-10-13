@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import NetApi
 
-class TextCell: UITableViewCell {
+class FeaturedCityCell: UITableViewCell {
     
     var manager: FileManagement = FileManagement()
     var data: [City]?
@@ -52,8 +52,6 @@ class TextCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
-    
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         

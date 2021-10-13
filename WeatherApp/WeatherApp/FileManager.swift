@@ -47,7 +47,6 @@ class FileManagement {
                 try str.write(toFile: String(contentsOf: path), atomically: true, encoding: .utf8)
             }
         } catch {
-            //print(error.localizedDescription)
         }
     }
 }

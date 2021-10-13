@@ -30,7 +30,7 @@
 		4BA64EE7270AE04100DAF846 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA64EE5270AE04100DAF846 /* ForecastTableViewCell.swift */; };
 		4BA64EE8270AE04100DAF846 /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA64EE6270AE04100DAF846 /* ForecastTableViewCell.xib */; };
 		D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011A3426F725E500125A4A /* ChooseCityViewController.swift */; };
-		D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DFC47F26F7B2390020ED62 /* Cells.swift */; };
+		D5DFC48026F7B2390020ED62 /* FeaturedCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DFC47F26F7B2390020ED62 /* FeaturedCityCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,7 +82,7 @@
 		4BA64EE5270AE04100DAF846 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		4BA64EE6270AE04100DAF846 /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewCell.xib; sourceTree = "<group>"; };
 		D5011A3426F725E500125A4A /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
-		D5DFC47F26F7B2390020ED62 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		D5DFC47F26F7B2390020ED62 /* FeaturedCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				4B487C3626F4B14200098BF7 /* ViewController.swift */,
 				4B089A43270C8D6D000C77D4 /* cities.txt */,
 				4B089A41270C6F4B000C77D4 /* FileManager.swift */,
-				D5DFC47F26F7B2390020ED62 /* Cells.swift */,
+				D5DFC47F26F7B2390020ED62 /* FeaturedCityCell.swift */,
 				4BA64EE0270ADFD600DAF846 /* Cells */,
 				D5011A3426F725E500125A4A /* ChooseCityViewController.swift */,
 				4B487C8A26F4E11600098BF7 /* Fonts */,
@@ -254,7 +254,7 @@
 				4BA64EDA270ADF0600DAF846 /* CustomCollectionViewCell.swift in Sources */,
 				4B089A42270C6F4B000C77D4 /* FileManager.swift in Sources */,
 				4BA64EE3270AE02700DAF846 /* WeatherTableViewCell.swift in Sources */,
-				D5DFC48026F7B2390020ED62 /* Cells.swift in Sources */,
+				D5DFC48026F7B2390020ED62 /* FeaturedCityCell.swift in Sources */,
 				D5011A3526F725E500125A4A /* ChooseCityViewController.swift in Sources */,
 				4B487C3726F4B14200098BF7 /* ViewController.swift in Sources */,
 				4B487C3326F4B14200098BF7 /* AppDelegate.swift in Sources */,
