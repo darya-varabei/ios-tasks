@@ -206,7 +206,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.picture.image = UIImage(named: String(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].condition.code ?? 1003))
             cell.time.text = String(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].time.suffix(from:index4) ?? "")
-            cell.temperature.text = String("\(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].tempC) °C")
+            cell.temperature.text = String("\(self.weatherData.first?.forecast.forecastday.first?.hour[indexPath.row].tempC ?? 0)  °C")
             return cell
         }
         
@@ -215,8 +215,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             if self.forecastData.first?.data.count != 0 {
                 cell.layer.cornerRadius = 10
-                cell.date.text = self.weatherData.first?.forecast.forecastday.first?.date
-                cell.weather.text = "\(String(describing: self.weatherData.first?.forecast.forecastday.first?.day.mintempC)) - \(self.weatherData.first?.forecast.forecastday.first?.day.maxtempC)°C"
+                cell.date.text = self.forecastData.first?.data[indexPath.row].validDate ?? ""
+                cell.weather.text = "\(String(describing: self.forecastData.first?.data[indexPath.row].minTemp ?? 0)) - \(String(describing: self.forecastData.first?.data[indexPath.row].maxTemp ?? 0))°C"
             }
             return cell
         }
