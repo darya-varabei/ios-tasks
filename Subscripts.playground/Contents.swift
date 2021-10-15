@@ -117,8 +117,11 @@ laboratory[8,4]
 let input = "Swift Tutorials"//basically strings are not provided with functional for iterating through characters using subscripts, but it can be done through extensions
 
 extension String {
-    subscript(i: Int) -> Character {
-        self[index(startIndex, offsetBy: i)]
+    subscript(i: Int) -> Character? {
+        if self.count < i {
+            return self[index(startIndex, offsetBy: i)]
+        }
+        else { return nil }
     }
 }
 
