@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../CookBookApi/CookBookApi.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:Cookbook.xcodeproj">
    </FileRef>
 </Workspace>
