@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B277B66271EA9D20018D352 /* CookBookApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B277B65271EA9D20018D352 /* CookBookApi.framework */; };
+		4B3B19B1271EEFC20010E95B /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B19B0271EEFC20010E95B /* BackgroundImageView.swift */; };
 		4B7B76A5271DB05900A0CA66 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7B76A3271DB05900A0CA66 /* RecipeCollectionViewCell.swift */; };
 		4B7B76A6271DB05900A0CA66 /* RecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7B76A4271DB05900A0CA66 /* RecipeCollectionViewCell.xib */; };
 		4B8D0C52271D5E8E00CFB16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0C51271D5E8E00CFB16C /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		4B277B65271EA9D20018D352 /* CookBookApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CookBookApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B3B19B0271EEFC20010E95B /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		4B7B76A3271DB05900A0CA66 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B7B76A4271DB05900A0CA66 /* RecipeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B8D0C4E271D5E8E00CFB16C /* Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			children = (
 				4B7B76A3271DB05900A0CA66 /* RecipeCollectionViewCell.swift */,
 				4B7B76A4271DB05900A0CA66 /* RecipeCollectionViewCell.xib */,
+				4B3B19B0271EEFC20010E95B /* BackgroundImageView.swift */,
 			);
 			path = RecipeCell;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3B19B1271EEFC20010E95B /* BackgroundImageView.swift in Sources */,
 				4B7B76A5271DB05900A0CA66 /* RecipeCollectionViewCell.swift in Sources */,
 				4B8D0C56271D5E8E00CFB16C /* ViewController.swift in Sources */,
 				4B8D0C52271D5E8E00CFB16C /* AppDelegate.swift in Sources */,

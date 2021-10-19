@@ -8,31 +8,31 @@
 import Foundation
 
 public struct Recipe: Decodable {
-    let hits: [Hit]
+    public let hits: [Hit]
 
     enum CodingKeys: String, CodingKey {
         case hits
     }
 }
 
-struct Hit: Decodable {
-    let recipe: RecipeClass
+public struct Hit: Decodable {
+    public let recipe: RecipeClass
 
     enum CodingKeys: String, CodingKey {
         case recipe
     }
 }
 
-struct RecipeClass: Decodable {
-    let label: String
-    let image: String
-    let ingredientLines: [String]
-    let calories, totalWeight, totalTime: Double
-    let totalNutrients: [String: Total]
+public struct RecipeClass: Decodable {
+    public let label: String
+    public let image: String
+    public let ingredientLines: [String]
+    public let calories, totalWeight, totalTime: Double
+    public let totalNutrients: [String: Total]
 }
 
 
-struct Total: Decodable {
+public struct Total: Decodable {
     let label: Label
     let quantity: Double
 }
