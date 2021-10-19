@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B277B63271E9FE50018D352 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B277B62271E9FE50018D352 /* NetworkRequest.swift */; };
 		4B7B76B6271DC38200A0CA66 /* CookBookApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B7B76B4271DC38200A0CA66 /* CookBookApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B7B76BD271DC40100A0CA66 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7B76BC271DC40100A0CA66 /* RecipeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B277B62271E9FE50018D352 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		4B7B76B1271DC38200A0CA66 /* CookBookApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CookBookApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7B76B4271DC38200A0CA66 /* CookBookApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CookBookApi.h; sourceTree = "<group>"; };
 		4B7B76B5271DC38200A0CA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B7B76BC271DC40100A0CA66 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 			children = (
 				4B7B76B4271DC38200A0CA66 /* CookBookApi.h */,
 				4B7B76B5271DC38200A0CA66 /* Info.plist */,
+				4B7B76BC271DC40100A0CA66 /* RecipeModel.swift */,
+				4B277B62271E9FE50018D352 /* NetworkRequest.swift */,
 			);
 			path = CookBookApi;
 			sourceTree = "<group>";
@@ -94,6 +100,7 @@
 				TargetAttributes = {
 					4B7B76B0271DC38200A0CA66 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -130,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B277B63271E9FE50018D352 /* NetworkRequest.swift in Sources */,
+				4B7B76BD271DC40100A0CA66 /* RecipeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +270,7 @@
 		4B7B76BA271DC38200A0CA66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5AFH4CNN88;
@@ -277,6 +287,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dariavarabei.CookBookApi;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +296,7 @@
 		4B7B76BB271DC38200A0CA66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5AFH4CNN88;

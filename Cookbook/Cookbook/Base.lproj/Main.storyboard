@@ -68,6 +68,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="CookBook" largeTitleDisplayMode="never" id="Lrf-yi-Y0s"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="recipeCollection" destination="OgW-l6-mla" id="7gg-6K-8bd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
