@@ -33,6 +33,8 @@ public struct NetworkRequest {
                 let weatherResponse = try decoder.decode(T.self, from: jsonData)
                 
                 completion(.success(weatherResponse))
+                //print(weatherResponse)
+                print("network")
                 
             } catch {
                 completion(.failure((.canNotProcessData)))

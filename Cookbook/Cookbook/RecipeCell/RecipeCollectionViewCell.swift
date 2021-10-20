@@ -9,13 +9,15 @@ import UIKit
 
 class RecipeCollectionViewCell: UICollectionViewCell {
 
-    //@IBOutlet weak var backgroundImage: BackgroundImageView!
-    @IBOutlet private weak var name: UILabel!
-    @IBOutlet private weak var preparationTime: UILabel!
+    @IBOutlet weak var backgroundImage: BackgroundImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var preparationTime: UILabel!
+    @IBOutlet weak var bluringRectangle: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.layer.cornerRadius = 15
-        // Initialization code
+        self.contentView.backgroundColor = UIColor(named: "BasicYellow")
+        
     }
 
 }

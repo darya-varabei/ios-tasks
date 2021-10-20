@@ -17,6 +17,7 @@
 		4B8D0C59271D5E8E00CFB16C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0C57271D5E8E00CFB16C /* Main.storyboard */; };
 		4B8D0C5B271D5E8F00CFB16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */; };
 		4B8D0C5E271D5E8F00CFB16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0C5C271D5E8F00CFB16C /* LaunchScreen.storyboard */; };
+		4BB9DA7927202A9500391EF2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9DA7827202A9500391EF2 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B8D0C5D271D5E8F00CFB16C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B8D0C5F271D5E8F00CFB16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BB9DA7827202A9500391EF2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				4B8D0C53271D5E8E00CFB16C /* SceneDelegate.swift */,
 				4B8D0C51271D5E8E00CFB16C /* AppDelegate.swift */,
 				4B8D0C55271D5E8E00CFB16C /* ViewController.swift */,
+				4BB9DA7827202A9500391EF2 /* DetailViewController.swift */,
 				4B7B76A2271DA9DC00A0CA66 /* RecipeCell */,
 				4B8D0C57271D5E8E00CFB16C /* Main.storyboard */,
 				4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 				4B3B19B1271EEFC20010E95B /* BackgroundImageView.swift in Sources */,
 				4B7B76A5271DB05900A0CA66 /* RecipeCollectionViewCell.swift in Sources */,
 				4B8D0C56271D5E8E00CFB16C /* ViewController.swift in Sources */,
+				4BB9DA7927202A9500391EF2 /* DetailViewController.swift in Sources */,
 				4B8D0C52271D5E8E00CFB16C /* AppDelegate.swift in Sources */,
 				4B8D0C54271D5E8E00CFB16C /* SceneDelegate.swift in Sources */,
 			);
