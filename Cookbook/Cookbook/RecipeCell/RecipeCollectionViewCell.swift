@@ -8,7 +8,7 @@
 import UIKit
 
 class RecipeCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var backgroundImage: BackgroundImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var preparationTime: UILabel!
@@ -17,7 +17,5 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.contentView.layer.cornerRadius = 15
         self.contentView.backgroundColor = UIColor(named: "BasicYellow")
-        
     }
-
 }

@@ -18,24 +18,22 @@ class BackgroundImageView: UIImageView {
         
         image = nil
         addSpinner()
-        if let task = task{
+        if let task = task {
             task.cancel()
         }
         
         if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
             self.image = imageFromCache
-        removeSpinner()
+            removeSpinner()
             return
         }
+        
         task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            
-            
             guard let data = data, let newImage = UIImage(data: data) else {
                 return
             }
             
             self?.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
-            
             DispatchQueue.main.async {
                 self?.image = newImage
                 self?.removeSpinner()

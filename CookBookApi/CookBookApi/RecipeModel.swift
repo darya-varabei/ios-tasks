@@ -26,6 +26,7 @@ public struct Hit: Decodable {
 public struct RecipeClass: Decodable {
     public let label: String
     public let image: String
+    public let healthLabels: [String]
     public let ingredientLines: [String]
     public let calories, totalWeight, totalTime: Double
     public let totalNutrients: [String: Total]

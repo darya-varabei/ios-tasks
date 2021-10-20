@@ -13,15 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak private var recipeCollection: UICollectionView!
     var recipies = [Recipe]()
     var images: [Any] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.recipeCollection.delegate = self
         self.recipeCollection.dataSource = self
+        
         DispatchQueue.main.async {
             self.fetchData()
             self.recipeCollection.reloadData()
         }
+        
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
     }
     
@@ -33,7 +35,6 @@ class ViewController: UIViewController {
                 print(error)
             case .success(let recipe):
                 self?.recipies.append(recipe)
-                //print(self?.recipies[0].hits[0].recipe.label)
             }
         }
     }
@@ -56,10 +57,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         guard let data = cell as? RecipeCollectionViewCell else {
             return cell
         }
-        
-        print(self.recipies)
+    
         data.name.text = cellData?.recipe.label
         data.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
+        
         if let url = URL(string: cellData?.recipe.image ?? ""){
             data.backgroundImage.loadImage(from: url)
             images.append(data.backgroundImage.loadImage(from: url))
@@ -70,13 +71,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//        performSegue(withIdentifier: "showDetail", sender: self)
-        
         if let viewController = storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailViewController {
-            //viewController.location = cities[indexPath.row].city
             viewController.recipeData = recipies.first?.hits[indexPath.item].recipe
-            //viewController.imageBase = (images[0] as! UIImage)
             show(viewController, sender: nil)
         }
     }
