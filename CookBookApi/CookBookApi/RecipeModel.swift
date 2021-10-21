@@ -34,11 +34,11 @@ public struct RecipeClass: Decodable {
 
 
 public struct Total: Decodable {
-    let label: Label
-    let quantity: Double
+    public let label: Label
+    public let quantity: Double
 }
 
-enum Label: String, Codable {
+public enum Label: String, Codable {
     case calcium = "Calcium"
     case carbs = "Carbs"
     case carbsNet = "Carbs (net)"

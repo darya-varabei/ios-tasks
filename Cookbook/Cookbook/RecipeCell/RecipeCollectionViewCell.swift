@@ -13,9 +13,15 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var preparationTime: UILabel!
     @IBOutlet weak var bluringRectangle: UIImageView!
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.layer.cornerRadius = 15
-        self.contentView.backgroundColor = UIColor(named: "BasicYellow")
+        
+        DispatchQueue.main.async {
+            self.loadIndicator.startAnimating()
+        }
+        
+        //self.contentView.backgroundColor = UIColor(named: "BasicYellow")
     }
 }

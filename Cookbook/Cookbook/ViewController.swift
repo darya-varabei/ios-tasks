@@ -19,9 +19,11 @@ class ViewController: UIViewController {
         self.recipeCollection.delegate = self
         self.recipeCollection.dataSource = self
         
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             self.fetchData()
-            self.recipeCollection.reloadData()
+            DispatchQueue.main.async {
+                self.recipeCollection.reloadData()
+            }
         }
         
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
@@ -61,9 +63,13 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         data.name.text = cellData?.recipe.label
         data.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
         
-        if let url = URL(string: cellData?.recipe.image ?? ""){
-            data.backgroundImage.loadImage(from: url)
-            images.append(data.backgroundImage.loadImage(from: url))
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: cellData?.recipe.image ?? ""){
+                DispatchQueue.main.async {
+                    data.backgroundImage.loadImage(from: url)
+                }
+                //images.append(data.backgroundImage.loadImage(from: url))
+            }
         }
         
         cell.layer.cornerRadius = 10
