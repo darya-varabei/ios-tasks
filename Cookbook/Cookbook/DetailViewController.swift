@@ -35,10 +35,12 @@ class DetailViewController: UIViewController {
         if self.btnChoose?.title(for: .normal) == "Nutritional value" {
             self.btnChoose?.setTitle("Ingredients", for: .normal)
             self.pointTitle?.text = "Nutritional value"
+            self.nutrientsTableView.isHidden = true
         }
         else {
             self.btnChoose?.setTitle("Nutritional value", for: .normal)
             self.pointTitle?.text = "Ingredients"
+            self.nutrientsTableView.isHidden = false
         }
     }
     
@@ -55,7 +57,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupImage()
-        //self.nutrientsTableView.isHidden = true
+        self.nutrientsTableView.isHidden = true
+        self.nutrientsTableView.reloadData()
         self.baseView.layer.cornerRadius = 20
         self.baseView.layer.shadowRadius = 5
         self.btnChoose?.layer.cornerRadius = 15
@@ -124,7 +127,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 20.0
+        return 30.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

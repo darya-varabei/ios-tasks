@@ -21,7 +21,5 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         DispatchQueue.main.async {
             self.loadIndicator.startAnimating()
         }
-        
-        //self.contentView.backgroundColor = UIColor(named: "BasicYellow")
     }
 }
