@@ -21,11 +21,11 @@ class ViewController: UIViewController {
         
         DispatchQueue.global().async {
             self.fetchData()
-            DispatchQueue.main.async {
-                self.recipeCollection.reloadData()
-            }
+//            DispatchQueue.main.async {
+//                self.recipeCollection.reloadData()
+//            }
         }
-        
+        self.recipeCollection.reloadData()
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
     }
     
@@ -68,7 +68,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                 DispatchQueue.main.async {
                     data.backgroundImage.loadImage(from: url)
                 }
-                //images.append(data.backgroundImage.loadImage(from: url))
             }
         }
         
