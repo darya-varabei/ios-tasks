@@ -59,12 +59,13 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupImage()
+        setShadow()
         self.nutrientsTableView.delegate = self
         self.nutrientsTableView.dataSource = self
         self.nutrientsTableView.isHidden = true
         self.nutrientsTableView.reloadData()
-        self.baseView.layer.cornerRadius = 20
-        self.baseView.layer.shadowRadius = 5
+//        self.baseView.layer.cornerRadius = 20
+//        self.baseView.layer.shadowRadius = 5
         self.btnChoose?.layer.cornerRadius = 15
         self.backgroundImage?.image = imageBase.image
         self.titleLabel?.text = self.recipeData?.label
@@ -119,6 +120,15 @@ class DetailViewController: UIViewController {
 
         self.ingredientsList?.text = descriptionRecipe
         self.recipeDescription?.text = labels
+    }
+    
+    private func setShadow() {
+        
+        self.baseView.layer.cornerRadius = 20
+        self.baseView.layer.shadowRadius = 5
+        baseView.layer.shadowColor = UIColor.gray.cgColor
+        baseView.layer.shadowOpacity = 0.4
+        baseView.layer.shadowRadius = 1
     }
 }
 
