@@ -85,7 +85,7 @@ class DetailViewController: UIViewController {
     private func fillNutrientDataArray() {
         
         nutrients = recipeData?.totalNutrients.map { $0.1 }
-        //print(nutrients)
+    
         for item in nutrients! {
             
             if item.label == CookBookApi.Label.protein {
@@ -104,8 +104,6 @@ class DetailViewController: UIViewController {
                 self.nutrientsData[7] = String(item.quantity)
             }
         }
-        
-        //print(self.nutrientsData)
     }
     
     private func setUpNutritionalData() {
@@ -152,12 +150,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
             let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as! NutrientTableViewCell
         
-        guard let data = cell as? NutrientTableViewCell else {
-            return cell
-        }
-print("cell")
-        data.nutrientType = self.nutrientsData[indexPath.row]
-        data.nutrientAmount = self.nutrientsData[indexPath.row + 4]
+        cell.nutrientType = self.nutrientsData[indexPath.row]
+        cell.nutrientAmount = self.nutrientsData[indexPath.row + 4]
             return cell
     }
 }
