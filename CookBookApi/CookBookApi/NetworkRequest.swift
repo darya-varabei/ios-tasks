@@ -30,7 +30,6 @@ public struct NetworkRequest {
                 let dishResponse = try decoder.decode(T.self, from: jsonData)
                 
                 completion(.success(dishResponse))
-                print(dishResponse)
                 
             } catch {
                 completion(.failure((.canNotProcessData)))

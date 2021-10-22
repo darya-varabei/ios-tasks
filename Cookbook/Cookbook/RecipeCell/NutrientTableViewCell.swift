@@ -9,8 +9,8 @@ import UIKit
 
 class NutrientTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nutrientName: UILabel!
-    @IBOutlet weak var nutrientValue: UILabel!
+    @IBOutlet private weak var nutrientName: UILabel!
+    @IBOutlet private weak var nutrientValue: UILabel!
     
     var nutrientType: String? {
         didSet {
@@ -26,8 +26,11 @@ class NutrientTableViewCell: UITableViewCell {
             }
         }
     }
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        print("Cell")
+        self.nutrientName.text = self.nutrientType
+        self.nutrientValue.text = self.nutrientAmount ?? ""
+        // Initialization code
+    }
 }

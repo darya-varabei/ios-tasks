@@ -18,7 +18,6 @@
 		4B8D0C5B271D5E8F00CFB16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */; };
 		4B8D0C5E271D5E8F00CFB16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0C5C271D5E8F00CFB16C /* LaunchScreen.storyboard */; };
 		4BB9DA7927202A9500391EF2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9DA7827202A9500391EF2 /* DetailViewController.swift */; };
-		D5F997982721EBE7000A02AD /* NutrientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F997972721EBE7000A02AD /* NutrientsView.swift */; };
 		D5F9979C2721FAAD000A02AD /* NutrientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F9979A2721FAAD000A02AD /* NutrientTableViewCell.swift */; };
 		D5F9979D2721FAAD000A02AD /* NutrientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F9979B2721FAAD000A02AD /* NutrientTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		4B8D0C5D271D5E8F00CFB16C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B8D0C5F271D5E8F00CFB16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB9DA7827202A9500391EF2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		D5F997972721EBE7000A02AD /* NutrientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsView.swift; sourceTree = "<group>"; };
 		D5F9979A2721FAAD000A02AD /* NutrientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientTableViewCell.swift; sourceTree = "<group>"; };
 		D5F9979B2721FAAD000A02AD /* NutrientTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +96,6 @@
 				4B8D0C51271D5E8E00CFB16C /* AppDelegate.swift */,
 				4B8D0C55271D5E8E00CFB16C /* ViewController.swift */,
 				4BB9DA7827202A9500391EF2 /* DetailViewController.swift */,
-				D5F997972721EBE7000A02AD /* NutrientsView.swift */,
 				4B7B76A2271DA9DC00A0CA66 /* RecipeCell */,
 				4B8D0C57271D5E8E00CFB16C /* Main.storyboard */,
 				4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */,
@@ -180,7 +177,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5F997982721EBE7000A02AD /* NutrientsView.swift in Sources */,
 				4B3B19B1271EEFC20010E95B /* BackgroundImageView.swift in Sources */,
 				D5F9979C2721FAAD000A02AD /* NutrientTableViewCell.swift in Sources */,
 				4B7B76A5271DB05900A0CA66 /* RecipeCollectionViewCell.swift in Sources */,

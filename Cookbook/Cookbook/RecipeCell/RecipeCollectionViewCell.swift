@@ -19,7 +19,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         self.contentView.layer.cornerRadius = 15
         
         DispatchQueue.main.async {
-            self.loadIndicator.startAnimating()
+            //self.loadIndicator.startAnimating()
         }
     }
 }
