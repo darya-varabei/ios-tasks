@@ -8,16 +8,16 @@
 import Foundation
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
+//let imageCache = NSCache<AnyObject, AnyObject>()
 
 class BackgroundImageView: UIImageView {
-    
+    let imageCache = NSCache<AnyObject, AnyObject>()
     var task: URLSessionDataTask!
     let spinner = UIActivityIndicatorView(style: .medium)
     
     func loadImage(from url: URL) {
         
-       // image = nil
+        image = nil
         addSpinner()
         if let task = task {
             task.cancel()
@@ -34,7 +34,7 @@ class BackgroundImageView: UIImageView {
                 return
             }
             
-            imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
+            self.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
             DispatchQueue.main.async {
                 self.image = newImage
                 self.removeSpinner()

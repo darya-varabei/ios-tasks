@@ -25,6 +25,7 @@ class DetailViewController: UIViewController {
     private var labels: String = ""
     private var descriptionRecipe: String = ""
     private var nutrientsData: [String] = ["Protein", "Fats", "Carbohydrates", "Calories", "Undefined", "Undefined", "Undefined", "Undefined"]
+    
     private var imageBase = BackgroundImageView() {
         didSet {
             self.backgroundImage?.image = imageBase.image
@@ -40,7 +41,17 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "custom")
+        return collectionView
+    }()
+    
     @IBAction func changeInfo(_ sender: Any) {
+        
         if self.btnChoose?.title(for: .normal) == "Nutritional value" {
             self.btnChoose?.setTitle("Ingredients", for: .normal)
             self.pointTitle?.text = "Nutritional value"
@@ -50,7 +61,7 @@ class DetailViewController: UIViewController {
         else {
             self.btnChoose?.setTitle("Nutritional value", for: .normal)
             self.pointTitle?.text = "Ingredients"
-            self.nutrientsTableView.reloadData()
+            //self.nutrientsTableView.reloadData()
             self.nutrientsTableView.isHidden = true
         }
     }
@@ -60,12 +71,11 @@ class DetailViewController: UIViewController {
         
         setupImage()
         setShadow()
+        view.addSubview(collectionView)
         self.nutrientsTableView.delegate = self
         self.nutrientsTableView.dataSource = self
         self.nutrientsTableView.isHidden = true
         self.nutrientsTableView.reloadData()
-//        self.baseView.layer.cornerRadius = 20
-//        self.baseView.layer.shadowRadius = 5
         self.btnChoose?.layer.cornerRadius = 15
         self.backgroundImage?.image = imageBase.image
         self.titleLabel?.text = self.recipeData?.label
@@ -86,7 +96,7 @@ class DetailViewController: UIViewController {
     private func fillNutrientDataArray() {
         
         nutrients = recipeData?.totalNutrients.map { $0.1 }
-    
+        
         for item in nutrients! {
             
             if item.label == CookBookApi.Label.protein {
@@ -108,6 +118,7 @@ class DetailViewController: UIViewController {
     }
     
     private func setUpNutritionalData() {
+        
         for point in self.recipeData!.ingredientLines {
             self.descriptionRecipe.append(point)
             self.descriptionRecipe.append("\n")
@@ -117,7 +128,7 @@ class DetailViewController: UIViewController {
             self.labels.append(point)
             self.labels.append(", ")
         }
-
+        
         self.ingredientsList?.text = descriptionRecipe
         self.recipeDescription?.text = labels
     }
@@ -132,37 +143,23 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
-
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30.0
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-            let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as! NutrientTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as! NutrientTableViewCell
         
         cell.nutrientType = self.nutrientsData[indexPath.row]
         cell.nutrientAmount = self.nutrientsData[indexPath.row + 4]
-            return cell
+        return cell
     }
 }
 

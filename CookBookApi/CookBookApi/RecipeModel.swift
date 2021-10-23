@@ -38,7 +38,7 @@ public struct Total: Decodable {
     public let quantity: Double
 }
 
-public enum Label: String, Codable {
+public enum Label: String, Decodable {
     case calcium = "Calcium"
     case carbs = "Carbs"
     case carbsNet = "Carbs (net)"

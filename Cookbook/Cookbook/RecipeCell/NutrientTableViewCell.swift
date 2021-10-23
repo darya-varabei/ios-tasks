@@ -19,6 +19,7 @@ class NutrientTableViewCell: UITableViewCell {
             }
         }
     }
+    
     var nutrientAmount: String? {
         didSet {
             DispatchQueue.main.async {
@@ -26,11 +27,10 @@ class NutrientTableViewCell: UITableViewCell {
             }
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Cell")
         self.nutrientName.text = self.nutrientType
         self.nutrientValue.text = self.nutrientAmount ?? ""
-        // Initialization code
     }
 }

@@ -11,8 +11,14 @@ import CookBookApi
 class ViewController: UIViewController {
     
     @IBOutlet weak private var recipeCollection: UICollectionView!
-    var recipies = [Recipe]()
-    var images: [Any] = []
+    
+    var recipies = [Recipe]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.recipeCollection.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +27,8 @@ class ViewController: UIViewController {
         
         DispatchQueue.global().async {
             self.fetchData()
-//            DispatchQueue.main.async {
-//                self.recipeCollection.reloadData()
-//            }
         }
+        
         self.recipeCollection.reloadData()
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
     }
@@ -56,17 +60,19 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         let cell : RecipeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let cellData = self.recipies.first?.hits[indexPath.item]
         
-        guard let data = cell as? RecipeCollectionViewCell else {
-            return cell
+        cell.name.text = cellData?.recipe.label
+        
+        if cellData?.recipe.totalTime != nil {
+            cell.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
         }
-    
-        data.name.text = cellData?.recipe.label
-        data.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
+        else {
+            cell.preparationTime.text = "Wait..."
+        }
         
         DispatchQueue.global(qos: .background).async {
             if let url = URL(string: cellData?.recipe.image ?? ""){
                 DispatchQueue.main.async {
-                    data.backgroundImage.loadImage(from: url)
+                    cell.backgroundImage.loadImage(from: url)
                 }
             }
         }
