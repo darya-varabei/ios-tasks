@@ -11,7 +11,7 @@ import CookBookApi
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet private weak var backgroundImage: BackgroundImageView!
+    @IBOutlet private weak var backgroundImage: UIImageView!
     @IBOutlet private weak var mainImage: UIImageView?
     @IBOutlet private weak var btnChoose: UIButton?
     @IBOutlet private weak var pointTitle: UILabel?
@@ -61,7 +61,6 @@ class DetailViewController: UIViewController {
         self.nutrientsTableView.reloadData()
         self.btnChoose?.layer.cornerRadius = 15
         self.titleLabel?.text = self.recipeData?.label
-        
         self.fillNutrientDataArray()
         self.setUpNutritionalData()
         
@@ -69,13 +68,7 @@ class DetailViewController: UIViewController {
     }
     
     private func setupImage() {
-        DispatchQueue.global(qos: .background).async {
-            if let url = URL(string: self.recipeData?.image ?? "https://www.edamam.com/web-img/07e/07e8e6991fe5652e0724cbd60241648a.jpg") {
-                DispatchQueue.main.async {
-                    self.backgroundImage.loadImage(from: url)
-                }
-            }
-        }
+        self.backgroundImage.imageFromUrl(urlString: self.recipeData?.image ?? "https://www.edamam.com/web-img/07e/07e8e6991fe5652e0724cbd60241648a.jpg")
     }
     
     private func fillNutrientDataArray() {
@@ -122,9 +115,9 @@ class DetailViewController: UIViewController {
         
         self.baseView.layer.cornerRadius = 20
         self.baseView.layer.shadowRadius = 5
-        baseView.layer.shadowColor = UIColor.gray.cgColor
-        baseView.layer.shadowOpacity = 0.4
-        baseView.layer.shadowRadius = 1
+        self.baseView.layer.shadowColor = UIColor.gray.cgColor
+        self.baseView.layer.shadowOpacity = 0.4
+        self.baseView.layer.shadowRadius = 1
     }
 }
 
@@ -139,6 +132,7 @@ extension UIImageView {
         }
     }
 }
+
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -152,7 +146,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as! NutrientTableViewCell
-        
         cell.nutrientType = self.nutrientsData[indexPath.row]
         cell.nutrientAmount = self.nutrientsData[indexPath.row + 4]
         return cell

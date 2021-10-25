@@ -59,9 +59,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         let cell : RecipeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let cellData = self.recipies.first?.hits[indexPath.item]
-        
         cell.name.text = cellData?.recipe.label
-        
         
         if cellData?.recipe.totalTime != nil {
             cell.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"

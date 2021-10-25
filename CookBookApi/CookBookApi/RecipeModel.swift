@@ -9,7 +9,7 @@ import Foundation
 
 public struct Recipe: Decodable {
     public let hits: [Hit]
-
+    
     enum CodingKeys: String, CodingKey {
         case hits
     }
@@ -17,7 +17,7 @@ public struct Recipe: Decodable {
 
 public struct Hit: Decodable {
     public let recipe: RecipeClass
-
+    
     enum CodingKeys: String, CodingKey {
         case recipe
     }
