@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4WI-mV-e7l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4WI-mV-e7l">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--CookBook-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="CookBook" id="BYZ-38-t0r" customClass="ViewController" customModule="Cookbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cookbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rC7-GE-Dwm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rC7-GE-Dwm" customClass="BackgroundImageView" customModule="Cookbook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -99,7 +99,7 @@
                                 <rect key="frame" x="-109" y="179" width="633" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUl-q9-F69">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUl-q9-F69">
                                 <rect key="frame" x="38" y="232" width="338" height="334"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcr-vg-BXq">
@@ -152,10 +152,11 @@
                                 <constraints>
                                     <constraint firstItem="vcr-vg-BXq" firstAttribute="leading" secondItem="IUl-q9-F69" secondAttribute="leading" constant="59" id="5Ij-re-ASt"/>
                                     <constraint firstItem="9ME-zQ-78v" firstAttribute="leading" secondItem="IUl-q9-F69" secondAttribute="leading" constant="8" id="8G8-55-nNP"/>
-                                    <constraint firstAttribute="height" constant="378" id="HP5-0j-vkh"/>
+                                    <constraint firstAttribute="height" constant="334" id="HP5-0j-vkh"/>
                                     <constraint firstAttribute="trailing" secondItem="9ME-zQ-78v" secondAttribute="trailing" constant="8" id="LGj-fV-El9"/>
                                     <constraint firstItem="bB2-Tx-5jk" firstAttribute="leading" secondItem="IUl-q9-F69" secondAttribute="leading" constant="21" id="Nd0-mQ-3L8"/>
                                     <constraint firstItem="gqj-2t-J3g" firstAttribute="leading" secondItem="9ME-zQ-78v" secondAttribute="leading" id="QqT-Jh-b9U"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bB2-Tx-5jk" secondAttribute="trailing" constant="20" symbolic="YES" id="Vri-TE-9WP"/>
                                     <constraint firstItem="vcr-vg-BXq" firstAttribute="top" secondItem="IUl-q9-F69" secondAttribute="top" constant="269" id="cEh-pN-L26"/>
                                     <constraint firstItem="gqj-2t-J3g" firstAttribute="top" secondItem="bB2-Tx-5jk" secondAttribute="bottom" constant="8" symbolic="YES" id="g7q-FQ-OLB"/>
                                     <constraint firstItem="bB2-Tx-5jk" firstAttribute="top" secondItem="IUl-q9-F69" secondAttribute="top" constant="70" id="jiR-Ci-40G"/>
@@ -175,7 +176,7 @@
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tiH-PK-Wk8"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rC7-GE-Dwm" firstAttribute="top" secondItem="tiH-PK-Wk8" secondAttribute="top" id="7f4-lD-g3E"/>
                             <constraint firstItem="IUl-q9-F69" firstAttribute="leading" secondItem="tiH-PK-Wk8" secondAttribute="leading" constant="38" id="BDF-D8-1PH"/>
@@ -185,7 +186,7 @@
                             <constraint firstItem="rC7-GE-Dwm" firstAttribute="leading" secondItem="tiH-PK-Wk8" secondAttribute="leading" id="vKc-zI-X2E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6gs-gA-EcZ"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="6gs-gA-EcZ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="backgroundImage" destination="rC7-GE-Dwm" id="acU-H8-Qby"/>

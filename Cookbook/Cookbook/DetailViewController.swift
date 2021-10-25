@@ -11,7 +11,7 @@ import CookBookApi
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet private weak var backgroundImage: UIImageView!
+    @IBOutlet private weak var backgroundImage: BackgroundImageView!
     @IBOutlet private weak var mainImage: UIImageView?
     @IBOutlet private weak var btnChoose: UIButton?
     @IBOutlet private weak var pointTitle: UILabel?
@@ -26,12 +26,6 @@ class DetailViewController: UIViewController {
     private var descriptionRecipe: String = ""
     private var nutrientsData: [String] = ["Protein", "Fats", "Carbohydrates", "Calories", "Undefined", "Undefined", "Undefined", "Undefined"]
     
-    private var imageBase = BackgroundImageView() {
-        didSet {
-            self.backgroundImage?.image = imageBase.image
-        }
-    }
-    
     var recipeData: RecipeClass? {
         didSet {
             DispatchQueue.main.async {
@@ -40,16 +34,7 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "custom")
-        return collectionView
-    }()
-    
+
     @IBAction func changeInfo(_ sender: Any) {
         
         if self.btnChoose?.title(for: .normal) == "Nutritional value" {
@@ -61,7 +46,6 @@ class DetailViewController: UIViewController {
         else {
             self.btnChoose?.setTitle("Nutritional value", for: .normal)
             self.pointTitle?.text = "Ingredients"
-            //self.nutrientsTableView.reloadData()
             self.nutrientsTableView.isHidden = true
         }
     }
@@ -71,13 +55,11 @@ class DetailViewController: UIViewController {
         
         setupImage()
         setShadow()
-        view.addSubview(collectionView)
         self.nutrientsTableView.delegate = self
         self.nutrientsTableView.dataSource = self
         self.nutrientsTableView.isHidden = true
         self.nutrientsTableView.reloadData()
         self.btnChoose?.layer.cornerRadius = 15
-        self.backgroundImage?.image = imageBase.image
         self.titleLabel?.text = self.recipeData?.label
         
         self.fillNutrientDataArray()
@@ -87,9 +69,12 @@ class DetailViewController: UIViewController {
     }
     
     private func setupImage() {
-        if let url = URL(string: recipeData?.image ?? "https://www.edamam.com/web-img/07e/07e8e6991fe5652e0724cbd60241648a.jpg") {
-            imageBase.loadImage(from: url)
-            self.backgroundImage?.image = imageBase.image
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: self.recipeData?.image ?? "https://www.edamam.com/web-img/07e/07e8e6991fe5652e0724cbd60241648a.jpg") {
+                DispatchQueue.main.async {
+                    self.backgroundImage.loadImage(from: url)
+                }
+            }
         }
     }
     
@@ -143,6 +128,17 @@ class DetailViewController: UIViewController {
     }
 }
 
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(url: url as URL)
+            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
+            (response: URLResponse?, data: Data?, error: Error?) -> Void in
+                self.image = UIImage(data: data! as Data)
+            }
+        }
+    }
+}
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

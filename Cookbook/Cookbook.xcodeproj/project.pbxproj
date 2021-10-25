@@ -60,14 +60,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4B41E5CF272695A5004F5F24 /* NutrientsCell */ = {
+			isa = PBXGroup;
+			children = (
+				D5F9979A2721FAAD000A02AD /* NutrientTableViewCell.swift */,
+				D5F9979B2721FAAD000A02AD /* NutrientTableViewCell.xib */,
+			);
+			path = NutrientsCell;
+			sourceTree = "<group>";
+		};
 		4B7B76A2271DA9DC00A0CA66 /* RecipeCell */ = {
 			isa = PBXGroup;
 			children = (
 				4B7B76A3271DB05900A0CA66 /* RecipeCollectionViewCell.swift */,
-				D5F9979A2721FAAD000A02AD /* NutrientTableViewCell.swift */,
-				D5F9979B2721FAAD000A02AD /* NutrientTableViewCell.xib */,
 				4B7B76A4271DB05900A0CA66 /* RecipeCollectionViewCell.xib */,
-				4B3B19B0271EEFC20010E95B /* BackgroundImageView.swift */,
 			);
 			path = RecipeCell;
 			sourceTree = "<group>";
@@ -96,6 +102,8 @@
 				4B8D0C51271D5E8E00CFB16C /* AppDelegate.swift */,
 				4B8D0C55271D5E8E00CFB16C /* ViewController.swift */,
 				4BB9DA7827202A9500391EF2 /* DetailViewController.swift */,
+				4B3B19B0271EEFC20010E95B /* BackgroundImageView.swift */,
+				4B41E5CF272695A5004F5F24 /* NutrientsCell */,
 				4B7B76A2271DA9DC00A0CA66 /* RecipeCell */,
 				4B8D0C57271D5E8E00CFB16C /* Main.storyboard */,
 				4B8D0C5A271D5E8F00CFB16C /* Assets.xcassets */,

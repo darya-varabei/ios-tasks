@@ -62,6 +62,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         cell.name.text = cellData?.recipe.label
         
+        
         if cellData?.recipe.totalTime != nil {
             cell.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
         }
@@ -70,13 +71,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         }
         
         DispatchQueue.global(qos: .background).async {
-            if let url = URL(string: cellData?.recipe.image ?? ""){
+            if let url = URL(string: cellData?.recipe.image ?? "") {
                 DispatchQueue.main.async {
                     cell.backgroundImage.loadImage(from: url)
                 }
             }
         }
-        
         cell.layer.cornerRadius = 10
         return cell
     }
