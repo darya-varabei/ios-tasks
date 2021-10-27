@@ -1,5 +1,5 @@
 import UIKit
-
+//Enumerations for encapsulating possible ingredients for different beverages on different possitions
 enum MilkshakeBase {
     case cream
     case icecream
@@ -41,7 +41,7 @@ enum Tonning {
     case limeJuice
 }
 
-class Coctail {
+class Coctail {// superclass for different types of coctails
     let name: String
     var rating: Int
     
@@ -55,7 +55,7 @@ class Coctail {
     }
 }
 
-class Milkshake: Coctail {
+class Milkshake: Coctail { // subclass of Coctail
     let base: MilkshakeBase
     let spread: [MilkshakeSpread]
     let additional: [Additional]
@@ -64,7 +64,7 @@ class Milkshake: Coctail {
         self.base = base
         self.spread = spread
         self.additional = additional
-        super.init(name: name, rating: rating)
+        super.init(name: name, rating: rating) // inherits initialization of superclass
     }
     
     override func shake() {
@@ -72,14 +72,14 @@ class Milkshake: Coctail {
     }
 }
 
-class AlcoholBeverage: Coctail {
+class AlcoholBeverage: Coctail { // subclass of Coctail
     let content: [Alcohol]
     let tonning: [Tonning]
     
     init(name: String, rating: Int, content: [Alcohol], tonning: [Tonning]) {
         self.content = content
         self.tonning = tonning
-        super.init(name: name, rating: rating)
+        super.init(name: name, rating: rating) // inherits initialization of superclass
     }
     
     override func shake() {
@@ -87,7 +87,7 @@ class AlcoholBeverage: Coctail {
     }
 }
 
-let card: [Coctail] = [
+let card: [Coctail] = [ //array of objects, which have common superclass, but are create as different subclasses
     Milkshake(name: "Chockomania", rating: 4, base: .icecream, spread: [.nutella, .sweetCrumbs], additional: [.banana]),
     AlcoholBeverage(name: "Mojito", rating: 5, content: [.rom], tonning: [.sparklingWater, .syrop]),
     Milkshake(name: "Fluffs", rating: 4, base: .cream, spread: [.syrop, .sweetCrumbs], additional: [.caramel, .strawberry]),
@@ -96,16 +96,16 @@ let card: [Coctail] = [
 ]
 
 for item in card {
-    if item is Milkshake {
+    if item is Milkshake { // define is items cast type is Milkshake
         print("Milkshake detected")
     }
     else {
-        print("+18 only")
+        print("+18 only") // if it is not a milkshake, it means it is alcoholic
     }
 }
 
 for item in card {
-    if let milkshake = item as? Milkshake {
+    if let milkshake = item as? Milkshake { // optional downcast operator(using as! is not a good practice)
         print("\(milkshake.name) contains \(milkshake.base) and has a rating of \(milkshake.rating)")
     }
     
@@ -115,13 +115,14 @@ for item in card {
 }
 
 for item in card {
-    if let shake = item as? Milkshake { shake.shake() }
+    if let shake = item as? Milkshake { shake.shake() }// calls overriden methods as they are described in superclass
     else if let shake = item as? AlcoholBeverage { shake.shake() }
 }
 
-var randomItems: [Any] = [4.88, [1, 2, 3], "data", Milkshake(name: "Chockomania", rating: 4, base: .icecream, spread: [.nutella, .sweetCrumbs], additional: [.banana]), 2124554]
+var randomItems: [Any] = [4.88, [1, 2, 3], "data", Milkshake(name: "Chockomania", rating: 4, base: .icecream, spread: [.nutella, .sweetCrumbs], additional: [.banana]), 2124554] // array contains many datatypes, which are basycally described as Any
 
-for item in randomItems {
+for item in randomItems {// when w3e use Any or AnyObject we can skip using ? in as?
+    
     switch item{
     case let decimalValue as Int:
         print("\(decimalValue + 5)")
