@@ -49,6 +49,10 @@ class Coctail {
         self.name = name
         self.rating = rating
     }
+    
+    func shake() {
+        print("Shake-shake-shake")
+    }
 }
 
 class Milkshake: Coctail {
@@ -62,6 +66,10 @@ class Milkshake: Coctail {
         self.additional = additional
         super.init(name: name, rating: rating)
     }
+    
+    override func shake() {
+        print("Shake with cream")
+    }
 }
 
 class AlcoholBeverage: Coctail {
@@ -73,9 +81,13 @@ class AlcoholBeverage: Coctail {
         self.tonning = tonning
         super.init(name: name, rating: rating)
     }
+    
+    override func shake() {
+        print("Shake with ice")
+    }
 }
 
-let card = [
+let card: [Coctail] = [
     Milkshake(name: "Chockomania", rating: 4, base: .icecream, spread: [.nutella, .sweetCrumbs], additional: [.banana]),
     AlcoholBeverage(name: "Mojito", rating: 5, content: [.rom], tonning: [.sparklingWater, .syrop]),
     Milkshake(name: "Fluffs", rating: 4, base: .cream, spread: [.syrop, .sweetCrumbs], additional: [.caramel, .strawberry]),
@@ -99,5 +111,27 @@ for item in card {
     
     if let beverage = item as? AlcoholBeverage {
         print("\(beverage.name) main ingredient is \(beverage.content[0]) and has a rating of \(beverage.rating)")
+    }
+}
+
+for item in card {
+    if let shake = item as? Milkshake { shake.shake() }
+    else if let shake = item as? AlcoholBeverage { shake.shake() }
+}
+
+var randomItems: [Any] = [4.88, [1, 2, 3], "data", Milkshake(name: "Chockomania", rating: 4, base: .icecream, spread: [.nutella, .sweetCrumbs], additional: [.banana]), 2124554]
+
+for item in randomItems {
+    switch item{
+    case let decimalValue as Int:
+        print("\(decimalValue + 5)")
+    case let array as [Int]:
+        print(array[1])
+    case let data as String:
+        print("Just string")
+    case let coctail as Milkshake:
+        print(coctail.additional[0])
+    default:
+        print("oops!")
     }
 }
