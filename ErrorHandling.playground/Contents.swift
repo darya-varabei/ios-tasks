@@ -67,7 +67,7 @@ class CoffeeMachine {
         self.milkWeight -= item.milkNeededWeight
         self.filterContaminationLevel += item.filterContaminationLevel
         self.thickLevel = item.thickProductionLevel
-        print()
+        print("\(item.name) is prepared successfully")
     }
     
     func connectMilkContainer() {
@@ -90,16 +90,23 @@ class CoffeeMachine {
     
     func fillUpWithBeans() {
         if self.beansWeight < 30 {
-           self.beansWeight += 150
+            self.beansWeight += 150
         }
         else { print("Bean container is full!") }
     }
     
+    func fillUpWithmilk() {
+        if self.milkWeight < 200 {
+            self.milkWeight += 500
+        }
+        else { print("Milk container is full!") }
+    }
+    
     func fillUpWithWater() {
         if self.waterWeight < 300 {
-           self.waterWeight += 1500
+            self.waterWeight += 1500
         }
-        else { print("Bean container is full!") }
+        else { print("Water container is full!") }
     }
     
     func cleanUpThick() {
@@ -118,3 +125,17 @@ var items = [
     "Latte": Item(name: "Latte", beansNeededWeight: 10, isMilkNeeded: true, milkNeededWeight: 200, waterNeededWeight: 40, thickProductionLevel: 1, filterContaminationLevel: 1),
     "Lungo": Item(name: "Lungo", beansNeededWeight: 30, isMilkNeeded: false, milkNeededWeight: 0, waterNeededWeight: 200, thickProductionLevel: 3, filterContaminationLevel: 3)
 ]
+
+func prepareCoffee(itemName: String, coffeeMachine: CoffeeMachine) throws {
+    
+    try coffeeMachine.prepare(item: (items[itemName] ?? Item(name: "Capuccino", beansNeededWeight: 10, isMilkNeeded: true, milkNeededWeight: 150, waterNeededWeight: 50, thickProductionLevel: 1, filterContaminationLevel: 2)))
+}
+let coffeeMachine = CoffeeMachine(beansWeight: 100, waterWeight: 500, isMilkConnected: false, milkWeight: 20, thickLevel: 0, filterContaminationLevel: 0)
+
+coffeeMachine.connectMilkContainer()
+coffeeMachine.fillUpWithmilk()
+try prepareCoffee(itemName: "Latte", coffeeMachine: coffeeMachine)
+try prepareCoffee(itemName: "Espresso", coffeeMachine: coffeeMachine)
+try prepareCoffee(itemName: "Capuccino", coffeeMachine: coffeeMachine)
+coffeeMachine.fillUpWithmilk()
+try prepareCoffee(itemName: "Latte", coffeeMachine: coffeeMachine)
