@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: - Part 1
 enum CoffeeMachineError: Error { //define enumeration of error situations
     case outOfBeans
     case outOfWater
@@ -95,7 +96,7 @@ class CoffeeMachine {
         else { print("Bean container is full!") }
     }
     
-    func fillUpWithmilk() {
+    func fillUpWithMilk() {
         if self.milkWeight < 200 {
             self.milkWeight += 500
         }
@@ -130,18 +131,20 @@ func prepareCoffee(itemName: String, coffeeMachine: CoffeeMachine) throws {// th
     
     try coffeeMachine.prepare(item: (items[itemName] ?? Item(name: "Capuccino", beansNeededWeight: 10, isMilkNeeded: true, milkNeededWeight: 150, waterNeededWeight: 50, thickProductionLevel: 1, filterContaminationLevel: 2)))
 }
+
 let coffeeMachine = CoffeeMachine(beansWeight: 100, waterWeight: 500, isMilkConnected: false, milkWeight: 20, thickLevel: 0, filterContaminationLevel: 0) // define coffee machine and its default state
 
 coffeeMachine.connectMilkContainer()// connects milk container
-coffeeMachine.fillUpWithmilk()
+coffeeMachine.fillUpWithMilk()
 try prepareCoffee(itemName: "Latte", coffeeMachine: coffeeMachine)
 try prepareCoffee(itemName: "Espresso", coffeeMachine: coffeeMachine)
 try prepareCoffee(itemName: "Capuccino", coffeeMachine: coffeeMachine)
-coffeeMachine.fillUpWithmilk()
+coffeeMachine.fillUpWithMilk()
 try prepareCoffee(itemName: "Latte", coffeeMachine: coffeeMachine)
 //methods are placed in configuration which allows to escape errors throwing
 
 
+// MARK: - Part 2
 enum PasswordError: Error {
     case invalid
     case tooShort
@@ -154,9 +157,11 @@ class User {
     
     init(username: String?, password: String?) throws { // initializers also can be throwable. In this case password is being validated
         self.username = username
+        
         guard let password = password else {
             throw PasswordError.invalid
         }
+        
         guard password.count >= 15 else {
             throw PasswordError.tooShort
         }
@@ -166,6 +171,7 @@ class User {
         guard decimalRange != nil else {
             throw PasswordError.noDecimals
         }
+        
         self.password = password
     }
 }
