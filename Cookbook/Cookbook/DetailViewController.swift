@@ -36,16 +36,17 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func changeInfo(_ sender: Any) {
-        
-        if self.btnChoose?.title(for: .normal) == "Nutritional value" {
+        if self.btnChoose?.tag == 1 {
             self.btnChoose?.setTitle("Ingredients", for: .normal)
             self.pointTitle?.text = "Nutritional value"
+            self.btnChoose?.tag = 2
             self.nutrientsTableView.reloadData()
             self.nutrientsTableView.isHidden = false
         }
         else {
             self.btnChoose?.setTitle("Nutritional value", for: .normal)
             self.pointTitle?.text = "Ingredients"
+            self.btnChoose?.tag = 1
             self.nutrientsTableView.isHidden = true
         }
     }
