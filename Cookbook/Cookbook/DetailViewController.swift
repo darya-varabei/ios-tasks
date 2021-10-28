@@ -75,7 +75,9 @@ class DetailViewController: UIViewController {
         
         nutrients = recipeData?.totalNutrients.map { $0.1 }
         
-        for item in nutrients! {
+        let array: [Total] = self.nutrients ?? []
+        
+        for item in array {
             
             if item.label == CookBookApi.Label.protein {
                 self.nutrientsData[4] = String(item.quantity)
