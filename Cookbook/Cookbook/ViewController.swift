@@ -28,9 +28,8 @@ class ViewController: UIViewController {
         DispatchQueue.global().async {
             self.fetchData()
         }
-        
-        self.recipeCollection.reloadData()
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
+        self.recipeCollection.reloadData()
     }
     
     private func fetchData() {
@@ -62,7 +61,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.name.text = cellData?.recipe.label
         
         if cellData?.recipe.totalTime != nil {
-            cell.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
+            cell.preparationTime.text = "\(cellData?.recipe.totalTime) minutes"
         }
         else {
             cell.preparationTime.text = "Wait..."
