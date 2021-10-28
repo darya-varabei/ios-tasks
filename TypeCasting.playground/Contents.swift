@@ -43,7 +43,7 @@ enum Tonning {
 
 class Coctail {// superclass for different types of coctails
     let name: String
-    var rating: Int
+    let rating: Int
     
     init(name: String, rating: Int) {
         self.name = name
@@ -99,7 +99,7 @@ for item in card {
     if item is Milkshake { // define is items cast type is Milkshake
         print("Milkshake detected")
     }
-    else {
+    else if item is AlcoholBeverage{
         print("+18 only") // if it is not a milkshake, it means it is alcoholic
     }
 }
