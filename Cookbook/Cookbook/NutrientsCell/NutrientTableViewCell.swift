@@ -9,8 +9,8 @@ import UIKit
 
 class NutrientTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var nutrientName: UILabel!
-    @IBOutlet private weak var nutrientValue: UILabel!
+    @IBOutlet private var nutrientName: UILabel!
+    @IBOutlet private var nutrientValue: UILabel!
     
     var nutrientType: String? {
         didSet {

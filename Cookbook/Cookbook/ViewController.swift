@@ -10,7 +10,7 @@ import CookBookApi
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak private var recipeCollection: UICollectionView!
+    @IBOutlet private var recipeCollection: UICollectionView!
     
     var recipies = [Recipe]() {
         didSet {
@@ -46,12 +46,20 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    enum CellConstants {
+        static let cellWidth = 150
+        static let cellHeight = 190
+        static let defaultCellsCount = 20
+        static let preparationText = "Wait..."
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 190)
+        return CGSize(width: CellConstants.cellWidth, height: CellConstants.cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.recipies.first?.hits.count) ?? 20
+        return (self.recipies.first?.hits.count) ?? CellConstants.defaultCellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,10 +69,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.name.text = cellData?.recipe.label
         
         if cellData?.recipe.totalTime != nil {
-            cell.preparationTime.text = "\(cellData?.recipe.totalTime) minutes"
+            cell.preparationTime.text = "\(cellData?.recipe.totalTime ?? 20) minutes"
         }
         else {
-            cell.preparationTime.text = "Wait..."
+            cell.preparationTime.text = CellConstants.preparationText
         }
         
         DispatchQueue.global(qos: .background).async {

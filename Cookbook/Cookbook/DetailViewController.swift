@@ -11,15 +11,15 @@ import CookBookApi
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet private weak var backgroundImage: UIImageView!
-    @IBOutlet private weak var mainImage: UIImageView?
-    @IBOutlet private weak var btnChoose: UIButton?
-    @IBOutlet private weak var pointTitle: UILabel?
-    @IBOutlet private weak var titleLabel: UILabel?
-    @IBOutlet private weak var recipeDescription: UITextView?
-    @IBOutlet private weak var ingredientsList: UITextView!
-    @IBOutlet private weak var baseView: UIView!
-    @IBOutlet private weak var nutrientsTableView: UITableView!
+    @IBOutlet private var backgroundImage: UIImageView!
+    @IBOutlet private var mainImage: UIImageView?
+    @IBOutlet private var btnChoose: UIButton?
+    @IBOutlet private var pointTitle: UILabel?
+    @IBOutlet private var titleLabel: UILabel?
+    @IBOutlet private var recipeDescription: UITextView?
+    @IBOutlet private var ingredientsList: UITextView!
+    @IBOutlet private var baseView: UIView!
+    @IBOutlet private var nutrientsTableView: UITableView!
     
     private var nutrients: [Total]? = []
     private var labels: String = ""
@@ -140,12 +140,17 @@ extension UIImageView {
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
+    enum TableConstants {
+        static let rowCount = 4
+        static let rowHeight = 30.0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return TableConstants.rowCount
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        return CGFloat(TableConstants.rowHeight)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

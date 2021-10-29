@@ -9,11 +9,11 @@ import UIKit
 
 class RecipeCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var backgroundImage: BackgroundImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var preparationTime: UILabel!
-    @IBOutlet weak var bluringRectangle: UIImageView!
-    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
+    @IBOutlet var backgroundImage: BackgroundImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var preparationTime: UILabel!
+    @IBOutlet var bluringRectangle: UIImageView!
+    @IBOutlet var loadIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
