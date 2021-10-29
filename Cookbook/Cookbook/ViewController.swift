@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             self.fetchData()
         }
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
-        self.recipeCollection.reloadData()
+        //self.recipeCollection.reloadData()
     }
     
     private func fetchData() {

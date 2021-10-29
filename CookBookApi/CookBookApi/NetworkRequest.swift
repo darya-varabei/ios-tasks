@@ -14,7 +14,7 @@ public enum NetworkError: Error {
 
 public struct NetworkRequest {
     
-    private let resourceString = "https://api.edamam.com/api/recipes/v2?type=public&q=nut&app_id=abf55713&app_key=bef4ac0b858657a2f5ef9afa307d863e"
+    private let resourceString = "https://api.edamam.com/api/recipes/v2?type=public&q=all&app_id=abf55713&app_key=bef4ac0b858657a2f5ef9afa307d863e"
     public init() { }
     
     public func fetchData<T: Decodable>(completion: @escaping(Result<T, NetworkError>) -> Void) {
@@ -27,6 +27,7 @@ public struct NetworkRequest {
             
             do {
                 let decoder = JSONDecoder()
+                print(T.self)
                 let dishResponse = try decoder.decode(T.self, from: jsonData)
                 
                 completion(.success(dishResponse))

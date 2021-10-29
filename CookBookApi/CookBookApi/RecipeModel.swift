@@ -34,7 +34,7 @@ public struct RecipeClass: Decodable {
 
 
 public struct Total: Decodable {
-    public let label: Label
+    public let label: String
     public let quantity: Double
 }
 
