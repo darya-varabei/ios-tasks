@@ -87,10 +87,16 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let viewController = storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailViewController {
-            viewController.recipeData = recipies.first?.hits[indexPath.item].recipe
-            show(viewController, sender: nil)
-        }
+        delay(1, closure: { [self] in
+            if let viewController = storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailViewController {
+                viewController.recipeData = recipies.first?.hits[indexPath.item].recipe
+                show(viewController, sender: nil)
+            }
+        })
+    }
+    
+    func delay(_ delay: Double, closure: @escaping ()->()) {
+        let timer = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: timer, execute: closure)
     }
 }
-

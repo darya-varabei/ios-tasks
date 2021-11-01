@@ -27,7 +27,7 @@ public struct NetworkRequest {
             
             do {
                 let decoder = JSONDecoder()
-                print(T.self)
+                
                 let dishResponse = try decoder.decode(T.self, from: jsonData)
                 
                 completion(.success(dishResponse))

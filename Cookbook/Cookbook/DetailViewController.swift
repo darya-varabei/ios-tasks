@@ -85,25 +85,6 @@ class DetailViewController: UIViewController {
         self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Carbs" }).map({ return String($0.quantity) }))
 
         self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Energy" }).map({ return String($0.quantity) }))
-//
-//        for item in array {
-//
-//            if item.label == CookBookApi.Label.protein {
-//                self.nutrientsData[4] = String(item.quantity)
-//            }
-//
-//            else if item.label == CookBookApi.Label.fat {
-//                self.nutrientsData[5] = String(item.quantity)
-//            }
-//
-//            else if item.label == CookBookApi.Label.carbs {
-//                self.nutrientsData[6] = String(item.quantity)
-//            }
-//
-//            else if item.label == CookBookApi.Label.energy {
-//                self.nutrientsData[7] = String(item.quantity)
-//            }
-//        }
     }
     
     private func setUpNutritionalData() {
