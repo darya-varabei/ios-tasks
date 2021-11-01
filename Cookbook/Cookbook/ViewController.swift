@@ -11,6 +11,7 @@ import CookBookApi
 class ViewController: UIViewController {
     
     @IBOutlet private var recipeCollection: UICollectionView!
+    private var pulsingCircle: UIView!
     
     var recipies = [Recipe]() {
         didSet {
@@ -25,11 +26,15 @@ class ViewController: UIViewController {
         self.recipeCollection.delegate = self
         self.recipeCollection.dataSource = self
         
+        self.pulsingCircle = UIView(frame: CGRect(x: ((UIScreen.main.bounds.width - 20) / 2), y: ((UIScreen.main.bounds.height - 20) / 2), width: 20, height: 20))
+        
+        self.pulsingCircle.layer.cornerRadius = self.pulsingCircle.frame.height / 2
+        self.pulsingCircle.clipsToBounds = true
+        
         DispatchQueue.global().async {
             self.fetchData()
         }
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
-        //self.recipeCollection.reloadData()
     }
     
     private func fetchData() {
@@ -42,6 +47,13 @@ class ViewController: UIViewController {
                 self?.recipies.append(recipe)
             }
         }
+    }
+    
+    func pulseAnimation() {
+        let pulse = PulseAnimation(numberOfPulses: 4, radius: 150, position: self.view.center)
+        pulse.animationDuration = 1.0
+        pulse.backgroundColor = UIColor(named: "BasicYellow")?.cgColor
+        self.view.layer.insertSublayer(pulse, below: self.view.layer)
     }
 }
 
@@ -87,12 +99,15 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.view.addSubview(self.pulsingCircle)
+        pulseAnimation()
         delay(1, closure: { [self] in
             if let viewController = storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailViewController {
                 viewController.recipeData = recipies.first?.hits[indexPath.item].recipe
                 show(viewController, sender: nil)
             }
         })
+        self.pulsingCircle.removeFromSuperview()
     }
     
     func delay(_ delay: Double, closure: @escaping ()->()) {
