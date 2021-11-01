@@ -12,11 +12,11 @@ import CookBookApi
 class DetailViewController: UIViewController {
     
     @IBOutlet private var backgroundImage: UIImageView!
-    @IBOutlet private var mainImage: UIImageView?
-    @IBOutlet private var btnChoose: UIButton?
-    @IBOutlet private var pointTitle: UILabel?
-    @IBOutlet private var titleLabel: UILabel?
-    @IBOutlet private var recipeDescription: UITextView?
+    @IBOutlet private var mainImage: UIImageView!
+    @IBOutlet private var btnChoose: UIButton!
+    @IBOutlet private var pointTitle: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var recipeDescription: UITextView!
     @IBOutlet private var ingredientsList: UITextView!
     @IBOutlet private var baseView: UIView!
     @IBOutlet private var nutrientsTableView: UITableView!
@@ -53,9 +53,16 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupImage()
-        setShadow()
+        self.backgroundImage.isHidden = true
+        self.mainImage.isHidden = true
+        self.btnChoose.isHidden = true
+        self.pointTitle.isHidden = true
+        self.titleLabel.isHidden = true
+        self.recipeDescription.isHidden = true
+        self.titleLabel.isHidden = true
+        self.setupImage()
+        self.setShadow()
+        self.showSubviews()
         self.nutrientsTableView.delegate = self
         self.nutrientsTableView.dataSource = self
         self.nutrientsTableView.isHidden = true
@@ -110,6 +117,54 @@ class DetailViewController: UIViewController {
         self.baseView.layer.shadowColor = UIColor.gray.cgColor
         self.baseView.layer.shadowOpacity = 0.4
         self.baseView.layer.shadowRadius = 1
+    }
+    
+    private func showSubviews() {
+        
+        let imageLoading = BlockOperation()
+        let titleLoading = BlockOperation()
+        let buttonLoading = BlockOperation()
+        let descriptionLoading = BlockOperation()
+        
+        imageLoading.addExecutionBlock {
+            DispatchQueue.main.async {
+                sleep(1)
+                self.backgroundImage.isHidden = false
+                self.mainImage.isHidden = false
+            }
+        }
+        
+        titleLoading.addExecutionBlock {
+            DispatchQueue.main.async {
+                sleep(1)
+                self.pointTitle.isHidden = false
+                self.titleLabel.isHidden = false
+            }
+        }
+        
+        buttonLoading.addExecutionBlock {
+            DispatchQueue.main.async {
+                sleep(1)
+                self.btnChoose.isHidden = false
+            }
+        }
+        
+        descriptionLoading.addExecutionBlock {
+            DispatchQueue.main.async {
+                sleep(1)
+                self.recipeDescription.isHidden = false
+            }
+        }
+        
+        titleLoading.addDependency(imageLoading)
+        buttonLoading.addDependency(titleLoading)
+        descriptionLoading.addDependency(buttonLoading)
+        
+        let loadingQueue = OperationQueue()
+        loadingQueue.addOperation(imageLoading)
+        loadingQueue.addOperation(titleLoading)
+        loadingQueue.addOperation(buttonLoading)
+        loadingQueue.addOperation(descriptionLoading)
     }
 }
 
