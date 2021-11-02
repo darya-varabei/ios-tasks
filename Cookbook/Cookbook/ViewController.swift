@@ -27,13 +27,15 @@ class ViewController: UIViewController {
         self.recipeCollection.dataSource = self
         
         self.pulsingCircle = UIView(frame: CGRect(x: ((UIScreen.main.bounds.width - 20) / 2), y: ((UIScreen.main.bounds.height - 20) / 2), width: 20, height: 20))
-        
+        self.view.addSubview(self.pulsingCircle)
+        self.pulsingCircle.backgroundColor = UIColor(named: "BasicYellow")
         self.pulsingCircle.layer.cornerRadius = self.pulsingCircle.frame.height / 2
         self.pulsingCircle.clipsToBounds = true
         
         DispatchQueue.global().async {
             self.fetchData()
         }
+        
         recipeCollection.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "recipeCell")
     }
     
@@ -50,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     func pulseAnimation() {
-        let pulse = PulseAnimation(numberOfPulses: 4, radius: 150, position: self.view.center)
+        let pulse = PulseAnimation(numberOfPulses: 4, radius: 100, position: self.pulsingCircle.center)
         pulse.animationDuration = 1.0
         pulse.backgroundColor = UIColor(named: "BasicYellow")?.cgColor
         self.view.layer.insertSublayer(pulse, below: self.view.layer)
@@ -99,7 +101,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.view.addSubview(self.pulsingCircle)
         pulseAnimation()
         delay(1, closure: { [self] in
             if let viewController = storyboard?.instantiateViewController(identifier: "DetailVC") as? DetailViewController {

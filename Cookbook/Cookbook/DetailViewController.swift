@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     private var nutrients: [Total]? = []
     private var labels: String = ""
     private var descriptionRecipe: String = ""
-    private var nutrientsData: [String] = ["Protein", "Fats", "Carbohydrates", "Calories"]
+    private var nutrientsData: [String] = ["Protein", "Fats", "Carbohydrates", "Calories", "Undefined", "Undefined", "Undefined", "Undefined"]
     
     var recipeData: RecipeClass? {
         didSet {
@@ -85,13 +85,13 @@ class DetailViewController: UIViewController {
         
         let array: [Total] = self.nutrients ?? []
 
-        self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Protein" }).map({ return String($0.quantity) }))
+        self.nutrientsData.insert(contentsOf: array.filter({ $0.label == "Protein" }).map({ return String($0.quantity)}), at:4)
 
-        self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Fat"}).map({ return String($0.quantity) }))
+        self.nutrientsData.insert(contentsOf: array.filter({ $0.label == "Fat" }).map({ return String($0.quantity)}), at: 5)
 
-        self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Carbs" }).map({ return String($0.quantity) }))
+        self.nutrientsData.insert(contentsOf: array.filter({ $0.label == "Carbs" }).map({ return String($0.quantity)}), at: 6)
 
-        self.nutrientsData.append(contentsOf: array.filter( {$0.label == "Energy" }).map({ return String($0.quantity) }))
+        self.nutrientsData.insert(contentsOf: array.filter({ $0.label == "Energy" }).map({ return String($0.quantity)}), at: 7)
     }
     
     private func setUpNutritionalData() {
@@ -201,7 +201,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as? NutrientTableViewCell
         cell?.nutrientType = self.nutrientsData[indexPath.row]
-        cell?.nutrientAmount = self.nutrientsData[indexPath.row + 4]
+         cell?.nutrientAmount = self.nutrientsData[indexPath.row + 4]
         return cell!
     }
 }
