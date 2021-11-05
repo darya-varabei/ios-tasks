@@ -199,10 +199,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nutritionalCell", for: indexPath) as! NutrientTableViewCell
-        cell.nutrientType = self.nutrientsData[indexPath.row]
-        cell.nutrientAmount = self.nutrientsData[indexPath.row + 4]
-        return cell
+        let cell = Bundle.main.loadNibNamed("NutrientTableViewCell", owner: self, options: nil)?.first as? NutrientTableViewCell
+        let defaultCell = NutrientTableViewCell()
+        cell?.nutrientType = self.nutrientsData[indexPath.row]
+        cell?.nutrientAmount = self.nutrientsData[indexPath.row + 4]
+        return cell ?? defaultCell
     }
 }
 
