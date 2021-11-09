@@ -16,6 +16,8 @@
 		4BBE57E3273A670500AF0B5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57E1273A670500AF0B5E /* LaunchScreen.storyboard */; };
 		4BBE57EB273A673900AF0B5E /* WaveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57EA273A673900AF0B5E /* WaveAnimationView.swift */; };
 		4BBE57ED273A803E00AF0B5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57EC273A803E00AF0B5E /* User.swift */; };
+		4BBE57EF273A828100AF0B5E /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57EE273A828100AF0B5E /* Options.swift */; };
+		4BBE57F1273A843C00AF0B5E /* OptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57F0273A843C00AF0B5E /* OptionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		4BBE57E4273A670500AF0B5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BBE57EA273A673900AF0B5E /* WaveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimationView.swift; sourceTree = "<group>"; };
 		4BBE57EC273A803E00AF0B5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4BBE57EE273A828100AF0B5E /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		4BBE57F0273A843C00AF0B5E /* OptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				4BBE57EA273A673900AF0B5E /* WaveAnimationView.swift */,
 				4BBE57D5273A670400AF0B5E /* SceneDelegate.swift */,
 				4BBE57EC273A803E00AF0B5E /* User.swift */,
+				4BBE57EE273A828100AF0B5E /* Options.swift */,
+				4BBE57F0273A843C00AF0B5E /* OptionsViewModel.swift */,
 				4BBE57D7273A670400AF0B5E /* ViewController.swift */,
 				4BBE57D9273A670400AF0B5E /* Main.storyboard */,
 				4BBE57DF273A670500AF0B5E /* Assets.xcassets */,
@@ -147,11 +153,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BBE57D8273A670400AF0B5E /* ViewController.swift in Sources */,
+				4BBE57F1273A843C00AF0B5E /* OptionsViewModel.swift in Sources */,
 				4BBE57EB273A673900AF0B5E /* WaveAnimationView.swift in Sources */,
 				4BBE57ED273A803E00AF0B5E /* User.swift in Sources */,
 				4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */,
 				4BBE57D6273A670400AF0B5E /* SceneDelegate.swift in Sources */,
 				4BBE57DE273A670400AF0B5E /* Water_Reminder.xcdatamodeld in Sources */,
+				4BBE57EF273A828100AF0B5E /* Options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
