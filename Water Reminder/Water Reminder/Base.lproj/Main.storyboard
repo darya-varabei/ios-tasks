@@ -23,9 +23,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZX-Vn-h2d">
-                                <rect key="frame" x="184" y="101" width="46" height="30"/>
+                                <rect key="frame" x="249" y="111" width="135" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Change parameters"/>
                                 <connections>
                                     <segue destination="P4D-VI-T1l" kind="show" id="dJd-jS-0dH"/>
                                 </connections>
@@ -40,6 +40,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hBs-bG-E8h"/>
+                    <connections>
+                        <outlet property="quickOptionsLabel" destination="X9N-BE-7Bp" id="c2p-hh-S61"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
