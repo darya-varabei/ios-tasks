@@ -9,9 +9,11 @@ import UIKit
 
 class OptionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var optionName: UILabel!
+    @IBOutlet weak var optionVolume: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
     }
 
 }

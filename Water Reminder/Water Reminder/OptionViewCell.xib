@@ -33,6 +33,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="optionName" destination="Asa-uS-auc" id="Cl3-Ho-1x4"/>
+                <outlet property="optionVolume" destination="FDa-jb-pCr" id="9yX-23-Ao2"/>
+            </connections>
             <point key="canvasLocation" x="134.78260869565219" y="116.51785714285714"/>
         </collectionViewCell>
     </objects>

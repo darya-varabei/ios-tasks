@@ -22,9 +22,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZX-Vn-h2d">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZX-Vn-h2d">
                                 <rect key="frame" x="249" y="111" width="135" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Change parameters"/>
                                 <connections>
                                     <segue destination="P4D-VI-T1l" kind="show" id="dJd-jS-0dH"/>
@@ -35,6 +34,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="X9N-BE-7Bp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Hbz-Yv-qaG"/>
+                            <constraint firstItem="VZX-Vn-h2d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P4g-ib-Ls2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VZX-Vn-h2d" secondAttribute="trailing" constant="30" id="Tcc-NX-aFR"/>
+                            <constraint firstItem="VZX-Vn-h2d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="bsD-cC-X9q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="X9N-BE-7Bp" secondAttribute="bottom" constant="140" id="kOY-tA-CGj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9N-BE-7Bp" secondAttribute="trailing" constant="50" id="tLQ-Lu-7H6"/>
                         </constraints>
