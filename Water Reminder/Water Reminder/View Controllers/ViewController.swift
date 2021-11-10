@@ -66,8 +66,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
     let cell : OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
-        cell.optionName.text = "name"
-        cell.optionVolume.text = "volume"
+        cell.name = "name"
+        cell.volume = "volume"
         
         cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
         return cell

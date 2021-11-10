@@ -11,6 +11,18 @@ class OptionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var optionName: UILabel!
     @IBOutlet weak var optionVolume: UILabel!
+    
+    var name: String? {
+        didSet {
+            self.optionName.text = name
+        }
+    }
+    
+    var volume: String? {
+        didSet {
+            self.optionVolume.text = volume
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
        
