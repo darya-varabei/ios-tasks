@@ -23,9 +23,8 @@ class OptionViewCell: UICollectionViewCell {
             self.optionVolume.text = volume
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
     }
-
 }

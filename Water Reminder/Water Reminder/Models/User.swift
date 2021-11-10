@@ -20,7 +20,7 @@ class User {
     var gender: Gender = .male
     var recommendedDoze: Double = 2.75
     
-    public init(){ }
+    public init() { }
     
     public init(weight: Double, age: Int, averageSportDurationADay: Double, gender: Gender) {
         self.weight = weight
