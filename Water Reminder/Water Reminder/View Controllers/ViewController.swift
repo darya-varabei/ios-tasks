@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var quickOptionsLabel: UILabel!
+    @IBOutlet private var quickOptionsLabel: UILabel!
     var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {

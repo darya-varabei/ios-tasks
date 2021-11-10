@@ -23,6 +23,7 @@ class User {
 //    private var totalClearToday: Double = 0.0
 //    private var recentItemsVolume: [Int] = []
     
+    public init(){}
     public init(weight: Double, age: Int, averageSportDurationADay: Double, gender: Gender) {
         self.weight = weight
         self.age = age
