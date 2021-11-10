@@ -19,6 +19,7 @@ class ParametersViewController: UIViewController {
     @IBOutlet weak var lblActivity: UILabel!
     @IBOutlet weak var stepperActivity: UIStepper!
     @IBOutlet weak var btnConfirm: UIButton!
+    
     override func viewDidLoad() {
     }
 }
