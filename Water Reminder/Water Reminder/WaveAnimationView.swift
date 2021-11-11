@@ -41,12 +41,12 @@ public class WaveAnimationView: UIView {
     private let backColor: UIColor = UIColor(named: "WaveFront") ?? UIColor.blue
     
     
-    public override init(frame: CGRect) {
+    public init(frame: CGRect, progress: Float) {
         self.width = frame.width
         self.height = frame.height
         self.xAxis = floor(height / 2)
         self.yAxis = 0.0
-        self.progress = 0.5
+        self.progress = progress
         super.init(frame: frame)
     }
     

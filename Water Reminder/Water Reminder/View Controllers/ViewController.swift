@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private var quickOptionsLabel: UILabel!
     private let options = OptionsViewModel()
+    private let consumption = Consumption()
     var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {
@@ -50,7 +51,14 @@ class ViewController: UIViewController {
         let maskView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         maskView.backgroundColor = .red
         maskView.layer.cornerRadius = 100
-        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
+        
+        let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 105, y: UIScreen.main.bounds.height / 3 - 55, width: 210, height: 210))
+        borderView.layer.cornerRadius = 105
+        borderView.layer.borderWidth = 2
+        borderView.layer.borderColor = UIColor(named: "WaveFront")?.cgColor
+        self.view.addSubview(borderView)
+        
+        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200), progress: Float(consumption.totalTodayPercent()))
         options.fillOptions()
         view.addSubview(self.wave ?? self.view)
         self.wave?.mask = maskView
@@ -81,5 +89,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         cell.layer.shadowRadius = 2
         cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
     }
 }
