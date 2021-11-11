@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet private var quickOptionsLabel: UILabel!
     private let options = OptionsViewModel()
     private let consumption = Consumption()
+   
     var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {
@@ -58,10 +59,15 @@ class ViewController: UIViewController {
         borderView.layer.borderColor = UIColor(named: "WaveFront")?.cgColor
         self.view.addSubview(borderView)
         
-        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200), progress: Float(consumption.totalTodayPercent()))
+        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
+        self.wave?.setProgress(Float(consumption.totalTodayPercent()))
         options.fillOptions()
         view.addSubview(self.wave ?? self.view)
         self.wave?.mask = maskView
+    }
+    
+    private func registProgress() {
+        self.wave?.setProgress(Float(consumption.totalTodayPercent()))
     }
 }
 
@@ -93,5 +99,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
+        self.registProgress()
     }
 }

@@ -30,8 +30,4 @@ class OptionViewCell: UICollectionViewCell {
             self.optionImage.image = UIImage(named: image ?? "watersmall")
         }
     }
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
 }

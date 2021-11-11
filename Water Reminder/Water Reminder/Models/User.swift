@@ -18,7 +18,7 @@ class User {
     var age: Int = 25
     var averageSportDurationADay: Double = 1
     var gender: Gender = .male
-    var recommendedDoze: Double = 2.75
+    var recommendedDoze: Double = 2750
     
     static let shared = User()
     
