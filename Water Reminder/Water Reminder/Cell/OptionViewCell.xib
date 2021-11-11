@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,29 +16,56 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asa-uS-auc">
-                        <rect key="frame" x="49" y="151" width="45" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="volume ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-jb-pCr">
+                        <rect key="frame" x="31" y="184" width="78" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="SRv-ww-Zi5"/>
+                            <constraint firstAttribute="height" constant="21" id="VBw-RH-fdx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.24705882352941178" alpha="0.64750620860927155" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="volume ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-jb-pCr">
-                        <rect key="frame" x="31" y="179" width="78" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BL2-HJ-l5R">
+                        <rect key="frame" x="0.0" y="10" width="140" height="136"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asa-uS-auc">
+                        <rect key="frame" x="12.5" y="165" width="115" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="1iR-3U-YOB"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Gte-rw-b6K"/>
+                            <constraint firstAttribute="height" constant="21" id="q9B-hO-Alh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="19"/>
+                        <color key="textColor" name="TextBlue"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BL2-HJ-l5R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="35N-2I-adG"/>
+                <constraint firstItem="FDa-jb-pCr" firstAttribute="top" secondItem="Asa-uS-auc" secondAttribute="bottom" constant="-2" id="3xI-Hh-NKr"/>
+                <constraint firstAttribute="bottom" secondItem="FDa-jb-pCr" secondAttribute="bottom" constant="15" id="9ai-vE-cRh"/>
+                <constraint firstItem="Asa-uS-auc" firstAttribute="top" secondItem="BL2-HJ-l5R" secondAttribute="bottom" constant="19" id="BOM-xA-PMO"/>
+                <constraint firstAttribute="trailing" secondItem="BL2-HJ-l5R" secondAttribute="trailing" id="Dvn-hb-gxX"/>
+                <constraint firstItem="BL2-HJ-l5R" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="JzE-cf-WfT"/>
+                <constraint firstItem="Asa-uS-auc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jLX-lK-hJ1"/>
+                <constraint firstItem="FDa-jb-pCr" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="oiw-Ez-FsS"/>
+                <constraint firstItem="BL2-HJ-l5R" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="vQX-WX-2cF"/>
+            </constraints>
             <connections>
+                <outlet property="optionImage" destination="BL2-HJ-l5R" id="Ao3-l4-K5H"/>
                 <outlet property="optionName" destination="Asa-uS-auc" id="Cl3-Ho-1x4"/>
                 <outlet property="optionVolume" destination="FDa-jb-pCr" id="9yX-23-Ao2"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="116.51785714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="TextBlue">
+            <color red="0.0" green="0.0" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

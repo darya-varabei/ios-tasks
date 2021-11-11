@@ -20,7 +20,7 @@ class ParametersViewController: UIViewController {
     @IBOutlet private var stepperActivity: UIStepper?
     @IBOutlet private var btnConfirm: UIButton?
     @IBOutlet private var btnCancel: UIButton?
-    private var user = User()
+    private var user = User.shared
     
     override func viewDidLoad() {
         self.constForLblRecommended()
@@ -29,6 +29,11 @@ class ParametersViewController: UIViewController {
         self.constBtnConfirm()
         self.constBtnCancel()
         self.setUserParameters()
+        
+        self.setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
+        self.txtBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        self.stepperActivity?.addTarget(self, action: #selector(stepperValueChange), for: .valueChanged)
+        self.setGender?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     private func setUserParameters() {
@@ -75,5 +80,40 @@ class ParametersViewController: UIViewController {
         self.btnCancel?.heightAnchor.constraint(equalToConstant: 45).isActive = true
         self.btnCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23).isActive = true
         self.btnCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+    }
+    
+    @objc private func textFieldDidChange() {
+        user.weight = self.txtBodyWeight?.text?.toDouble() ?? 0.0
+        user.averageSportDurationADay = self.lblActivity?.text?.toDouble() ?? 0.0
+        user.countRecommendedWater()
+        self.txtRecommended?.text = "\(user.recommendedDoze)"
+    }
+    
+    @objc private func genderValueChange() {
+        
+        if self.setGender?.selectedSegmentIndex == 0 {
+            user.gender = .male
+        }
+        else if self.setGender?.selectedSegmentIndex == 1 {
+            user.gender = .female
+        }
+        else {
+            user.gender = .other
+        }
+        user.countRecommendedWater()
+        self.txtRecommended?.text = "\(user.recommendedDoze)"
+    }
+    
+    @objc private func stepperValueChange(_ sender: UIStepper) {
+        self.lblActivity?.text = "\(Float(sender.value).description) hr"
+        user.averageSportDurationADay = Double(sender.value)
+        user.countRecommendedWater()
+        self.txtRecommended?.text = "\(user.recommendedDoze)"
+    }
+}
+
+extension String {
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
     }
 }

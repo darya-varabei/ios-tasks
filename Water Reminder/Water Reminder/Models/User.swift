@@ -20,14 +20,9 @@ class User {
     var gender: Gender = .male
     var recommendedDoze: Double = 2.75
     
-    public init() { }
+    static let shared = User()
     
-    public init(weight: Double, age: Int, averageSportDurationADay: Double, gender: Gender) {
-        self.weight = weight
-        self.age = age
-        self.averageSportDurationADay = averageSportDurationADay
-        self.gender = gender
-    }
+    private init() { }
     
     func countRecommendedWater() {
         switch(gender) {

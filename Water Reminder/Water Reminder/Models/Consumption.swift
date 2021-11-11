@@ -8,14 +8,10 @@
 import Foundation
 
 class Consumption {
-    let user: User
+    let user = User.shared
     private var totalToday: Int = 0
     private var totalClearToday: Int = 0
     private var recentItemsVolume: [Option] = []
-    
-    init(user: User) {
-        self.user = user
-    }
     
     func addRecentItems(item: Option) {
         self.recentItemsVolume.append(item)
@@ -34,5 +30,15 @@ class Consumption {
         if ((lastItem?.isClearWater) != nil) {
             self.totalClearToday -= lastItem?.volume ?? 0
         }
+    }
+    
+    func totalTodayPercent() -> Double{
+        let total: Double = Double(self.totalToday)
+        return total/user.recommendedDoze
+    }
+    
+    func totalTodayClearPercent() -> Double{
+        let total: Double = Double(self.totalClearToday)
+        return total/user.recommendedDoze
     }
 }

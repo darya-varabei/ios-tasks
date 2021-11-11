@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet private var quickOptionsLabel: UILabel!
+    private let options = OptionsViewModel()
     var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {
@@ -23,9 +24,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 100, width: 200, height: 200))
-        view.addSubview(self.wave ?? self.view)
+        self.displayAnimatedWater()
         wave?.startAnimation()
         setupCollection()
     }
@@ -46,6 +45,16 @@ class ViewController: UIViewController {
         collectionView.topAnchor.constraint(equalTo: self.quickOptionsLabel.bottomAnchor, constant: 10).isActive = true
         collectionView.showsHorizontalScrollIndicator = false
     }
+    
+    private func displayAnimatedWater() {
+        let maskView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        maskView.backgroundColor = .red
+        maskView.layer.cornerRadius = 100
+        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
+        options.fillOptions()
+        view.addSubview(self.wave ?? self.view)
+        self.wave?.mask = maskView
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -56,19 +65,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->  CGSize {
-        return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CollectionConstants.numberOfItems;
+        return CollectionConstants.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-    let cell : OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
-        cell.name = "name"
-        cell.volume = "volume"
-        
+    let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
+        cell.name = options.quickOptions[indexPath.item].name
+        cell.volume = "\(options.quickOptions[indexPath.item].volume) ml"
+        cell.image = options.quickOptions[indexPath.item].image
+        cell.layer.shadowRadius = 2
         cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
         return cell
     }

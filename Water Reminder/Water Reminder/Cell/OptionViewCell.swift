@@ -11,6 +11,7 @@ class OptionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var optionName: UILabel!
     @IBOutlet weak var optionVolume: UILabel!
+    @IBOutlet weak var optionImage: UIImageView!
     
     var name: String? {
         didSet {
@@ -24,7 +25,13 @@ class OptionViewCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var image: String? {
+        didSet {
+            self.optionImage.image = UIImage(named: image ?? "watersmall")
+        }
     }
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//    }
 }

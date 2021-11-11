@@ -59,9 +59,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="odl-tS-vKn">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="odl-tS-vKn">
                                 <rect key="frame" x="112" y="193" width="191" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Male"/>
@@ -94,20 +93,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recommended amount of water a day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM2-xE-CNc">
-                                <rect key="frame" x="49" y="68" width="317" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recommended amount of water a day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cM2-xE-CNc">
+                                <rect key="frame" x="21" y="68" width="373" height="31"/>
+                                <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="26"/>
                                 <color key="textColor" name="TextBlue"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-F2-0SZ">
-                                <rect key="frame" x="159" y="117" width="96" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-F2-0SZ">
+                                <rect key="frame" x="139.5" y="117" width="135" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="9IK-Bx-Ypu"/>
                                     <constraint firstAttribute="height" constant="40" id="Xm3-3n-gQh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="jmW-hp-m4Z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="TextBlue"/>
+                                <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwV-rZ-Cem">
@@ -121,7 +121,7 @@
                                 <state key="normal" title="Confirm changes"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fse-qg-gau">
-                                <rect key="frame" x="21" y="432" width="48" height="32"/>
+                                <rect key="frame" x="21" y="432" width="153" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="36"/>
                                 <nil key="textColor"/>
@@ -130,6 +130,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bNg-pa-IlY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vg6-F2-0SZ" firstAttribute="top" secondItem="cM2-xE-CNc" secondAttribute="bottom" constant="18" id="Ias-FR-bKB"/>
+                            <constraint firstItem="Vg6-F2-0SZ" firstAttribute="centerX" secondItem="KuM-RD-ukG" secondAttribute="centerX" id="ObN-kQ-mRN"/>
+                            <constraint firstItem="odl-tS-vKn" firstAttribute="top" secondItem="Vg6-F2-0SZ" secondAttribute="bottom" constant="42" id="Oi7-ls-grA"/>
+                            <constraint firstItem="Vg6-F2-0SZ" firstAttribute="centerX" secondItem="odl-tS-vKn" secondAttribute="centerX" id="S1C-nf-y0b"/>
+                            <constraint firstItem="Vg6-F2-0SZ" firstAttribute="centerX" secondItem="cM2-xE-CNc" secondAttribute="centerX" id="fhD-al-y3e"/>
+                            <constraint firstItem="Vg6-F2-0SZ" firstAttribute="top" secondItem="KuM-RD-ukG" secondAttribute="top" constant="117" id="fpI-Pq-JKT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" prompt="Back" leftItemsSupplementBackButton="YES" id="KAE-LZ-auF">
                         <barButtonItem key="backBarButtonItem" title="Back" id="bBB-Vw-HJ0">
@@ -175,7 +183,7 @@
     </scenes>
     <resources>
         <namedColor name="TextBlue">
-            <color red="0.0" green="0.0" blue="0.2506146208483393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
