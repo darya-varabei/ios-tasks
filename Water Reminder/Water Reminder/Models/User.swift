@@ -27,11 +27,11 @@ class User {
     func countRecommendedWater() {
         switch(gender) {
         case .female:
-            self.recommendedDoze =  self.weight * 0.025 + self.averageSportDurationADay * 0.4
+            self.recommendedDoze =  (self.weight * 0.025 + self.averageSportDurationADay * 0.4) * 1000
         case .male:
-            self.recommendedDoze =  self.weight * 0.03 + self.averageSportDurationADay * 0.5
+            self.recommendedDoze =  (self.weight * 0.03 + self.averageSportDurationADay * 0.5) * 1000
         case .other:
-            self.recommendedDoze =  self.weight * 0.0275 + self.averageSportDurationADay * 0.45
+            self.recommendedDoze =  (self.weight * 0.0275 + self.averageSportDurationADay * 0.45) * 1000
         }
     }
 }

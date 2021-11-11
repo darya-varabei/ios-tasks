@@ -62,7 +62,6 @@ public class WaveAnimationView: UIView {
 
     func setProgress(_ point: Float) {
         let setPoint:CGFloat = CGFloat(min(max(point, 0),1))
-        
         self.progress = Float(setPoint)
     }
     

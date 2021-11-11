@@ -10,8 +10,19 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet private var quickOptionsLabel: UILabel!
+    @IBOutlet weak var btnUpdateParameters: UIButton!
+    @IBOutlet weak var btnOnlyCleanWater: UIButton!
     private let options = OptionsViewModel()
     private let consumption = Consumption()
+    
+    private var lblPercentCompleted: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: "blueButtonOpaque")
+        label.font = UIFont(name: "Futura-Medium", size: 56)
+        label.textAlignment = .left
+        return label
+    }()
    
     var wave: WaveAnimationView?
     
@@ -27,12 +38,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.displayAnimatedWater()
+        self.btnUpdateParameters.layer.cornerRadius = 15
+        self.btnOnlyCleanWater.layer.cornerRadius = 15
         wave?.startAnimation()
+        self.setupPercentageLabel()
         setupCollection()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.registProgress()
+        wave?.startAnimation()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         wave?.stopAnimation()
+    }
+    
+    private func setupPercentageLabel() {
+        self.wave?.addSubview(lblPercentCompleted)
+        self.lblPercentCompleted.textColor = UIColor(named: "buttonBlueOpaque")
+        self.lblPercentCompleted.centerYAnchor.constraint(equalTo: self.wave!.centerYAnchor, constant: 0).isActive = true
+        self.lblPercentCompleted.centerXAnchor.constraint(equalTo: self.wave!.centerXAnchor, constant: 0).isActive = true
     }
     
     func setupCollection() {
@@ -67,7 +93,20 @@ class ViewController: UIViewController {
     }
     
     private func registProgress() {
-        self.wave?.setProgress(Float(consumption.totalTodayPercent()))
+        
+        if self.btnOnlyCleanWater.tag == 1 {
+            let percent = Float(consumption.totalTodayPercent())
+            self.wave?.setProgress(percent)
+            self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        }
+        else {
+            let percent = Float(consumption.totalTodayClearPercent())
+            self.wave?.setProgress(percent)
+            self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        }
+        
+    }
+    @IBAction func measureOnlyCleanWater(_ sender: Any) {
     }
 }
 

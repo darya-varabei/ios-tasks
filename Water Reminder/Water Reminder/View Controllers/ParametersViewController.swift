@@ -110,6 +110,13 @@ class ParametersViewController: UIViewController {
         user.countRecommendedWater()
         self.txtRecommended?.text = "\(user.recommendedDoze)"
     }
+    
+    @IBAction func btnConfirmUser(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func cancelUserData(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension String {
