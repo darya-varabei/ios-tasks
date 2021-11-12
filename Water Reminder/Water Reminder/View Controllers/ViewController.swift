@@ -37,6 +37,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fetchUserStoredData()
         self.displayAnimatedWater()
         self.btnUpdateParameters.layer.cornerRadius = 15
         self.btnOnlyCleanWater.layer.cornerRadius = 15
@@ -108,6 +109,10 @@ class ViewController: UIViewController {
     }
     @IBAction func measureOnlyCleanWater(_ sender: Any) {
     }
+    
+    private func fetchUserStoredData() {
+        self.consumption.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -137,6 +142,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let addedAmount = options.quickOptions[indexPath.item].volume
+        let totalVolume = self.consumption.totalToday + addedAmount
+        UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
         self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
         self.registProgress()
     }

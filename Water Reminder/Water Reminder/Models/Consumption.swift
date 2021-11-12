@@ -9,7 +9,7 @@ import Foundation
 
 class Consumption {
     let user = User.shared
-    private var totalToday: Int = 0
+    var totalToday: Int = 0
     private var totalClearToday: Int = 0
     private var recentItemsVolume: [Option] = []
     

@@ -112,9 +112,18 @@ class ParametersViewController: UIViewController {
     }
     
     @IBAction func btnConfirmUser(_ sender: Any) {
+       
+        UserDefaults.standard.setValue(user.weight, forKey: "bodyweight")
+        UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: "activity")
+        UserDefaults.standard.setValue(user.recommendedDoze, forKey: "doze")
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func cancelUserData(_ sender: Any) {
+       
+        user.weight = UserDefaults.standard.double(forKey: "bodyweight")
+        user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
+        user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
         navigationController?.popViewController(animated: true)
     }
 }
