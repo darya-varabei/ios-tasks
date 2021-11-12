@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B339897273EB11C00573EDC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B339896273EB11C00573EDC /* Extensions.swift */; };
+		4B33989A273EB42200573EDC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B339898273EB42200573EDC /* CollectionViewCell.swift */; };
+		4B33989B273EB42200573EDC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B339899273EB42200573EDC /* CollectionViewCell.xib */; };
 		4B649574273BBEB10028D261 /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B649573273BBEB10028D261 /* Consumption.swift */; };
 		4B649576273BC2A90028D261 /* ParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B649575273BC2A90028D261 /* ParametersViewController.swift */; };
 		4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57D3273A670400AF0B5E /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		4B339896273EB11C00573EDC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4B339898273EB42200573EDC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		4B339899273EB42200573EDC /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		4B649573273BBEB10028D261 /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		4B649575273BC2A90028D261 /* ParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersViewController.swift; sourceTree = "<group>"; };
 		4BBE57D0273A670400AF0B5E /* Water Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Water Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,8 @@
 			children = (
 				4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */,
 				4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */,
+				4B339898273EB42200573EDC /* CollectionViewCell.swift */,
+				4B339899273EB42200573EDC /* CollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -182,6 +188,7 @@
 				4BBE57E0273A670500AF0B5E /* Assets.xcassets in Resources */,
 				4BBE57DB273A670400AF0B5E /* Main.storyboard in Resources */,
 				4BBE57F7273A90FC00AF0B5E /* OptionViewCell.xib in Resources */,
+				4B33989B273EB42200573EDC /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +207,7 @@
 				4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */,
 				4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */,
 				4B339897273EB11C00573EDC /* Extensions.swift in Sources */,
+				4B33989A273EB42200573EDC /* CollectionViewCell.swift in Sources */,
 				4BBE57D6273A670400AF0B5E /* SceneDelegate.swift in Sources */,
 				4B649574273BBEB10028D261 /* Consumption.swift in Sources */,
 				4BBE57DE273A670400AF0B5E /* Water_Reminder.xcdatamodeld in Sources */,

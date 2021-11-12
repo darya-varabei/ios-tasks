@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(UINib(nibName: "OptionViewCell", bundle: nil), forCellWithReuseIdentifier: "OptionViewCell")
+        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cancelCell")
         return collectionView
     }()
 
@@ -133,14 +134,22 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if indexPath != IndexPath(row: 0, section: 0) {
     let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
-        cell.name = options.quickOptions[indexPath.item].name
-        cell.volume = "\(options.quickOptions[indexPath.item].volume) ml"
-        cell.image = options.quickOptions[indexPath.item].image
+        cell.name = options.quickOptions[indexPath.item - 1].name
+        cell.volume = "\(options.quickOptions[indexPath.item - 1].volume) ml"
+        cell.image = options.quickOptions[indexPath.item - 1].image
         cell.layer.shadowRadius = 2
         cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
         return cell
+        }
+        else {
+            let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cancelCell", for: indexPath) as! CollectionViewCell
+            cell.image = "arrowshape.turn.up.backward"
+            cell.layer.shadowRadius = 2
+            cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
