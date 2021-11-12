@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         wave?.startAnimation()
         self.setupPercentageLabel()
         setupCollection()
+        UserDefaults.lastAccessDate = Date()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,6 +108,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
     @IBAction func measureOnlyCleanWater(_ sender: Any) {
     }
     

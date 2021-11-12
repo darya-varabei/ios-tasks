@@ -127,9 +127,3 @@ class ParametersViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 }
-
-extension String {
-    func toDouble() -> Double? {
-        return NumberFormatter().number(from: self)?.doubleValue
-    }
-}
