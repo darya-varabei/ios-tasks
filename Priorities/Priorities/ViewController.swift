@@ -28,16 +28,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.header = CountryHeaderView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
-        self.view.addSubview(self.header)
+        self.view.layer.backgroundColor = UIColor.red.cgColor
+        self.header = CountryHeaderView(frame: CGRect(x: 200, y: 200, width: 200, height: 200))
+       // self.view.addSubview(self.header)
         
     }
     
-    override func loadView() {
+   // override func loadView() {
 //        let view = UIView()
 //                view.backgroundColor = .red
 //                self.view = view
     //  self.header = CountryHeaderView(frame: CGRect(x: 50, y: 50, width: 100, height: 80))
-    }
+  //  }
 }
 
