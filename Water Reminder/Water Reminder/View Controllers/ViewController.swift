@@ -40,7 +40,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
         self.displayAnimatedWater()
         self.btnUpdateParameters.layer.cornerRadius = 15
         self.btnOnlyCleanWater.layer.cornerRadius = 15
