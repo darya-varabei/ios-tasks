@@ -18,9 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-4m-RlR">
-                        <rect key="frame" x="-50" y="14" width="240" height="128"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel last added option" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azZ-H0-7Uc">
                         <rect key="frame" x="1" y="153" width="138" height="47"/>
                         <constraints>
@@ -30,6 +27,9 @@
                         <color key="textColor" name="TextBlue"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-4m-RlR">
+                        <rect key="frame" x="-36" y="20" width="212" height="113"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -38,10 +38,10 @@
                 <constraint firstItem="azZ-H0-7Uc" firstAttribute="centerX" secondItem="RWh-4m-RlR" secondAttribute="centerX" id="0AN-Z9-45Q"/>
                 <constraint firstItem="azZ-H0-7Uc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="LjC-Wi-k9i"/>
                 <constraint firstItem="azZ-H0-7Uc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Rul-xh-A7F"/>
-                <constraint firstItem="RWh-4m-RlR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-50" id="ZLC-fn-JLS"/>
-                <constraint firstItem="RWh-4m-RlR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="14" id="ZtA-Si-8HJ"/>
+                <constraint firstItem="RWh-4m-RlR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-36" id="ZLC-fn-JLS"/>
+                <constraint firstItem="RWh-4m-RlR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="ZtA-Si-8HJ"/>
                 <constraint firstAttribute="bottom" secondItem="azZ-H0-7Uc" secondAttribute="bottom" constant="20" id="cE1-or-el4"/>
-                <constraint firstItem="azZ-H0-7Uc" firstAttribute="top" secondItem="RWh-4m-RlR" secondAttribute="bottom" constant="11" id="iyv-su-Iuc"/>
+                <constraint firstItem="azZ-H0-7Uc" firstAttribute="top" secondItem="RWh-4m-RlR" secondAttribute="bottom" constant="20" id="iyv-su-Iuc"/>
             </constraints>
             <connections>
                 <outlet property="returnImage" destination="RWh-4m-RlR" id="n5f-eo-kXg"/>

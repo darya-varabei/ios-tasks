@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-   
+    
     var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {
@@ -35,10 +35,9 @@ class ViewController: UIViewController {
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cancelCell")
         return collectionView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fetchUserStoredData()
         self.displayAnimatedWater()
         self.btnUpdateParameters.layer.cornerRadius = 15
         self.btnOnlyCleanWater.layer.cornerRadius = 15
@@ -46,13 +45,14 @@ class ViewController: UIViewController {
         self.setupPercentageLabel()
         setupCollection()
         UserDefaults.lastAccessDate = Date()
+        self.fetchUserStoredData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.registProgress()
         wave?.startAnimation()
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         wave?.stopAnimation()
     }
@@ -107,7 +107,12 @@ class ViewController: UIViewController {
             self.wave?.setProgress(percent)
             self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
         }
-        
+    }
+    
+    private func removeLast() {
+        let percent = Float(consumption.totalTodayPercent())
+        self.wave?.setProgress(percent)
+        self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     @IBAction func measureOnlyCleanWater(_ sender: Any) {
@@ -123,6 +128,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     enum CollectionConstants {
         static let numberOfItems = 11
         static let cellCornerRadius = 12
+        static let cellShadowRadius = 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->  CGSize {
@@ -134,29 +140,37 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if indexPath != IndexPath(row: 0, section: 0) {
-    let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
-        cell.name = options.quickOptions[indexPath.item - 1].name
-        cell.volume = "\(options.quickOptions[indexPath.item - 1].volume) ml"
-        cell.image = options.quickOptions[indexPath.item - 1].image
-        cell.layer.shadowRadius = 2
-        cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
-        return cell
+            
+            let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
+            cell.name = options.quickOptions[indexPath.item - 1].name
+            cell.volume = "\(options.quickOptions[indexPath.item - 1].volume) ml"
+            cell.image = options.quickOptions[indexPath.item - 1].image
+            cell.layer.shadowRadius = CGFloat(CollectionConstants.cellShadowRadius)
+            cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
+            return cell
         }
+        
         else {
             let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cancelCell", for: indexPath) as! CollectionViewCell
             cell.image = "arrowshape.turn.up.backward"
-            cell.layer.shadowRadius = 2
+            cell.layer.shadowRadius = CGFloat(CollectionConstants.cellShadowRadius)
             cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let addedAmount = options.quickOptions[indexPath.item].volume
-        let totalVolume = self.consumption.totalToday + addedAmount
-        UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
-        self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
-        self.registProgress()
+        if indexPath != IndexPath(row: 0, section: 0) {
+            let addedAmount = options.quickOptions[indexPath.item].volume
+            let totalVolume = self.consumption.totalToday + addedAmount
+            UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
+            self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
+            self.registProgress()
+        }
+        else {
+            self.removeLast()
+        }
     }
 }

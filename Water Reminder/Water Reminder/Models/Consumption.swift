@@ -11,7 +11,7 @@ class Consumption {
     let user = User.shared
     var totalToday: Int = 0
     private var totalClearToday: Int = 0
-    private var recentItemsVolume: [Option] = []
+    var recentItemsVolume: [Option] = []
     
     func addRecentItems(item: Option) {
         self.recentItemsVolume.append(item)
@@ -22,13 +22,19 @@ class Consumption {
         }
     }
     
-    func cancelRecentItem() {
+    func cancelRecentItem() -> Int {
+        if !self.recentItemsVolume.isEmpty{
         let lastItem = self.recentItemsVolume.last
         self.recentItemsVolume.removeLast()
         self.totalToday -= lastItem?.volume ?? 0
         
         if ((lastItem?.isClearWater) != nil) {
             self.totalClearToday -= lastItem?.volume ?? 0
+        }
+        return lastItem?.volume ?? 0
+        }
+        else {
+            return 0
         }
     }
     

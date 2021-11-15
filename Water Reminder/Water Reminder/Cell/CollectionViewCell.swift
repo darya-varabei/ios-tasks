@@ -16,7 +16,4 @@ class CollectionViewCell: UICollectionViewCell {
             self.returnImage.image = UIImage(systemName: "arrowshape.turn.up.backward")
         }
     }
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
 }
