@@ -120,6 +120,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func measureOnlyCleanWater(_ sender: Any) {
+        if self.btnOnlyCleanWater.tag == 1 {
+            self.btnOnlyCleanWater.tag = 2
+            self.btnOnlyCleanWater.setTitle("All beverages", for: .normal)
+        }
+        else {
+            self.btnOnlyCleanWater.tag = 1
+            self.btnOnlyCleanWater.setTitle("Only clean water", for: .normal)
+        }
+        registProgress()
     }
     
     private func fetchUserStoredData() {
