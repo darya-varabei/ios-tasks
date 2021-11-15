@@ -46,11 +46,11 @@ class CountryHeaderView: UIView {
     }()
     
     func setupViews() {
-        self.addSubview(contentView)
-        self.addSubview(capitalCity)
+//        self.addSubview(contentView)
+//        self.addSubview(capitalCity)
+//        self.addSubview(countryName)
         self.addSubview(countryName)
-        self.contentView.addSubview(countryName)
-        self.contentView.addSubview(capitalCity)
+        self.addSubview(capitalCity)
     }
     
     func setupConstraints() {

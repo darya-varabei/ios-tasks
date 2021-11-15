@@ -16,27 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
-                                <rect key="frame" x="20" y="105" width="240" height="128"/>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
-                                <rect key="frame" x="87" y="241" width="240" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
+                                <rect key="frame" x="50" y="119" width="314" height="543"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="325"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3O0-Ag-m5C">
+                                        <rect key="frame" x="0.0" y="345" width="314" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC">
+                                        <rect key="frame" x="0.0" y="493" width="314" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="PaL-8y-jQ2"/>
-                                    <constraint firstAttribute="height" constant="128" id="glU-3E-Tde"/>
+                                    <constraint firstItem="3O0-Ag-m5C" firstAttribute="top" secondItem="LkE-ka-8CK" secondAttribute="top" constant="345" id="NXd-y1-qIC"/>
+                                    <constraint firstItem="Cjy-XL-3wC" firstAttribute="top" secondItem="LkE-ka-8CK" secondAttribute="top" constant="493" id="Z3I-C7-LmX"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qbi-eN-t40" firstAttribute="top" secondItem="LkE-ka-8CK" secondAttribute="bottom" constant="8" id="V74-G8-ZQV"/>
-                            <constraint firstItem="Qbi-eN-t40" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WTe-GW-XRZ"/>
-                            <constraint firstItem="LkE-ka-8CK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="61" id="bi1-q1-3Ls"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LkE-ka-8CK" secondAttribute="trailing" constant="154" id="c5V-RK-y4B"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qbi-eN-t40" secondAttribute="bottom" constant="493" id="ct4-d7-WjB"/>
-                            <constraint firstItem="LkE-ka-8CK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nga-vM-P6m"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="3SC-IZ-omp"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="OxL-2A-wWW"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="bi1-q1-3Ls"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LkE-ka-8CK" secondAttribute="bottom" constant="200" id="jh4-C5-4gZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LkE-ka-8CK" secondAttribute="trailing" constant="50" id="ou3-qm-V9T"/>
                         </constraints>
                     </view>
                 </viewController>
