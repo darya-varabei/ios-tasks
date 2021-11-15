@@ -69,9 +69,11 @@ class DetailViewController: UIViewController {
         self.nutrientsTableView.reloadData()
         self.btnChoose?.layer.cornerRadius = 15
         self.titleLabel?.text = self.recipeData?.label
-        self.fillNutrientDataArray()
-        self.setUpNutritionalData()
         
+        DispatchQueue.main.async(flags:  .barrier) {
+            self.fillNutrientDataArray()
+        }
+        self.setUpNutritionalData()
         navigationController?.navigationBar.tintColor = UIColor(named: "BasicYellow")
     }
     
@@ -96,15 +98,19 @@ class DetailViewController: UIViewController {
     
     private func setUpNutritionalData() {
         
-        for point in self.recipeData!.ingredientLines {
-            self.descriptionRecipe.append(point)
-            self.descriptionRecipe.append("\n")
-        }
+        let queue = DispatchQueue(label: "setUpData")
         
+        queue.async(flags: .barrier) {
+            for point in self.recipeData!.ingredientLines {
+                self.descriptionRecipe.append(point)
+                self.descriptionRecipe.append("\n")
+            }
+        }
         for point in self.recipeData!.healthLabels {
             self.labels.append(point)
             self.labels.append(", ")
         }
+        
         
         self.ingredientsList?.text = descriptionRecipe
         self.recipeDescription?.text = labels

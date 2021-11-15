@@ -14,7 +14,7 @@ class BackgroundImageView: UIImageView {
     let spinner = UIActivityIndicatorView(style: .medium)
     
     func loadImage(from url: URL) {
-        
+        let queue = DispatchQueue(label: "loadImage")
         image = nil
         addSpinner()
         if let task = task {
@@ -28,15 +28,17 @@ class BackgroundImageView: UIImageView {
         }
         
         task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, let newImage = UIImage(data: data) else {
-                return
-            }
             
-            self.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
-            DispatchQueue.main.async {
-                self.image = newImage
-                print("Image loaded successfully")
-                self.removeSpinner()
+            queue.async(flags: .detached) {
+                guard let data = data, let newImage = UIImage(data: data) else {
+                    return
+                }
+                self.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
+                DispatchQueue.main.async {
+                    self.image = newImage
+                    print("Image loaded successfully")
+                    self.removeSpinner()
+                }
             }
         }
         task.resume()
