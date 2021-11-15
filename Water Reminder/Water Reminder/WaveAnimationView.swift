@@ -54,18 +54,16 @@ public class WaveAnimationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     public override func draw(_ rect: CGRect) {
         wave(layer: backWaveSubLayer, path: backWaveLine, color: backColor, delay: waveDelay)
         wave(layer: frontWaveLayer, path: frontWaveLine, color: frontColor, delay: 0)
     }
-
+    
     func setProgress(_ point: Float) {
         let setPoint:CGFloat = CGFloat(min(max(point, 0),1))
         self.progress = Float(setPoint)
     }
     
-
     func startAnimation() {
         timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(waveAnimation), userInfo: nil, repeats: true)
     }

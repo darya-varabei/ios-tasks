@@ -63,6 +63,24 @@
                                     <segue destination="P4D-VI-T1l" kind="show" id="dJd-jS-0dH"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qz8-c6-lbO">
+                                <rect key="frame" x="123" y="121" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukc-pT-tYI">
+                                <rect key="frame" x="240" y="118" width="95" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="buttonBlue"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addWater:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2S5-TR-GSa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -80,9 +98,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="hBs-bG-E8h"/>
                     <connections>
+                        <outlet property="btnAddWater" destination="ukc-pT-tYI" id="AdP-sF-XMQ"/>
                         <outlet property="btnOnlyCleanWater" destination="uXy-5p-g1d" id="LuV-sP-EYl"/>
                         <outlet property="btnUpdateParameters" destination="VZX-Vn-h2d" id="taZ-BP-m30"/>
                         <outlet property="quickOptionsLabel" destination="X9N-BE-7Bp" id="c2p-hh-S61"/>
+                        <outlet property="txtWaterToAdd" destination="Qz8-c6-lbO" id="sPh-eL-uEE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

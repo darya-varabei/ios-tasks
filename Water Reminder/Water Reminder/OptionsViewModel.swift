@@ -23,4 +23,9 @@ class OptionsViewModel {
         quickOptions.append(Option(name: "Small juice", volume: 150, image: "juicesmall", isClearWater: false))
         quickOptions.append(Option(name: "Large juice", volume: 300, image: "juicelarge", isClearWater: false))
     }
+    
+    func addCustomOption(volume: Double) {
+        let tempOption = Option(volume: volume)
+        quickOptions.append(tempOption)
+    }
 }

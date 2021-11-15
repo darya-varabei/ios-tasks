@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet private var quickOptionsLabel: UILabel!
     @IBOutlet weak var btnUpdateParameters: UIButton!
     @IBOutlet weak var btnOnlyCleanWater: UIButton!
+    @IBOutlet weak var txtWaterToAdd: UITextField!
+    @IBOutlet weak var btnAddWater: UIButton!
     private let options = OptionsViewModel()
     private let consumption = Consumption()
     
@@ -24,7 +26,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    var wave: WaveAnimationView?
+    private var wave: WaveAnimationView?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,10 +40,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
+//        UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
         self.displayAnimatedWater()
         self.btnUpdateParameters.layer.cornerRadius = 15
         self.btnOnlyCleanWater.layer.cornerRadius = 15
+        self.btnAddWater.layer.cornerRadius = 15
+        
         wave?.startAnimation()
         consumption.initUser()
         self.setupPercentageLabel()
@@ -99,16 +103,15 @@ class ViewController: UIViewController {
     
     private func registProgress() {
         
+        var percent: Float = 0.0
         if self.btnOnlyCleanWater.tag == 1 {
-            let percent = Float(consumption.totalTodayPercent())
-            self.wave?.setProgress(percent)
-            self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+            percent = Float(consumption.totalTodayPercent())
         }
         else {
-            let percent = Float(consumption.totalTodayClearPercent())
-            self.wave?.setProgress(percent)
-            self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+            percent = Float(consumption.totalTodayClearPercent())
         }
+        self.wave?.setProgress(percent)
+        self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     private func removeLast() {
@@ -133,6 +136,12 @@ class ViewController: UIViewController {
     
     private func fetchUserStoredData() {
         self.consumption.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
+    }
+    
+    @IBAction func addWater(_ sender: Any) {
+        self.options.addCustomOption(volume: Double(self.txtWaterToAdd?.text?.toDouble() ?? 0.0))
+        self.consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
+        self.registProgress()
     }
 }
 
