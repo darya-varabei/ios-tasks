@@ -128,7 +128,6 @@ class DetailViewController: UIViewController {
         
         imageLoading.addExecutionBlock {
             DispatchQueue.main.async {
-                sleep(1)
                 self.backgroundImage.isHidden = false
                 self.mainImage.isHidden = false
             }
@@ -136,7 +135,6 @@ class DetailViewController: UIViewController {
         
         titleLoading.addExecutionBlock {
             DispatchQueue.main.async {
-                sleep(1)
                 self.pointTitle.isHidden = false
                 self.titleLabel.isHidden = false
             }
@@ -144,14 +142,12 @@ class DetailViewController: UIViewController {
         
         buttonLoading.addExecutionBlock {
             DispatchQueue.main.async {
-                sleep(1)
                 self.btnChoose.isHidden = false
             }
         }
         
         descriptionLoading.addExecutionBlock {
             DispatchQueue.main.async {
-                sleep(1)
                 self.recipeDescription.isHidden = false
             }
         }
