@@ -38,10 +38,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
         self.displayAnimatedWater()
         self.btnUpdateParameters.layer.cornerRadius = 15
         self.btnOnlyCleanWater.layer.cornerRadius = 15
         wave?.startAnimation()
+        consumption.initUser()
         self.setupPercentageLabel()
         setupCollection()
         UserDefaults.lastAccessDate = Date()
@@ -110,6 +112,8 @@ class ViewController: UIViewController {
     }
     
     private func removeLast() {
+        let lastItem = consumption.cancelRecentItem()
+        UserDefaults.standard.setValue(consumption.totalToday - lastItem, forKey: "todayTotal")
         let percent = Float(consumption.totalTodayPercent())
         self.wave?.setProgress(percent)
         self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
@@ -163,10 +167,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath != IndexPath(row: 0, section: 0) {
-            let addedAmount = options.quickOptions[indexPath.item].volume
+            let addedAmount = options.quickOptions[indexPath.item - 1].volume
             let totalVolume = self.consumption.totalToday + addedAmount
             UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
-            self.consumption.addRecentItems(item: options.quickOptions[indexPath.item])
+            self.consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
             self.registProgress()
         }
         else {

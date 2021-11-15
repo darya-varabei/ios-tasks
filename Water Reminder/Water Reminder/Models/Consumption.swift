@@ -47,4 +47,10 @@ class Consumption {
         let total: Double = Double(self.totalClearToday)
         return total/user.recommendedDoze
     }
+    
+    func initUser() {
+        user.weight = UserDefaults.standard.double(forKey: "bodyweight")
+        user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
+        user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
+    }
 }

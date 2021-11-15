@@ -37,9 +37,9 @@ class ParametersViewController: UIViewController {
     }
     
     private func setUserParameters() {
-        self.txtBodyWeight?.text?.append(String(self.user.weight))
-        self.lblActivity?.text = "\(self.user.averageSportDurationADay)"
-        self.txtRecommended?.text?.append(String(self.user.recommendedDoze))
+        self.txtBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: "bodyweight")))
+        self.lblActivity?.text = "\(String(UserDefaults.standard.double(forKey: "activity")))"
+        self.txtRecommended?.text?.append(String(UserDefaults.standard.double(forKey: "doze")))
     }
     
     private func constForLblRecommended() {
