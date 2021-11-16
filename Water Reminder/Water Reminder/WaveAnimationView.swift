@@ -40,7 +40,6 @@ public class WaveAnimationView: UIView {
     private let frontColor: UIColor = UIColor(named: "WaveBack") ?? UIColor.blue
     private let backColor: UIColor = UIColor(named: "WaveFront") ?? UIColor.blue
     
-    
     public override init(frame: CGRect) {
         self.width = frame.width
         self.height = frame.height
@@ -75,7 +74,6 @@ public class WaveAnimationView: UIView {
     @objc private func waveAnimation() {
         self.setNeedsDisplay()
     }
-    
     
     @objc private func wave(layer: CAShapeLayer, path: UIBezierPath, color: UIColor, delay: CGFloat) {
         path.removeAllPoints()

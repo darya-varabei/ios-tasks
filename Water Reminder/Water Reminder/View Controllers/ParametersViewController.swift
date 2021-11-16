@@ -111,7 +111,7 @@ class ParametersViewController: UIViewController {
         self.txtRecommended?.text = "\(user.recommendedDoze)"
     }
     
-    @IBAction func btnConfirmUser(_ sender: Any) {
+    @IBAction private func btnConfirmUser(_ sender: Any) {
        
         UserDefaults.standard.setValue(user.weight, forKey: "bodyweight")
         UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: "activity")
@@ -119,7 +119,7 @@ class ParametersViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func cancelUserData(_ sender: Any) {
+    @IBAction private func cancelUserData(_ sender: Any) {
        
         user.weight = UserDefaults.standard.double(forKey: "bodyweight")
         user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")

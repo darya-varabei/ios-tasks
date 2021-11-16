@@ -10,10 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet private var quickOptionsLabel: UILabel!
-    @IBOutlet weak var btnUpdateParameters: UIButton!
-    @IBOutlet weak var btnOnlyCleanWater: UIButton!
-    @IBOutlet weak var txtWaterToAdd: UITextField!
-    @IBOutlet weak var btnAddWater: UIButton!
+    @IBOutlet private var btnUpdateParameters: UIButton!
+    @IBOutlet private var btnOnlyCleanWater: UIButton!
+    @IBOutlet private var txtWaterToAdd: UITextField!
+    @IBOutlet private var btnAddWater: UIButton!
     private let options = OptionsViewModel()
     private let consumption = Consumption()
     
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         self.lblPercentCompleted.centerXAnchor.constraint(equalTo: self.wave!.centerXAnchor, constant: 0).isActive = true
     }
     
-    func setupCollection() {
+    private func setupCollection() {
         self.view.addSubview(collectionView)
         self.collectionView.backgroundColor = .white
         self.collectionView.delegate = self
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
         self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
-    @IBAction func measureOnlyCleanWater(_ sender: Any) {
+    @IBAction private func measureOnlyCleanWater(_ sender: Any) {
         if self.btnOnlyCleanWater.tag == 1 {
             self.btnOnlyCleanWater.tag = 2
             self.btnOnlyCleanWater.setTitle("All beverages", for: .normal)
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         self.consumption.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
     }
     
-    @IBAction func addWater(_ sender: Any) {
+    @IBAction private func addWater(_ sender: Any) {
         self.options.addCustomOption(volume: Double(self.txtWaterToAdd?.text?.toDouble() ?? 0.0))
         self.consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
         self.registProgress()
@@ -147,7 +147,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     enum CollectionConstants {
-        static let numberOfItems = 11
+        static let numberOfItems = 12
         static let cellCornerRadius = 12
         static let cellShadowRadius = 2
     }

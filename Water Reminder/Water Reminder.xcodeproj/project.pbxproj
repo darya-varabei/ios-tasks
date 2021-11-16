@@ -16,7 +16,6 @@
 		4BBE57D6273A670400AF0B5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57D5273A670400AF0B5E /* SceneDelegate.swift */; };
 		4BBE57D8273A670400AF0B5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57D7273A670400AF0B5E /* ViewController.swift */; };
 		4BBE57DB273A670400AF0B5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57D9273A670400AF0B5E /* Main.storyboard */; };
-		4BBE57DE273A670400AF0B5E /* Water_Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57DC273A670400AF0B5E /* Water_Reminder.xcdatamodeld */; };
 		4BBE57E0273A670500AF0B5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57DF273A670500AF0B5E /* Assets.xcassets */; };
 		4BBE57E3273A670500AF0B5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57E1273A670500AF0B5E /* LaunchScreen.storyboard */; };
 		4BBE57EB273A673900AF0B5E /* WaveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57EA273A673900AF0B5E /* WaveAnimationView.swift */; };
@@ -38,7 +37,6 @@
 		4BBE57D5273A670400AF0B5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4BBE57D7273A670400AF0B5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4BBE57DA273A670400AF0B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4BBE57DD273A670400AF0B5E /* Water_Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Water_Reminder.xcdatamodel; sourceTree = "<group>"; };
 		4BBE57DF273A670500AF0B5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BBE57E2273A670500AF0B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BBE57E4273A670500AF0B5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				4BBE57DF273A670500AF0B5E /* Assets.xcassets */,
 				4BBE57E1273A670500AF0B5E /* LaunchScreen.storyboard */,
 				4BBE57E4273A670500AF0B5E /* Info.plist */,
-				4BBE57DC273A670400AF0B5E /* Water_Reminder.xcdatamodeld */,
 			);
 			path = "Water Reminder";
 			sourceTree = "<group>";
@@ -210,7 +207,6 @@
 				4B33989A273EB42200573EDC /* CollectionViewCell.swift in Sources */,
 				4BBE57D6273A670400AF0B5E /* SceneDelegate.swift in Sources */,
 				4B649574273BBEB10028D261 /* Consumption.swift in Sources */,
-				4BBE57DE273A670400AF0B5E /* Water_Reminder.xcdatamodeld in Sources */,
 				4BBE57EF273A828100AF0B5E /* Options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,19 +411,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4BBE57DC273A670400AF0B5E /* Water_Reminder.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4BBE57DD273A670400AF0B5E /* Water_Reminder.xcdatamodel */,
-			);
-			currentVersion = 4BBE57DD273A670400AF0B5E /* Water_Reminder.xcdatamodel */;
-			path = Water_Reminder.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4BBE57C8273A670400AF0B5E /* Project object */;
 }

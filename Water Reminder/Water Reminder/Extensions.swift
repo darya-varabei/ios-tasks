@@ -8,9 +8,9 @@
 import Foundation
 
 extension UserDefaults {
-
+    
     static let defaults = UserDefaults.standard
-
+    
     static var lastAccessDate: Date? {
         get {
             return defaults.object(forKey: "lastAccessDate") as? Date
@@ -28,7 +28,7 @@ extension UserDefaults {
             defaults.set(newValue, forKey: "lastAccessDate")
         }
     }
-
+    
     static func reset() {
         defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier ?? "")
     }

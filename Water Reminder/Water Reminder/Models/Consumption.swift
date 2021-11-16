@@ -10,8 +10,8 @@ import Foundation
 class Consumption {
     let user = User.shared
     var totalToday: Int = 0
-    private var totalClearToday: Int = 0
     var recentItemsVolume: [Option] = []
+    private var totalClearToday: Int = 0
     
     func addRecentItems(item: Option) {
         self.recentItemsVolume.append(item)
