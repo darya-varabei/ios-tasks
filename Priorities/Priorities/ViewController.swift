@@ -9,36 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 10.0
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.addArrangedSubview(self.header)
-        stackView.addArrangedSubview(self.infoView)
-        stackView.addArrangedSubview(self.ticketView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    var header = CountryHeaderView()
-    let infoView = CountryInfoView()
-    let ticketView = TicketsInfoView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.backgroundColor = UIColor.red.cgColor
-        self.header = CountryHeaderView(frame: CGRect(x: 200, y: 200, width: 200, height: 200))
-       // self.view.addSubview(self.header)
-        
+        setGradientBackground()
     }
     
-   // override func loadView() {
-//        let view = UIView()
-//                view.backgroundColor = .red
-//                self.view = view
-    //  self.header = CountryHeaderView(frame: CGRect(x: 50, y: 50, width: 100, height: 80))
-  //  }
+    func setGradientBackground() {
+        let colorTop =  UIColor(named: "headerStart")?.cgColor
+        let colorBottom = UIColor(named: "headerFinish")?.cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.frame
+        
+        //self.view.layer.backgroundColor = gradientLayer
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
 }
 
