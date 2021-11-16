@@ -19,13 +19,19 @@ let arrayOfStrings = ["Swift", "Objective-C", "Java", "Python", "JavaScript", "P
 print(arrayOfStrings[0] + " " + arrayOfStrings[2] + " " + arrayOfStrings[4])
 
 var string = "Swift is a new programming language for iOS, macOS, watchOS, and tvOS app development"
+var string1 = ""
 string.count
 string += "\u{302}"
 string.count
 string[string.startIndex]
 string[string.index(before: string.endIndex)]
 string[string.index(after: string.startIndex)]
-string[string.index(string.startIndex, offsetBy: 20)]
+let offset = 20
+guard offset >= string1.count else {
+string1[string1.index(string1.startIndex, offsetBy: offset)]
+    return
+}
+
 
 string.insert("\u{2665}", at: string.endIndex)
 
@@ -47,9 +53,12 @@ class StringOperations {
     }
     
     func getSubstring(left: Int, right: Int) {
+        guard left < 0 || right >= self.stringToOperate.count else {
         let index = self.stringToOperate.index(string.startIndex, offsetBy: left)
         let anotherIndex = self.stringToOperate.index(string.startIndex, offsetBy: right)
         self.stringToOperate = String(self.stringToOperate[index..<anotherIndex])
+            return
+        }
     }
     
     func countThrillerTypes() -> Int {
