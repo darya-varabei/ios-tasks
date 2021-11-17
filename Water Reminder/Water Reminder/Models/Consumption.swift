@@ -41,12 +41,12 @@ class Consumption {
     
     func totalTodayPercent() -> Double {
         let total: Double = Double(self.totalToday)
-        return total/user.recommendedDoze
+        return total / user.recommendedDoze
     }
     
     func totalTodayClearPercent() -> Double {
         let total: Double = Double(self.totalClearToday)
-        return total/user.recommendedDoze
+        return total / user.recommendedDoze
     }
     
     func initUser() {
@@ -87,11 +87,11 @@ class Consumption {
         self.totalClearToday = item
     }
     
-    func getTotal() -> Int{
+    func getTotal() -> Int {
         return self.totalToday
     }
     
-    func getClear() -> Int{
+    func getClear() -> Int {
         return self.totalClearToday
     }
 }
