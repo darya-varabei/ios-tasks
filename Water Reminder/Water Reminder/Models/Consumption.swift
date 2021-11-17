@@ -22,8 +22,8 @@ class Consumption {
         }
     }
     
-    func cancelRecentItem() -> Int {
-        if !self.recentItemsVolume.isEmpty{
+    func cancelRecentItem() -> Option {
+        if !self.recentItemsVolume.isEmpty {
             let lastItem = self.recentItemsVolume.last
             self.recentItemsVolume.removeLast()
             self.totalToday -= lastItem?.volume ?? 0
@@ -31,11 +31,11 @@ class Consumption {
             if ((lastItem?.isClearWater) != nil) {
                 self.totalClearToday -= lastItem?.volume ?? 0
             }
-            return lastItem?.volume ?? 0
+            return lastItem ?? Option(volume: 0)
             
         }
         else {
-            return 0
+            return Option(volume: 0)
         }
     }
     
@@ -51,9 +51,9 @@ class Consumption {
     
     func initUser() {
         guard UserDefaults.standard.double(forKey: "bodyweight") == 0 else {
-        user.weight = UserDefaults.standard.double(forKey: "bodyweight")
-        user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
-        user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
+            user.weight = UserDefaults.standard.double(forKey: "bodyweight")
+            user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
+            user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
             return
         }
     }
@@ -61,6 +61,14 @@ class Consumption {
     func fetchUserStoredData() {
         self.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
         self.totalClearToday = Int(UserDefaults.standard.double(forKey: "todayClear"))
+    }
+    
+    func removeLast() {
+        let lastItem = self.cancelRecentItem()
+        if lastItem.isClearWater {
+            UserDefaults.standard.setValue(self.totalClearToday, forKey: "todayClear")
+        }
+        UserDefaults.standard.setValue(self.totalToday, forKey: "todayTotal")
     }
     
     func addTotal(item: Int) {

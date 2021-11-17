@@ -24,6 +24,7 @@ extension UserDefaults {
             if !Calendar.current.isDateInToday(lastAccessDate) {
                 print("remove Persistent Domain")
                 UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
+                UserDefaults.standard.setValue(0.0, forKey: "todayClear")
             }
             defaults.set(newValue, forKey: "lastAccessDate")
         }

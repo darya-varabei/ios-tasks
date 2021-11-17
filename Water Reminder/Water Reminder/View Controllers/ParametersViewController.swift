@@ -38,9 +38,9 @@ class ParametersViewController: UIViewController {
     
     private func setUserParameters() {
         if UserDefaults.standard.double(forKey: "bodyweight") != 0 {
-        self.txtBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: "bodyweight")))
-        self.lblActivity?.text = "\(String(UserDefaults.standard.double(forKey: "activity")))"
-        self.txtRecommended?.text?.append(String(UserDefaults.standard.double(forKey: "doze")))
+            self.txtBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: "bodyweight")))
+            self.lblActivity?.text = "\(String(UserDefaults.standard.double(forKey: "activity")))"
+            self.txtRecommended?.text?.append(String(UserDefaults.standard.double(forKey: "doze")))
         }
         else {
             self.txtBodyWeight?.text?.append(String(user.weight))
@@ -119,7 +119,7 @@ class ParametersViewController: UIViewController {
     }
     
     @IBAction private func btnConfirmUser(_ sender: Any) {
-       
+        
         UserDefaults.standard.setValue(user.weight, forKey: "bodyweight")
         UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: "activity")
         UserDefaults.standard.setValue(user.recommendedDoze, forKey: "doze")
@@ -127,7 +127,7 @@ class ParametersViewController: UIViewController {
     }
     
     @IBAction private func cancelUserData(_ sender: Any) {
-       
+        
         user.weight = UserDefaults.standard.double(forKey: "bodyweight")
         user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
         user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")

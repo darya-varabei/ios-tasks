@@ -114,8 +114,7 @@ class ViewController: UIViewController {
     }
     
     private func removeLast() {
-        let lastItem = consumption.cancelRecentItem()
-        UserDefaults.standard.setValue(consumption.getTotal() - lastItem, forKey: "todayTotal")
+        self.consumption.removeLast()
         let percent = Float(consumption.totalTodayPercent())
         self.wave?.setProgress(percent)
         self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
@@ -133,7 +132,7 @@ class ViewController: UIViewController {
         }
         registProgress()
     }
-
+    
     @IBAction private func addWater(_ sender: Any) {
         self.options.addCustomOption(volume: Double(self.txtWaterToAdd?.text?.toDouble() ?? 0.0))
         self.consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
@@ -184,6 +183,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             let addedAmount = options.quickOptions[indexPath.item - 1].volume
             let totalVolume = self.consumption.getTotal() + addedAmount
             UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
+            if options.quickOptions[indexPath.item - 1].isClearWater {
+                let clearVolume = self.consumption.getClear() + addedAmount
+                UserDefaults.standard.setValue(clearVolume, forKey: "todayClear")
+            }
             self.consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
             self.registProgress()
         }
