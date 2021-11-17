@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         self.setupPercentageLabel()
         setupCollection()
         UserDefaults.lastAccessDate = Date()
-        self.fetchUserStoredData()
+        self.consumption.fetchUserStoredData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,13 +115,14 @@ class ViewController: UIViewController {
     
     private func removeLast() {
         let lastItem = consumption.cancelRecentItem()
-        UserDefaults.standard.setValue(consumption.totalToday - lastItem, forKey: "todayTotal")
+        UserDefaults.standard.setValue(consumption.getTotal() - lastItem, forKey: "todayTotal")
         let percent = Float(consumption.totalTodayPercent())
         self.wave?.setProgress(percent)
         self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     @IBAction private func measureOnlyCleanWater(_ sender: Any) {
+        
         if self.btnOnlyCleanWater.tag == 1 {
             self.btnOnlyCleanWater.tag = 2
             self.btnOnlyCleanWater.setTitle("All beverages", for: .normal)
@@ -132,11 +133,7 @@ class ViewController: UIViewController {
         }
         registProgress()
     }
-    
-    private func fetchUserStoredData() {
-        self.consumption.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
-    }
-    
+
     @IBAction private func addWater(_ sender: Any) {
         self.options.addCustomOption(volume: Double(self.txtWaterToAdd?.text?.toDouble() ?? 0.0))
         self.consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
@@ -185,7 +182,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath != IndexPath(row: 0, section: 0) {
             let addedAmount = options.quickOptions[indexPath.item - 1].volume
-            let totalVolume = self.consumption.totalToday + addedAmount
+            let totalVolume = self.consumption.getTotal() + addedAmount
             UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
             self.consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
             self.registProgress()

@@ -9,8 +9,8 @@ import Foundation
 
 class Consumption {
     let user = User.shared
-    var totalToday: Int = 0
     var recentItemsVolume: [Option] = []
+    private var totalToday: Int = 0
     private var totalClearToday: Int = 0
     
     func addRecentItems(item: Option) {
@@ -50,8 +50,40 @@ class Consumption {
     }
     
     func initUser() {
+        guard UserDefaults.standard.double(forKey: "bodyweight") == 0 else {
         user.weight = UserDefaults.standard.double(forKey: "bodyweight")
         user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
         user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
+            return
+        }
+    }
+    
+    func fetchUserStoredData() {
+        self.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
+        self.totalClearToday = Int(UserDefaults.standard.double(forKey: "todayClear"))
+    }
+    
+    func addTotal(item: Int) {
+        self.totalToday += item
+    }
+    
+    func addClear(item: Int) {
+        self.totalClearToday += item
+    }
+    
+    func setTotal(item: Int) {
+        self.totalToday = item
+    }
+    
+    func setClear(item: Int) {
+        self.totalClearToday = item
+    }
+    
+    func getTotal() -> Int{
+        return self.totalToday
+    }
+    
+    func getClear() -> Int{
+        return self.totalClearToday
     }
 }
