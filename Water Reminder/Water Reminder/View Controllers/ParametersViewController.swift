@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 
+enum UserParameters: String {
+    case bodyweight
+    case gender
+    case activity
+    case doze
+    case todayTotal
+    case todayClear
+}
+
 class ParametersViewController: UIViewController {
     
     @IBOutlet private var lblRecommended: UILabel?
@@ -23,114 +32,114 @@ class ParametersViewController: UIViewController {
     private var user = User.shared
     
     override func viewDidLoad() {
-        self.constForLblRecommended()
-        self.constForTxtRecommended()
-        self.constSegmControl()
-        self.constBtnConfirm()
-        self.constBtnCancel()
-        self.setUserParameters()
+        constForLblRecommended()
+        constForTxtRecommended()
+        constSegmControl()
+        constBtnConfirm()
+        constBtnCancel()
+        setUserParameters()
         
-        self.setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
-        self.txtBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        self.stepperActivity?.addTarget(self, action: #selector(stepperValueChange), for: .valueChanged)
-        self.setGender?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
+        txtBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        stepperActivity?.addTarget(self, action: #selector(stepperValueChange), for: .valueChanged)
+        setGender?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     private func setUserParameters() {
-        if UserDefaults.standard.double(forKey: "bodyweight") != 0 {
-            self.txtBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: "bodyweight")))
-            self.lblActivity?.text = "\(String(UserDefaults.standard.double(forKey: "activity")))"
-            self.txtRecommended?.text?.append(String(UserDefaults.standard.double(forKey: "doze")))
+        if UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue) != 0 {
+            txtBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)))
+            lblActivity?.text = "\(String(UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)))"
+            txtRecommended?.text?.append(String(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)))
         }
         else {
-            self.txtBodyWeight?.text?.append(String(user.weight))
-            self.lblActivity?.text = String(user.averageSportDurationADay)
-            self.txtRecommended?.text?.append(String(user.recommendedDoze))
+            txtBodyWeight?.text?.append(String(user.weight))
+            lblActivity?.text = String(user.averageSportDurationADay)
+            txtRecommended?.text?.append(String(user.recommendedDoze))
         }
     }
     
     private func constForLblRecommended() {
-        self.lblRecommended?.translatesAutoresizingMaskIntoConstraints = false
-        self.lblRecommended?.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        self.lblRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        self.lblRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        self.lblRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        lblRecommended?.translatesAutoresizingMaskIntoConstraints = false
+        lblRecommended?.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lblRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        lblRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        lblRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
     }
     
     private func constForTxtRecommended() {
-        self.txtRecommended?.translatesAutoresizingMaskIntoConstraints = false
-        self.txtRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120).isActive = true
-        self.txtRecommended?.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        self.txtRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
-        self.txtRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        txtRecommended?.translatesAutoresizingMaskIntoConstraints = false
+        txtRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120).isActive = true
+        txtRecommended?.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        txtRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
+        txtRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
     }
     
     private func constSegmControl() {
-        self.setGender?.translatesAutoresizingMaskIntoConstraints = false
-        self.setGender?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        self.setGender?.heightAnchor.constraint(equalToConstant: 31).isActive = true
-        self.setGender?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        self.setGender?.topAnchor.constraint(equalTo: view.topAnchor, constant: 184).isActive = true
+        setGender?.translatesAutoresizingMaskIntoConstraints = false
+        setGender?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
+        setGender?.heightAnchor.constraint(equalToConstant: 31).isActive = true
+        setGender?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
+        setGender?.topAnchor.constraint(equalTo: view.topAnchor, constant: 184).isActive = true
     }
     
     private func constBtnConfirm() {
-        self.btnConfirm?.translatesAutoresizingMaskIntoConstraints = false
-        self.btnConfirm?.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        self.btnConfirm?.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        self.btnConfirm?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23).isActive = true
-        self.btnConfirm?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+        btnConfirm?.translatesAutoresizingMaskIntoConstraints = false
+        btnConfirm?.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        btnConfirm?.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        btnConfirm?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23).isActive = true
+        btnConfirm?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
     }
     
     private func constBtnCancel() {
-        self.btnCancel?.translatesAutoresizingMaskIntoConstraints = false
-        self.btnCancel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        self.btnCancel?.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        self.btnCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23).isActive = true
-        self.btnCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+        btnCancel?.translatesAutoresizingMaskIntoConstraints = false
+        btnCancel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        btnCancel?.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        btnCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23).isActive = true
+        btnCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
     }
     
     @objc private func textFieldDidChange() {
         user.weight = self.txtBodyWeight?.text?.toDouble() ?? 0.0
-        user.averageSportDurationADay = self.lblActivity?.text?.toDouble() ?? 0.0
+        user.averageSportDurationADay = lblActivity?.text?.toDouble() ?? 0.0
         user.countRecommendedWater()
-        self.txtRecommended?.text = "\(user.recommendedDoze)"
+        txtRecommended?.text = "\(user.recommendedDoze)"
     }
     
     @objc private func genderValueChange() {
         
-        if self.setGender?.selectedSegmentIndex == 0 {
+        if setGender?.selectedSegmentIndex == 0 {
             user.gender = .male
         }
-        else if self.setGender?.selectedSegmentIndex == 1 {
+        else if setGender?.selectedSegmentIndex == 1 {
             user.gender = .female
         }
         else {
             user.gender = .other
         }
         user.countRecommendedWater()
-        self.txtRecommended?.text = "\(user.recommendedDoze)"
+        txtRecommended?.text = "\(user.recommendedDoze)"
     }
     
     @objc private func stepperValueChange(_ sender: UIStepper) {
-        self.lblActivity?.text = "\(Float(sender.value).description) hr"
+        lblActivity?.text = "\(Float(sender.value).description) hr"
         user.averageSportDurationADay = Double(sender.value)
         user.countRecommendedWater()
-        self.txtRecommended?.text = "\(user.recommendedDoze)"
+        txtRecommended?.text = "\(user.recommendedDoze)"
     }
     
     @IBAction private func btnConfirmUser(_ sender: Any) {
         
-        UserDefaults.standard.setValue(user.weight, forKey: "bodyweight")
-        UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: "activity")
-        UserDefaults.standard.setValue(user.recommendedDoze, forKey: "doze")
+        UserDefaults.standard.setValue(user.weight, forKey: UserParameters.bodyweight.rawValue)
+        UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: UserParameters.activity.rawValue)
+        UserDefaults.standard.setValue(user.recommendedDoze, forKey: UserParameters.doze.rawValue)
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func cancelUserData(_ sender: Any) {
         
-        user.weight = UserDefaults.standard.double(forKey: "bodyweight")
-        user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
-        user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
+        user.weight = UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)
+        user.averageSportDurationADay = UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)
+        user.recommendedDoze = UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)
         navigationController?.popViewController(animated: true)
     }
 }

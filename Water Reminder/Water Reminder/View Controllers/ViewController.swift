@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet private var txtWaterToAdd: UITextField!
     @IBOutlet private var btnAddWater: UIButton!
     private let options = OptionsViewModel()
-    private let consumption = Consumption()
+    private var consumption = Consumption()
     
     private var lblPercentCompleted: UILabel = {
         let label = UILabel()
@@ -40,17 +40,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.displayAnimatedWater()
-        self.btnUpdateParameters.layer.cornerRadius = 15
-        self.btnOnlyCleanWater.layer.cornerRadius = 15
-        self.btnAddWater.layer.cornerRadius = 15
+        displayAnimatedWater()
+        btnUpdateParameters.layer.cornerRadius = 15
+        btnOnlyCleanWater.layer.cornerRadius = 15
+        btnAddWater.layer.cornerRadius = 15
         
         wave?.startAnimation()
         consumption.initUser()
-        self.setupPercentageLabel()
+        setupPercentageLabel()
         setupCollection()
         UserDefaults.lastAccessDate = Date()
-        self.consumption.fetchUserStoredData()
+        consumption.fetchUserStoredData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,22 +63,22 @@ class ViewController: UIViewController {
     }
     
     private func setupPercentageLabel() {
-        self.wave?.addSubview(lblPercentCompleted)
-        self.lblPercentCompleted.textColor = UIColor(named: "buttonBlueOpaque")
-        self.lblPercentCompleted.centerYAnchor.constraint(equalTo: self.wave!.centerYAnchor, constant: 0).isActive = true
-        self.lblPercentCompleted.centerXAnchor.constraint(equalTo: self.wave!.centerXAnchor, constant: 0).isActive = true
+        wave?.addSubview(lblPercentCompleted)
+        lblPercentCompleted.textColor = UIColor(named: "buttonBlueOpaque")
+        lblPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
+        lblPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true
     }
     
     private func setupCollection() {
-        self.view.addSubview(collectionView)
-        self.collectionView.backgroundColor = .white
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 28)
-        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -0).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.quickOptionsLabel.bottomAnchor, constant: 10).isActive = true
+        collectionView.topAnchor.constraint(equalTo: quickOptionsLabel.bottomAnchor, constant: 10).isActive = true
         collectionView.showsHorizontalScrollIndicator = false
     }
     
@@ -91,52 +91,52 @@ class ViewController: UIViewController {
         borderView.layer.cornerRadius = 105
         borderView.layer.borderWidth = 2
         borderView.layer.borderColor = UIColor(named: "WaveFront")?.cgColor
-        self.view.addSubview(borderView)
+        view.addSubview(borderView)
         
-        self.wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
-        self.wave?.setProgress(Float(consumption.totalTodayPercent()))
+        wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
+        wave?.setProgress(Float(consumption.totalTodayPercent()))
         options.fillOptions()
-        view.addSubview(self.wave ?? self.view)
-        self.wave?.mask = maskView
+        view.addSubview(wave ?? view)
+        wave?.mask = maskView
     }
     
     private func registProgress() {
         
         var percent: Float = 0.0
-        if self.btnOnlyCleanWater.tag == 1 {
+        if btnOnlyCleanWater.tag == 1 {
             percent = Float(consumption.totalTodayPercent())
         }
         else {
             percent = Float(consumption.totalTodayClearPercent())
         }
-        self.wave?.setProgress(percent)
-        self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        wave?.setProgress(percent)
+        lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     private func removeLast() {
-        self.consumption.removeLast()
+        consumption.removeLast()
         let percent = Float(consumption.totalTodayPercent())
-        self.wave?.setProgress(percent)
-        self.lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        wave?.setProgress(percent)
+        lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     @IBAction private func measureOnlyCleanWater(_ sender: Any) {
         
-        if self.btnOnlyCleanWater.tag == 1 {
-            self.btnOnlyCleanWater.tag = 2
-            self.btnOnlyCleanWater.setTitle("All beverages", for: .normal)
+        if btnOnlyCleanWater.tag == 1 {
+            btnOnlyCleanWater.tag = 2
+            btnOnlyCleanWater.setTitle("All beverages", for: .normal)
         }
         else {
-            self.btnOnlyCleanWater.tag = 1
-            self.btnOnlyCleanWater.setTitle("Only clean water", for: .normal)
+            btnOnlyCleanWater.tag = 1
+            btnOnlyCleanWater.setTitle("Only clean water", for: .normal)
         }
         registProgress()
     }
     
     @IBAction private func addWater(_ sender: Any) {
-        self.options.addCustomOption(volume: Double(self.txtWaterToAdd?.text?.toDouble() ?? 0.0))
-        self.consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
-        self.registProgress()
+        options.addCustomOption(volume: Double(txtWaterToAdd?.text?.toDouble() ?? 0.0))
+        consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
+        registProgress()
     }
 }
 
@@ -182,10 +182,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         if indexPath != IndexPath(row: 0, section: 0) {
             let addedAmount = options.quickOptions[indexPath.item - 1].volume
             let totalVolume = self.consumption.getTotal() + addedAmount
-            UserDefaults.standard.setValue(totalVolume, forKey: "todayTotal")
+            UserDefaults.standard.setValue(totalVolume, forKey: UserParameters.todayTotal.rawValue)
             if options.quickOptions[indexPath.item - 1].isClearWater {
                 let clearVolume = self.consumption.getClear() + addedAmount
-                UserDefaults.standard.setValue(clearVolume, forKey: "todayClear")
+                UserDefaults.standard.setValue(clearVolume, forKey: UserParameters.todayClear.rawValue)
             }
             self.consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
             self.registProgress()

@@ -50,25 +50,25 @@ struct Consumption {
     }
     
     func initUser() {
-        guard UserDefaults.standard.double(forKey: "bodyweight") == 0 else {
-            user.weight = UserDefaults.standard.double(forKey: "bodyweight")
-            user.averageSportDurationADay = UserDefaults.standard.double(forKey: "activity")
-            user.recommendedDoze = UserDefaults.standard.double(forKey: "doze")
+        guard UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue) == 0 else {
+            user.weight = UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)
+            user.averageSportDurationADay = UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)
+            user.recommendedDoze = UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)
             return
         }
     }
     
     mutating func fetchUserStoredData() {
-        totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
-        totalClearToday = Int(UserDefaults.standard.double(forKey: "todayClear"))
+        totalToday = Int(UserDefaults.standard.double(forKey: UserParameters.todayTotal.rawValue))
+        totalClearToday = Int(UserDefaults.standard.double(forKey: UserParameters.todayClear.rawValue))
     }
     
     mutating func removeLast() {
         let lastItem = cancelRecentItem()
         if lastItem.isClearWater {
-            UserDefaults.standard.setValue(self.totalClearToday, forKey: "todayClear")
+            UserDefaults.standard.setValue(self.totalClearToday, forKey: UserParameters.todayClear.rawValue)
         }
-        UserDefaults.standard.setValue(self.totalToday, forKey: "todayTotal")
+        UserDefaults.standard.setValue(self.totalToday, forKey: UserParameters.todayTotal.rawValue)
     }
     
     mutating func addTotal(item: Int) {

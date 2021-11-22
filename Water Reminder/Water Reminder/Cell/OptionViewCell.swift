@@ -9,25 +9,26 @@ import UIKit
 
 class OptionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var optionName: UILabel!
-    @IBOutlet weak var optionVolume: UILabel!
-    @IBOutlet weak var optionImage: UIImageView!
+    @IBOutlet private var optionName: UILabel!
+    @IBOutlet private var optionVolume: UILabel!
+    @IBOutlet private var optionImage: UIImageView!
+    private let defaultImage = "watersmall"
     
     var name: String? {
         didSet {
-            self.optionName.text = name
+            optionName.text = name
         }
     }
     
     var volume: String? {
         didSet {
-            self.optionVolume.text = volume
+            optionVolume.text = volume
         }
     }
     
     var image: String? {
         didSet {
-            self.optionImage.image = UIImage(named: image ?? "watersmall")
+            optionImage.image = UIImage(named: image ?? defaultImage)
         }
     }
 }

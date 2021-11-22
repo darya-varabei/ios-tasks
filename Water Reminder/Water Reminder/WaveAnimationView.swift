@@ -15,6 +15,7 @@ public class WaveAnimationView: UIView {
     
     private let frontWaveLayer: CAShapeLayer = CAShapeLayer()
     private let backWaveSubLayer: CAShapeLayer = CAShapeLayer()
+    private let timeInterval = 0.035
     
     private var timer = Timer()
     
@@ -60,11 +61,11 @@ public class WaveAnimationView: UIView {
     
     func setProgress(_ point: Float) {
         let setPoint:CGFloat = CGFloat(min(max(point, 0),1))
-        self.progress = Float(setPoint)
+        progress = Float(setPoint)
     }
     
     func startAnimation() {
-        timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: #selector(waveAnimation), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(waveAnimation), userInfo: nil, repeats: true)
     }
     
     func stopAnimation() {
@@ -76,9 +77,10 @@ public class WaveAnimationView: UIView {
     }
     
     @objc private func wave(layer: CAShapeLayer, path: UIBezierPath, color: UIColor, delay: CGFloat) {
+        let waveOffset: CGFloat = 0.009
         path.removeAllPoints()
         drawWave(layer: layer, path: path, color: color, delay: delay)
-        drawSeconds += 0.009
+        drawSeconds += waveOffset
         drawElapsedTime = drawSeconds * CGFloat(Double.pi)
         
         if drawElapsedTime >= CGFloat(Double.pi) {
@@ -102,18 +104,20 @@ public class WaveAnimationView: UIView {
         
         var x = time
         var y = sin(x)
-        let start = CGPoint(x: yAxis, y: 100 * y + xAxis)
+        let offset: CGFloat = 10
+        let newLineValue: CGFloat = 100
+        let start = CGPoint(x: yAxis, y: newLineValue * y + xAxis)
         
         path.move(to: start)
         
         var iteration = yAxis
-        while iteration <= width + 10 {
-            x = time + ( -yAxis + iteration ) / 100
-            y = sin(x - delay) / self.waveHeight
+        while iteration <= width + offset {
+            x = time + ( -yAxis + iteration ) / newLineValue
+            y = sin(x - delay) / waveHeight
             
-            path.addLine(to: CGPoint(x: iteration, y: 100 * y + xAxis))
+            path.addLine(to: CGPoint(x: iteration, y: newLineValue * y + xAxis))
             
-            iteration += 10
+            iteration += offset
         }
     }
 }

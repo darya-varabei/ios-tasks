@@ -10,10 +10,11 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var returnImage: UIImageView!
+    private let systemImage = "arrowshape.turn.up.backward"
     
     var image: String? {
         didSet {
-            self.returnImage.image = UIImage(systemName: "arrowshape.turn.up.backward")
+            self.returnImage.image = UIImage(systemName: systemImage)
         }
     }
 }

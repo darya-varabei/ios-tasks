@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func toDouble() -> Double? {
+    public func toDouble() -> Double? {
         return NumberFormatter().number(from: self)?.doubleValue
     }
 }
