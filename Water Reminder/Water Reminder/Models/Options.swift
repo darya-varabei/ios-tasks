@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Option {
+struct Option {
     let name: String
     let volume: Int
     let image: String

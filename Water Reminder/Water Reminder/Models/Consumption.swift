@@ -7,29 +7,29 @@
 
 import Foundation
 
-class Consumption {
+struct Consumption {
     let user = User.shared
     var recentItemsVolume: [Option] = []
     private var totalToday: Int = 0
     private var totalClearToday: Int = 0
     
-    func addRecentItems(item: Option) {
-        self.recentItemsVolume.append(item)
-        self.totalToday += item.volume
+    mutating func addRecentItems(item: Option) {
+        recentItemsVolume.append(item)
+        totalToday += item.volume
         
         if item.isClearWater {
-            self.totalClearToday += item.volume
+            totalClearToday += item.volume
         }
     }
     
-    func cancelRecentItem() -> Option {
-        if !self.recentItemsVolume.isEmpty {
-            let lastItem = self.recentItemsVolume.last
-            self.recentItemsVolume.removeLast()
-            self.totalToday -= lastItem?.volume ?? 0
+    mutating func cancelRecentItem() -> Option {
+        if !recentItemsVolume.isEmpty {
+            let lastItem = recentItemsVolume.last
+            recentItemsVolume.removeLast()
+            totalToday -= lastItem?.volume ?? 0
             
             if ((lastItem?.isClearWater) != nil) {
-                self.totalClearToday -= lastItem?.volume ?? 0
+                 totalClearToday -= lastItem?.volume ?? 0
             }
             return lastItem ?? Option(volume: 0)
             
@@ -40,12 +40,12 @@ class Consumption {
     }
     
     func totalTodayPercent() -> Double {
-        let total: Double = Double(self.totalToday)
+        let total: Double = Double(totalToday)
         return total / user.recommendedDoze
     }
     
     func totalTodayClearPercent() -> Double {
-        let total: Double = Double(self.totalClearToday)
+        let total: Double = Double(totalClearToday)
         return total / user.recommendedDoze
     }
     
@@ -58,40 +58,40 @@ class Consumption {
         }
     }
     
-    func fetchUserStoredData() {
-        self.totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
-        self.totalClearToday = Int(UserDefaults.standard.double(forKey: "todayClear"))
+    mutating func fetchUserStoredData() {
+        totalToday = Int(UserDefaults.standard.double(forKey: "todayTotal"))
+        totalClearToday = Int(UserDefaults.standard.double(forKey: "todayClear"))
     }
     
-    func removeLast() {
-        let lastItem = self.cancelRecentItem()
+    mutating func removeLast() {
+        let lastItem = cancelRecentItem()
         if lastItem.isClearWater {
             UserDefaults.standard.setValue(self.totalClearToday, forKey: "todayClear")
         }
         UserDefaults.standard.setValue(self.totalToday, forKey: "todayTotal")
     }
     
-    func addTotal(item: Int) {
-        self.totalToday += item
+    mutating func addTotal(item: Int) {
+        totalToday += item
     }
     
-    func addClear(item: Int) {
-        self.totalClearToday += item
+    mutating func addClear(item: Int) {
+        totalClearToday += item
     }
     
-    func setTotal(item: Int) {
-        self.totalToday = item
+    mutating func setTotal(item: Int) {
+        totalToday = item
     }
     
-    func setClear(item: Int) {
-        self.totalClearToday = item
+    mutating func setClear(item: Int) {
+        totalClearToday = item
     }
     
-    func getTotal() -> Int {
-        return self.totalToday
+    mutating func getTotal() -> Int {
+        return totalToday
     }
     
-    func getClear() -> Int {
-        return self.totalClearToday
+    mutating func getClear() -> Int {
+        return totalClearToday
     }
 }
