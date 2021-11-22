@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     private let options = OptionsViewModel()
     private var consumption = Consumption()
     private let defaultImage = "arrowshape.turn.up.backward"
-    private let fontName = "Futura-Medium"
     
     private var labelPercentCompleted: UILabel = {
         let label = UILabel()

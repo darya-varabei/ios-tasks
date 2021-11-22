@@ -9,12 +9,12 @@ import Foundation
 
 class User {
     
+    private let toMillilitres: Double = 1000
     var weight: Double = 75
     var age: Int = 25
     var averageSportDurationADay: Double = 1
     var gender: Gender = .male
     var recommendedDoze: Double = 2750
-    private let toMillilitres: Double = 1000
     
     static let shared = User()
     
