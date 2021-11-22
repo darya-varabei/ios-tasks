@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonAddWater: UIButton!
     private let options = OptionsViewModel()
     private var consumption = Consumption()
-    private let labelFontSize = 42
+    private let defaultImage = "arrowshape.turn.up.backward"
+    private let fontName = "Futura-Medium"
     
     private var labelPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
-        label.font = UIFont(name: "Futura-Medium", size: 42)
+        label.font = UIFont(name: "Futura-Medium", size: CGFloat(ControllerParameters.percentFontSize.rawValue))
         label.textAlignment = .left
         return label
     }()
@@ -42,9 +43,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayAnimatedWater()
-        buttonUpdateParameters.layer.cornerRadius = 15
-        buttonOnlyCleanWater.layer.cornerRadius = 15
-        buttonAddWater.layer.cornerRadius = 15
+        buttonUpdateParameters.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
+        buttonOnlyCleanWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
+        buttonAddWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
         
         wave?.startAnimation()
         consumption.initUser()
@@ -112,14 +113,14 @@ class ViewController: UIViewController {
             percent = Float(consumption.totalTodayClearPercent())
         }
         wave?.setProgress(percent)
-        labelPercentCompleted.text = "\(min(Int(round(percent * 1000))/10, maxDefault))%"
+        labelPercentCompleted.text = "\(min(Int(round(percent * Float(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, maxDefault))%"
     }
     
     private func removeLast() {
         consumption.removeLast()
         let percent = Float(consumption.totalTodayPercent())
         wave?.setProgress(percent)
-        labelPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        labelPercentCompleted.text = "\(round(percent * Float(ControllerParameters.percentMultiplier.rawValue)) / Float(ControllerParameters.toRound.rawValue))%"
     }
     
     @IBAction private func measureOnlyCleanWater(_ sender: Any) {
@@ -173,7 +174,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         else {
             let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.cancelCell.rawValue, for: indexPath) as! CollectionViewCell
-            cell.image = "arrowshape.turn.up.backward"
+            cell.image = defaultImage
             cell.layer.shadowRadius = CGFloat(CollectionConstants.cellShadowRadius)
             cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)
             return cell

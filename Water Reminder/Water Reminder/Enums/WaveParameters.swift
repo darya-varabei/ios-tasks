@@ -12,4 +12,6 @@ enum WaveParameters: Int {
     case borderSize = 180
     case cornerRadius = 85
     case borderRadius = 90
+    case borderOffset = 35
+    case waveOffset = 0
 }

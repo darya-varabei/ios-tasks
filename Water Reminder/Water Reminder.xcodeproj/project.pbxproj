@@ -24,6 +24,7 @@
 		4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */; };
 		4BBE57F7273A90FC00AF0B5E /* OptionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */; };
 		D5BA86EB274C1DE7009C7B89 /* WaveParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */; };
+		D5BA86EE274C23F6009C7B89 /* ControllerParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */; };
 		D5CE5161274B5FB30000CED6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5160274B5FB30000CED6 /* Notification.swift */; };
 		D5CE5164274B610B0000CED6 /* UserDefaults+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5163274B610A0000CED6 /* UserDefaults+Date.swift */; };
 		D5CE5167274B61490000CED6 /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5166274B61490000CED6 /* String+ToDouble.swift */; };
@@ -54,6 +55,7 @@
 		4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewCell.swift; sourceTree = "<group>"; };
 		4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionViewCell.xib; sourceTree = "<group>"; };
 		D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveParameters.swift; sourceTree = "<group>"; };
+		D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerParameters.swift; sourceTree = "<group>"; };
 		D5CE5160274B5FB30000CED6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		D5CE5163274B610A0000CED6 /* UserDefaults+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Date.swift"; sourceTree = "<group>"; };
 		D5CE5166274B61490000CED6 /* String+ToDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDouble.swift"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				D5CE5173274B76B60000CED6 /* ButtonTitle.swift */,
 				D5CE5176274B777F0000CED6 /* CustomColor.swift */,
 				D5CE5179274B7B2A0000CED6 /* CellIdentifier.swift */,
+				D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */,
 				D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */,
 			);
 			path = Enums;
@@ -239,6 +242,7 @@
 				D5CE5174274B76B60000CED6 /* ButtonTitle.swift in Sources */,
 				4BBE57D8273A670400AF0B5E /* ViewController.swift in Sources */,
 				D5CE5177274B777F0000CED6 /* CustomColor.swift in Sources */,
+				D5BA86EE274C23F6009C7B89 /* ControllerParameters.swift in Sources */,
 				4BBE57F1273A843C00AF0B5E /* OptionsViewModel.swift in Sources */,
 				D5CE5171274B752A0000CED6 /* UserCoefficients.swift in Sources */,
 				4BBE57EB273A673900AF0B5E /* WaveAnimationView.swift in Sources */,
