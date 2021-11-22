@@ -16,12 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonAddWater: UIButton!
     private let options = OptionsViewModel()
     private var consumption = Consumption()
+    private let labelFontSize = 42
     
     private var labelPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
-        label.font = UIFont(name: "Futura-Medium", size: 56)
+        label.font = UIFont(name: "Futura-Medium", size: 42)
         label.textAlignment = .left
         return label
     }()
@@ -83,17 +84,17 @@ class ViewController: UIViewController {
     }
     
     private func displayAnimatedWater() {
-        let maskView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let maskView = UIView(frame: CGRect(x: 0, y: 0, width: WaveParameters.size.rawValue, height: WaveParameters.size.rawValue))
         maskView.backgroundColor = .red
-        maskView.layer.cornerRadius = 100
+        maskView.layer.cornerRadius = CGFloat(WaveParameters.cornerRadius.rawValue)
         
-        let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 105, y: UIScreen.main.bounds.height / 3 - 55, width: 210, height: 210))
-        borderView.layer.cornerRadius = 105
+        let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 85, y: UIScreen.main.bounds.height / 3 - 35, width: CGFloat(WaveParameters.borderSize.rawValue), height: CGFloat(WaveParameters.borderSize.rawValue)))
+        borderView.layer.cornerRadius = CGFloat(WaveParameters.borderRadius.rawValue)
         borderView.layer.borderWidth = 2
         borderView.layer.borderColor = UIColor(named:  CustomColor.waveFront.rawValue)?.cgColor
         view.addSubview(borderView)
         
-        wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
+        wave = WaveAnimationView(frame: CGRect(x: Int(UIScreen.main.bounds.width) / 2 - 80, y: Int(UIScreen.main.bounds.height) / 3 - 30, width: WaveParameters.size.rawValue, height: WaveParameters.size.rawValue))
         wave?.setProgress(Float(consumption.totalTodayPercent()))
         options.fillOptions()
         view.addSubview(wave ?? view)
@@ -103,6 +104,7 @@ class ViewController: UIViewController {
     private func registProgress() {
         
         var percent: Float = 0.0
+        let maxDefault = 999
         if buttonOnlyCleanWater.tag == 1 {
             percent = Float(consumption.totalTodayPercent())
         }
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
             percent = Float(consumption.totalTodayClearPercent())
         }
         wave?.setProgress(percent)
-        labelPercentCompleted.text = "\(min(round(percent * 1000)/10, 999))%"
+        labelPercentCompleted.text = "\(min(Int(round(percent * 1000))/10, maxDefault))%"
     }
     
     private func removeLast() {

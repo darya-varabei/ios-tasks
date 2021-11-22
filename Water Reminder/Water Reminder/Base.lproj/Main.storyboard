@@ -32,13 +32,13 @@
                                 <color key="textColor" name="buttonBlue"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXy-5p-g1d">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" verticalCompressionResistancePriority="745" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXy-5p-g1d">
                                 <rect key="frame" x="16" y="331" width="140" height="45"/>
                                 <color key="backgroundColor" name="buttonBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="JK9-yC-WMD"/>
                                     <constraint firstAttribute="height" constant="45" id="JUC-oX-HxX"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="c63-lV-Koo"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="c63-lV-Koo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <state key="normal" title="Only clean water">
@@ -48,12 +48,12 @@
                                     <action selector="measureOnlyCleanWater:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ILn-DR-Z53"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZX-Vn-h2d">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="745" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZX-Vn-h2d">
                                 <rect key="frame" x="160" y="331" width="140" height="45"/>
                                 <color key="backgroundColor" name="buttonBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Lei-d4-Kkk"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="bky-EX-6FW"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="bky-EX-6FW"/>
                                     <constraint firstAttribute="height" constant="45" id="pVB-Ul-pOV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
@@ -214,6 +214,9 @@
                                                     <constraint firstAttribute="width" constant="140" id="ZeC-Zr-S4g"/>
                                                 </constraints>
                                                 <state key="normal" title="       Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelUserData:" destination="P4D-VI-T1l" eventType="touchUpInside" id="7zl-40-bKe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfC-OZ-O22">
                                                 <rect key="frame" x="151" y="7" width="140" height="30"/>
@@ -221,6 +224,9 @@
                                                     <constraint firstAttribute="width" constant="140" id="qif-XT-ACv"/>
                                                 </constraints>
                                                 <state key="normal" title="Confirm changes"/>
+                                                <connections>
+                                                    <action selector="btnConfirmUser:" destination="P4D-VI-T1l" eventType="touchUpInside" id="jIV-W1-jXN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="tintColor" name="buttonBlue"/>
