@@ -11,4 +11,5 @@ enum CustomColor: String {
     case blueButtonOpaque
     case buttonBlue
     case waveFront
+    case waveBack
 }

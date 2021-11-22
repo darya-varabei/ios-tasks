@@ -38,8 +38,8 @@ public class WaveAnimationView: UIView {
     private let waveHeight: CGFloat = 20.0
     private let waveDelay: CGFloat = 500.0
     
-    private let frontColor: UIColor = UIColor(named: "WaveBack") ?? UIColor.blue
-    private let backColor: UIColor = UIColor(named: "WaveFront") ?? UIColor.blue
+    private let frontColor: UIColor = UIColor(named: CustomColor.waveBack.rawValue) ?? UIColor.blue
+    private let backColor: UIColor = UIColor(named: CustomColor.waveFront.rawValue) ?? UIColor.blue
     
     public override init(frame: CGRect) {
         self.width = frame.width

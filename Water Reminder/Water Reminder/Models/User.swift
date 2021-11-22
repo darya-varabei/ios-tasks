@@ -8,6 +8,7 @@
 import Foundation
 
 class User {
+    
     var weight: Double = 75
     var age: Int = 25
     var averageSportDurationADay: Double = 1
@@ -22,11 +23,11 @@ class User {
     func countRecommendedWater() {
         switch(gender) {
         case .female:
-            self.recommendedDoze =  (self.weight * WeightCoefficient.femaleCoef.rawValue + self.averageSportDurationADay * ActivityCoefficient.femaleCoef.rawValue) * toMillilitres
+            recommendedDoze =  (weight * WeightCoefficient.femaleCoef.rawValue + averageSportDurationADay * ActivityCoefficient.femaleCoef.rawValue) * toMillilitres
         case .male:
-            self.recommendedDoze =  (self.weight * WeightCoefficient.maleCoef.rawValue + self.averageSportDurationADay * ActivityCoefficient.maleCoef.rawValue) * toMillilitres
+            recommendedDoze =  (weight * WeightCoefficient.maleCoef.rawValue + averageSportDurationADay * ActivityCoefficient.maleCoef.rawValue) * toMillilitres
         case .other:
-            self.recommendedDoze =  (self.weight * WeightCoefficient.otherCoef.rawValue + self.averageSportDurationADay * ActivityCoefficient.otherCoef.rawValue) * toMillilitres
+            recommendedDoze =  (weight * WeightCoefficient.otherCoef.rawValue + averageSportDurationADay * ActivityCoefficient.otherCoef.rawValue) * toMillilitres
         }
     }
 }

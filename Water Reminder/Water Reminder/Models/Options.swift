@@ -13,14 +13,14 @@ struct Option {
     let image: String
     let isClearWater: Bool
     
-    public init(volume: Double) {
+    init(volume: Double) {
         self.name = ""
         self.image = ""
         self.isClearWater = true
         self.volume = Int(volume)
     }
     
-    public init(name: String, volume: Int, image: String, isClearWater: Bool) {
+    init(name: String, volume: Int, image: String, isClearWater: Bool) {
         self.name = name
         self.volume = volume
         self.image = image

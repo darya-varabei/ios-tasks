@@ -14,7 +14,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     var image: String? {
         didSet {
-            self.returnImage.image = UIImage(systemName: systemImage)
+            self.returnImage.image = UIImage(systemName: image ?? systemImage)
         }
     }
 }

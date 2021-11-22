@@ -90,7 +90,7 @@ class ParametersViewController: UIViewController {
     }
     
     @objc private func textFieldDidChange() {
-        user.weight = self.txtBodyWeight?.text?.toDouble() ?? 0.0
+        user.weight = txtBodyWeight?.text?.toDouble() ?? 0.0
         user.averageSportDurationADay = lblActivity?.text?.toDouble() ?? 0.0
         user.countRecommendedWater()
         txtRecommended?.text = "\(user.recommendedDoze)"
