@@ -10,17 +10,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet private var quickOptionsLabel: UILabel!
-    @IBOutlet private var btnUpdateParameters: UIButton!
-    @IBOutlet private var btnOnlyCleanWater: UIButton!
-    @IBOutlet private var txtWaterToAdd: UITextField!
-    @IBOutlet private var btnAddWater: UIButton!
+    @IBOutlet private var buttonUpdateParameters: UIButton!
+    @IBOutlet private var buttonOnlyCleanWater: UIButton!
+    @IBOutlet private var textFieldWaterToAdd: UITextField!
+    @IBOutlet private var buttonAddWater: UIButton!
     private let options = OptionsViewModel()
     private var consumption = Consumption()
     
-    private var lblPercentCompleted: UILabel = {
+    private var labelPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(named: CustomColor.blueButtonOpaque.rawValue)
+        label.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
         label.font = UIFont(name: "Futura-Medium", size: 56)
         label.textAlignment = .left
         return label
@@ -41,9 +41,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayAnimatedWater()
-        btnUpdateParameters.layer.cornerRadius = 15
-        btnOnlyCleanWater.layer.cornerRadius = 15
-        btnAddWater.layer.cornerRadius = 15
+        buttonUpdateParameters.layer.cornerRadius = 15
+        buttonOnlyCleanWater.layer.cornerRadius = 15
+        buttonAddWater.layer.cornerRadius = 15
         
         wave?.startAnimation()
         consumption.initUser()
@@ -63,10 +63,10 @@ class ViewController: UIViewController {
     }
     
     private func setupPercentageLabel() {
-        wave?.addSubview(lblPercentCompleted)
-        lblPercentCompleted.textColor = UIColor(named: CustomColor.buttonBlue.rawValue)
-        lblPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
-        lblPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true
+        wave?.addSubview(labelPercentCompleted)
+        labelPercentCompleted.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
+        labelPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
+        labelPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true
     }
     
     private func setupCollection() {
@@ -103,38 +103,38 @@ class ViewController: UIViewController {
     private func registProgress() {
         
         var percent: Float = 0.0
-        if btnOnlyCleanWater.tag == 1 {
+        if buttonOnlyCleanWater.tag == 1 {
             percent = Float(consumption.totalTodayPercent())
         }
         else {
             percent = Float(consumption.totalTodayClearPercent())
         }
         wave?.setProgress(percent)
-        lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        labelPercentCompleted.text = "\(min(round(percent * 1000)/10, 999))%"
     }
     
     private func removeLast() {
         consumption.removeLast()
         let percent = Float(consumption.totalTodayPercent())
         wave?.setProgress(percent)
-        lblPercentCompleted.text = "\(round(percent * 1000)/10)%"
+        labelPercentCompleted.text = "\(round(percent * 1000)/10)%"
     }
     
     @IBAction private func measureOnlyCleanWater(_ sender: Any) {
         
-        if btnOnlyCleanWater.tag == 1 {
-            btnOnlyCleanWater.tag = 2
-            btnOnlyCleanWater.setTitle(ButtonTitle.allBeverages.rawValue, for: .normal)
+        if buttonOnlyCleanWater.tag == 1 {
+            buttonOnlyCleanWater.tag = 2
+            buttonOnlyCleanWater.setTitle(ButtonTitle.allBeverages.rawValue, for: .normal)
         }
         else {
-            btnOnlyCleanWater.tag = 1
-            btnOnlyCleanWater.setTitle(ButtonTitle.onlyCleanWater.rawValue, for: .normal)
+            buttonOnlyCleanWater.tag = 1
+            buttonOnlyCleanWater.setTitle(ButtonTitle.onlyCleanWater.rawValue, for: .normal)
         }
         registProgress()
     }
     
     @IBAction private func addWater(_ sender: Any) {
-        options.addCustomOption(volume: Double(txtWaterToAdd?.text?.toDouble() ?? 0.0))
+        options.addCustomOption(volume: Double(textFieldWaterToAdd?.text?.toDouble() ?? 0.0))
         consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
         registProgress()
     }
