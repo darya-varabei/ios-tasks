@@ -1,8 +1,8 @@
 //
-//  Extensions.swift
+//  UserDefaults+Date.swift
 //  Water Reminder
 //
-//  Created by Darya on 11/12/21.
+//  Created by Дарья Воробей on 11/22/21.
 //
 
 import Foundation
@@ -32,11 +32,5 @@ extension UserDefaults {
     
     static func reset() {
         defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier ?? "")
-    }
-}
-
-extension String {
-    func toDouble() -> Double? {
-        return NumberFormatter().number(from: self)?.doubleValue
     }
 }
