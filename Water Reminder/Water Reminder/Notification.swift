@@ -10,6 +10,10 @@ import NotificationCenter
 
 class Notification {
     let notificationCenter = UNUserNotificationCenter.current()
+    let notificationTitle = "Water reminder"
+    let notificationBody = "It's time to drink some water"
+    let identifier = "notification"
+    let timeInterval: TimeInterval = 10800
     
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) {(granted, error) in
@@ -23,12 +27,12 @@ class Notification {
     func sendNotifications() {
         
         let content = UNMutableNotificationContent()
-        content.title = "Water reminder"
-        content.body = "It's time to drink some water"
+        content.title = notificationTitle
+        content.body = notificationBody
         content.sound = UNNotificationSound.default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10800, repeats: true)
-        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         notificationCenter.add(request) { (error) in
         }
     }

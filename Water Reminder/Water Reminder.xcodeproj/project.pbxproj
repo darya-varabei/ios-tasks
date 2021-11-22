@@ -26,6 +26,11 @@
 		D5CE5161274B5FB30000CED6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5160274B5FB30000CED6 /* Notification.swift */; };
 		D5CE5164274B610B0000CED6 /* UserDefaults+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5163274B610A0000CED6 /* UserDefaults+Date.swift */; };
 		D5CE5167274B61490000CED6 /* String+ToDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5166274B61490000CED6 /* String+ToDouble.swift */; };
+		D5CE516E274B74F40000CED6 /* UserParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE516D274B74F40000CED6 /* UserParameters.swift */; };
+		D5CE5171274B752A0000CED6 /* UserCoefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5170274B752A0000CED6 /* UserCoefficients.swift */; };
+		D5CE5174274B76B60000CED6 /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5173274B76B60000CED6 /* ButtonTitle.swift */; };
+		D5CE5177274B777F0000CED6 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5176274B777F0000CED6 /* CustomColor.swift */; };
+		D5CE517A274B7B2A0000CED6 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5179274B7B2A0000CED6 /* CellIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,11 @@
 		D5CE5160274B5FB30000CED6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		D5CE5163274B610A0000CED6 /* UserDefaults+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Date.swift"; sourceTree = "<group>"; };
 		D5CE5166274B61490000CED6 /* String+ToDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDouble.swift"; sourceTree = "<group>"; };
+		D5CE516D274B74F40000CED6 /* UserParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParameters.swift; sourceTree = "<group>"; };
+		D5CE5170274B752A0000CED6 /* UserCoefficients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoefficients.swift; sourceTree = "<group>"; };
+		D5CE5173274B76B60000CED6 /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
+		D5CE5176274B777F0000CED6 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		D5CE5179274B7B2A0000CED6 /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +152,11 @@
 		D5CE516C274B74C00000CED6 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				D5CE516D274B74F40000CED6 /* UserParameters.swift */,
+				D5CE5170274B752A0000CED6 /* UserCoefficients.swift */,
+				D5CE5173274B76B60000CED6 /* ButtonTitle.swift */,
+				D5CE5176274B777F0000CED6 /* CustomColor.swift */,
+				D5CE5179274B7B2A0000CED6 /* CellIdentifier.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -218,12 +233,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CE5174274B76B60000CED6 /* ButtonTitle.swift in Sources */,
 				4BBE57D8273A670400AF0B5E /* ViewController.swift in Sources */,
+				D5CE5177274B777F0000CED6 /* CustomColor.swift in Sources */,
 				4BBE57F1273A843C00AF0B5E /* OptionsViewModel.swift in Sources */,
+				D5CE5171274B752A0000CED6 /* UserCoefficients.swift in Sources */,
 				4BBE57EB273A673900AF0B5E /* WaveAnimationView.swift in Sources */,
+				D5CE517A274B7B2A0000CED6 /* CellIdentifier.swift in Sources */,
 				4B649576273BC2A90028D261 /* ParametersViewController.swift in Sources */,
 				4BBE57ED273A803E00AF0B5E /* User.swift in Sources */,
 				4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */,
+				D5CE516E274B74F40000CED6 /* UserParameters.swift in Sources */,
 				4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */,
 				D5CE5161274B5FB30000CED6 /* Notification.swift in Sources */,
 				4B33989A273EB42200573EDC /* CollectionViewCell.swift in Sources */,

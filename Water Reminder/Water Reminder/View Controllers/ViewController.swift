@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var lblPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(named: "blueButtonOpaque")
+        label.textColor = UIColor(named: CustomColor.blueButtonOpaque.rawValue)
         label.font = UIFont(name: "Futura-Medium", size: 56)
         label.textAlignment = .left
         return label
@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UINib(nibName: "OptionViewCell", bundle: nil), forCellWithReuseIdentifier: "OptionViewCell")
-        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cancelCell")
+        collectionView.register(UINib(nibName: CellIdentifier.optionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.optionViewCell.rawValue)
+        collectionView.register(UINib(nibName: CellIdentifier.collectionViewCell.rawValue, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.cancelCell.rawValue)
         return collectionView
     }()
     
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     
     private func setupPercentageLabel() {
         wave?.addSubview(lblPercentCompleted)
-        lblPercentCompleted.textColor = UIColor(named: "buttonBlueOpaque")
+        lblPercentCompleted.textColor = UIColor(named: CustomColor.buttonBlue.rawValue)
         lblPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
         lblPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true
     }
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
         let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 105, y: UIScreen.main.bounds.height / 3 - 55, width: 210, height: 210))
         borderView.layer.cornerRadius = 105
         borderView.layer.borderWidth = 2
-        borderView.layer.borderColor = UIColor(named: "WaveFront")?.cgColor
+        borderView.layer.borderColor = UIColor(named:  CustomColor.waveFront.rawValue)?.cgColor
         view.addSubview(borderView)
         
         wave = WaveAnimationView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 100, y: UIScreen.main.bounds.height / 3 - 50, width: 200, height: 200))
@@ -124,11 +124,11 @@ class ViewController: UIViewController {
         
         if btnOnlyCleanWater.tag == 1 {
             btnOnlyCleanWater.tag = 2
-            btnOnlyCleanWater.setTitle("All beverages", for: .normal)
+            btnOnlyCleanWater.setTitle(ButtonTitle.allBeverages.rawValue, for: .normal)
         }
         else {
             btnOnlyCleanWater.tag = 1
-            btnOnlyCleanWater.setTitle("Only clean water", for: .normal)
+            btnOnlyCleanWater.setTitle(ButtonTitle.onlyCleanWater.rawValue, for: .normal)
         }
         registProgress()
     }
@@ -160,7 +160,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         if indexPath != IndexPath(row: 0, section: 0) {
             
-            let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "OptionViewCell", for: indexPath) as? OptionViewCell)!
+            let cell: OptionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.optionViewCell.rawValue, for: indexPath) as? OptionViewCell)!
             cell.name = options.quickOptions[indexPath.item - 1].name
             cell.volume = "\(options.quickOptions[indexPath.item - 1].volume) ml"
             cell.image = options.quickOptions[indexPath.item - 1].image
@@ -170,7 +170,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         }
         
         else {
-            let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cancelCell", for: indexPath) as! CollectionViewCell
+            let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.cancelCell.rawValue, for: indexPath) as! CollectionViewCell
             cell.image = "arrowshape.turn.up.backward"
             cell.layer.shadowRadius = CGFloat(CollectionConstants.cellShadowRadius)
             cell.layer.cornerRadius = CGFloat(CollectionConstants.cellCornerRadius)

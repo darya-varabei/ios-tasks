@@ -13,20 +13,19 @@ extension UserDefaults {
     
     static var lastAccessDate: Date? {
         get {
-            return defaults.object(forKey: "lastAccessDate") as? Date
+            return defaults.object(forKey: UserParameters.lastAccessDate.rawValue) as? Date
         }
         set {
             guard let newValue = newValue else { return }
             guard let lastAccessDate = lastAccessDate else {
-                defaults.set(newValue, forKey: "lastAccessDate")
+                defaults.set(newValue, forKey: UserParameters.lastAccessDate.rawValue)
                 return
             }
             if !Calendar.current.isDateInToday(lastAccessDate) {
-                print("remove Persistent Domain")
-                UserDefaults.standard.setValue(0.0, forKey: "todayTotal")
-                UserDefaults.standard.setValue(0.0, forKey: "todayClear")
+                UserDefaults.standard.setValue(0.0, forKey: UserParameters.todayTotal.rawValue)
+                UserDefaults.standard.setValue(0.0, forKey:  UserParameters.todayClear.rawValue)
             }
-            defaults.set(newValue, forKey: "lastAccessDate")
+            defaults.set(newValue, forKey: UserParameters.lastAccessDate.rawValue)
         }
     }
     

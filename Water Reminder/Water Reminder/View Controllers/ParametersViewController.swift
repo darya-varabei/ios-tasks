@@ -8,15 +8,6 @@
 import Foundation
 import UIKit
 
-enum UserParameters: String {
-    case bodyweight
-    case gender
-    case activity
-    case doze
-    case todayTotal
-    case todayClear
-}
-
 class ParametersViewController: UIViewController {
     
     @IBOutlet private var lblRecommended: UILabel?
