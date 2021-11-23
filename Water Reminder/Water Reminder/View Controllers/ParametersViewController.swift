@@ -22,6 +22,31 @@ class ParametersViewController: UIViewController {
     @IBOutlet private var buttonCancel: UIButton?
     private var user = User.shared
     
+    
+    private enum LabelConstraint: CGFloat {
+        case height = 20
+        case top = 60
+    }
+    
+    private enum textFieldConstraint: CGFloat {
+        case sides = 120
+        case height = 40
+        case top = 100
+    }
+    
+    private enum SegmentConstraint: CGFloat {
+        case sides = 40
+        case height = 31
+        case top = 184
+    }
+    
+    private enum ButtonConstraint: CGFloat {
+        case width = 160
+        case height = 45
+        case side = 23
+        case top = 580
+    }
+    
     override func viewDidLoad() {
         constForLblRecommended()
         constForTxtRecommended()
@@ -49,42 +74,42 @@ class ParametersViewController: UIViewController {
     
     private func constForLblRecommended() {
         labelRecommended?.translatesAutoresizingMaskIntoConstraints = false
-        labelRecommended?.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        labelRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        labelRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        labelRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        labelRecommended?.heightAnchor.constraint(equalToConstant: LabelConstraint.height.rawValue).isActive = true
+        labelRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LabelConstraint.height.rawValue).isActive = true
+        labelRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LabelConstraint.height.rawValue).isActive = true
+        labelRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: LabelConstraint.top.rawValue).isActive = true
     }
     
     private func constForTxtRecommended() {
         textFieldRecommended?.translatesAutoresizingMaskIntoConstraints = false
-        textFieldRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120).isActive = true
-        textFieldRecommended?.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textFieldRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
-        textFieldRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        textFieldRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -textFieldConstraint.sides.rawValue).isActive = true
+        textFieldRecommended?.heightAnchor.constraint(equalToConstant: textFieldConstraint.height.rawValue).isActive = true
+        textFieldRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: textFieldConstraint.sides.rawValue).isActive = true
+        textFieldRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: textFieldConstraint.top.rawValue).isActive = true
     }
     
     private func constSegmControl() {
         setGender?.translatesAutoresizingMaskIntoConstraints = false
-        setGender?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        setGender?.heightAnchor.constraint(equalToConstant: 31).isActive = true
-        setGender?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        setGender?.topAnchor.constraint(equalTo: view.topAnchor, constant: 184).isActive = true
+        setGender?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -SegmentConstraint.sides.rawValue).isActive = true
+        setGender?.heightAnchor.constraint(equalToConstant: SegmentConstraint.height.rawValue).isActive = true
+        setGender?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SegmentConstraint.sides.rawValue).isActive = true
+        setGender?.topAnchor.constraint(equalTo: view.topAnchor, constant: SegmentConstraint.top.rawValue).isActive = true
     }
     
     private func constBtnConfirm() {
         buttonConfirm?.translatesAutoresizingMaskIntoConstraints = false
-        buttonConfirm?.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        buttonConfirm?.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        buttonConfirm?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23).isActive = true
-        buttonConfirm?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+        buttonConfirm?.widthAnchor.constraint(equalToConstant: ButtonConstraint.width.rawValue).isActive = true
+        buttonConfirm?.heightAnchor.constraint(equalToConstant: ButtonConstraint.height.rawValue).isActive = true
+        buttonConfirm?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ButtonConstraint.side.rawValue).isActive = true
+        buttonConfirm?.topAnchor.constraint(equalTo: view.topAnchor, constant: ButtonConstraint.top.rawValue).isActive = true
     }
     
     private func constBtnCancel() {
         buttonCancel?.translatesAutoresizingMaskIntoConstraints = false
-        buttonCancel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        buttonCancel?.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        buttonCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23).isActive = true
-        buttonCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: 580).isActive = true
+        buttonCancel?.widthAnchor.constraint(equalToConstant: ButtonConstraint.width.rawValue).isActive = true
+        buttonCancel?.heightAnchor.constraint(equalToConstant: ButtonConstraint.height.rawValue).isActive = true
+        buttonCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ButtonConstraint.side.rawValue).isActive = true
+        buttonCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: ButtonConstraint.top.rawValue).isActive = true
     }
     
     @objc private func textFieldDidChange() {

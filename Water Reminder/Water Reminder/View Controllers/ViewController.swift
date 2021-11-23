@@ -18,6 +18,18 @@ class ViewController: UIViewController {
     private var consumption = Consumption()
     private let defaultImage = "arrowshape.turn.up.backward"
     
+    private enum Constraint: CGFloat {
+        case collectionInstets = 28
+        case collectionBottom = 20
+        case collectionLeading = 10
+        case waveInset = 80
+        case borderInset = 85
+        case heightMultiplier = 3
+        case widthMultiplier = 2
+        case borderStepper = 35
+        case waveStepper = 30
+    }
+    
     private var labelPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,11 +87,11 @@ class ViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 28)
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: Constraint.collectionInstets.rawValue, bottom: 0, right: Constraint.collectionInstets.rawValue)
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constraint.collectionBottom.rawValue).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constraint.collectionLeading.rawValue).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -0).isActive = true
-        collectionView.topAnchor.constraint(equalTo: quickOptionsLabel.bottomAnchor, constant: 10).isActive = true
+        collectionView.topAnchor.constraint(equalTo: quickOptionsLabel.bottomAnchor, constant: Constraint.collectionLeading.rawValue).isActive = true
         collectionView.showsHorizontalScrollIndicator = false
     }
     
@@ -88,13 +100,13 @@ class ViewController: UIViewController {
         maskView.backgroundColor = .red
         maskView.layer.cornerRadius = CGFloat(WaveParameters.cornerRadius.rawValue)
         
-        let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / 2 - 85, y: UIScreen.main.bounds.height / 3 - 35, width: CGFloat(WaveParameters.borderSize.rawValue), height: CGFloat(WaveParameters.borderSize.rawValue)))
+        let borderView = UIView(frame: CGRect(x: UIScreen.main.bounds.width / Constraint.widthMultiplier.rawValue - Constraint.borderInset.rawValue, y: UIScreen.main.bounds.height / Constraint.heightMultiplier.rawValue - Constraint.borderStepper.rawValue, width: CGFloat(WaveParameters.borderSize.rawValue), height: CGFloat(WaveParameters.borderSize.rawValue)))
         borderView.layer.cornerRadius = CGFloat(WaveParameters.borderRadius.rawValue)
         borderView.layer.borderWidth = 2
         borderView.layer.borderColor = UIColor(named:  CustomColor.waveFront.rawValue)?.cgColor
         view.addSubview(borderView)
         
-        wave = WaveAnimationView(frame: CGRect(x: Int(UIScreen.main.bounds.width) / 2 - 80, y: Int(UIScreen.main.bounds.height) / 3 - 30, width: WaveParameters.size.rawValue, height: WaveParameters.size.rawValue))
+        wave = WaveAnimationView(frame: CGRect(x: Int(UIScreen.main.bounds.width / Constraint.widthMultiplier.rawValue - Constraint.waveInset.rawValue), y: Int(UIScreen.main.bounds.height / Constraint.heightMultiplier.rawValue) - Int(Constraint.waveStepper.rawValue), width: WaveParameters.size.rawValue, height: WaveParameters.size.rawValue))
         wave?.setProgress(Float(consumption.totalTodayPercent()))
         options.fillOptions()
         view.addSubview(wave ?? view)
