@@ -17,29 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="748" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
+                            <stackView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="748" axis="vertical" distribution="equalSpacing" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
                                 <rect key="frame" x="30" y="74" width="354" height="748"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="350" verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="336.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="336"/>
                                         <color key="backgroundColor" name="headerStart"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Qbi-eN-t40" secondAttribute="height" multiplier="59:56" id="CFy-Tj-QBD"/>
+                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="center" horizontalHuggingPriority="200" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="600" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
-                                        <rect key="frame" x="0.0" y="356.5" width="354" height="289.5"/>
+                                        <rect key="frame" x="0.0" y="357.5" width="354" height="189"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="200" placeholderIntrinsicWidth="184" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-9n-bKE">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="289.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="219" height="189"/>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="264" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-TO-HqR">
-                                                <rect key="frame" x="194.5" y="0.0" width="159.5" height="289.5"/>
+                                                <rect key="frame" x="229" y="0.0" width="125" height="189"/>
                                                 <color key="backgroundColor" name="ticketStart"/>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oub-be-40L" secondAttribute="height" multiplier="59:32" constant="6" id="AVh-mL-HaX"/>
+                                        </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC">
-                                        <rect key="frame" x="0.0" y="666" width="354" height="82"/>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC">
+                                        <rect key="frame" x="0.0" y="568" width="354" height="180"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Cjy-XL-3wC" secondAttribute="height" multiplier="59:30" id="XQ0-2K-qsW"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
