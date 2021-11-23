@@ -9,17 +9,17 @@ import UIKit
 
 class CountryHeaderView: UIView {
     
-    let countryName: UILabel = {
+    private let countryName: UILabel = {
         let label = UILabel()
-        label.text = "Country is named: "
+        label.text = "Country is Italy: "
         label.backgroundColor = UIColor.white
         label.textColor = UIColor.blue
         return label
     }()
     
-    let capitalCity: UILabel = {
+    private let capitalCity: UILabel = {
         let label = UILabel()
-        label.text = "Republic of Italy, capital city - Rome"
+        label.text = "Capital - Rome"
         label.backgroundColor = UIColor.white
         label.textColor = UIColor.blue
         return label
@@ -27,7 +27,7 @@ class CountryHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupViews()
+        setupViews()
         setupConstraints()
     }
     
@@ -37,27 +37,27 @@ class CountryHeaderView: UIView {
         setupConstraints()
     }
     
-    func setupViews() {
+    private func setupViews() {
         self.addSubview(capitalCity)
         self.addSubview(countryName)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.countryName.translatesAutoresizingMaskIntoConstraints = false
-        self.countryName.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        self.countryName.rightAnchor.constraint(greaterThanOrEqualTo: self.capitalCity.leftAnchor, constant: -10).isActive = true
-        self.countryName.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        countryName.translatesAutoresizingMaskIntoConstraints = false
+        countryName.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        countryName.rightAnchor.constraint(greaterThanOrEqualTo: capitalCity.leftAnchor, constant: -10).isActive = true
+        countryName.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        self.capitalCity.translatesAutoresizingMaskIntoConstraints = false
-        self.capitalCity.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        self.capitalCity.leftAnchor.constraint(greaterThanOrEqualTo: self.countryName.rightAnchor, constant: 10).isActive = true
-        self.capitalCity.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        capitalCity.translatesAutoresizingMaskIntoConstraints = false
+        capitalCity.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        capitalCity.leftAnchor.constraint(greaterThanOrEqualTo: countryName.rightAnchor, constant: 10).isActive = true
+        capitalCity.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        self.capitalCity.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
-        self.capitalCity.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 750), for: .horizontal)
-        self.countryName.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
-        self.countryName.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+        capitalCity.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
+        capitalCity.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 750), for: .horizontal)
+        countryName.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
+        countryName.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
     }
 }
