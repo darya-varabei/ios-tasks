@@ -53,6 +53,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        textFieldWaterToAdd.keyboardType = .numberPad
         displayAnimatedWater()
         buttonUpdateParameters.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
         buttonOnlyCleanWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
