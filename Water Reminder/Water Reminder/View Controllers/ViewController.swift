@@ -60,7 +60,6 @@ class ViewController: UIViewController {
         buttonOnlyCleanWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
         buttonAddWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
         
-        wave?.startAnimation()
         consumption.initUser()
         setupPercentageLabel()
         setupCollection()
@@ -69,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.registProgress()
+        registProgress()
         wave?.startAnimation()
     }
     
@@ -117,16 +116,19 @@ class ViewController: UIViewController {
     
     private func registProgress() {
         
-        var percent: Float = 0.0
+        var percent: Double = 0.0
         let maxDefault = 999
         if buttonOnlyCleanWater.tag == 1 {
-            percent = Float(consumption.totalTodayPercent())
+            percent = consumption.totalTodayPercent()
         }
         else {
-            percent = Float(consumption.totalTodayClearPercent())
+            percent = consumption.totalTodayClearPercent()
         }
-        wave?.setProgress(percent)
-        labelPercentCompleted.text = "\(min(Int(round(percent * Float(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, maxDefault))%"
+        
+        if !percent.isNaN && !percent.isInfinite{
+            wave?.setProgress(Float(percent))
+            labelPercentCompleted.text = "\(min(Int(round(percent * Double(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, maxDefault))%"
+        }
     }
     
     private func removeLast() {
@@ -197,17 +199,17 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath != IndexPath(row: 0, section: 0) {
             let addedAmount = options.quickOptions[indexPath.item - 1].volume
-            let totalVolume = self.consumption.getTotal() + addedAmount
+            let totalVolume = consumption.getTotal() + addedAmount
             UserDefaults.standard.setValue(totalVolume, forKey: UserParameters.todayTotal.rawValue)
             if options.quickOptions[indexPath.item - 1].isClearWater {
-                let clearVolume = self.consumption.getClear() + addedAmount
+                let clearVolume = consumption.getClear() + addedAmount
                 UserDefaults.standard.setValue(clearVolume, forKey: UserParameters.todayClear.rawValue)
             }
-            self.consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
-            self.registProgress()
+            consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
+            registProgress()
         }
         else {
-            self.removeLast()
+            removeLast()
         }
     }
 }

@@ -26,8 +26,6 @@ class User {
             recommendedDoze =  (weight * WeightCoefficient.femaleCoef.rawValue + averageSportDurationADay * ActivityCoefficient.femaleCoef.rawValue) * toMillilitres
         case .male:
             recommendedDoze =  (weight * WeightCoefficient.maleCoef.rawValue + averageSportDurationADay * ActivityCoefficient.maleCoef.rawValue) * toMillilitres
-        case .other:
-            recommendedDoze =  (weight * WeightCoefficient.otherCoef.rawValue + averageSportDurationADay * ActivityCoefficient.otherCoef.rawValue) * toMillilitres
         }
     }
 }

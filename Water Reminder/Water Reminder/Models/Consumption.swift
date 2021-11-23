@@ -41,6 +41,7 @@ struct Consumption {
     
     func totalTodayPercent() -> Double {
         let total: Double = Double(totalToday)
+        //print(user.recommendedDoze)
         return total / user.recommendedDoze
     }
     
@@ -54,6 +55,7 @@ struct Consumption {
             user.weight = UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)
             user.averageSportDurationADay = UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)
             user.recommendedDoze = UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)
+            print(user.recommendedDoze)
             return
         }
     }

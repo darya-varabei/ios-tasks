@@ -8,10 +8,10 @@
 import Foundation
 
 enum WaveParameters: Int {
-    case size = 170
-    case borderSize = 180
-    case cornerRadius = 85
-    case borderRadius = 90
+    case size = 160
+    case borderSize = 170
+    case cornerRadius = 80
+    case borderRadius = 85
     case borderOffset = 35
     case waveOffset = 0
 }
