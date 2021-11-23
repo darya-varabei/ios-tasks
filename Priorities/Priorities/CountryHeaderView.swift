@@ -54,10 +54,10 @@ class CountryHeaderView: UIView {
         capitalCity.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         capitalCity.leftAnchor.constraint(greaterThanOrEqualTo: countryName.rightAnchor, constant: 10).isActive = true
         capitalCity.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
+     
         capitalCity.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
-        capitalCity.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 750), for: .horizontal)
-        countryName.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
-        countryName.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+        capitalCity.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
+        countryName.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 750), for: .horizontal)
+        countryName.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
     }
 }

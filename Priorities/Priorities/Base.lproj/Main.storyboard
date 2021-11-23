@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,35 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="350" verticalCompressionResistancePriority="150" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
-                                <rect key="frame" x="50" y="74" width="314" height="748"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="748" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
+                                <rect key="frame" x="30" y="74" width="354" height="748"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="350" verticalHuggingPriority="550" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="550" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="301.5"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="350" verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="336.5"/>
                                         <color key="backgroundColor" name="headerStart"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="center" horizontalHuggingPriority="200" verticalHuggingPriority="240" horizontalCompressionResistancePriority="600" verticalCompressionResistancePriority="260" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
-                                        <rect key="frame" x="0.0" y="321.5" width="314" height="181.5"/>
+                                    <stackView opaque="NO" contentMode="center" horizontalHuggingPriority="200" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="600" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
+                                        <rect key="frame" x="0.0" y="356.5" width="354" height="289.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="200" placeholderIntrinsicWidth="184" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-9n-bKE">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="181.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="289.5"/>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                             </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="264" horizontalCompressionResistancePriority="850" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-TO-HqR">
-                                                <rect key="frame" x="194" y="0.0" width="120" height="181.5"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="264" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-TO-HqR">
+                                                <rect key="frame" x="194.5" y="0.0" width="159.5" height="289.5"/>
                                                 <color key="backgroundColor" name="ticketStart"/>
                                             </view>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" priority="250" constant="314" id="ofy-Ch-w4A"/>
-                                        </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="280" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC">
-                                        <rect key="frame" x="0.0" y="523" width="314" height="225"/>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC">
+                                        <rect key="frame" x="0.0" y="666" width="354" height="82"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" priority="250" constant="314" id="kyD-le-Nzv"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -53,11 +47,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="ticketFinish"/>
                         <constraints>
-                            <constraint firstItem="LkE-ka-8CK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="3SC-IZ-omp"/>
-                            <constraint firstItem="LkE-ka-8CK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RGP-3l-91T"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LkE-ka-8CK" secondAttribute="bottom" constant="40" id="jh4-C5-4gZ"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="3SC-IZ-omp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LkE-ka-8CK" secondAttribute="trailing" constant="30" id="IYb-W8-jQS"/>
                             <constraint firstItem="LkE-ka-8CK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nWp-xf-9nt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LkE-ka-8CK" secondAttribute="trailing" constant="50" id="ou3-qm-V9T"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="qex-uC-DEU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LkE-ka-8CK" secondAttribute="bottom" constant="40" id="w5U-hX-UKZ"/>
                         </constraints>
                     </view>
                 </viewController>
