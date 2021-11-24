@@ -68,6 +68,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setupCollection()
         registProgress()
         wave?.startAnimation()
     }
