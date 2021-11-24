@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UserDefaults {
+internal extension UserDefaults {
     
     static let defaults = UserDefaults.standard
     

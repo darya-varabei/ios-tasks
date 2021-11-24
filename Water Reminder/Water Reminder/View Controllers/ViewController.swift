@@ -202,6 +202,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             let addedAmount = options.quickOptions[indexPath.item - 1].volume
             let totalVolume = consumption.getTotal() + addedAmount
             UserDefaults.standard.setValue(totalVolume, forKey: UserParameters.todayTotal.rawValue)
+            
             if options.quickOptions[indexPath.item - 1].isClearWater {
                 let clearVolume = consumption.getClear() + addedAmount
                 UserDefaults.standard.setValue(clearVolume, forKey: UserParameters.todayClear.rawValue)
