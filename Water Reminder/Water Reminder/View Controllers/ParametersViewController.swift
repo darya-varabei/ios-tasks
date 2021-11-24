@@ -62,7 +62,7 @@ class ParametersViewController: UIViewController {
         if UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue) != 0 {
             textFieldBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)))
             labelActivity?.text = "\(String(UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)))"
-            textFieldRecommended?.text?.append(String(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)))
+            textFieldRecommended?.text?.append(String(round(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue) * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue)))
         }
         else {
             textFieldBodyWeight?.text?.append(String(user.weight))
@@ -102,7 +102,7 @@ class ParametersViewController: UIViewController {
         labelActivity?.text = "\(Float(sender.value).description) hr"
         user.averageSportDurationADay = Double(sender.value)
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(user.recommendedDoze)"
+        textFieldRecommended?.text = "\(round(user.recommendedDoze * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue)))"
     }
     
     @IBAction private func buttonConfirmUser(_ sender: Any) {
