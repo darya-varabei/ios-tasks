@@ -41,7 +41,6 @@ struct Consumption {
     
     func totalTodayPercent() -> Double {
         let total: Double = Double(totalToday)
-        //print(user.recommendedDoze)
         return total / user.recommendedDoze
     }
     

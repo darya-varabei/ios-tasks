@@ -16,7 +16,7 @@ class Notification {
     let timeInterval: TimeInterval = 10800
     
     func requestAuthorization() {
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) {(granted, error) in
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             guard granted else { return }
             self.notificationCenter.getNotificationSettings { (settings) in
                 guard settings.authorizationStatus == .authorized else { return }

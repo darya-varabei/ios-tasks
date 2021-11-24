@@ -132,10 +132,11 @@ class ViewController: UIViewController {
     }
     
     private func removeLast() {
+        let maxDefault = 999
         consumption.removeLast()
-        let percent = Float(consumption.totalTodayPercent())
-        wave?.setProgress(percent)
-        labelPercentCompleted.text = "\(round(percent * Float(ControllerParameters.percentMultiplier.rawValue)) / Float(ControllerParameters.toRound.rawValue))%"
+        let percent = Double(consumption.totalTodayPercent())
+        wave?.setProgress(Float(percent))
+        labelPercentCompleted.text = "\(min(Int(round(percent * Double(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, maxDefault))%"
     }
     
     @IBAction private func measureOnlyCleanWater(_ sender: Any) {
