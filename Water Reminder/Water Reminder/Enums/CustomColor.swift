@@ -10,6 +10,6 @@ import Foundation
 enum CustomColor: String {
     case buttonBlueOpaque
     case buttonBlue
-    case waveFront
-    case waveBack
+    case waveFront = "WaveFront"
+    case waveBack = "WaveBack"
 }
