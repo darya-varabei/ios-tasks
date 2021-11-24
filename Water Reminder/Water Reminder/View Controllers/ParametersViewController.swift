@@ -28,7 +28,7 @@ class ParametersViewController: UIViewController {
         case top = 60
     }
     
-    private enum textFieldConstraint: CGFloat {
+    private enum TextFieldConstraint: CGFloat {
         case sides = 120
         case height = 40
         case top = 100
@@ -48,9 +48,6 @@ class ParametersViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-//        constForLblRecommended()
-//        constForTxtRecommended()
-//        constSegmControl()
         textFieldRecommended?.keyboardType = .numberPad
         textFieldBodyWeight?.keyboardType = .numberPad
         setUserParameters()
@@ -73,46 +70,14 @@ class ParametersViewController: UIViewController {
             textFieldRecommended?.text?.append(String(user.recommendedDoze))
         }
     }
-    
-//    private func constForLblRecommended() {
-//        labelRecommended?.translatesAutoresizingMaskIntoConstraints = false
-//        labelRecommended?.heightAnchor.constraint(equalToConstant: LabelConstraint.height.rawValue).isActive = true
-//        labelRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LabelConstraint.height.rawValue).isActive = true
-//        labelRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LabelConstraint.height.rawValue).isActive = true
-//        labelRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: LabelConstraint.top.rawValue).isActive = true
-//    }
-//
-    private func constForTxtRecommended() {
+
+    private func constForTextFieldRecommended() {
         textFieldRecommended?.translatesAutoresizingMaskIntoConstraints = false
-        textFieldRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -textFieldConstraint.sides.rawValue).isActive = true
-        textFieldRecommended?.heightAnchor.constraint(equalToConstant: textFieldConstraint.height.rawValue).isActive = true
-        textFieldRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: textFieldConstraint.sides.rawValue).isActive = true
-        textFieldRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: textFieldConstraint.top.rawValue).isActive = true
+        textFieldRecommended?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -TextFieldConstraint.sides.rawValue).isActive = true
+        textFieldRecommended?.heightAnchor.constraint(equalToConstant: TextFieldConstraint.height.rawValue).isActive = true
+        textFieldRecommended?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: TextFieldConstraint.sides.rawValue).isActive = true
+        textFieldRecommended?.topAnchor.constraint(equalTo: view.topAnchor, constant: TextFieldConstraint.top.rawValue).isActive = true
     }
-    
-//    private func constSegmControl() {
-//        setGender?.translatesAutoresizingMaskIntoConstraints = false
-//        setGender?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -SegmentConstraint.sides.rawValue).isActive = true
-//        setGender?.heightAnchor.constraint(equalToConstant: SegmentConstraint.height.rawValue).isActive = true
-//        setGender?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SegmentConstraint.sides.rawValue).isActive = true
-//        setGender?.topAnchor.constraint(equalTo: view.topAnchor, constant: SegmentConstraint.top.rawValue).isActive = true
-//    }
-//
-//    private func constBtnConfirm() {
-//        buttonConfirm?.translatesAutoresizingMaskIntoConstraints = false
-//        buttonConfirm?.widthAnchor.constraint(equalToConstant: ButtonConstraint.width.rawValue).isActive = true
-//        buttonConfirm?.heightAnchor.constraint(equalToConstant: ButtonConstraint.height.rawValue).isActive = true
-//        buttonConfirm?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ButtonConstraint.side.rawValue).isActive = true
-//        buttonConfirm?.topAnchor.constraint(equalTo: view.topAnchor, constant: ButtonConstraint.top.rawValue).isActive = true
-//    }
-//
-//    private func constBtnCancel() {
-//        buttonCancel?.translatesAutoresizingMaskIntoConstraints = false
-//        buttonCancel?.widthAnchor.constraint(equalToConstant: ButtonConstraint.width.rawValue).isActive = true
-//        buttonCancel?.heightAnchor.constraint(equalToConstant: ButtonConstraint.height.rawValue).isActive = true
-//        buttonCancel?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ButtonConstraint.side.rawValue).isActive = true
-//        buttonCancel?.topAnchor.constraint(equalTo: view.topAnchor, constant: ButtonConstraint.top.rawValue).isActive = true
-//    }
     
     @objc private func textFieldDidChange() {
         user.weight = textFieldBodyWeight?.text?.toDouble() ?? 0.0
@@ -140,7 +105,7 @@ class ParametersViewController: UIViewController {
         textFieldRecommended?.text = "\(user.recommendedDoze)"
     }
     
-    @IBAction private func btnConfirmUser(_ sender: Any) {
+    @IBAction private func buttonConfirmUser(_ sender: Any) {
         
         UserDefaults.standard.setValue(user.weight, forKey: UserParameters.bodyweight.rawValue)
         UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: UserParameters.activity.rawValue)

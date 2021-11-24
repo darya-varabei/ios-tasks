@@ -8,7 +8,7 @@
 import Foundation
 import NotificationCenter
 
-class Notification {
+class NotificationManager {
     let notificationCenter = UNUserNotificationCenter.current()
     let notificationTitle = "Water reminder"
     let notificationBody = "It's time to drink some water"

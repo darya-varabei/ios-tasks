@@ -205,14 +205,14 @@
                                                 <rect key="frame" x="0.0" y="7" width="76" height="30"/>
                                                 <state key="normal" title="       Cancel"/>
                                                 <connections>
-                                                    <action selector="cancelUserData:" destination="P4D-VI-T1l" eventType="touchUpInside" id="7zl-40-bKe"/>
+                                                    <action selector="cancelUserData:" destination="P4D-VI-T1l" eventType="touchUpInside" id="jXe-zH-TKo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfC-OZ-O22">
                                                 <rect key="frame" x="163" y="7" width="117" height="30"/>
                                                 <state key="normal" title="Confirm changes"/>
                                                 <connections>
-                                                    <action selector="btnConfirmUser:" destination="P4D-VI-T1l" eventType="touchUpInside" id="jIV-W1-jXN"/>
+                                                    <action selector="buttonConfirmUser:" destination="P4D-VI-T1l" eventType="touchUpInside" id="5zf-Zd-NhB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
