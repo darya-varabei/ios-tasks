@@ -20,7 +20,7 @@ class SecondView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: self.frame.width, height: 100)
+        return CGSize(width: frame.width, height: 100)
     }
     
     private func setupView() {
