@@ -102,7 +102,7 @@ class ParametersViewController: UIViewController {
         labelActivity?.text = "\(Float(sender.value).description) hr"
         user.averageSportDurationADay = Double(sender.value)
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(round(user.recommendedDoze * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue)))"
+        textFieldRecommended?.text = "\(round(user.recommendedDoze * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue))"
     }
     
     @IBAction private func buttonConfirmUser(_ sender: Any) {
