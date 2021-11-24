@@ -14,6 +14,7 @@
 		4B339884273E6D2600573EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B339883273E6D2600573EDC /* Assets.xcassets */; };
 		4B339887273E6D2600573EDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B339885273E6D2600573EDC /* LaunchScreen.storyboard */; };
 		4B339893273E823500573EDC /* CountryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B339892273E823500573EDC /* CountryHeaderView.swift */; };
+		4B33C1AD274E4F91000DD895 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33C1AC274E4F91000DD895 /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4B339886273E6D2600573EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B339888273E6D2600573EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B339892273E823500573EDC /* CountryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHeaderView.swift; sourceTree = "<group>"; };
+		4B33C1AC274E4F91000DD895 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondView.swift; path = ../../../../Documents/SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				4B33987C273E6D2500573EDC /* SceneDelegate.swift */,
 				4B33987E273E6D2500573EDC /* ViewController.swift */,
 				4B339892273E823500573EDC /* CountryHeaderView.swift */,
+				4B33C1AC274E4F91000DD895 /* SecondView.swift */,
 				4B339880273E6D2500573EDC /* Main.storyboard */,
 				4B339883273E6D2600573EDC /* Assets.xcassets */,
 				4B339885273E6D2600573EDC /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B33987F273E6D2500573EDC /* ViewController.swift in Sources */,
+				4B33C1AD274E4F91000DD895 /* SecondView.swift in Sources */,
 				4B33987B273E6D2500573EDC /* AppDelegate.swift in Sources */,
 				4B33987D273E6D2500573EDC /* SceneDelegate.swift in Sources */,
 				4B339893273E823500573EDC /* CountryHeaderView.swift in Sources */,
