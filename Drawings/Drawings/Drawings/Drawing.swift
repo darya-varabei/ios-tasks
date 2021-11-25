@@ -23,4 +23,8 @@ class Drawing: Hashable {
     static func == (lhs: Drawing, rhs: Drawing) -> Bool {
         lhs.id == rhs.id
     }
+    
+    func draw() {
+        
+    }
 }

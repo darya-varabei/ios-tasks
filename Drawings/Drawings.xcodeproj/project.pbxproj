@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BC4472C274FB85E00F3623A /* Hands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472B274FB85E00F3623A /* Hands.swift */; };
+		4BC4472E274FB86900F3623A /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472D274FB86900F3623A /* Heart.swift */; };
+		4BC44730274FB87900F3623A /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472F274FB87900F3623A /* Face.swift */; };
+		4BC44732274FB88300F3623A /* Birds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC44731274FB88300F3623A /* Birds.swift */; };
+		4BC44734274FB89100F3623A /* Ornament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC44733274FB89100F3623A /* Ornament.swift */; };
 		4BDADB3127465526001D2175 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADB3027465526001D2175 /* AppDelegate.swift */; };
 		4BDADB3327465526001D2175 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADB3227465526001D2175 /* SceneDelegate.swift */; };
 		4BDADB3527465526001D2175 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADB3427465526001D2175 /* ViewController.swift */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BC4472B274FB85E00F3623A /* Hands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hands.swift; sourceTree = "<group>"; };
+		4BC4472D274FB86900F3623A /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
+		4BC4472F274FB87900F3623A /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		4BC44731274FB88300F3623A /* Birds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birds.swift; sourceTree = "<group>"; };
+		4BC44733274FB89100F3623A /* Ornament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ornament.swift; sourceTree = "<group>"; };
 		4BDADB2D27465526001D2175 /* Drawings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BDADB3027465526001D2175 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BDADB3227465526001D2175 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BC4472A274FB84700F3623A /* Drawings */ = {
+			isa = PBXGroup;
+			children = (
+				4BDADB46274657AF001D2175 /* Drawing.swift */,
+				4BC4472B274FB85E00F3623A /* Hands.swift */,
+				4BC4472D274FB86900F3623A /* Heart.swift */,
+				4BC4472F274FB87900F3623A /* Face.swift */,
+				4BC44731274FB88300F3623A /* Birds.swift */,
+				4BC44733274FB89100F3623A /* Ornament.swift */,
+			);
+			path = Drawings;
+			sourceTree = "<group>";
+		};
 		4BDADB2427465526001D2175 = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +102,7 @@
 				4BDADB4E27466ECE001D2175 /* CollectionExtensions.swift */,
 				4BDADB5027466F67001D2175 /* SearchControllerExtensions.swift */,
 				4BDADB5227466FE2001D2175 /* LayoutExtension.swift */,
-				4BDADB46274657AF001D2175 /* Drawing.swift */,
+				4BC4472A274FB84700F3623A /* Drawings */,
 				4BDADB482746597F001D2175 /* Section.swift */,
 				4BDADB442746567F001D2175 /* DrawingCollectionViewCell.swift */,
 				4BDADB4C2746673E001D2175 /* SectionHeaderReusableView.swift */,
@@ -161,15 +184,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC44730274FB87900F3623A /* Face.swift in Sources */,
 				4BDADB3527465526001D2175 /* ViewController.swift in Sources */,
 				4BDADB5327466FE2001D2175 /* LayoutExtension.swift in Sources */,
 				4BDADB452746567F001D2175 /* DrawingCollectionViewCell.swift in Sources */,
 				4BDADB3127465526001D2175 /* AppDelegate.swift in Sources */,
+				4BC4472C274FB85E00F3623A /* Hands.swift in Sources */,
 				4BDADB4B274662EF001D2175 /* DrawingViewController.swift in Sources */,
+				4BC4472E274FB86900F3623A /* Heart.swift in Sources */,
 				4BDADB4F27466ECE001D2175 /* CollectionExtensions.swift in Sources */,
 				4BDADB492746597F001D2175 /* Section.swift in Sources */,
 				4BDADB5127466F67001D2175 /* SearchControllerExtensions.swift in Sources */,
+				4BC44732274FB88300F3623A /* Birds.swift in Sources */,
 				4BDADB3327465526001D2175 /* SceneDelegate.swift in Sources */,
+				4BC44734274FB89100F3623A /* Ornament.swift in Sources */,
 				4BDADB4D2746673E001D2175 /* SectionHeaderReusableView.swift in Sources */,
 				4BDADB47274657AF001D2175 /* Drawing.swift in Sources */,
 			);
