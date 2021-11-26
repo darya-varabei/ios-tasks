@@ -9,11 +9,14 @@ import Foundation
 import UIKit
 
 class Face: Drawing {
+    
+    convenience init() {
+        self.init(title: "Face", image: "face")
+    }
+    
     override func draw() {
-        //// Color Declarations
         let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
-        //// Bezier Drawing
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 67, y: 345.5))
         bezierPath.addCurve(to: CGPoint(x: 98.5, y: 315.5), controlPoint1: CGPoint(x: 96.64, y: 339.51), controlPoint2: CGPoint(x: 99.08, y: 331.47))

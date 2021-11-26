@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension ViewController {
+    
     func makeDataSource() -> DataSource {
         let dataSource = DataSource(
             collectionView: collectionView,
@@ -30,23 +31,13 @@ extension ViewController {
         }
         return dataSource
     }
-
+    
     func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
         sections.forEach { section in
-            snapshot.appendItems(section.drawings, toSection: section)
+            snapshot.appendItems(sections, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: true)
-    }
-}
-
-extension ViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let _ = dataSource.itemIdentifier(for: indexPath) else {
-            return
-        }
-        let drawingViewController = DrawingViewController()
-        present(drawingViewController, animated: true, completion: nil)
     }
 }

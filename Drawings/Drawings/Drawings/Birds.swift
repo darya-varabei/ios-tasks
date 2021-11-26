@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 class Birds: Drawing {
+    
+    convenience init() {
+        self.init(title: "Birds", image: "birds")
+    }
+    
     override func draw() {
-        //// Color Declarations
         let fillColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
-        //// Group 2
-        //// Bezier Drawing
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 144.69, y: 51.14))
         bezierPath.addCurve(to: CGPoint(x: 134.91, y: 55.4), controlPoint1: CGPoint(x: 140.86, y: 49.63), controlPoint2: CGPoint(x: 136.33, y: 51.28))

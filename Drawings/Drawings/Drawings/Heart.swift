@@ -10,11 +10,15 @@ import UIKit
 
 class Heart: Drawing {
     
+    convenience init() {
+        self.init(title: "Heart", image: "heart")
+    }
+    
     override func draw() {
-    //// Color Declarations
+   
     let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
-    //// Bezier Drawing
+    
     let bezierPath = UIBezierPath()
     bezierPath.move(to: CGPoint(x: 0, y: 224))
     bezierPath.addCurve(to: CGPoint(x: 161, y: 207.5), controlPoint1: CGPoint(x: 82.11, y: 233.33), controlPoint2: CGPoint(x: 114.76, y: 227.59))

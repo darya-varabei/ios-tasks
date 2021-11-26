@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController: UICollectionViewController {
     
-    var sections = Section.sections
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Drawing>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Drawing>
+    var sections = Drawing.drawings
+    typealias DataSource = UICollectionViewDiffableDataSource<Drawing, Drawing>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Drawing, Drawing>
     lazy var dataSource = makeDataSource()
     var searchController = UISearchController(searchResultsController: nil)
     

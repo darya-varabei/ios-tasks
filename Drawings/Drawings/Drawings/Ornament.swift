@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 class Ornament: Drawing {
+    
+    convenience init() {
+        self.init(title: "Ornament", image: "ornament")
+    }
+    
     override func draw() {
         let context = UIGraphicsGetCurrentContext()!
 

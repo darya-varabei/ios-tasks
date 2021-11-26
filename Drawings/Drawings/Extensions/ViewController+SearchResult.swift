@@ -14,15 +14,15 @@ extension ViewController: UISearchResultsUpdating {
         applySnapshot()
     }
     
-    func filteredSections(for queryOrNil: String?) -> [Section] {
-        let sections = Section.sections
+    func filteredSections(for queryOrNil: String?) -> [Drawing] {
+        let sections = Drawing.drawings
         guard let query = queryOrNil, !query.isEmpty else {
             return sections
         }
         
         return sections.filter { section in
             var matches = section.title.lowercased().contains(query.lowercased())
-            for video in section.drawings {
+            for video in sections {
                 if video.title.lowercased().contains(query.lowercased()) {
                     matches = true
                     break

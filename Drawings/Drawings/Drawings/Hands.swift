@@ -10,14 +10,13 @@ import UIKit
 
 class Hands: Drawing {
     
-    override init(title: String, image: String) {
-        super.init(title: title, image: image)
+    convenience init() {
+        self.init(title: "Hands", image: "hands")
     }
     
     override func draw() {
         let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
-        //// Bezier 151 Drawing
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 52.5, y: 5.94))
         bezierPath.addCurve(to: CGPoint(x: 89.82, y: 80.24), controlPoint1: CGPoint(x: 68.34, y: 35.34), controlPoint2: CGPoint(x: 78.36, y: 52.18))
@@ -144,6 +143,5 @@ class Hands: Drawing {
         bezierPath.lineWidth = 1
         bezierPath.miterLimit = 4
         bezierPath.stroke()
-
     }
 }
