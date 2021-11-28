@@ -9,7 +9,7 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var returnImage: UIImageView!
+    @IBOutlet private var returnImage: UIImageView!
     private let systemImage = "arrowshape.turn.up.backward"
     
     var image: String? {
