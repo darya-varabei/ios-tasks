@@ -20,14 +20,14 @@
                             <stackView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="748" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
                                 <rect key="frame" x="30" y="74" width="354" height="748"/>
                                 <subviews>
-                                    <view contentMode="scaleAspectFit" horizontalHuggingPriority="350" verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="790" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="336" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
+                                    <view contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="753" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="336" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="336"/>
                                         <color key="backgroundColor" name="headerStart"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="200" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="600" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="753" horizontalCompressionResistancePriority="250" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
                                         <rect key="frame" x="0.0" y="356" width="354" height="192"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="200" placeholderIntrinsicWidth="184" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-9n-bKE">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="748" horizontalCompressionResistancePriority="253" placeholderIntrinsicWidth="184" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-9n-bKE">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="192"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMF-Cc-cUh">
@@ -45,13 +45,13 @@
                                                     <constraint firstAttribute="trailing" secondItem="XMF-Cc-cUh" secondAttribute="trailing" constant="30" id="XNK-CK-b0f"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="172" placeholderIntrinsicHeight="192" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-Eq-faj">
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="748" horizontalCompressionResistancePriority="252" placeholderIntrinsicWidth="172" placeholderIntrinsicHeight="192" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-Eq-faj">
                                                 <rect key="frame" x="182" y="0.0" width="172" height="192"/>
                                                 <color key="backgroundColor" name="ticketStart"/>
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleAspectFit" verticalHuggingPriority="750" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC" customClass="SecondView" customModule="Priorities" customModuleProvider="target">
+                                    <view contentMode="scaleAspectFit" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC" customClass="SecondView" customModule="Priorities" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="568" width="354" height="180"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
                                     </view>
