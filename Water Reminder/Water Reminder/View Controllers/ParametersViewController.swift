@@ -65,9 +65,9 @@ class ParametersViewController: UIViewController {
             textFieldRecommended?.text?.append(String(round(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue) * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue)))
         }
         else {
-            textFieldBodyWeight?.text?.append(String(user.weight))
-            labelActivity?.text = String(user.averageSportDurationADay)
-            textFieldRecommended?.text?.append(String(user.recommendedDoze))
+            textFieldBodyWeight?.text?.append(String(user.getWeight()))
+            labelActivity?.text = String(user.getActivity())
+            textFieldRecommended?.text?.append(String(user.getRecommendedDoze()))
         }
     }
 
@@ -80,44 +80,44 @@ class ParametersViewController: UIViewController {
     }
     
     @objc private func textFieldDidChange() {
-        user.weight = textFieldBodyWeight?.text?.toDouble() ?? 0.0
-        user.averageSportDurationADay = labelActivity?.text?.toDouble() ?? 0.0
+        user.setWeight(newWeight: textFieldBodyWeight?.text?.toDouble() ?? 0.0)
+        user.setActivity(newActivity: labelActivity?.text?.toDouble() ?? 0.0)
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(user.recommendedDoze)"
+        textFieldRecommended?.text = "\(user.getRecommendedDoze())"
     }
     
     @objc private func genderValueChange() {
         
         if setGender?.selectedSegmentIndex == 0 {
-            user.gender = .male
+            user.setGender(newGender: .male)
         }
         else if setGender?.selectedSegmentIndex == 1 {
-            user.gender = .female
+            user.setGender(newGender: .female)
         }
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(user.recommendedDoze)"
+        textFieldRecommended?.text = "\(user.getRecommendedDoze())"
     }
     
     @objc private func stepperValueChange(_ sender: UIStepper) {
         labelActivity?.text = "\(Float(sender.value).description) hr"
-        user.averageSportDurationADay = Double(sender.value)
+        user.setActivity(newActivity: Double(sender.value))
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(round(user.recommendedDoze * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue))"
+        textFieldRecommended?.text = "\(round(user.getRecommendedDoze() * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue))"
     }
     
     @IBAction private func buttonConfirmUser(_ sender: Any) {
         
-        UserDefaults.standard.setValue(user.weight, forKey: UserParameters.bodyweight.rawValue)
-        UserDefaults.standard.setValue(user.averageSportDurationADay, forKey: UserParameters.activity.rawValue)
-        UserDefaults.standard.setValue(user.recommendedDoze, forKey: UserParameters.doze.rawValue)
+        UserDefaults.standard.setValue(user.getWeight(), forKey: UserParameters.bodyweight.rawValue)
+        UserDefaults.standard.setValue(user.getActivity(), forKey: UserParameters.activity.rawValue)
+        UserDefaults.standard.setValue(user.getRecommendedDoze(), forKey: UserParameters.doze.rawValue)
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func cancelUserData(_ sender: Any) {
         
-        user.weight = UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)
-        user.averageSportDurationADay = UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)
-        user.recommendedDoze = UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)
+        user.setWeight(newWeight:  UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue))
+        user.setActivity(newActivity: UserDefaults.standard.double(forKey: UserParameters.activity.rawValue))
+        user.setRecommendedDoze(newDoze: UserDefaults.standard.double(forKey: UserParameters.doze.rawValue))
         navigationController?.popViewController(animated: true)
     }
 }

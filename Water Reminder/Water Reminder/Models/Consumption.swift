@@ -41,20 +41,20 @@ struct Consumption {
     
     func totalTodayPercent() -> Double {
         let total: Double = Double(totalToday)
-        return total / user.recommendedDoze
+        return total / user.getRecommendedDoze()
     }
     
     func totalTodayClearPercent() -> Double {
         let total: Double = Double(totalClearToday)
-        return total / user.recommendedDoze
+        return total / user.getRecommendedDoze()
     }
     
     func initUser() {
         guard UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue) == 0 else {
-            user.weight = UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)
-            user.averageSportDurationADay = UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)
-            user.recommendedDoze = UserDefaults.standard.double(forKey: UserParameters.doze.rawValue)
-            print(user.recommendedDoze)
+            user.setWeight(newWeight: UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue))
+            user.setActivity(newActivity: UserDefaults.standard.double(forKey: UserParameters.activity.rawValue))
+            user.setRecommendedDoze(newDoze: UserDefaults.standard.double(forKey: UserParameters.doze.rawValue))
+            print(user.getRecommendedDoze())
             return
         }
     }

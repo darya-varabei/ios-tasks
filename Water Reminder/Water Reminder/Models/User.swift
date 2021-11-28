@@ -10,11 +10,11 @@ import Foundation
 class User {
     
     private let toMillilitres: Double = 1000
-    var weight: Double = 75
-    var age: Int = 25
-    var averageSportDurationADay: Double = 1
-    var gender: Gender = .male
-    var recommendedDoze: Double = 2750
+    private var weight: Double = 75
+    private var age: Int = 25
+    private var averageSportDurationADay: Double = 1
+    private var gender: Gender = .male
+    private var recommendedDoze: Double = 2750
     
     static let shared = User()
     
@@ -27,5 +27,37 @@ class User {
         case .male:
             recommendedDoze =  (weight * WeightCoefficient.maleCoef.rawValue + averageSportDurationADay * ActivityCoefficient.maleCoef.rawValue) * toMillilitres
         }
+    }
+    
+    func getWeight() -> Double {
+        return weight
+    }
+    
+    func setWeight(newWeight: Double) {
+        weight = newWeight
+    }
+    
+    func getActivity() -> Double {
+        return averageSportDurationADay
+    }
+    
+    func setActivity(newActivity: Double) {
+        averageSportDurationADay = newActivity
+    }
+    
+    func getGender() -> Gender {
+        return gender
+    }
+    
+    func setGender(newGender: Gender) {
+        gender = newGender
+    }
+    
+    func getRecommendedDoze() -> Double {
+        return recommendedDoze
+    }
+    
+    func setRecommendedDoze(newDoze: Double) {
+        recommendedDoze = newDoze
     }
 }

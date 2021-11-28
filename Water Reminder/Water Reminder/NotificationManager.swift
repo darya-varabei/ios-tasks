@@ -8,7 +8,7 @@
 import Foundation
 import NotificationCenter
 
-class NotificationManager {
+struct NotificationManager {
     let notificationCenter = UNUserNotificationCenter.current()
     let notificationTitle = "Water reminder"
     let notificationBody = "It's time to drink some water"
@@ -22,6 +22,7 @@ class NotificationManager {
                 guard settings.authorizationStatus == .authorized else { return }
             }
         }
+        sendNotifications()
     }
     
     func sendNotifications() {
