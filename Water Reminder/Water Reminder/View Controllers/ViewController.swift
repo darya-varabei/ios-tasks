@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setupCollection()
-        registProgress()
+        updateProgress()
         wave?.startAnimation()
     }
     
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         wave?.mask = maskView
     }
     
-    private func registProgress() {
+    private func updateProgress() {
         
         var percent: Double = 0.0
         let maxDefault = 999
@@ -150,13 +150,13 @@ class ViewController: UIViewController {
             buttonOnlyCleanWater.tag = 1
             buttonOnlyCleanWater.setTitle(ButtonTitle.onlyCleanWater.rawValue, for: .normal)
         }
-        registProgress()
+        updateProgress()
     }
     
     @IBAction private func addWater(_ sender: Any) {
         options.addCustomOption(volume: Double(textFieldWaterToAdd?.text?.toDouble() ?? 0.0))
         consumption.addRecentItems(item: options.quickOptions[options.quickOptions.endIndex - 1])
-        registProgress()
+        updateProgress()
     }
 }
 
@@ -209,7 +209,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                 UserDefaults.standard.setValue(clearVolume, forKey: UserParameters.todayClear.rawValue)
             }
             consumption.addRecentItems(item: options.quickOptions[indexPath.item - 1])
-            registProgress()
+            updateProgress()
         }
         else {
             removeLast()

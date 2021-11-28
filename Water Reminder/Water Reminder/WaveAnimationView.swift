@@ -65,11 +65,15 @@ public class WaveAnimationView: UIView {
     }
     
     func startAnimation() {
-        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(waveAnimation), userInfo: nil, repeats: true)
+        if !timer.isValid {
+            timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(waveAnimation), userInfo: nil, repeats: true)
+        }
     }
     
     func stopAnimation() {
-        timer.invalidate()
+        if timer.isValid {
+            timer.invalidate()
+        }
     }
     
     @objc private func waveAnimation() {
