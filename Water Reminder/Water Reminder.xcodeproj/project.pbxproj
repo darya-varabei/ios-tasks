@@ -25,6 +25,7 @@
 		4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */; };
 		4BBE57F7273A90FC00AF0B5E /* OptionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */; };
 		D56399B72753DD2E002BB5CE /* ControllerTextParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56399B62753DD2E002BB5CE /* ControllerTextParameter.swift */; };
+		D56399BA2753DDDB002BB5CE /* NotificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56399B92753DDDB002BB5CE /* NotificationParameters.swift */; };
 		D5BA86EB274C1DE7009C7B89 /* WaveParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */; };
 		D5BA86EE274C23F6009C7B89 /* ControllerParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */; };
 		D5CE5161274B5FB30000CED6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE5160274B5FB30000CED6 /* NotificationManager.swift */; };
@@ -58,6 +59,7 @@
 		4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewCell.swift; sourceTree = "<group>"; };
 		4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionViewCell.xib; sourceTree = "<group>"; };
 		D56399B62753DD2E002BB5CE /* ControllerTextParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTextParameter.swift; sourceTree = "<group>"; };
+		D56399B92753DDDB002BB5CE /* NotificationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationParameters.swift; sourceTree = "<group>"; };
 		D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveParameters.swift; sourceTree = "<group>"; };
 		D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerParameters.swift; sourceTree = "<group>"; };
 		D5CE5160274B5FB30000CED6 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				D5CE5173274B76B60000CED6 /* ButtonTitle.swift */,
 				D5CE5176274B777F0000CED6 /* CustomColor.swift */,
 				D5CE5179274B7B2A0000CED6 /* CellIdentifier.swift */,
+				D56399B92753DDDB002BB5CE /* NotificationParameters.swift */,
 				D56399B62753DD2E002BB5CE /* ControllerTextParameter.swift */,
 				D5BA86ED274C23F6009C7B89 /* ControllerParameters.swift */,
 				D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */,
@@ -255,6 +258,7 @@
 				D5CE517A274B7B2A0000CED6 /* CellIdentifier.swift in Sources */,
 				4B649576273BC2A90028D261 /* ParametersViewController.swift in Sources */,
 				4BBE57ED273A803E00AF0B5E /* User.swift in Sources */,
+				D56399BA2753DDDB002BB5CE /* NotificationParameters.swift in Sources */,
 				4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */,
 				D5CE516E274B74F40000CED6 /* UserParameters.swift in Sources */,
 				4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */,

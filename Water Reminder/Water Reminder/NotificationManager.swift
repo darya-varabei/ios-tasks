@@ -10,10 +10,10 @@ import NotificationCenter
 
 struct NotificationManager {
     let notificationCenter = UNUserNotificationCenter.current()
-    let notificationTitle = "Water reminder"
-    let notificationBody = "It's time to drink some water"
-    let identifier = "notification"
-    let timeInterval: TimeInterval = 10800
+    let notificationTitle = NotificationParameter.title.rawValue
+    let notificationBody = NotificationParameter.body.rawValue
+    let identifier = NotificationParameter.identifier.rawValue
+    let timeInterval: TimeInterval = NotificationParameter.interval
     
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
