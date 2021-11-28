@@ -159,7 +159,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Set your bodyweight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCA-Jx-Nr9">
-                                        <rect key="frame" x="74" y="217.5" width="132" height="16.5"/>
+                                        <rect key="frame" x="10" y="217.5" width="260" height="16.5"/>
                                         <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="18"/>
                                         <color key="textColor" name="TextBlue"/>
                                         <nil key="highlightedColor"/>
@@ -173,8 +173,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set hours of fitness activity per day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGb-ei-Efg">
-                                        <rect key="frame" x="23.5" y="328" width="233.5" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set hours of fitness activity per day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGb-ei-Efg">
+                                        <rect key="frame" x="10" y="328" width="260" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="pWd-Da-BqC"/>
                                         </constraints>
@@ -220,7 +220,9 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="mGb-ei-Efg" firstAttribute="leading" secondItem="z30-b4-OK1" secondAttribute="leading" constant="10" id="RXD-MB-9JQ"/>
                                     <constraint firstItem="odl-tS-vKn" firstAttribute="centerX" secondItem="z30-b4-OK1" secondAttribute="centerX" id="UVD-iH-BEQ"/>
+                                    <constraint firstItem="UCA-Jx-Nr9" firstAttribute="leading" secondItem="z30-b4-OK1" secondAttribute="leading" constant="10" id="nzu-n5-1LB"/>
                                 </constraints>
                             </stackView>
                         </subviews>
