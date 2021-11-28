@@ -118,7 +118,7 @@ class ViewController: UIViewController {
     private func updateProgress() {
         
         var percent: Double = 0.0
-        let maxDefault = 999
+        
         if buttonOnlyCleanWater.tag == 1 {
             percent = consumption.totalTodayPercent()
         }
@@ -128,7 +128,7 @@ class ViewController: UIViewController {
         
         if !percent.isNaN && !percent.isInfinite{
             wave?.setProgress(Float(percent))
-            labelPercentCompleted.text = "\(min(Int(round(percent * Double(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, maxDefault))%"
+            labelPercentCompleted.text = "\(min(Int(round(percent * Double(ControllerParameters.percentMultiplier.rawValue))) / ControllerParameters.toRound.rawValue, ControllerParameters.maxDisplayedWaterPercent.rawValue))%"
         }
     }
     
