@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
-        label.font = UIFont(name: "Futura-Medium", size: CGFloat(ControllerParameters.percentFontSize.rawValue))
+        label.font = UIFont(name: "Futura-Medium", size: ControllerTextParameter.textSize.rawValue)
         label.textAlignment = .left
         return label
     }()
