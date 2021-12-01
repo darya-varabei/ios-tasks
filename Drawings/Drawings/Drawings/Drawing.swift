@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Drawing: Hashable {
     let id = UUID()
@@ -24,7 +25,7 @@ class Drawing: Hashable {
         lhs.id == rhs.id
     }
     
-    func draw() {
-        
+    func draw() -> UIBezierPath {
+        return UIBezierPath()
     }
 }

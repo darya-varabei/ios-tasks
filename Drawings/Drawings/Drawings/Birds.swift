@@ -14,7 +14,7 @@ class Birds: Drawing {
         self.init(title: "Birds", image: "birds")
     }
     
-    override func draw() {
+    override func draw() -> UIBezierPath {
         let fillColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
         let bezierPath = UIBezierPath()
@@ -394,6 +394,6 @@ class Birds: Drawing {
         bezier8Path.close()
         fillColor.setFill()
         bezier8Path.fill()
-
+        return UIBezierPath()
     }
 }

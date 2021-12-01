@@ -14,12 +14,11 @@ class Heart: Drawing {
         self.init(title: "Heart", image: "heart")
     }
     
-    override func draw() {
+    override func draw() -> UIBezierPath {
    
-    let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
-
-    
-    let bezierPath = UIBezierPath()
+        let strokeColor = UIColor(red: 0.000, green: 1.000, blue: 0.000, alpha: 1.000)
+       // let shapeLayer = CAShapeLayer()
+        let bezierPath = UIBezierPath()
     bezierPath.move(to: CGPoint(x: 0, y: 224))
     bezierPath.addCurve(to: CGPoint(x: 161, y: 207.5), controlPoint1: CGPoint(x: 82.11, y: 233.33), controlPoint2: CGPoint(x: 114.76, y: 227.59))
     bezierPath.move(to: CGPoint(x: 161, y: 207.5))
@@ -47,8 +46,19 @@ class Heart: Drawing {
     bezierPath.addCurve(to: CGPoint(x: 284.5, y: 214), controlPoint1: CGPoint(x: 235.88, y: 206.71), controlPoint2: CGPoint(x: 252.45, y: 210.49))
     bezierPath.addCurve(to: CGPoint(x: 376, y: 212), controlPoint1: CGPoint(x: 319.87, y: 217.92), controlPoint2: CGPoint(x: 339.92, y: 217.35))
     strokeColor.setStroke()
-    bezierPath.lineWidth = 1
+    bezierPath.lineWidth = 3
     bezierPath.miterLimit = 4
     bezierPath.stroke()
+    
+//        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+//        strokeAnimation.timingFunction = CAMediaTimingFunction(name:  CAMediaTimingFunctionName.easeInEaseOut)
+//
+//        strokeAnimation.duration = 2
+//        strokeAnimation.fromValue = 0
+//        strokeAnimation.toValue = 1
+//        shapeLayer.path = bezierPath.cgPath
+//        shapeLayer.add(strokeAnimation, forKey: "strokeAnimation")
+        
+        return bezierPath
     }
 }

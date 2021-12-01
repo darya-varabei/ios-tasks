@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B410DCE27560E4D00B8A4B4 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B410DCD27560E4D00B8A4B4 /* Story.swift */; };
 		4BC4472C274FB85E00F3623A /* Hands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472B274FB85E00F3623A /* Hands.swift */; };
 		4BC4472E274FB86900F3623A /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472D274FB86900F3623A /* Heart.swift */; };
 		4BC44730274FB87900F3623A /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4472F274FB87900F3623A /* Face.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B410DCD27560E4D00B8A4B4 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		4BC4472B274FB85E00F3623A /* Hands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hands.swift; sourceTree = "<group>"; };
 		4BC4472D274FB86900F3623A /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		4BC4472F274FB87900F3623A /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				4BC4472B274FB85E00F3623A /* Hands.swift */,
 				4BC4472D274FB86900F3623A /* Heart.swift */,
 				4BC4472F274FB87900F3623A /* Face.swift */,
+				4B410DCD27560E4D00B8A4B4 /* Story.swift */,
 				4BC44731274FB88300F3623A /* Birds.swift */,
 				4BC44733274FB89100F3623A /* Ornament.swift */,
 			);
@@ -220,6 +223,7 @@
 				4BC44734274FB89100F3623A /* Ornament.swift in Sources */,
 				4BDADB4D2746673E001D2175 /* SectionHeaderReusableView.swift in Sources */,
 				4BDADB47274657AF001D2175 /* Drawing.swift in Sources */,
+				4B410DCE27560E4D00B8A4B4 /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ class Hands: Drawing {
         self.init(title: "Hands", image: "hands")
     }
     
-    override func draw() {
+    override func draw() -> UIBezierPath {
         let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
 
         let bezierPath = UIBezierPath()
@@ -143,5 +143,6 @@ class Hands: Drawing {
         bezierPath.lineWidth = 1
         bezierPath.miterLimit = 4
         bezierPath.stroke()
+        return bezierPath
     }
 }

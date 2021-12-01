@@ -14,6 +14,7 @@ extension ViewController {
             return
         }
         let drawingViewController = DrawingViewController()
+        //drawingViewController.drawing = Face()
         present(drawingViewController, animated: true, completion: nil)
     }
 }

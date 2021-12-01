@@ -14,7 +14,7 @@ class Ornament: Drawing {
         self.init(title: "Ornament", image: "ornament")
     }
     
-    override func draw() {
+    override func draw() -> UIBezierPath {
         let context = UIGraphicsGetCurrentContext()!
 
         let strokeColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
@@ -38,8 +38,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 10 Drawing
         context.saveGState()
         context.setAlpha(0.02)
 
@@ -60,8 +58,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 11 Drawing
         context.saveGState()
         context.setAlpha(0.02)
 
@@ -82,8 +78,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 12 Drawing
         context.saveGState()
         context.setAlpha(0.03)
 
@@ -104,8 +98,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 13 Drawing
         context.saveGState()
         context.setAlpha(0.04)
 
@@ -126,8 +118,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 14 Drawing
         context.saveGState()
         context.setAlpha(0.04)
 
@@ -148,8 +138,6 @@ class Ornament: Drawing {
 
         context.restoreGState()
 
-
-        //// Bezier 15 Drawing
         context.saveGState()
         context.setAlpha(0.05)
 
@@ -3315,6 +3303,6 @@ class Ornament: Drawing {
         bezier158Path.stroke()
 
         context.restoreGState()
-
+        return UIBezierPath()
     }
 }
