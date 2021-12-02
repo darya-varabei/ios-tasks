@@ -12,7 +12,7 @@ class User {
     private let toMillilitres: Double = 1000
     private var weight: Double = 75
     private var age: Int = 25
-    private var averageSportDurationADay: Double = 1
+    private var averageSportDurationADay: Double = 0.0
     private var gender: Gender = .male
     private var recommendedDoze: Double = 2750
     

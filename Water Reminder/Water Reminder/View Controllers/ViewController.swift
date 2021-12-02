@@ -53,13 +53,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
-        textFieldWaterToAdd.keyboardType = .decimalPad
+        setupKeyboard()
         displayAnimatedWater()
-        buttonUpdateParameters.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
-        buttonOnlyCleanWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
-        buttonAddWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
-        
+        setupButtons()
         consumption.initUser()
         setupPercentageLabel()
         setupCollection()
@@ -82,6 +78,18 @@ class ViewController: UIViewController {
         labelPercentCompleted.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
         labelPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
         labelPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true
+    }
+    
+    private func setupKeyboard() {
+        hideKeyboardWhenTappedAround()
+        textFieldWaterToAdd.inputAccessoryView = hideKeyboardToolbar()
+        textFieldWaterToAdd.keyboardType = .decimalPad
+    }
+    
+    private func setupButtons() {
+        buttonUpdateParameters.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
+        buttonOnlyCleanWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
+        buttonAddWater.layer.cornerRadius = CGFloat(ControllerParameters.controllerRadius.rawValue)
     }
     
     private func setupCollection() {
