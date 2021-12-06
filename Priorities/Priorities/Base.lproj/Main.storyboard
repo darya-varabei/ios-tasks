@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Priorities" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="748" axis="vertical" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LkE-ka-8CK">
+                                <rect key="frame" x="30" y="74" width="354" height="748"/>
+                                <subviews>
+                                    <view contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="753" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="336" translatesAutoresizingMaskIntoConstraints="NO" id="Qbi-eN-t40" customClass="CountryHeaderView" customModule="Priorities" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="336"/>
+                                        <color key="backgroundColor" name="headerStart"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="753" horizontalCompressionResistancePriority="250" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oub-be-40L">
+                                        <rect key="frame" x="0.0" y="356" width="354" height="192"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="748" horizontalCompressionResistancePriority="253" placeholderIntrinsicWidth="184" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Fb1-9n-bKE">
+                                                <rect key="frame" x="0.0" y="0.0" width="172" height="192"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMF-Cc-cUh">
+                                                        <rect key="frame" x="100.5" y="40" width="41.5" height="112"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="XMF-Cc-cUh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fb1-9n-bKE" secondAttribute="leading" symbolic="YES" id="78P-fd-i7x"/>
+                                                    <constraint firstItem="XMF-Cc-cUh" firstAttribute="top" secondItem="Fb1-9n-bKE" secondAttribute="top" constant="40" id="9NR-iF-dxV"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XMF-Cc-cUh" secondAttribute="bottom" constant="40" id="TiZ-Tb-ahW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XMF-Cc-cUh" secondAttribute="trailing" constant="30" id="XNK-CK-b0f"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="748" horizontalCompressionResistancePriority="252" placeholderIntrinsicWidth="172" placeholderIntrinsicHeight="192" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-Eq-faj">
+                                                <rect key="frame" x="182" y="0.0" width="172" height="192"/>
+                                                <color key="backgroundColor" name="ticketStart"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleAspectFit" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-XL-3wC" customClass="SecondView" customModule="Priorities" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="568" width="354" height="180"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cjy-XL-3wC" firstAttribute="width" secondItem="LkE-ka-8CK" secondAttribute="width" id="Ykz-7i-DgJ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="ticketFinish"/>
+                        <constraints>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="3SC-IZ-omp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LkE-ka-8CK" secondAttribute="trailing" constant="30" id="IYb-W8-jQS"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nWp-xf-9nt"/>
+                            <constraint firstItem="LkE-ka-8CK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="qex-uC-DEU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LkE-ka-8CK" secondAttribute="bottom" constant="40" id="w5U-hX-UKZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68.115942028985515" y="88.392857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="headerStart">
+            <color red="0.76499998569488525" green="0.078000001609325409" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ticketFinish">
+            <color red="0.0" green="0.43900001049041748" blue="0.88599997758865356" alpha="0.52700001001358032" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ticketStart">
+            <color red="0.082000002264976501" green="0.60000002384185791" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
