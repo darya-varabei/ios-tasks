@@ -15,17 +15,7 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc private func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    func hideKeyboardToolbar() -> UIToolbar {
-        let toolobar = UIToolbar()
-        toolobar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.dismissKeyboard))
-        
-        toolobar.setItems([doneButton], animated: false)
-        
-        return toolobar
     }
 }

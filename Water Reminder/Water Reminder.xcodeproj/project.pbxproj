@@ -24,6 +24,7 @@
 		4BBE57F1273A843C00AF0B5E /* OptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57F0273A843C00AF0B5E /* OptionsViewModel.swift */; };
 		4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */; };
 		4BBE57F7273A90FC00AF0B5E /* OptionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */; };
+		D555E049275DD21300DC0AA9 /* UIToolBar+KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = D555E048275DD21300DC0AA9 /* UIToolBar+KeyboardDismiss.swift */; };
 		D56399B72753DD2E002BB5CE /* ControllerTextParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56399B62753DD2E002BB5CE /* ControllerTextParameter.swift */; };
 		D56399BA2753DDDB002BB5CE /* NotificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56399B92753DDDB002BB5CE /* NotificationParameters.swift */; };
 		D5BA86EB274C1DE7009C7B89 /* WaveParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */; };
@@ -58,6 +59,7 @@
 		4BBE57F0273A843C00AF0B5E /* OptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewModel.swift; sourceTree = "<group>"; };
 		4BBE57F4273A90FC00AF0B5E /* OptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewCell.swift; sourceTree = "<group>"; };
 		4BBE57F5273A90FC00AF0B5E /* OptionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionViewCell.xib; sourceTree = "<group>"; };
+		D555E048275DD21300DC0AA9 /* UIToolBar+KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolBar+KeyboardDismiss.swift"; sourceTree = "<group>"; };
 		D56399B62753DD2E002BB5CE /* ControllerTextParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTextParameter.swift; sourceTree = "<group>"; };
 		D56399B92753DDDB002BB5CE /* NotificationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationParameters.swift; sourceTree = "<group>"; };
 		D5BA86EA274C1DE7009C7B89 /* WaveParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveParameters.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				D5CE5166274B61490000CED6 /* String+ToDouble.swift */,
 				D5CE5163274B610A0000CED6 /* UserDefaults+Date.swift */,
 				4B0B259D274D2A8300232A48 /* UIViewController+Keyboard.swift */,
+				D555E048275DD21300DC0AA9 /* UIToolBar+KeyboardDismiss.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				4B649576273BC2A90028D261 /* ParametersViewController.swift in Sources */,
 				4BBE57ED273A803E00AF0B5E /* User.swift in Sources */,
 				D56399BA2753DDDB002BB5CE /* NotificationParameters.swift in Sources */,
+				D555E049275DD21300DC0AA9 /* UIToolBar+KeyboardDismiss.swift in Sources */,
 				4BBE57D4273A670400AF0B5E /* AppDelegate.swift in Sources */,
 				D5CE516E274B74F40000CED6 /* UserParameters.swift in Sources */,
 				4BBE57F6273A90FC00AF0B5E /* OptionViewCell.swift in Sources */,

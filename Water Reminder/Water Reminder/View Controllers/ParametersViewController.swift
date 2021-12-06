@@ -52,8 +52,9 @@ class ParametersViewController: UIViewController {
         textFieldBodyWeight?.keyboardType = .numberPad
         setUserParameters()
         hideKeyboardWhenTappedAround()
-        textFieldRecommended?.inputAccessoryView = hideKeyboardToolbar()
-        textFieldBodyWeight?.inputAccessoryView = hideKeyboardToolbar()
+        let bar = UIToolbar()
+        textFieldRecommended?.inputAccessoryView = bar.hideKeyboardToolbar()
+        textFieldBodyWeight?.inputAccessoryView = bar.hideKeyboardToolbar()
         setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
         textFieldBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         stepperActivity?.value = user.getActivity()

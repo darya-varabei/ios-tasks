@@ -82,7 +82,8 @@ class ViewController: UIViewController {
     
     private func setupKeyboard() {
         hideKeyboardWhenTappedAround()
-        textFieldWaterToAdd.inputAccessoryView = hideKeyboardToolbar()
+        let bar = UIToolbar()
+        textFieldWaterToAdd.inputAccessoryView = bar.hideKeyboardToolbar()
         textFieldWaterToAdd.keyboardType = .decimalPad
     }
     
