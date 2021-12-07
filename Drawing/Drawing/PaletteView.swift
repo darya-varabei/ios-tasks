@@ -10,6 +10,8 @@ import UIKit
 
 class PaletteView: UIView {
     
+    private let brush = Brush.brush
+    
     private let palette: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -58,7 +60,6 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         let cellData = colors[indexPath.item]
         cell.layer.cornerRadius = 10
         cell.cellColor = cellData
-               // let cellData = self.recipies.first?.hits[indexPath.item]
         return cell
     }
     
@@ -68,5 +69,9 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         let cellWidthPadding = collectionView.frame.size.width / 30
         let cellHeightPadding = collectionView.frame.size.height / 4
         return UIEdgeInsets(top: cellHeightPadding,left: cellWidthPadding, bottom: cellHeightPadding,right: cellWidthPadding)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        brush.setColor(newColor: colors[indexPath.item])
     }
 }

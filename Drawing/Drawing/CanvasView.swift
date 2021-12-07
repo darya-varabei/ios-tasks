@@ -12,7 +12,7 @@ class CanvasView: UIView {
     private var lastPoint: CGPoint = .zero
     private var currentPath = UIBezierPath()
     private var currentLayer: CAShapeLayer = CAShapeLayer()
-    private let brush = Brush()
+    private let brush = Brush.brush
     private let drawLayer = UIView()
     private let mainImageView = UIImageView()
     
@@ -76,8 +76,8 @@ class CanvasView: UIView {
         currentPath.addLine(to: toPoint)
         
         currentLayer.path = currentPath.cgPath
-        currentLayer.backgroundColor = UIColor.blue.cgColor
-        currentLayer.strokeColor = UIColor.blue.cgColor
+        currentLayer.backgroundColor = UIColor(named: brush.getColor())?.cgColor
+        currentLayer.strokeColor = UIColor(named: brush.getColor())?.cgColor
         currentLayer.lineWidth = 8
         currentLayer.lineCap = .round
         currentLayer.lineJoin = .round
