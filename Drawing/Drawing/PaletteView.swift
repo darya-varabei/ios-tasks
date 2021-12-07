@@ -10,7 +10,7 @@ import UIKit
 
 class PaletteView: UIView {
     
-    private let brush = Brush.brush
+    private var brush = Brush.brush
     
     private let palette: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

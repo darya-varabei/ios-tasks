@@ -22,12 +22,10 @@ class ViewController: UIViewController {
         viewScroll.addSubview(canvasView)
         canvasView.pinToSuperViewEdges()
         scrollView.panGestureRecognizer.minimumNumberOfTouches = 2;
-        setupChoosecolorButton()
-        paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 250, width: UIScreen.main.bounds.width, height: 250))
-        view.addSubview(paletteVC)
+        setupChooseColorButton()
     }
     
-    private func setupChoosecolorButton() {
+    private func setupChooseColorButton() {
         buttonChangeColor.layer.cornerRadius = 25
         buttonChangeColor.backgroundColor = UIColor.white
         buttonChangeColor.layer.shadowColor = UIColor.black.cgColor
@@ -39,7 +37,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func presentPaletteView(_ sender: Any) {
-        
+        paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 250, width: UIScreen.main.bounds.width, height: 250))
+        view.addSubview(paletteVC)
     }
     
 }
