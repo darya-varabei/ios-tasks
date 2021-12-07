@@ -23,7 +23,7 @@ class CanvasView: UIView {
        
         [mainImageView, drawLayer].forEach {
             addSubview($0)
-            backgroundColor = UIColor.yellow
+            //backgroundColor = UIColor.yellow
             $0.pinToSuperViewEdges()
         }
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,11 +27,6 @@
                                             <constraint firstAttribute="height" constant="2000" id="V8a-cA-Kt7"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9J-JE-VUd">
-                                        <rect key="frame" x="87" y="93" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rPB-XA-g2r" secondAttribute="trailing" id="NWf-sG-NAC"/>
@@ -40,17 +35,30 @@
                                     <constraint firstItem="rPB-XA-g2r" firstAttribute="centerY" secondItem="Sib-uQ-N2m" secondAttribute="centerY" id="xlN-eu-wa3"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFz-f8-3ia">
+                                <rect key="frame" x="334" y="592" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="sHp-9M-WMp"/>
+                                    <constraint firstAttribute="height" constant="50" id="y5v-WH-1pd"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="presentPaletteView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NxA-3I-wki"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-11" id="2IC-VK-cgl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dFz-f8-3ia" secondAttribute="bottom" constant="220" id="Zxm-k3-Ter"/>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dkF-i4-c5t"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Sib-uQ-N2m" secondAttribute="bottom" constant="-11" id="xa0-6c-VYa"/>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yZV-F5-lF2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dFz-f8-3ia" secondAttribute="trailing" constant="30" id="zbh-AC-0kp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonChangeColor" destination="dFz-f8-3ia" id="GKZ-y7-yLZ"/>
                         <outlet property="scrollView" destination="Sib-uQ-N2m" id="eYp-i8-Tgu"/>
                         <outlet property="viewScroll" destination="rPB-XA-g2r" id="sy1-rQ-SJr"/>
                     </connections>

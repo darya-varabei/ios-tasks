@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B457D29275F79BB00EF7315 /* PaletteCell */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */,
+				D57DB4AF275E699800A86A31 /* ColorCollectionViewCell.xib */,
+			);
+			path = PaletteCell;
+			sourceTree = "<group>";
+		};
 		D58749CC275E328B008D229B = {
 			isa = PBXGroup;
 			children = (
@@ -71,8 +80,7 @@
 				D58749D8275E328B008D229B /* AppDelegate.swift */,
 				D58749DA275E328B008D229B /* SceneDelegate.swift */,
 				D58749DC275E328B008D229B /* ViewController.swift */,
-				D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */,
-				D57DB4AF275E699800A86A31 /* ColorCollectionViewCell.xib */,
+				4B457D29275F79BB00EF7315 /* PaletteCell */,
 				D57DB4A4275E672F00A86A31 /* CanvasView.swift */,
 				D57DB4A7275E676F00A86A31 /* PaletteView.swift */,
 				D58749EF275E355D008D229B /* Brush.swift */,
