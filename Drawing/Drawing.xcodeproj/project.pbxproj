@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B4037C82760D39100E93ED8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4037C72760D39100E93ED8 /* CustomButton.swift */; };
+		4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */; };
 		D57DB4A5275E672F00A86A31 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A4275E672F00A86A31 /* CanvasView.swift */; };
 		D57DB4A8275E676F00A86A31 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A7275E676F00A86A31 /* PaletteView.swift */; };
 		D57DB4B0275E699800A86A31 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B4037C72760D39100E93ED8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaletteView+Colors.swift"; sourceTree = "<group>"; };
 		D57DB4A4275E672F00A86A31 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D57DB4A7275E676F00A86A31 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				4B457D29275F79BB00EF7315 /* PaletteCell */,
 				D57DB4A4275E672F00A86A31 /* CanvasView.swift */,
 				D57DB4A7275E676F00A86A31 /* PaletteView.swift */,
+				4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */,
+				4B4037C72760D39100E93ED8 /* CustomButton.swift */,
 				D58749EF275E355D008D229B /* Brush.swift */,
 				D57DB4B3275E7A0A00A86A31 /* UIView+Constraints.swift */,
 				D58749DE275E328B008D229B /* Main.storyboard */,
@@ -166,6 +172,8 @@
 			files = (
 				D58749DD275E328B008D229B /* ViewController.swift in Sources */,
 				D57DB4B0275E699800A86A31 /* ColorCollectionViewCell.swift in Sources */,
+				4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */,
+				4B4037C82760D39100E93ED8 /* CustomButton.swift in Sources */,
 				D58749D9275E328B008D229B /* AppDelegate.swift in Sources */,
 				D57DB4A5275E672F00A86A31 /* CanvasView.swift in Sources */,
 				D58749F0275E355D008D229B /* Brush.swift in Sources */,

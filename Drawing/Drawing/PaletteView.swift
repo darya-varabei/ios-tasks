@@ -11,6 +11,7 @@ import UIKit
 class PaletteView: UIView {
     
     private var brush = Brush.brush
+    private var colors: [String] = []
     
     private let palette: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,11 +21,10 @@ class PaletteView: UIView {
         return collectionView
     }()
     
-    private let colors = ["blueberry", "blood", "sea", "fresh", "dark", "orange", "sunset", "purple"]
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(palette)
+        colors = setColors()
         collectionConstraints()
         palette.delegate = self
         palette.dataSource = self
@@ -38,8 +38,6 @@ class PaletteView: UIView {
     }
     
     private func collectionConstraints() {
-//        palette.leftAnchor.constraint(greaterThanOrEqualTo: leftAnchor, constant: 30).isActive = true
-//        palette.rightAnchor.constraint(greaterThanOrEqualTo: rightAnchor, constant: -30).isActive = true
         palette.widthAnchor.constraint(equalToConstant: 300).isActive = true
         palette.heightAnchor.constraint(equalToConstant: 180).isActive = true
         palette.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -50,7 +48,6 @@ class PaletteView: UIView {
 
 extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
     }
@@ -58,7 +55,7 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ColorCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "color", for: indexPath) as? ColorCollectionViewCell)!
         let cellData = colors[indexPath.item]
-        cell.layer.cornerRadius = 10
+        cellData == Brush.brush.getColor() ? cell.getSelected() : cell.getDeselected()
         cell.cellColor = cellData
         return cell
     }
@@ -73,5 +70,6 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         brush.setColor(newColor: colors[indexPath.item])
+        collectionView.reloadData()
     }
 }

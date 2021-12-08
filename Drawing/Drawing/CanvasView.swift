@@ -16,16 +16,14 @@ class CanvasView: UIView {
     private let drawLayer = UIView()
     private let mainImageView = UIImageView()
     
-    var brushDown: Bool = true
+    private var brushDown: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-       
-        [mainImageView, drawLayer].forEach {
-            addSubview($0)
-            //backgroundColor = UIColor.yellow
-            $0.pinToSuperViewEdges()
-        }
+        addSubview(mainImageView)
+        mainImageView.pinToSuperViewEdges()
+        addSubview(drawLayer)
+        drawLayer.pinToSuperViewEdges()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +35,6 @@ class CanvasView: UIView {
         
         lastPoint = touch.location(in: self)
         if brushDown {
-            print("Touch began")
             currentLayer = CAShapeLayer()
             currentPath = UIBezierPath()
             drawLayer.layer.addSublayer(currentLayer)
@@ -49,7 +46,6 @@ class CanvasView: UIView {
         
         let currentPoint = touch.location(in: self)
         if brushDown {
-            print("Touch move")
             drawLine(from: lastPoint, to: currentPoint)
         }
         lastPoint = currentPoint
@@ -60,7 +56,7 @@ class CanvasView: UIView {
         guard let touch = touches.first else { return }
         
         if !brushDown, let layer = findLayer(in: touch) {
-            removeFromSuperLayer(from: layer)
+            removeFromSuperLayer()
         }
 
         let renderer = UIGraphicsImageRenderer(bounds: drawLayer.bounds)
@@ -76,7 +72,6 @@ class CanvasView: UIView {
         currentPath.addLine(to: toPoint)
         
         currentLayer.path = currentPath.cgPath
-        currentLayer.backgroundColor = UIColor(named: brush.getColor())?.cgColor
         currentLayer.strokeColor = UIColor(named: brush.getColor())?.cgColor
         currentLayer.lineWidth = 8
         currentLayer.lineCap = .round
@@ -95,16 +90,22 @@ class CanvasView: UIView {
                 return shapeLayer
             }
         }
-        
         return nil
     }
     
-    private func removeFromSuperLayer(from layer: CALayer) {
-        if layer != drawLayer.layer {
-            if let superLayer = layer.superlayer {
-                removeFromSuperLayer(from: superLayer)
-                layer.removeFromSuperlayer()
-            }
+    func removeFromSuperLayer() {
+        guard let sublayers = drawLayer.layer.sublayers else {
+            return
         }
+        print("sublayer")
+        for layer in sublayers {
+            layer.removeFromSuperlayer()
+        }
+//        if layer != drawLayer.layer {
+//            if let superLayer = layer.superlayer {
+//                removeFromSuperLayer()
+//                layer.removeFromSuperlayer()
+//            }
+//        }
     }
 }
