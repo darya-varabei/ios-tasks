@@ -10,9 +10,6 @@ import UIKit
 
 class PaletteView: UIView {
     
-    private var brush = Brush.brush
-    private var colors: [String] = []
-    
     private let palette: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -20,6 +17,14 @@ class PaletteView: UIView {
         collectionView.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "color")
         return collectionView
     }()
+    
+    private var brush = Brush.brush
+    private var colors: [String] = []
+    
+    private enum CollectionLiterals {
+        static let width: CGFloat = 300
+        static let height: CGFloat = 180
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,17 +34,15 @@ class PaletteView: UIView {
         palette.delegate = self
         palette.dataSource = self
         palette.backgroundColor = UIColor.white
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
     }
     
     private func collectionConstraints() {
-        palette.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        palette.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        palette.widthAnchor.constraint(equalToConstant: CollectionLiterals.width).isActive = true
+        palette.heightAnchor.constraint(equalToConstant: CollectionLiterals.height).isActive = true
         palette.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         palette.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         palette.isScrollEnabled = false
@@ -48,8 +51,14 @@ class PaletteView: UIView {
 
 extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
+    private enum PaletteLiterals: CGFloat {
+        case numOfCells = 8
+        case widthPadding = 30
+        case heightPadding = 4
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return Int(PaletteLiterals.numOfCells.rawValue)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,9 +71,9 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-
-        let cellWidthPadding = collectionView.frame.size.width / 30
-        let cellHeightPadding = collectionView.frame.size.height / 4
+        
+        let cellWidthPadding = collectionView.frame.size.width / PaletteLiterals.widthPadding.rawValue
+        let cellHeightPadding = collectionView.frame.size.height / PaletteLiterals.heightPadding.rawValue
         return UIEdgeInsets(top: cellHeightPadding,left: cellWidthPadding, bottom: cellHeightPadding,right: cellWidthPadding)
     }
     

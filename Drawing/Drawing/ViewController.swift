@@ -9,51 +9,66 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var viewScroll: CanvasView!
-    @IBOutlet weak var buttonChangeColor: UIButton!
-    @IBOutlet weak var buttonEraseAll: UIButton!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var viewScroll: CanvasView!
+    @IBOutlet private var buttonChangeColor: UIButton!
+    @IBOutlet private var buttonEraseAll: UIButton!
+    
     private var isPalettePresented = false
-    let canvasView = CanvasView()
-    var paletteVC = PaletteView()
+    private let canvasView = CanvasView()
+    private var paletteVC = PaletteView()
+    private let paletteOffset: CGFloat = 250
+    
+    private enum LocalParameters {
+        static let cornerRadius: CGFloat = 25
+        static let shadowOffset: CGFloat = 2
+        static let shadowOpacity: Float = 0.2
+        static let animationDuration = 0.25
+        static let minNumOfTouches = 2
+    }
+    
+    private enum ButtonImages {
+        static let scribble = "scribble.variable"
+        static let arrowShape = "arrowshape.turn.up.backward"
+        static let defaultColor = "blood"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewScroll.addSubview(canvasView)
-        canvasView.pinToSuperViewEdges()
-        scrollView.panGestureRecognizer.minimumNumberOfTouches = 2;
-        setupChooseColorButton(button: buttonChangeColor, image: "scribble.variable", color: Brush.brush.getColor())
-        setupChooseColorButton(button: buttonEraseAll, image: "arrowshape.turn.up.backward", color: "blood")
-        paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 250, width: UIScreen.main.bounds.width, height: 250))
+        canvasView.clipView()
+        scrollView.panGestureRecognizer.minimumNumberOfTouches = LocalParameters.minNumOfTouches;
+        setupCustomButtons(button: buttonChangeColor, image: ButtonImages.scribble, color: Brush.brush.getColor())
+        setupCustomButtons(button: buttonEraseAll, image: ButtonImages.arrowShape, color: ButtonImages.defaultColor)
+        paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - paletteOffset, width: UIScreen.main.bounds.width, height: paletteOffset))
     }
     
-    private func setupChooseColorButton(button: UIButton, image: String, color: String) {
-        button.layer.cornerRadius = 25
+    private func setupCustomButtons(button: UIButton, image: String, color: String) {
+        button.layer.cornerRadius = LocalParameters.cornerRadius
         button.backgroundColor = UIColor.white
         button.layer.shadowColor = UIColor.black.cgColor
         button.setImage(UIImage(systemName: image), for: .normal)
         button.tintColor = UIColor(named: color)
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowRadius = 2
-        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: LocalParameters.shadowOffset, height: LocalParameters.shadowOffset)
+        button.layer.shadowRadius = LocalParameters.shadowOffset
+        button.layer.shadowOpacity = LocalParameters.shadowOpacity
     }
     
-    @IBAction func eraseAll(_ sender: Any) {
-        canvasView.removeFromSuperLayer()
+    @IBAction private func eraseLast(_ sender: Any) {
+        canvasView.removeFromCanvas()
     }
     
-    @IBAction func presentPaletteView(_ sender: Any) {
+    @IBAction private func presentPaletteView(_ sender: Any) {
         
         if !isPalettePresented {
-            
-            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
                 self.view.addSubview(self.paletteVC)
             }, completion: nil)
             
             isPalettePresented = true
         }
         else {
-            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
                 self.paletteVC.removeFromSuperview()
             }, completion: nil)
             

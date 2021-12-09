@@ -8,8 +8,9 @@
 import UIKit
 
 extension UIView {
+    
     @discardableResult
-    func pinToSuperViewEdges() -> [NSLayoutConstraint] {
+    func clipView() -> [NSLayoutConstraint] {
         guard let superview = superview?.safeAreaLayoutGuide else { return [] }
         
         translatesAutoresizingMaskIntoConstraints = false

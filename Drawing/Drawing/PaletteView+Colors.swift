@@ -8,6 +8,7 @@
 import Foundation
 
 extension PaletteView {
+    
     func setColors() -> [String] {
         return ["blueberry", "blood", "sea", "fresh", "dark", "orange", "sunset", "purple"]
     }

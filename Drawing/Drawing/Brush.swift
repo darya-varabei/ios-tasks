@@ -30,5 +30,4 @@ class Brush {
     func getOutlineWidth() -> Int {
         return outlineWidth
     }
-
 }

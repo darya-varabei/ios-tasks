@@ -15,19 +15,18 @@ class CanvasView: UIView {
     private let brush = Brush.brush
     private let drawLayer = UIView()
     private let mainImageView = UIImageView()
-    
     private var brushDown: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(mainImageView)
-        mainImageView.pinToSuperViewEdges()
+        mainImageView.clipView()
         addSubview(drawLayer)
-        drawLayer.pinToSuperViewEdges()
+        drawLayer.clipView()
     }
     
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,19 +50,12 @@ class CanvasView: UIView {
         lastPoint = currentPoint
     }
     
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
         
-        if !brushDown, let layer = findLayer(in: touch) {
-            removeFromSuperLayer()
-        }
-
         let renderer = UIGraphicsImageRenderer(bounds: drawLayer.bounds)
         let image = renderer.image { rendererContext in
             drawLayer.layer.render(in: rendererContext.cgContext)
         }
-       
         mainImageView.image = image
     }
     
@@ -73,39 +65,17 @@ class CanvasView: UIView {
         
         currentLayer.path = currentPath.cgPath
         currentLayer.strokeColor = UIColor(named: brush.getColor())?.cgColor
-        currentLayer.lineWidth = 8
+        currentLayer.lineWidth = CGFloat(brush.getOutlineWidth())
         currentLayer.lineCap = .round
         currentLayer.lineJoin = .round
     }
     
-    private func findLayer(in touch: UITouch) -> CAShapeLayer? {
-        let point = touch.location(in: self)
-
-        guard let sublayers = drawLayer.layer.sublayers else { return nil }
-
-        for layer in sublayers {
-            if let shapeLayer = layer as? CAShapeLayer,
-                let outline = shapeLayer.path?.copy(strokingWithWidth: 8, lineCap: .butt, lineJoin: .round, miterLimit: 0),
-                outline.contains(point) == true {
-                return shapeLayer
-            }
+    func removeFromCanvas() {
+        drawLayer.layer.sublayers?.removeLast()
+        let renderer = UIGraphicsImageRenderer(bounds: drawLayer.bounds)
+        let image = renderer.image { rendererContext in
+            drawLayer.layer.render(in: rendererContext.cgContext)
         }
-        return nil
-    }
-    
-    func removeFromSuperLayer() {
-        guard let sublayers = drawLayer.layer.sublayers else {
-            return
-        }
-        print("sublayer")
-        for layer in sublayers {
-            layer.removeFromSuperlayer()
-        }
-//        if layer != drawLayer.layer {
-//            if let superLayer = layer.superlayer {
-//                removeFromSuperLayer()
-//                layer.removeFromSuperlayer()
-//            }
-//        }
+        mainImageView.image = image
     }
 }
