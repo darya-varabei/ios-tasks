@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 class CanvasView: UIView {
-    private var lastPoint: CGPoint = .zero
-    private var currentPath = UIBezierPath()
-    private var currentLayer: CAShapeLayer = CAShapeLayer()
+    
     private let brush = Brush.brush
     private let drawLayer = UIView()
     private let mainImageView = UIImageView()
+    private var lastPoint: CGPoint = .zero
+    private var currentPath = UIBezierPath()
+    private var currentLayer: CAShapeLayer = CAShapeLayer()
     private var brushDown: Bool = true
     
     override init(frame: CGRect) {

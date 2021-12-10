@@ -14,10 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonChangeColor: UIButton!
     @IBOutlet private var buttonEraseAll: UIButton!
     
-    private var isPalettePresented = false
-    private let canvasView = CanvasView()
-    private var paletteVC = PaletteView()
     private let paletteOffset: CGFloat = 250
+    private let canvasView = CanvasView()
+    private var isPalettePresented = false
+    private var paletteVC = PaletteView()
     
     private enum LocalParameters {
         static let cornerRadius: CGFloat = 25

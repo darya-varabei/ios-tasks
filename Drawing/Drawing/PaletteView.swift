@@ -62,7 +62,8 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : ColorCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "color", for: indexPath) as? ColorCollectionViewCell)!
+        let defaultCell = ColorCollectionViewCell()
+        let cell : ColorCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "color", for: indexPath) as? ColorCollectionViewCell ?? defaultCell)
         let cellData = colors[indexPath.item]
         cellData == Brush.brush.getColor() ? cell.getSelected() : cell.getDeselected()
         cell.cellColor = cellData
