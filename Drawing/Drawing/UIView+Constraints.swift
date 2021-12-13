@@ -10,7 +10,7 @@ import UIKit
 extension UIView {
     
     @discardableResult
-    func clipView() -> [NSLayoutConstraint] {
+    func stretchToSuperviewFrame() -> [NSLayoutConstraint] {
         guard let superview = superview?.safeAreaLayoutGuide else { return [] }
         
         translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */; };
+		D55AB9A727671A230076AE9B /* CanvasView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */; };
 		D57DB4A5275E672F00A86A31 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A4275E672F00A86A31 /* CanvasView.swift */; };
 		D57DB4A8275E676F00A86A31 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A7275E676F00A86A31 /* PaletteView.swift */; };
 		D57DB4B0275E699800A86A31 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaletteView+Colors.swift"; sourceTree = "<group>"; };
+		D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanvasView+Touch.swift"; sourceTree = "<group>"; };
 		D57DB4A4275E672F00A86A31 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D57DB4A7275E676F00A86A31 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		D57DB4AE275E699800A86A31 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				D58749DC275E328B008D229B /* ViewController.swift */,
 				4B457D29275F79BB00EF7315 /* PaletteCell */,
 				D57DB4A4275E672F00A86A31 /* CanvasView.swift */,
+				D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */,
 				D57DB4A7275E676F00A86A31 /* PaletteView.swift */,
 				4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */,
 				D58749EF275E355D008D229B /* Brush.swift */,
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D55AB9A727671A230076AE9B /* CanvasView+Touch.swift in Sources */,
 				D58749DD275E328B008D229B /* ViewController.swift in Sources */,
 				D57DB4B0275E699800A86A31 /* ColorCollectionViewCell.swift in Sources */,
 				4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */,

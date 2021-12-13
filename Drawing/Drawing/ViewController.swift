@@ -63,6 +63,8 @@ class ViewController: UIViewController {
         if !isPalettePresented {
             UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
                 self.view.addSubview(self.paletteVC)
+                self.view.bringSubviewToFront(self.buttonChangeColor)
+                self.view.bringSubviewToFront(self.buttonEraseAll)
             }, completion: nil)
             
             isPalettePresented = true
