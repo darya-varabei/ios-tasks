@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     private let paletteOffset: CGFloat = 250
     private let canvasView = CanvasView()
+    private let brush = Brush()
     private var isPalettePresented = false
     private var paletteVC = PaletteView()
     
@@ -36,9 +37,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewScroll.addSubview(canvasView)
-        canvasView.clipView()
+        canvasView.stretchToSuperviewFrame()
         scrollView.panGestureRecognizer.minimumNumberOfTouches = LocalParameters.minNumOfTouches;
-        setupCustomButtons(button: buttonChangeColor, image: ButtonImages.scribble, color: Brush.brush.getColor())
+        setupCustomButtons(button: buttonChangeColor, image: ButtonImages.scribble, color: brush.getColor())
         setupCustomButtons(button: buttonEraseAll, image: ButtonImages.arrowShape, color: ButtonImages.defaultColor)
         paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - paletteOffset, width: UIScreen.main.bounds.width, height: paletteOffset))
     }
@@ -56,6 +57,10 @@ class ViewController: UIViewController {
     
     @IBAction private func eraseLast(_ sender: Any) {
         canvasView.removeFromCanvas()
+    }
+    
+    func changeColor(newColor: String) {
+        canvasView.brush.setColor(newColor: newColor)
     }
     
     @IBAction private func presentPaletteView(_ sender: Any) {

@@ -10,7 +10,7 @@ import UIKit
 
 class CanvasView: UIView {
     
-    let brush = Brush.brush
+    let brush = Brush()
     let drawLayer = UIView()
     let mainImageView = UIImageView()
     var lastPoint: CGPoint = .zero
@@ -28,6 +28,10 @@ class CanvasView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func changeColor(newColor: String) {
+        brush.setColor(newColor: newColor)
     }
     
     func removeFromCanvas() {

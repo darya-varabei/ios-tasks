@@ -8,12 +8,11 @@
 import Foundation
 
 class Brush {
-    static let brush = Brush()
     private var color: String = "blueberry"
     private let strokeWidth = 5
     private let outlineWidth = 5
     
-    private init() {}
+    public init() {}
     
     func setColor(newColor: String) {
         color = newColor

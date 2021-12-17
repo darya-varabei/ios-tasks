@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */; };
+		D54FFE47276D0A9400C74AD7 /* UIView+ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE46276D0A9400C74AD7 /* UIView+ParentViewController.swift */; };
 		D55AB9A727671A230076AE9B /* CanvasView+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */; };
 		D57DB4A5275E672F00A86A31 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A4275E672F00A86A31 /* CanvasView.swift */; };
 		D57DB4A8275E676F00A86A31 /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB4A7275E676F00A86A31 /* PaletteView.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaletteView+Colors.swift"; sourceTree = "<group>"; };
+		D54FFE46276D0A9400C74AD7 /* UIView+ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ParentViewController.swift"; sourceTree = "<group>"; };
 		D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanvasView+Touch.swift"; sourceTree = "<group>"; };
 		D57DB4A4275E672F00A86A31 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D57DB4A7275E676F00A86A31 /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,26 @@
 			path = PaletteCell;
 			sourceTree = "<group>";
 		};
+		D54FFE49276D1BE200C74AD7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D54FFE46276D0A9400C74AD7 /* UIView+ParentViewController.swift */,
+				D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */,
+				4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */,
+				D57DB4B3275E7A0A00A86A31 /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D54FFE4A276D1C0500C74AD7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB4A4275E672F00A86A31 /* CanvasView.swift */,
+				D57DB4A7275E676F00A86A31 /* PaletteView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D58749CC275E328B008D229B = {
 			isa = PBXGroup;
 			children = (
@@ -84,13 +106,10 @@
 				D58749D8275E328B008D229B /* AppDelegate.swift */,
 				D58749DA275E328B008D229B /* SceneDelegate.swift */,
 				D58749DC275E328B008D229B /* ViewController.swift */,
+				D54FFE4A276D1C0500C74AD7 /* Views */,
 				4B457D29275F79BB00EF7315 /* PaletteCell */,
-				D57DB4A4275E672F00A86A31 /* CanvasView.swift */,
-				D55AB9A627671A230076AE9B /* CanvasView+Touch.swift */,
-				D57DB4A7275E676F00A86A31 /* PaletteView.swift */,
-				4B4037C92760F36D00E93ED8 /* PaletteView+Colors.swift */,
+				D54FFE49276D1BE200C74AD7 /* Extensions */,
 				D58749EF275E355D008D229B /* Brush.swift */,
-				D57DB4B3275E7A0A00A86A31 /* UIView+Constraints.swift */,
 				D58749DE275E328B008D229B /* Main.storyboard */,
 				D58749E1275E328E008D229B /* Assets.xcassets */,
 				D58749E3275E328E008D229B /* LaunchScreen.storyboard */,
@@ -174,6 +193,7 @@
 				D58749DD275E328B008D229B /* ViewController.swift in Sources */,
 				D57DB4B0275E699800A86A31 /* ColorCollectionViewCell.swift in Sources */,
 				4B4037CA2760F36D00E93ED8 /* PaletteView+Colors.swift in Sources */,
+				D54FFE47276D0A9400C74AD7 /* UIView+ParentViewController.swift in Sources */,
 				D58749D9275E328B008D229B /* AppDelegate.swift in Sources */,
 				D57DB4A5275E672F00A86A31 /* CanvasView.swift in Sources */,
 				D58749F0275E355D008D229B /* Brush.swift in Sources */,

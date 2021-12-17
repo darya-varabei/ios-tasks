@@ -20,19 +20,19 @@
                                 <rect key="frame" x="0.0" y="33" width="414" height="840"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPB-XA-g2r" customClass="CanvasView" customModule="Drawing" customModuleProvider="target">
-                                        <rect key="frame" x="-293" y="-580" width="1000" height="2000"/>
+                                        <rect key="frame" x="-290" y="-580" width="994" height="2000"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="1000" id="N6E-t9-jUd"/>
-                                            <constraint firstAttribute="height" constant="2000" id="V8a-cA-Kt7"/>
+                                            <constraint firstAttribute="width" constant="994" id="cIs-AJ-zZa"/>
+                                            <constraint firstAttribute="height" constant="2000" id="y9k-yq-XLJ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rPB-XA-g2r" secondAttribute="trailing" id="NWf-sG-NAC"/>
-                                    <constraint firstAttribute="bottom" secondItem="rPB-XA-g2r" secondAttribute="bottom" id="oBC-aF-bPh"/>
-                                    <constraint firstItem="rPB-XA-g2r" firstAttribute="centerX" secondItem="Sib-uQ-N2m" secondAttribute="centerX" id="qfo-2T-S1h"/>
-                                    <constraint firstItem="rPB-XA-g2r" firstAttribute="centerY" secondItem="Sib-uQ-N2m" secondAttribute="centerY" id="xlN-eu-wa3"/>
+                                    <constraint firstAttribute="trailing" secondItem="rPB-XA-g2r" secondAttribute="trailing" constant="-290" id="AzO-zq-i35"/>
+                                    <constraint firstAttribute="bottom" secondItem="rPB-XA-g2r" secondAttribute="bottom" constant="-580" id="cST-Ww-Bel"/>
+                                    <constraint firstItem="rPB-XA-g2r" firstAttribute="centerX" secondItem="Sib-uQ-N2m" secondAttribute="centerX" id="nXw-Ea-0Ut"/>
+                                    <constraint firstItem="rPB-XA-g2r" firstAttribute="centerY" secondItem="Sib-uQ-N2m" secondAttribute="centerY" id="tX5-Ja-TPr"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFz-f8-3ia">

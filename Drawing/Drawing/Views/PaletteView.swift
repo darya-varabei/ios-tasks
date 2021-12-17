@@ -18,7 +18,7 @@ class PaletteView: UIView {
         return collectionView
     }()
     
-    private var brush = Brush.brush
+    private var brush = Brush()
     private var colors: [String] = []
     
     private enum CollectionLiterals {
@@ -65,7 +65,7 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         let defaultCell = ColorCollectionViewCell()
         let cell : ColorCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "color", for: indexPath) as? ColorCollectionViewCell ?? defaultCell)
         let cellData = colors[indexPath.item]
-        cellData == Brush.brush.getColor() ? cell.getSelected() : cell.getDeselected()
+        cellData == brush.getColor() ? cell.getSelected() : cell.getDeselected()
         cell.cellColor = cellData
         return cell
     }
@@ -80,6 +80,9 @@ extension PaletteView: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         brush.setColor(newColor: colors[indexPath.item])
+        if let controller = parentViewController as? ViewController {
+            controller.changeColor(newColor: colors[indexPath.item])
+        }
         collectionView.reloadData()
     }
 }
