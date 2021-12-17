@@ -12,10 +12,4 @@ extension FadeInSegue: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return FadeTransition(alphaComponent: 1)
     }
-    
-//    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        selfRetainer = nil
-//        print("Out")
-//        return FadeTransition(alphaComponent: 0)
-//    }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D54FFE50276D349E00C74AD7 /* SwipeToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */; };
+		D54FFE54276D387D00C74AD7 /* SwipeToBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */; };
+		D54FFE57276D39B500C74AD7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE56276D39B500C74AD7 /* ThirdViewController.swift */; };
 		D56EDC8F276A826000C731CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EDC8E276A826000C731CA /* AppDelegate.swift */; };
 		D56EDC91276A826000C731CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EDC90276A826000C731CA /* SceneDelegate.swift */; };
 		D56EDC93276A826000C731CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EDC92276A826000C731CA /* ViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToTopSegue.swift; sourceTree = "<group>"; };
+		D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToBottom.swift; sourceTree = "<group>"; };
+		D54FFE56276D39B500C74AD7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		D56EDC8B276A826000C731CA /* NavigationAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56EDC8E276A826000C731CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D56EDC90276A826000C731CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +51,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D54FFE59276D3B9F00C74AD7 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D56EDC92276A826000C731CA /* ViewController.swift */,
+				D56EDCA4276A908C00C731CA /* SecondViewController.swift */,
+				D54FFE56276D39B500C74AD7 /* ThirdViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		D54FFE5A276D3BB900C74AD7 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				D57330F8276CDF1100A76FFC /* FadeInSegue.swift */,
+				D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */,
+				D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */,
+			);
+			path = Segue;
+			sourceTree = "<group>";
+		};
+		D54FFE5B276D3BD300C74AD7 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				D5733102276CE2D000A76FFC /* FadeTransition.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		D54FFE5C276D3BE100C74AD7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D57330FC276CDFA700A76FFC /* FadeInSegue+TransitiondDelegate.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D56EDC82276A826000C731CA = {
 			isa = PBXGroup;
 			children = (
@@ -66,11 +108,10 @@
 			children = (
 				D56EDC8E276A826000C731CA /* AppDelegate.swift */,
 				D56EDC90276A826000C731CA /* SceneDelegate.swift */,
-				D56EDC92276A826000C731CA /* ViewController.swift */,
-				D57330F8276CDF1100A76FFC /* FadeInSegue.swift */,
-				D57330FC276CDFA700A76FFC /* FadeInSegue+TransitiondDelegate.swift */,
-				D5733102276CE2D000A76FFC /* FadeTransition.swift */,
-				D56EDCA4276A908C00C731CA /* SecondViewController.swift */,
+				D54FFE5C276D3BE100C74AD7 /* Extension */,
+				D54FFE5A276D3BB900C74AD7 /* Segue */,
+				D54FFE59276D3B9F00C74AD7 /* View Controller */,
+				D54FFE5B276D3BD300C74AD7 /* Transition */,
 				D56EDC94276A826000C731CA /* Main.storyboard */,
 				D56EDC97276A826300C731CA /* Assets.xcassets */,
 				D56EDC99276A826300C731CA /* LaunchScreen.storyboard */,
@@ -149,10 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54FFE54276D387D00C74AD7 /* SwipeToBottom.swift in Sources */,
 				D56EDCA5276A908C00C731CA /* SecondViewController.swift in Sources */,
+				D54FFE57276D39B500C74AD7 /* ThirdViewController.swift in Sources */,
 				D5733103276CE2D000A76FFC /* FadeTransition.swift in Sources */,
 				D57330FD276CDFA700A76FFC /* FadeInSegue+TransitiondDelegate.swift in Sources */,
 				D57330F9276CDF1100A76FFC /* FadeInSegue.swift in Sources */,
+				D54FFE50276D349E00C74AD7 /* SwipeToTopSegue.swift in Sources */,
 				D56EDC93276A826000C731CA /* ViewController.swift in Sources */,
 				D56EDC8F276A826000C731CA /* AppDelegate.swift in Sources */,
 				D56EDC91276A826000C731CA /* SceneDelegate.swift in Sources */,
