@@ -70,7 +70,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddg-eq-j04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="0oA-qX-WCx">
                     <connections>
-                        <segue destination="KjN-Ta-owd" kind="presentation" identifier="swipeToTop" customClass="SwipeToBottom" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Bb5-Wm-s45"/>
+                        <segue destination="KjN-Ta-owd" kind="presentation" identifier="swipeToTop" customClass="SwipeToTopSegue" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Bb5-Wm-s45"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -121,7 +121,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qGk-UD-nzC"/>
+        <segue reference="Bb5-Wm-s45"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemGreenColor">
