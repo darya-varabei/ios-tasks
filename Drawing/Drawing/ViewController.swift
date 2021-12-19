@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     private let canvasView = CanvasView()
     private let brush = Brush()
     private var isPalettePresented = false
-    private var paletteVC = PaletteView()
+    private var paletteView = PaletteView()
     
     private enum LocalParameters {
         static let cornerRadius: CGFloat = 25
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         scrollView.panGestureRecognizer.minimumNumberOfTouches = LocalParameters.minNumOfTouches;
         setupCustomButtons(button: buttonChangeColor, image: ButtonImages.scribble, color: brush.getColor())
         setupCustomButtons(button: buttonEraseAll, image: ButtonImages.arrowShape, color: ButtonImages.defaultColor)
-        paletteVC = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - paletteOffset, width: UIScreen.main.bounds.width, height: paletteOffset))
+        paletteView = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - paletteOffset, width: UIScreen.main.bounds.width, height: paletteOffset))
     }
     
     private func setupCustomButtons(button: UIButton, image: String, color: String) {
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         
         if !isPalettePresented {
             UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
-                self.view.addSubview(self.paletteVC)
+                self.view.addSubview(self.paletteView)
                 self.view.bringSubviewToFront(self.buttonChangeColor)
                 self.view.bringSubviewToFront(self.buttonEraseAll)
             }, completion: nil)
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         }
         else {
             UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
-                self.paletteVC.removeFromSuperview()
+                self.paletteView.removeFromSuperview()
             }, completion: nil)
             
             isPalettePresented = false
