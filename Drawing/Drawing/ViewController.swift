@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonEraseAll: UIButton!
     
     private let paletteOffset: CGFloat = 250
+    private let paletteWidth: CGFloat = 320
     private let canvasView = CanvasView()
     private let brush = Brush()
     private var isPalettePresented = false
@@ -41,7 +42,6 @@ class ViewController: UIViewController {
         scrollView.panGestureRecognizer.minimumNumberOfTouches = LocalParameters.minNumOfTouches;
         setupCustomButtons(button: buttonChangeColor, image: ButtonImages.scribble, color: brush.getColor())
         setupCustomButtons(button: buttonEraseAll, image: ButtonImages.arrowShape, color: ButtonImages.defaultColor)
-        paletteView = PaletteView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - paletteOffset, width: UIScreen.main.bounds.width, height: paletteOffset))
     }
     
     private func setupCustomButtons(button: UIButton, image: String, color: String) {
@@ -59,6 +59,14 @@ class ViewController: UIViewController {
         canvasView.removeFromCanvas()
     }
     
+    private func paletteAutoLayout() {
+        paletteView.translatesAutoresizingMaskIntoConstraints = false
+        paletteView.widthAnchor.constraint(equalToConstant: paletteWidth).isActive = true
+        paletteView.heightAnchor.constraint(equalToConstant: paletteOffset).isActive = true
+        paletteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        paletteView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
     func changeColor(newColor: String) {
         canvasView.brush.setColor(newColor: newColor)
     }
@@ -68,6 +76,7 @@ class ViewController: UIViewController {
         if !isPalettePresented {
             UIView.transition(with: self.view, duration: TimeInterval(LocalParameters.animationDuration), options: [.transitionCrossDissolve], animations: {
                 self.view.addSubview(self.paletteView)
+                self.paletteAutoLayout()
                 self.view.bringSubviewToFront(self.buttonChangeColor)
                 self.view.bringSubviewToFront(self.buttonEraseAll)
             }, completion: nil)

@@ -23,8 +23,8 @@
                                         <rect key="frame" x="-290" y="-580" width="994" height="2000"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="994" id="cIs-AJ-zZa"/>
-                                            <constraint firstAttribute="height" constant="2000" id="y9k-yq-XLJ"/>
+                                            <constraint firstAttribute="height" constant="2000" id="5QD-NY-4hS"/>
+                                            <constraint firstAttribute="width" constant="994" id="Ytn-ZR-1yn"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -35,6 +35,16 @@
                                     <constraint firstItem="rPB-XA-g2r" firstAttribute="centerY" secondItem="Sib-uQ-N2m" secondAttribute="centerY" id="tX5-Ja-TPr"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME3-5C-diQ">
+                                <rect key="frame" x="30" y="592" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7gB-ub-ljq"/>
+                                    <constraint firstAttribute="width" constant="50" id="PUc-72-EtN"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="eraseLast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dn9-5L-R7W"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFz-f8-3ia">
                                 <rect key="frame" x="334" y="592" width="50" height="50"/>
                                 <constraints>
@@ -45,27 +55,15 @@
                                     <action selector="presentPaletteView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NxA-3I-wki"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME3-5C-diQ">
-                                <rect key="frame" x="334" y="512" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7gB-ub-ljq"/>
-                                    <constraint firstAttribute="width" constant="50" id="PUc-72-EtN"/>
-                                    <constraint firstAttribute="width" constant="50" id="sGS-hg-vgk"/>
-                                    <constraint firstAttribute="height" constant="50" id="sKf-GZ-qQd"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="eraseLast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dn9-5L-R7W"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-11" id="2IC-VK-cgl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ME3-5C-diQ" secondAttribute="trailing" constant="30" id="AIY-ro-ige"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ME3-5C-diQ" secondAttribute="bottom" constant="220" id="EJT-Tz-SI4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dFz-f8-3ia" secondAttribute="trailing" constant="30" id="LTR-DV-9lk"/>
+                            <constraint firstItem="ME3-5C-diQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="RjK-hy-YIC"/>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dkF-i4-c5t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ME3-5C-diQ" secondAttribute="bottom" constant="300" id="eU3-SF-xhb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dFz-f8-3ia" secondAttribute="bottom" constant="220" id="hfN-pE-fOv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Sib-uQ-N2m" secondAttribute="bottom" constant="-11" id="xa0-6c-VYa"/>
                             <constraint firstItem="Sib-uQ-N2m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yZV-F5-lF2"/>
