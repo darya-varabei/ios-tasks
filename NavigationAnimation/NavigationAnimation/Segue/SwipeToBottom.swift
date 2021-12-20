@@ -22,7 +22,7 @@ class SwipeToBottom: UIStoryboardSegue {
         source.present(destination, animated: false, completion: nil)
     }
     
-    func setTransitionSubtype() -> CATransitionSubtype{
+    func setTransitionSubtype() -> CATransitionSubtype {
         
         let transitionSubtype = CATransitionSubtype.fromTop
         return transitionSubtype
