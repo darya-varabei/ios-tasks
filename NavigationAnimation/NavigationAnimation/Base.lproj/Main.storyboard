@@ -45,7 +45,7 @@
                 <exit id="ilJ-CC-G9D" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="up" id="wzX-g8-66j">
                     <connections>
-                        <segue destination="LCM-0r-6Yw" kind="presentation" identifier="swipeToBottom" customClass="SwipeToTopSegue" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Vn8-vn-ppB"/>
+                        <segue destination="LCM-0r-6Yw" kind="presentation" identifier="swipeToBottom" customClass="SwipeToBottom" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Vn8-vn-ppB"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -70,7 +70,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddg-eq-j04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="0oA-qX-WCx">
                     <connections>
-                        <segue destination="KjN-Ta-owd" kind="presentation" identifier="swipeToTop" customClass="SwipeToTopSegue" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Bb5-Wm-s45"/>
+                        <segue destination="KjN-Ta-owd" kind="presentation" identifier="swipeToTop" customClass="SwipeToTop" customModule="NavigationAnimation" customModuleProvider="target" modalPresentationStyle="fullScreen" id="y9z-RJ-Sax"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -121,7 +121,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bb5-Wm-s45"/>
+        <segue reference="y9z-RJ-Sax"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemGreenColor">

@@ -9,14 +9,22 @@ import Foundation
 import UIKit
 
 class SwipeToBottom: UIStoryboardSegue {
+    
+    let transition = CATransition()
+    
     override func perform() {
-        let transition = CATransition()
+        
         transition.duration = 0.5
-        print("________________")
         transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromBottom
+        transition.subtype = setTransitionSubtype()
         
         source.view.window?.layer.add(transition, forKey: kCATransition)
         source.present(destination, animated: false, completion: nil)
+    }
+    
+    func setTransitionSubtype() -> CATransitionSubtype{
+        
+        let transitionSubtype = CATransitionSubtype.fromTop
+        return transitionSubtype
     }
 }

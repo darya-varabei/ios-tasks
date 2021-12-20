@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D54FFE50276D349E00C74AD7 /* SwipeToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */; };
+		D54CF075277098A800E35D8F /* SwipeToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF074277098A800E35D8F /* SwipeToTop.swift */; };
 		D54FFE54276D387D00C74AD7 /* SwipeToBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */; };
 		D54FFE57276D39B500C74AD7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FFE56276D39B500C74AD7 /* ThirdViewController.swift */; };
 		D56EDC8F276A826000C731CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56EDC8E276A826000C731CA /* AppDelegate.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToTopSegue.swift; sourceTree = "<group>"; };
+		D54CF074277098A800E35D8F /* SwipeToTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToTop.swift; sourceTree = "<group>"; };
 		D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToBottom.swift; sourceTree = "<group>"; };
 		D54FFE56276D39B500C74AD7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		D56EDC8B276A826000C731CA /* NavigationAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +66,7 @@
 			children = (
 				D57330F8276CDF1100A76FFC /* FadeInSegue.swift */,
 				D54FFE53276D387D00C74AD7 /* SwipeToBottom.swift */,
-				D54FFE4F276D349E00C74AD7 /* SwipeToTopSegue.swift */,
+				D54CF074277098A800E35D8F /* SwipeToTop.swift */,
 			);
 			path = Segue;
 			sourceTree = "<group>";
@@ -194,9 +194,9 @@
 				D56EDCA5276A908C00C731CA /* SecondViewController.swift in Sources */,
 				D54FFE57276D39B500C74AD7 /* ThirdViewController.swift in Sources */,
 				D5733103276CE2D000A76FFC /* FadeTransition.swift in Sources */,
+				D54CF075277098A800E35D8F /* SwipeToTop.swift in Sources */,
 				D57330FD276CDFA700A76FFC /* FadeInSegue+TransitiondDelegate.swift in Sources */,
 				D57330F9276CDF1100A76FFC /* FadeInSegue.swift in Sources */,
-				D54FFE50276D349E00C74AD7 /* SwipeToTopSegue.swift in Sources */,
 				D56EDC93276A826000C731CA /* ViewController.swift in Sources */,
 				D56EDC8F276A826000C731CA /* AppDelegate.swift in Sources */,
 				D56EDC91276A826000C731CA /* SceneDelegate.swift in Sources */,
