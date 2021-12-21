@@ -32,7 +32,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             familyTableView.beginUpdates()
             familyTableView.deleteRows(at: [indexPath], with: .fade)
+            namesArray.remove(at: indexPath.row)
             familyTableView.endUpdates()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let animation = makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 1.0, delayFactor: 0.05)
+        let animator = Animator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
     }
 }

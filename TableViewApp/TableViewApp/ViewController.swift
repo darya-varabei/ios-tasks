@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var familyTableView: UITableView!
-    var namesArray: [String] = ["a", "b", "c", "d", "e", "f"]
+    var namesArray: [String] = ["Alice", "Max", "Henry", "Amanda", "John", "Patrick"]
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     }
     
     @objc private func refresh(_ sender: AnyObject) {
+        namesArray.shuffle()
+        familyTableView.reloadData()
         refreshControl.endRefreshing()
     }
 }
