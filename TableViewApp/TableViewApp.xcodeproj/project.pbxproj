@@ -71,18 +71,42 @@
 				4B7AA3952771E5A9007D1708 /* AppDelegate.swift */,
 				4B7AA3972771E5A9007D1708 /* SceneDelegate.swift */,
 				4B7AA3992771E5A9007D1708 /* ViewController.swift */,
-				4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */,
-				4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */,
-				4B7AA3B1277203EB007D1708 /* AnimationFactory.swift */,
-				4B7AA3B32772047F007D1708 /* Animator.swift */,
-				4B7AA3A92771F88B007D1708 /* TableViewCell.swift */,
-				4B7AA3AA2771F88B007D1708 /* TableViewCell.xib */,
+				4B7AA3B62772087E007D1708 /* Animation */,
+				4B7AA3B52772086D007D1708 /* Extensions */,
+				4B7AA3B72772088E007D1708 /* TableCell */,
 				4B7AA39B2771E5A9007D1708 /* Main.storyboard */,
 				4B7AA39E2771E5A9007D1708 /* Assets.xcassets */,
 				4B7AA3A02771E5A9007D1708 /* LaunchScreen.storyboard */,
 				4B7AA3A32771E5A9007D1708 /* Info.plist */,
 			);
 			path = TableViewApp;
+			sourceTree = "<group>";
+		};
+		4B7AA3B52772086D007D1708 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */,
+				4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4B7AA3B62772087E007D1708 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4B7AA3B1277203EB007D1708 /* AnimationFactory.swift */,
+				4B7AA3B32772047F007D1708 /* Animator.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		4B7AA3B72772088E007D1708 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				4B7AA3AA2771F88B007D1708 /* TableViewCell.xib */,
+				4B7AA3A92771F88B007D1708 /* TableViewCell.swift */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,10 +11,11 @@ import UIKit
 enum AnimationFactory {
 
     static func makeFadeAnimation(duration: TimeInterval, delayFactor: Double) -> Animation {
+        
         return { cell, indexPath, _ in
             cell.alpha = 0
 
-            UIView.animate(
+            UIView.animate (
                 withDuration: duration,
                 delay: delayFactor * Double(indexPath.row),
                 animations: {

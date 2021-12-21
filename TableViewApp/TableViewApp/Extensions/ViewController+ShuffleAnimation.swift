@@ -11,7 +11,9 @@ import UIKit
 typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
 
 extension ViewController {
+    
     func makeMoveUpWithBounce(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> Animation {
+        
         return { cell, indexPath, tableView in
             cell.transform = CGAffineTransform(translationX: 0, y: rowHeight)
 
@@ -26,5 +28,4 @@ extension ViewController {
             })
         }
     }
-
 }
