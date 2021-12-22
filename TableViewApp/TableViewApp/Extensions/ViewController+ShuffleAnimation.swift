@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
-
 extension ViewController {
     
     func makeMoveUpWithBounce(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> Animation {
@@ -20,8 +18,8 @@ extension ViewController {
             UIView.animate(
                 withDuration: duration,
                 delay: delayFactor * Double(indexPath.row),
-                usingSpringWithDamping: 0.4,
-                initialSpringVelocity: 0.1,
+                usingSpringWithDamping: AnimationParameters.springDumping,
+                initialSpringVelocity: AnimationParameters.springVelocity,
                 options: [.curveEaseInOut],
                 animations: {
                     cell.transform = CGAffineTransform(translationX: 0, y: 0)

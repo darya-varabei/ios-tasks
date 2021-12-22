@@ -15,13 +15,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as? TableViewCell
+        let cell = Bundle.main.loadNibNamed(tableCellIdentifier, owner: self, options: nil)?.first as? TableViewCell
         cell?.nameLabel.text = namesArray[indexPath.row]
         return cell ?? TableViewCell()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -38,7 +34,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let animation = makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 1.0, delayFactor: 0.05)
+        let animation = makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: AnimationParameters.duration, delayFactor: AnimationParameters.delayFactor)
         let animator = Animator(animation: animation)
         animator.animate(cell: cell, at: indexPath, in: tableView)
     }

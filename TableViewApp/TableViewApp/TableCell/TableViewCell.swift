@@ -13,9 +13,9 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        layer.cornerRadius = 15
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+        
     }
 }
