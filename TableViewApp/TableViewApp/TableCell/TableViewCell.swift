@@ -13,9 +13,5 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 15
-        contentView.layer.cornerRadius = 15
-        contentView.layer.masksToBounds = true
-        
     }
 }

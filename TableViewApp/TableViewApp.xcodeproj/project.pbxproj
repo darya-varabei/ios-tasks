@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B3192A2277311C900376EFE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3192A1277311C900376EFE /* Animation.swift */; };
 		4B3192A827732E3400376EFE /* ViewController+AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3192A727732E3400376EFE /* ViewController+AlertController.swift */; };
+		4B3192AA2773478F00376EFE /* UITableView+MessageOnEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3192A92773478F00376EFE /* UITableView+MessageOnEmpty.swift */; };
 		4B7AA3962771E5A9007D1708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3952771E5A9007D1708 /* AppDelegate.swift */; };
 		4B7AA3982771E5A9007D1708 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3972771E5A9007D1708 /* SceneDelegate.swift */; };
 		4B7AA39A2771E5A9007D1708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3992771E5A9007D1708 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4B3192A1277311C900376EFE /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		4B3192A727732E3400376EFE /* ViewController+AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+AlertController.swift"; sourceTree = "<group>"; };
+		4B3192A92773478F00376EFE /* UITableView+MessageOnEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+MessageOnEmpty.swift"; sourceTree = "<group>"; };
 		4B7AA3922771E5A9007D1708 /* TableViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7AA3952771E5A9007D1708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B7AA3972771E5A9007D1708 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */,
+				4B3192A92773478F00376EFE /* UITableView+MessageOnEmpty.swift */,
 				4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */,
 				4B3192A727732E3400376EFE /* ViewController+AlertController.swift */,
 			);
@@ -189,6 +192,7 @@
 				4B3192A827732E3400376EFE /* ViewController+AlertController.swift in Sources */,
 				4B7AA3962771E5A9007D1708 /* AppDelegate.swift in Sources */,
 				4B7AA3B42772047F007D1708 /* Animator.swift in Sources */,
+				4B3192AA2773478F00376EFE /* UITableView+MessageOnEmpty.swift in Sources */,
 				4B7AA3B027720354007D1708 /* ViewController+ShuffleAnimation.swift in Sources */,
 				4B7AA3AE2771FFC3007D1708 /* ViewController+UITableView.swift in Sources */,
 				4B7AA3982771E5A9007D1708 /* SceneDelegate.swift in Sources */,

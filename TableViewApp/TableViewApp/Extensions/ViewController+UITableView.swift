@@ -11,6 +11,13 @@ import UIKit
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if namesArray.count == 0 {
+            familyTableView.setEmptyMessage(emptyTableMessage: emptyTableMessage)
+        }
+        else {
+            familyTableView.restore()
+        }
         return namesArray.count
     }
     

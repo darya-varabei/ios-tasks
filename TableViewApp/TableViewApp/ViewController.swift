@@ -25,12 +25,9 @@ class ViewController: UIViewController {
     }
     
     let tableCellIdentifier = "TableViewCell"
+    let emptyTableMessage = "Table is currently empty"
     var namesArray: [String] = ["Alice", "Max", "Henry", "Amanda", "John", "Patrick"]
     
-    @IBOutlet private var navigationBar: UINavigationBar!
-    @IBOutlet private var addPersonButton: UIBarButtonItem!
-    @IBOutlet var familyTableView: UITableView!
-
     private let refreshControl = UIRefreshControl()
     private let pullToRefreshText = "Pull to refresh"
     
@@ -39,6 +36,10 @@ class ViewController: UIViewController {
         static let gradientPurple = "gradientPurple"
     }
     
+    @IBOutlet private var navigationBar: UINavigationBar!
+    @IBOutlet private var addPersonButton: UIBarButtonItem!
+    @IBOutlet var familyTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         familyTableView.delegate = self
@@ -46,6 +47,10 @@ class ViewController: UIViewController {
         setupAddButton()
         setupBackgroundColor()
         setupRefreshController()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setupBackgroundColor()
     }
     
     private func setupAddButton() {
@@ -58,7 +63,7 @@ class ViewController: UIViewController {
     
     private func setupBackgroundColor() {
         let gradient = CAGradientLayer()
-
+        
         gradient.frame = view.bounds
         gradient.colors = [UIColor(named: Colors.gradientPink)?.cgColor ?? UIColor.white.cgColor, UIColor(named: Colors.gradientPurple)?.cgColor ?? UIColor.white.cgColor]
 
