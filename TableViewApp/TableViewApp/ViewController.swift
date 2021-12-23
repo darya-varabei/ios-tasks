@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var familyTableView: UITableView!
+    @IBOutlet private var navigationBar: UINavigationBar!
+    @IBOutlet private var addPersonButton: UIBarButtonItem!
+    
     enum AnimationParameters {
         static let springDumping: CGFloat = 0.4
         static let springVelocity: CGFloat = 0.1
@@ -36,16 +40,11 @@ class ViewController: UIViewController {
         static let gradientPurple = "gradientPurple"
     }
     
-    @IBOutlet private var navigationBar: UINavigationBar!
-    @IBOutlet private var addPersonButton: UIBarButtonItem!
-    @IBOutlet var familyTableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         familyTableView.delegate = self
         familyTableView.dataSource = self
         setupAddButton()
-        setupBackgroundColor()
         setupRefreshController()
     }
     
@@ -66,8 +65,9 @@ class ViewController: UIViewController {
         
         gradient.frame = view.bounds
         gradient.colors = [UIColor(named: Colors.gradientPink)?.cgColor ?? UIColor.white.cgColor, UIColor(named: Colors.gradientPurple)?.cgColor ?? UIColor.white.cgColor]
-
-        view.layer.insertSublayer(gradient, at: 0)
+       
+        view.layer.addSublayer(gradient)
+        view.bringSubviewToFront(familyTableView)
     }
     
     private func setupRefreshController() {

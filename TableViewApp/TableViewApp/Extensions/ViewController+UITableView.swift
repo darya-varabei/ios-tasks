@@ -23,7 +23,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed(tableCellIdentifier, owner: self, options: nil)?.first as? TableViewCell
-        cell?.nameLabel.text = namesArray[indexPath.row]
+        cell?.name = namesArray[indexPath.row]
         return cell ?? TableViewCell()
     }
     

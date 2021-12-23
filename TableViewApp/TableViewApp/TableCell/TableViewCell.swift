@@ -9,7 +9,12 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet var nameLabel: UILabel!
+    var name: String? {
+        didSet {
+            nameLabel.text = name
+        }
+    }
+    @IBOutlet private var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
