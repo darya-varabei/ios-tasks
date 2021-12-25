@@ -15,7 +15,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RectangleCollectionViewCell", for: indexPath as IndexPath) as? RectangleCollectionViewCell else { return RectangleCollectionViewCell() }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionParameters.cellIdentifier, for: indexPath as IndexPath) as? RectangleCollectionViewCell else { return RectangleCollectionViewCell() }
 
         if rectangles[indexPath.item].getColor() == UIColor.white {
             cell.changeCellColor()
@@ -24,18 +25,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         else {
             cell.setFirstColor(initialColor: rectangles[indexPath.item].getColor())
         }
+        
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if rectangles[indexPath.item].getHeight() == 0 {
-        rectangles[indexPath.item].setHeight(newHeight: CGFloat.random(in: 30...200))
-        }
-        return CGSize(width: UIScreen.main.bounds.width / 3 - 30, height:  rectangles[indexPath.item].getHeight())
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -43,5 +34,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         cell?.animateCellTap(sender: cell)
         cell?.changeCellColor()
         rectangles[indexPath.item].setColor(newColor: cell?.getColor() ?? UIColor.white)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if rectangles[indexPath.item].getHeight() == 0 {
+            rectangles[indexPath.item].setHeight(newHeight: CGFloat.random(in: CollectionParameters.minCellHeight...CollectionParameters.maxCellHeight))
+        }
+        return CGSize(width: (UIScreen.main.bounds.width - CollectionParameters.insets) / CollectionParameters.numOfColumns, height: rectangles[indexPath.item].getHeight())
     }
 }
