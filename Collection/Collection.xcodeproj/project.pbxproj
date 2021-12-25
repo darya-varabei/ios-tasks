@@ -14,9 +14,9 @@
 		D58B70FD2775B30300B94CDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58B70FC2775B30300B94CDF /* Assets.xcassets */; };
 		D58B71002775B30300B94CDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58B70FE2775B30300B94CDF /* LaunchScreen.storyboard */; };
 		D58B710D2775B97000B94CDF /* RectangleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B710C2775B97000B94CDF /* RectangleCollectionViewCell.swift */; };
-		D58B711C27763C9000B94CDF /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B711B27763C9000B94CDF /* CollectionLayout.swift */; };
 		D58B712227765F5C00B94CDF /* ViewController+DelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B712127765F5C00B94CDF /* ViewController+DelegateFlowLayout.swift */; };
 		D58B712527768F4800B94CDF /* RectangleCollectionViewCell+SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B712427768F4800B94CDF /* RectangleCollectionViewCell+SpringAnimation.swift */; };
+		D58B712827772FE500B94CDF /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B712727772FE500B94CDF /* Rectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		D58B70FF2775B30300B94CDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D58B71012775B30300B94CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D58B710C2775B97000B94CDF /* RectangleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCollectionViewCell.swift; sourceTree = "<group>"; };
-		D58B711B27763C9000B94CDF /* CollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
 		D58B712127765F5C00B94CDF /* ViewController+DelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		D58B712427768F4800B94CDF /* RectangleCollectionViewCell+SpringAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RectangleCollectionViewCell+SpringAnimation.swift"; sourceTree = "<group>"; };
+		D58B712727772FE500B94CDF /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 				D58B70F32775B30100B94CDF /* AppDelegate.swift */,
 				D58B70F52775B30100B94CDF /* SceneDelegate.swift */,
 				D58B70F72775B30100B94CDF /* ViewController.swift */,
-				D58B711B27763C9000B94CDF /* CollectionLayout.swift */,
+				D58B712727772FE500B94CDF /* Rectangle.swift */,
 				D58B712127765F5C00B94CDF /* ViewController+DelegateFlowLayout.swift */,
 				D58B712427768F4800B94CDF /* RectangleCollectionViewCell+SpringAnimation.swift */,
 				D58B710C2775B97000B94CDF /* RectangleCollectionViewCell.swift */,
@@ -150,12 +150,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58B710D2775B97000B94CDF /* RectangleCollectionViewCell.swift in Sources */,
-				D58B711C27763C9000B94CDF /* CollectionLayout.swift in Sources */,
 				D58B70F82775B30100B94CDF /* ViewController.swift in Sources */,
 				D58B70F42775B30100B94CDF /* AppDelegate.swift in Sources */,
 				D58B70F62775B30100B94CDF /* SceneDelegate.swift in Sources */,
 				D58B712227765F5C00B94CDF /* ViewController+DelegateFlowLayout.swift in Sources */,
 				D58B712527768F4800B94CDF /* RectangleCollectionViewCell+SpringAnimation.swift in Sources */,
+				D58B712827772FE500B94CDF /* Rectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

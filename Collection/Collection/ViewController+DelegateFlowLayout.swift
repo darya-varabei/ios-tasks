@@ -11,30 +11,37 @@ import UIKit
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colors.count
+        return rectangles.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RectangleCollectionViewCell", for: indexPath as IndexPath) as? RectangleCollectionViewCell else { return RectangleCollectionViewCell() }
-        
-        if colors[indexPath.item] == UIColor.white {
+
+        if rectangles[indexPath.item].getColor() == UIColor.white {
             cell.changeCellColor()
-            colors[indexPath.item] = cell.getColor()
+            rectangles[indexPath.item].setColor(newColor: cell.getColor())
         }
         else {
-            cell.setFirstColor(initialColor: colors[indexPath.item])
+            cell.setFirstColor(initialColor: rectangles[indexPath.item].getColor())
         }
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 3 - 30, height: CGFloat.random(in: 30...200))
+        if rectangles[indexPath.item].getHeight() == 0 {
+        rectangles[indexPath.item].setHeight(newHeight: CGFloat.random(in: 30...200))
+        }
+        return CGSize(width: UIScreen.main.bounds.width / 3 - 30, height:  rectangles[indexPath.item].getHeight())
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? RectangleCollectionViewCell
         cell?.animateCellTap(sender: cell)
         cell?.changeCellColor()
-        colors[indexPath.item] = cell?.getColor() ?? UIColor.white
+        rectangles[indexPath.item].setColor(newColor: cell?.getColor() ?? UIColor.white)
     }
 }

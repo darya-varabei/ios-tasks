@@ -13,7 +13,7 @@ class ViewController: UICollectionViewController {
         static let cellsEnd = 100
     }
     
-    var colors: [UIColor] = .init(repeatElement(UIColor.white, count: CellsParameters.cellsEnd))
+    var rectangles: [Rectangle] = .init(repeatElement(Rectangle(height: 0, color: UIColor.white), count: CellsParameters.cellsEnd))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,13 @@ class ViewController: UICollectionViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector(addRectangle(_:))
+            action: #selector(addRectangle)
         )
     }
     
-    @objc private func addRectangle(_ sender: AnyObject) {
-        colors.append(UIColor.white)
-        let indexPath = IndexPath(row: colors.count - 1, section: 0)
+    @objc private func addRectangle() {
+        rectangles.append(Rectangle(height: 0, color: UIColor.white))
+        let indexPath = IndexPath(row: rectangles.count - 1, section: 0)
         collectionView.insertItems(at: [indexPath])
     }
 }
