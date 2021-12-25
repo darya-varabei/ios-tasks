@@ -9,25 +9,28 @@ import UIKit
 
 class ViewController: UICollectionViewController {
     
-    private enum CellsParameters {
-        static let cellsEnd = 100
-    }
-    
     enum CollectionParameters {
         static let cellIdentifier = "RectangleCollectionViewCell"
         static let minCellHeight: CGFloat = 30
         static let maxCellHeight: CGFloat = 200
-        static let insets: CGFloat = 60
+        static let insets: CGFloat = 70
         static let numOfColumns: CGFloat = 3
     }
     
     var rectangles: [Rectangle] = .init(repeatElement(Rectangle(height: 0, color: UIColor.white), count: CellsParameters.cellsEnd))
     
+    private enum CellsParameters {
+        static let cellsEnd = 100
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         setupAddButton()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     private func setupAddButton() {
@@ -41,6 +44,6 @@ class ViewController: UICollectionViewController {
     @objc private func addRectangle() {
         rectangles.append(Rectangle(height: 0, color: UIColor.white))
         let indexPath = IndexPath(row: rectangles.count - 1, section: 0)
-        collectionView?.performBatchUpdates({ self.collectionView?.insertItems(at: [indexPath]) }, completion: nil)
+        collectionView?.performBatchUpdates( { self.collectionView?.insertItems(at: [indexPath]) }, completion: nil)
     }
 }
