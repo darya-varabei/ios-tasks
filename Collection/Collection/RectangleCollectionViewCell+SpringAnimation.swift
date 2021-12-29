@@ -10,6 +10,15 @@ import UIKit
 
 extension RectangleCollectionViewCell {
     
+    private enum AnimationParameters {
+        static let duration: TimeInterval = 0.15
+        static let delay: TimeInterval = 0
+        static let damping: CGFloat = 0.2
+        static let velocity: CGFloat = 0.1
+        static let transformationScale: CGFloat = 0.95
+        static let fullScale: CGFloat = 1.0
+    }
+    
     func animateCellTap(sender: RectangleCollectionViewCell?) {
         UIView.animate(withDuration: AnimationParameters.duration,
                        delay: AnimationParameters.delay,

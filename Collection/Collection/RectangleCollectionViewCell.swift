@@ -9,15 +9,6 @@ import UIKit
 
 class RectangleCollectionViewCell: UICollectionViewCell {
     
-    enum AnimationParameters {
-        static let duration: TimeInterval = 0.15
-        static let delay: TimeInterval = 0
-        static let damping: CGFloat = 0.2
-        static let velocity: CGFloat = 0.1
-        static let transformationScale: CGFloat = 0.95
-        static let fullScale: CGFloat = 1.0
-    }
-    
     private let cornerRadius: CGFloat = 8
     private let maxRGBComponent: CGFloat = 1
     private let alphaComponent: CGFloat = 1.0
