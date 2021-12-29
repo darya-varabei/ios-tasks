@@ -18,7 +18,6 @@
 		4B7AA3A22771E5A9007D1708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AA3A02771E5A9007D1708 /* LaunchScreen.storyboard */; };
 		4B7AA3AB2771F88B007D1708 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3A92771F88B007D1708 /* TableViewCell.swift */; };
 		4B7AA3AC2771F88B007D1708 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AA3AA2771F88B007D1708 /* TableViewCell.xib */; };
-		4B7AA3AE2771FFC3007D1708 /* ViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */; };
 		4B7AA3B027720354007D1708 /* ViewController+ShuffleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */; };
 		4B7AA3B42772047F007D1708 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA3B32772047F007D1708 /* Animator.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		4B7AA3A32771E5A9007D1708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B7AA3A92771F88B007D1708 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		4B7AA3AA2771F88B007D1708 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UITableView.swift"; sourceTree = "<group>"; };
 		4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ShuffleAnimation.swift"; sourceTree = "<group>"; };
 		4B7AA3B32772047F007D1708 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +89,6 @@
 			children = (
 				4B7AA3AF27720354007D1708 /* ViewController+ShuffleAnimation.swift */,
 				4B3192A92773478F00376EFE /* UITableView+MessageOnEmpty.swift */,
-				4B7AA3AD2771FFC3007D1708 /* ViewController+UITableView.swift */,
 				4B3192A727732E3400376EFE /* ViewController+AlertController.swift */,
 			);
 			path = Extensions;
@@ -194,7 +191,6 @@
 				4B7AA3B42772047F007D1708 /* Animator.swift in Sources */,
 				4B3192AA2773478F00376EFE /* UITableView+MessageOnEmpty.swift in Sources */,
 				4B7AA3B027720354007D1708 /* ViewController+ShuffleAnimation.swift in Sources */,
-				4B7AA3AE2771FFC3007D1708 /* ViewController+UITableView.swift in Sources */,
 				4B7AA3982771E5A9007D1708 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

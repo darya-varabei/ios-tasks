@@ -15,8 +15,4 @@ class TableViewCell: UITableViewCell {
         }
     }
     @IBOutlet private var nameLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

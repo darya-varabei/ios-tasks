@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView {
 
-    func setEmptyMessage(emptyTableMessage: String) {
+    func setBackgroundMessage(emptyTableMessage: String) {
         
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = emptyTableMessage
@@ -22,7 +22,7 @@ extension UITableView {
         self.separatorStyle = .none
     }
 
-    func restore() {
+    func removeEmptyTableMessage() {
         self.backgroundView = nil
         self.separatorStyle = .singleLine
     }
