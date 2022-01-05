@@ -11,6 +11,7 @@ struct Version: Decodable {
     let family: Family
     let version: String
     let codename: String
+    let image: String
     let announced: String
     let released: String
     let requirements: [String]

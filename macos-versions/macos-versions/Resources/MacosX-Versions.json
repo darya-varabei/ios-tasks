@@ -3,6 +3,7 @@
     "family": "Mac OS X",
     "version": "Public Beta",
     "codename": "Kodiak",
+    "image": "Apple_macos-monterey_shortcuts-gallery_06072021_big_carousel.jpg.large",
     "announced": "2000-05-15",
     "released": "2000-09-13",
     "requirements": [
@@ -29,6 +30,7 @@
     "family": "Mac OS X",
     "version": "10.0",
     "codename": "Cheetah",
+    "image": "2001-Mac-OS-X-Cheetah",
     "announced": "2001-01-09",
     "released": "2001-03-24",
     "requirements": [
@@ -73,6 +75,7 @@
     "family": "Mac OS X",
     "version": "10.1",
     "codename": "Puma",
+    "image": "2001-Mac-OS-X-Puma",
     "announced": "2001-07-18",
     "released": "2001-09-25",
     "requirements": [
@@ -123,6 +126,7 @@
     "family": "Mac OS X",
     "version": "10.2",
     "codename": "Jaguar",
+    "image": "mac-os-jaguar",
     "announced": "2002-05-06",
     "released": "2002-08-24",
     "requirements": [
@@ -191,6 +195,7 @@
     "family": "Mac OS X",
     "version": "10.3",
     "codename": "Panther",
+    "image": "macosx103-panther",
     "announced": "2003-06-23",
     "released": "2003-10-24",
     "requirements": [
@@ -266,6 +271,7 @@
     "family": "Mac OS X",
     "version": "10.4",
     "codename": "Tiger",
+    "image": "macos-tiger",
     "announced": "2004-05-04",
     "released": "2005-04-29",
     "requirements": [
@@ -353,6 +359,7 @@
     "family": "Mac OS X",
     "version": "10.5",
     "codename": "Leopard",
+    "image": "Mac-OS-X-Leopard",
     "announced": "2006-06-26",
     "released": "2007-10-26",
     "requirements": [
@@ -421,6 +428,7 @@
     "family": "Mac OS X",
     "version": "10.6",
     "codename": "Snow Leopard",
+    "image": "Snow_Leopard_Desktop",
     "announced": "2008-06-09",
     "released": "2009-08-28",
     "requirements": [
@@ -489,6 +497,7 @@
     "family": "Mac OS X",
     "version": "10.7",
     "codename": "Lion",
+    "image": "macos-lion",
     "announced": "2010-10-20",
     "released": "2011-07-20",
     "requirements": [
@@ -540,6 +549,7 @@
     "family": "Mac OS X",
     "version": "10.8",
     "codename": "Mountain Lion",
+    "image": "osx-mountain-lion",
     "announced": "2012-02-16",
     "released": "2012-07-25",
     "requirements": [
@@ -597,6 +607,7 @@
     "family": "Mac OS X",
     "version": "10.9",
     "codename": "Mavericks",
+    "image": "OS-X-Mavericks",
     "announced": "2013-06-10",
     "released": "2013-10-22",
     "requirements": [
@@ -648,6 +659,7 @@
     "family": "Mac OS X",
     "version": "10.10",
     "codename": "Yosemite",
+    "image": "osx-yosemite",
     "announced": "2014-06-02",
     "released": "2014-10-16",
     "requirements": [
@@ -705,6 +717,7 @@
     "family": "Mac OS X",
     "version": "10.11",
     "codename": "El Capitan",
+    "image": "os-x-10-11-el-capitan",
     "announced": "2015-06-08",
     "released": "2015-09-30",
     "requirements": [

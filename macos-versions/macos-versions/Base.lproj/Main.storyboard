@@ -64,7 +64,7 @@
                     <connections>
                         <outlet property="macosCollectionView" destination="FTB-CG-MMi" id="yCj-O7-zzX"/>
                         <outlet property="macosXCollectionView" destination="tgv-I9-41z" id="caw-bZ-d08"/>
-                        <segue destination="kqc-jo-k1g" kind="showDetail" id="aOI-YW-Ufq"/>
+                        <segue destination="kqc-jo-k1g" kind="showDetail" identifier="versionDetail" id="aOI-YW-Ufq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

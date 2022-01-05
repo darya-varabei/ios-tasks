@@ -3,6 +3,7 @@
             "family": "macOS",
             "version": "10.12",
             "codename": "Sierra",
+            "image": "macos-sierra",
             "announced": "2016-06-13",
             "released": "2016-09-20",
             "requirements": [
@@ -65,6 +66,7 @@
             "family": "macOS",
             "version": "10.13",
             "codename": "High Sierra",
+            "image": "macos-high-sierra",
             "announced": "2017-06-05",
             "released": "2017-09-25",
             "requirements": [
@@ -127,6 +129,7 @@
             "family": "macOS",
             "version": "10.14",
             "codename": "Mojave",
+            "image": "macOS-Mojave-Messages-dark-mode-iMac-Pro-screen-09242018_big.jpg.large_2x",
             "announced": "2018-06-04",
             "released": "2018-09-24",
             "requirements": [
@@ -190,6 +193,7 @@
             "family": "macOS",
             "version": "10.15",
             "codename": "Catalina",
+            "image": "macos-catalina",
             "announced": "2019-06-03",
             "released": "2019-10-07",
             "requirements": [
@@ -271,6 +275,7 @@
             "family": "macOS",
             "version": "11",
             "codename": "Big Sur",
+            "image": "apple_macos-bigsur-availability_redesign_11122020_big.jpg.large",
             "announced": "2020-06-22",
             "released": "2020-11-12",
             "requirements": [
@@ -381,6 +386,7 @@
             "family": "macOS",
             "version": "12",
             "codename": "Monterey",
+            "image": "Apple_macos-monterey_shortcuts-gallery_06072021_big_carousel.jpg.large",
             "announced": "2021-06-07",
             "released": "2021-10-25",
             "requirements": [
