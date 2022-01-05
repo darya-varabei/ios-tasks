@@ -13,12 +13,10 @@ struct Parser {
     static func loadJSONFile<T: Decodable>(named filename: String,
                                            type: T.Type,
                                            queue: DispatchQueue? = DispatchQueue.global(qos: .background),
-                                           //simulateLoadDelay: Bool? = true,
-                                           //delaySeconds: TimeInterval = 0.2,
                                            completionHandler: @escaping (T?, ParserError?) -> Void) {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             if let dispatchQueue = queue {
-                dispatchQueue.async/*(deadline: DispatchTime.now() + delaySeconds)*/ {
+                dispatchQueue.async {
                     completionHandler(nil, .fileNotFound)
                 }
             } else {
@@ -35,7 +33,7 @@ struct Parser {
             
             if statusCode != 200 {
                 if let dispatchQueue = queue {
-                    dispatchQueue.async/*After(deadline: DispatchTime.now() + delaySeconds)*/ {
+                    dispatchQueue.async {
                         completionHandler(nil, .invalidRequest)
                     }
                 } else {
@@ -64,7 +62,7 @@ struct Parser {
                     let typedObject: T? = try decoder.decode(T.self, from: jsonData)
                     
                     if let dispatchQueue = queue {
-                        dispatchQueue.async/*After(deadline: DispatchTime.now() + delaySeconds)*/ {
+                        dispatchQueue.async {
                             completionHandler(typedObject, nil)
                         }
                     } else {
@@ -72,10 +70,9 @@ struct Parser {
                     }
                 }
             } catch {
-                print(error)
                 
                 if let dispatchQueue = queue {
-                    dispatchQueue.async/*After(deadline: DispatchTime.now() + delaySeconds)*/ {
+                    dispatchQueue.async {
                         completionHandler(nil, .parsingError)
                     }
                 } else {
@@ -83,7 +80,6 @@ struct Parser {
                 }
             }
         }
-        
         dataTask.resume()
     }
 }

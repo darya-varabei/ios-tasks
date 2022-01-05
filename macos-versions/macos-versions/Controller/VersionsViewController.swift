@@ -12,11 +12,30 @@ class VersionsViewController: UIViewController {
     @IBOutlet private var macosXCollectionView: UICollectionView!
     @IBOutlet private var macosCollectionView: UICollectionView!
     
-    private var macosVersions: [Version]?
-    private var macosXVersions: [Version]?
+    private let parserManager = ParserManager()
+    private var macosVersions: [Version]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.macosCollectionView.reloadData()
+            }
+        }
+    }
+    private var macosXVersions: [Version]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.macosXCollectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.global(qos: .background).async {
+            self.fetchData()
+        }
+
+            self.macosCollectionView.reloadData()
+            self.macosXCollectionView.reloadData()
     }
 
     private func setupCollections() {
@@ -26,8 +45,25 @@ class VersionsViewController: UIViewController {
         macosXCollectionView.dataSource = self
         macosCollectionView.accessibilityIdentifier = "macos"
         macosXCollectionView.accessibilityIdentifier = "macosX"
+        macosCollectionView.register(UINib(nibName: "VersionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "VersionCollectionViewCell")
+        macosXCollectionView.register(UINib(nibName: "VersionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:"VersionCollectionViewCell")
     }
-
+    
+    private func fetchData() {
+        ParserManager.loadData { [weak self] (version, success, versionX, successX) in
+            
+            if success == true && successX == true {
+                
+                guard let version = version else { return }
+                self?.macosVersions = version
+                guard let versionX = versionX else { return }
+                self?.macosXVersions = versionX
+            }
+        }
+        DispatchQueue.main.async {
+            self.setupCollections()
+        }
+    }
 }
 
 extension VersionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -35,15 +71,26 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
         if collectionView.accessibilityIdentifier == "macos" {
             return macosVersions?.count ?? 0
         }
-        
+
         else {
             return macosXVersions?.count ?? 0
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->  CGSize {
+        return CGSize(width: 110, height: collectionView.frame.height * 0.75)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell: VersionCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "VersionCollectionViewCell", for: indexPath) as? VersionCollectionViewCell) else { return VersionCollectionViewCell() }
+        if collectionView.accessibilityIdentifier == "macos" {
+            cell.setVersionLabelText(version: macosVersions?[indexPath.item].version ?? "")
+            cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
+        }
+        else {
+            cell.setVersionLabelText(version: macosXVersions?[indexPath.item].version ?? "")
+            cell.setNameLabelText(name: macosXVersions?[indexPath.item].codename ?? "")
+        }
+        return cell
+    }
 }

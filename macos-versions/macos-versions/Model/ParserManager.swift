@@ -9,15 +9,25 @@ import Foundation
 
 class ParserManager {
     
-    var macosVersions: [Version]?
+    static var macosVersions: [Version]?
     
-    func loadData(completionHandler: @escaping (Version?, Bool?) -> Void) {
-        Parser.loadJSONFile(named: "Macos-Versions", type: [Version].self) { [weak self] (versions, error) in
+    static func loadData(completionHandler: @escaping ([Version]?, Bool?, [Version]?, Bool?) -> Void) {
+        
+        Parser.loadJSONFile(named: "Macos-Versions", type: [Version].self) { (versions, error) in
             guard error == nil else {
-                completionHandler(nil, false)
+                completionHandler(nil, false, nil, false)
                 return
             }
-            self?.macosVersions = versions ?? []
+            
+            Parser.loadJSONFile(named: "MacosX-Versions", type: [Version].self) { (versionsX, error) in
+                guard error == nil else {
+                    completionHandler(nil, false, nil, false)
+                    return
+                }
+                
+                self.macosVersions = versions ?? []
+                completionHandler(versions, true, versionsX, true)
+            }
         }
     }
 }

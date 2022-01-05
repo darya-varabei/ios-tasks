@@ -23,6 +23,8 @@
 		D5857D4227835DFF006F5BAD /* VersionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5857D4027835DFF006F5BAD /* VersionCollectionViewCell.swift */; };
 		D5857D4327835DFF006F5BAD /* VersionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5857D4127835DFF006F5BAD /* VersionCollectionViewCell.xib */; };
 		D5857D4627835EC9006F5BAD /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5857D4527835EC9006F5BAD /* CollectionHeaderView.swift */; };
+		D5C91B2727844540003F776C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C91B2627844540003F776C /* DetailViewController.swift */; };
+		D5F45A3527858A4600A99697 /* MacosX-Versions.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F45A3427858A4600A99697 /* MacosX-Versions.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		D5857D4027835DFF006F5BAD /* VersionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5857D4127835DFF006F5BAD /* VersionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionCollectionViewCell.xib; sourceTree = "<group>"; };
 		D5857D4527835EC9006F5BAD /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		D5C91B2627844540003F776C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D5F45A3427858A4600A99697 /* MacosX-Versions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "MacosX-Versions.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			children = (
 				D5857D10278331EE006F5BAD /* VersionsViewController.swift */,
 				D5857D4527835EC9006F5BAD /* CollectionHeaderView.swift */,
+				D5C91B2627844540003F776C /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D5857D27278332BE006F5BAD /* Macos-Versions.json */,
+				D5F45A3427858A4600A99697 /* MacosX-Versions.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 				D5857D16278331F1006F5BAD /* Assets.xcassets in Resources */,
 				D5857D14278331EE006F5BAD /* Main.storyboard in Resources */,
 				D5857D4327835DFF006F5BAD /* VersionCollectionViewCell.xib in Resources */,
+				D5F45A3527858A4600A99697 /* MacosX-Versions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +211,7 @@
 				D5857D2B278333D6006F5BAD /* Parser.swift in Sources */,
 				D5857D4627835EC9006F5BAD /* CollectionHeaderView.swift in Sources */,
 				D5857D3727833B18006F5BAD /* Release.swift in Sources */,
+				D5C91B2727844540003F776C /* DetailViewController.swift in Sources */,
 				D5857D2E27833426006F5BAD /* ParserError.swift in Sources */,
 				D5857D11278331EE006F5BAD /* VersionsViewController.swift in Sources */,
 				D5857D0D278331EE006F5BAD /* AppDelegate.swift in Sources */,
