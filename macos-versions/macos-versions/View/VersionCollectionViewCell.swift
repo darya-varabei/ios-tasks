@@ -11,6 +11,7 @@ class VersionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var versionLabel: UILabel!
     @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var versionImage: UIImageView!
     
     func setVersionLabelText(version: String) {
         versionLabel.text = version
@@ -18,10 +19,13 @@ class VersionCollectionViewCell: UICollectionViewCell {
 
     func setNameLabelText(name: String) {
         nameLabel.text = name
-        layer.cornerRadius = 15
+    }
+    
+    func setVersionImage(image: String) {
+        versionImage.image = UIImage(named: image)
     }
     
     func setCellWidth() {
-        versionLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        layer.cornerRadius = 15
     }
 }
