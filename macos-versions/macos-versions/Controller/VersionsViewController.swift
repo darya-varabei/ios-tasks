@@ -77,10 +77,6 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) ->  CGSize {
-        return CGSize(width: 110, height: collectionView.frame.height * 0.75)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: VersionCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "VersionCollectionViewCell", for: indexPath) as? VersionCollectionViewCell) else { return VersionCollectionViewCell() }
         if collectionView.accessibilityIdentifier == "macos" {
@@ -91,6 +87,7 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
             cell.setVersionLabelText(version: macosXVersions?[indexPath.item].version ?? "")
             cell.setNameLabelText(name: macosXVersions?[indexPath.item].codename ?? "")
         }
+        cell.setCellWidth()
         return cell
     }
 }

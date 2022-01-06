@@ -20,4 +20,8 @@ class VersionCollectionViewCell: UICollectionViewCell {
         nameLabel.text = name
         layer.cornerRadius = 15
     }
+    
+    func setCellWidth() {
+        versionLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+    }
 }
