@@ -84,9 +84,7 @@
 				D5857D2527833251006F5BAD /* Controller */,
 				D5857D242783324A006F5BAD /* View */,
 				D5857D2327833224006F5BAD /* Model */,
-				D5857D12278331EE006F5BAD /* Main.storyboard */,
 				D5857D15278331F1006F5BAD /* Assets.xcassets */,
-				D5857D17278331F1006F5BAD /* LaunchScreen.storyboard */,
 				D5857D1A278331F1006F5BAD /* Info.plist */,
 			);
 			path = "macos-versions";
@@ -126,6 +124,8 @@
 		D5857D2627833257006F5BAD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D5857D17278331F1006F5BAD /* LaunchScreen.storyboard */,
+				D5857D12278331EE006F5BAD /* Main.storyboard */,
 				D5857D27278332BE006F5BAD /* Macos-Versions.json */,
 				D5F45A3427858A4600A99697 /* MacosX-Versions.json */,
 			);

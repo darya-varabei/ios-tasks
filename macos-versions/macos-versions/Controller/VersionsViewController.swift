@@ -10,21 +10,27 @@ import UIKit
 class VersionsViewController: UIViewController {
     
     @IBOutlet private var versionsCollectionView: UICollectionView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private let parserManager = ParserManager()
+    
     private enum CollectionParameters {
         static let cellIdentifier = "VersionCollectionViewCell"
         static let controllerToOpenIdentifier = "DetailViewController"
     }
+    
     private var macosVersions: [Version]? {
         didSet {
             DispatchQueue.main.async {
                 self.versionsCollectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.color = UIColor.white
+        activityIndicator.startAnimating()
         DispatchQueue.global(qos: .background).async {
             self.fetchData()
         }
@@ -35,7 +41,7 @@ class VersionsViewController: UIViewController {
         versionsCollectionView.dataSource = self
         versionsCollectionView.register(UINib(nibName: CollectionParameters.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: CollectionParameters.cellIdentifier)
     }
-    
+
     private func fetchData() {
         ParserManager.loadData { [weak self] (macosVersions, macosSuccess, macosXVersions, macosXSuccess) in
             
@@ -52,6 +58,7 @@ class VersionsViewController: UIViewController {
 }
 
 extension VersionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return macosVersions?.count ?? 0
     }
@@ -62,7 +69,7 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
         cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
         cell.setVersionImage(image: macosVersions?[indexPath.item].image ?? "")
         cell.setCellWidth()
-        cell.setHeightOnCellSelected()
+        cell.setCellHeight()
         return cell
     }
     
@@ -72,6 +79,7 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
             _ = viewController.view
             guard let version = macosVersions?[indexPath.item] else { return }
             viewController.getData(version: version)
+            
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
