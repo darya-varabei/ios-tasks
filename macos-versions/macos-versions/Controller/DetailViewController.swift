@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     private func formVersionLabel() -> String {
         
         guard let family = data?.family.rawValue, let version = data?.version, let codename = data?.codename else { return "" }
-        return family + " " + version + " " + codename
+        return [family, version, codename].joined(separator: " ")
     }
     
     private func formRequerementsTextView() -> String {

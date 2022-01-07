@@ -11,12 +11,13 @@ class VersionsViewController: UIViewController {
     
     @IBOutlet private var versionsCollectionView: UICollectionView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-    private let parserManager = ParserManager()
     
     private enum CollectionParameters {
         static let cellIdentifier = "VersionCollectionViewCell"
         static let controllerToOpenIdentifier = "DetailViewController"
     }
+    
+    private let parserManager = ParserManager()
     
     private var macosVersions: [Version]? {
         didSet {

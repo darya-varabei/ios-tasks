@@ -14,6 +14,8 @@ class VersionCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var versionImage: UIImageView!
     
     private let cornerRadius: CGFloat = 15
+    private let basicCellWidth: CGFloat = 220
+    private let basicCellHeight: CGFloat = 180
     private var basicWidthConstraint: NSLayoutConstraint?
     private var basicHeightConstraint: NSLayoutConstraint?
     
@@ -31,14 +33,14 @@ class VersionCollectionViewCell: UICollectionViewCell {
     
     func setCellWidth() {
         translatesAutoresizingMaskIntoConstraints = true
-        basicWidthConstraint = widthAnchor.constraint(equalToConstant: 220)
+        basicWidthConstraint = widthAnchor.constraint(equalToConstant: basicCellWidth)
         basicWidthConstraint?.isActive = true
         basicWidthConstraint?.priority = .defaultHigh
         layer.cornerRadius = cornerRadius
     }
     
     func setCellHeight() {
-        basicHeightConstraint = heightAnchor.constraint(equalToConstant: 180)
+        basicHeightConstraint = heightAnchor.constraint(equalToConstant: basicCellHeight)
         basicHeightConstraint?.priority = .defaultHigh
         basicHeightConstraint?.isActive = true
     }
