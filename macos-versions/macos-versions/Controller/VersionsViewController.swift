@@ -70,6 +70,5 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
             viewController.getData(version: version)
             show(viewController, sender: nil)
         }
-        collectionView.reloadData()
     }
 }
