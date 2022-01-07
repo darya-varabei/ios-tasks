@@ -30,6 +30,10 @@ class DetailViewController: UIViewController {
         requirementsTextView.sizeToFit()
     }
     
+    override func viewDidLayoutSubviews() {
+        
+    }
+    
     func getData(version: Version) {
         data = version
     }
@@ -37,7 +41,7 @@ class DetailViewController: UIViewController {
     private func formVersionLabel() -> String {
         
         guard let family = data?.family.rawValue, let version = data?.version, let codename = data?.codename else { return "" }
-        return family + version + codename
+        return family + " " + version + " " + codename
     }
     
     private func formRequerementsTextView() -> String {
