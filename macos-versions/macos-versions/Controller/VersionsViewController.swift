@@ -8,10 +8,13 @@
 import UIKit
 
 class VersionsViewController: UIViewController {
-
+    
     @IBOutlet private var versionsCollectionView: UICollectionView!
     private let parserManager = ParserManager()
-    var selectedCellIndexPath: IndexPath?
+    private enum CollectionParameters {
+        static let cellIdentifier = "VersionCollectionViewCell"
+        static let controllerToOpenIdentifier = "DetailViewController"
+    }
     private var macosVersions: [Version]? {
         didSet {
             DispatchQueue.main.async {
@@ -26,19 +29,19 @@ class VersionsViewController: UIViewController {
             self.fetchData()
         }
     }
-
+    
     private func setupCollection() {
         versionsCollectionView.delegate = self
         versionsCollectionView.dataSource = self
-        versionsCollectionView.register(UINib(nibName: "VersionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "VersionCollectionViewCell")
+        versionsCollectionView.register(UINib(nibName: CollectionParameters.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: CollectionParameters.cellIdentifier)
     }
     
     private func fetchData() {
-        ParserManager.loadData { [weak self] (version, success, versionX, successX) in
+        ParserManager.loadData { [weak self] (macosVersions, macosSuccess, macosXVersions, macosXSuccess) in
             
-            if success == true && successX == true {
+            if macosSuccess == true && macosXSuccess == true {
                 
-                guard let version = version, let versionX = versionX else { return }
+                guard let version = macosVersions, let versionX = macosXVersions else { return }
                 self?.macosVersions = versionX + version
             }
         }
@@ -54,18 +57,18 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: VersionCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "VersionCollectionViewCell", for: indexPath) as? VersionCollectionViewCell) else { return VersionCollectionViewCell() }
-            cell.setVersionLabelText(version: macosVersions?[indexPath.item].version ?? "")
-            cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
-            cell.setVersionImage(image: macosVersions?[indexPath.item].image ?? "")
-            cell.setCellWidth()
+        guard let cell: VersionCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: CollectionParameters.cellIdentifier, for: indexPath) as? VersionCollectionViewCell) else { return VersionCollectionViewCell() }
+        cell.setVersionLabelText(version: macosVersions?[indexPath.item].version ?? "")
+        cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
+        cell.setVersionImage(image: macosVersions?[indexPath.item].image ?? "")
+        cell.setCellWidth()
         cell.setHeightOnCellSelected()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: CollectionParameters.controllerToOpenIdentifier) as? DetailViewController {
             _ = viewController.view
             guard let version = macosVersions?[indexPath.item] else { return }
             viewController.getData(version: version)
