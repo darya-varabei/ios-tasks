@@ -17,16 +17,31 @@ class DetailViewController: UIViewController {
     @IBOutlet private var requirementsTextView: UITextView!
     private var data: Version? {
         didSet {
-            //self.versionImage.image = UIImage(named: data?.image ?? "macos-sierra")
-            //mainVersionLabel.text = "htsdv"
+            versionImage.image = UIImage(named: data?.image ?? "macos-sierra")
+            dateAnnouncedLabel.text = data?.announced
+            dateReleasedLabel.text = data?.released
+            requirementsTextView.text = formRequerementsTextView()
+            mainVersionLabel.text = formVersionLabel()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        requirementsTextView.sizeToFit()
     }
     
     func getData(version: Version) {
         data = version
+    }
+    
+    private func formVersionLabel() -> String {
+        
+        guard let family = data?.family.rawValue, let version = data?.version, let codename = data?.codename else { return "" }
+        return family + version + codename
+    }
+    
+    private func formRequerementsTextView() -> String {
+        let requirements = data?.requirements.joined(separator: "\n") ?? ""
+        return requirements
     }
 }

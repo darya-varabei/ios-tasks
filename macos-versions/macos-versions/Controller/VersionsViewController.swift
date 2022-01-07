@@ -66,9 +66,10 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+            _ = viewController.view
             guard let version = macosVersions?[indexPath.item] else { return }
             viewController.getData(version: version)
-            show(viewController, sender: nil)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }
