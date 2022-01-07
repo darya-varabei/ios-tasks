@@ -13,6 +13,11 @@ class VersionCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var versionImage: UIImageView!
     
+    private let cornerRadius: CGFloat = 15
+    private var basicWidthConstraint: NSLayoutConstraint?
+    private var basicHeightConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
+    
     func setVersionLabelText(version: String) {
         versionLabel.text = version
     }
@@ -26,6 +31,16 @@ class VersionCollectionViewCell: UICollectionViewCell {
     }
     
     func setCellWidth() {
-        layer.cornerRadius = 15
+        translatesAutoresizingMaskIntoConstraints = true
+        basicWidthConstraint = widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.5)
+        basicWidthConstraint?.isActive = true
+        basicWidthConstraint?.priority = .defaultHigh
+        layer.cornerRadius = cornerRadius
+    }
+    
+    func setHeightOnCellSelected() {
+        basicHeightConstraint = heightAnchor.constraint(equalToConstant: 180)
+        basicHeightConstraint?.priority = .defaultHigh
+        basicHeightConstraint?.isActive = true
     }
 }

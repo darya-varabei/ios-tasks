@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="73.660714285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="KXt-nL-iYH">
             <objects>
-                <viewController id="kqc-jo-k1g" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="kqc-jo-k1g" customClass="DetailViewController" customModule="macos_versions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RE2-WI-E0s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

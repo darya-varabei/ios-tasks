@@ -10,11 +10,17 @@ import UIKit
 
 struct Parser {
     
+    private enum ParsingParameters {
+        static let successCode = 200
+        static let fileExtension = "json"
+        static let dateFormat = "yyyy-MM-dd"
+    }
+    
     static func loadJSONFile<T: Decodable>(named filename: String,
                                            type: T.Type,
                                            queue: DispatchQueue? = DispatchQueue.global(qos: .background),
                                            completionHandler: @escaping (T?, ParserError?) -> Void) {
-        guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else {
             if let dispatchQueue = queue {
                 dispatchQueue.async {
                     completionHandler(nil, .fileNotFound)
@@ -29,9 +35,9 @@ struct Parser {
         let request = URLRequest(url: url)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? ParsingParameters.successCode
             
-            if statusCode != 200 {
+            if statusCode != ParsingParameters.successCode {
                 if let dispatchQueue = queue {
                     dispatchQueue.async {
                         completionHandler(nil, .invalidRequest)
@@ -50,7 +56,7 @@ struct Parser {
                         let value = try decoder.singleValueContainer().decode(String.self)
                         
                         let formatter = DateFormatter()
-                        formatter.dateFormat = "yyyy-MM-dd"
+                        formatter.dateFormat = ParsingParameters.dateFormat
                         
                         if let date = formatter.date(from: value) {
                             return date

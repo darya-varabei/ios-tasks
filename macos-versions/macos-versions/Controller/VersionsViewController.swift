@@ -11,6 +11,7 @@ class VersionsViewController: UIViewController {
 
     @IBOutlet private var versionsCollectionView: UICollectionView!
     private let parserManager = ParserManager()
+    var selectedCellIndexPath: IndexPath?
     private var macosVersions: [Version]? {
         didSet {
             DispatchQueue.main.async {
@@ -58,6 +59,17 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
             cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
             cell.setVersionImage(image: macosVersions?[indexPath.item].image ?? "")
             cell.setCellWidth()
+        cell.setHeightOnCellSelected()
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+            guard let version = macosVersions?[indexPath.item] else { return }
+            viewController.getData(version: version)
+            show(viewController, sender: nil)
+        }
+        collectionView.reloadData()
     }
 }
