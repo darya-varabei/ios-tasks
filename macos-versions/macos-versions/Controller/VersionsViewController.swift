@@ -19,7 +19,7 @@ class VersionsViewController: UIViewController {
     
     private let parserManager = ParserManager()
     
-    private var macosVersions: [Version]? {
+    private var macosVersions: [Version] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.versionsCollectionView.reloadData()
@@ -61,14 +61,14 @@ class VersionsViewController: UIViewController {
 extension VersionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return macosVersions?.count ?? 0
+        return macosVersions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: VersionCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: CollectionParameters.cellIdentifier, for: indexPath) as? VersionCollectionViewCell) else { return VersionCollectionViewCell() }
-        cell.setVersionLabelText(version: macosVersions?[indexPath.item].version ?? "")
-        cell.setNameLabelText(name: macosVersions?[indexPath.item].codename ?? "")
-        cell.setVersionImage(image: macosVersions?[indexPath.item].image ?? "")
+        cell.setVersionLabelText(version: macosVersions[indexPath.item].version)
+        cell.setNameLabelText(name: macosVersions[indexPath.item].codename)
+        cell.setVersionImage(image: macosVersions[indexPath.item].image)
         cell.setCellWidth()
         cell.setCellHeight()
         return cell
@@ -78,8 +78,7 @@ extension VersionsViewController: UICollectionViewDelegate, UICollectionViewData
         
         if let viewController = storyboard?.instantiateViewController(identifier: CollectionParameters.controllerToOpenIdentifier) as? DetailViewController {
             _ = viewController.view
-            guard let version = macosVersions?[indexPath.item] else { return }
-            viewController.getData(version: version)
+            viewController.getData(version: macosVersions[indexPath.item])
             
             navigationController?.pushViewController(viewController, animated: true)
         }

@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
             dateAnnouncedLabel.text = data?.announced
             dateReleasedLabel.text = data?.released
             requirementsTextView.text = formRequerementsTextView()
-            mainVersionLabel.text = formVersionLabel()
+            mainVersionLabel.text = configureVersionLabel()
         }
     }
 
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         data = version
     }
     
-    private func formVersionLabel() -> String {
+    private func configureVersionLabel() -> String {
         
         guard let family = data?.family.rawValue, let version = data?.version, let codename = data?.codename else { return "" }
         return [family, version, codename].joined(separator: " ")
