@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     @IBOutlet private var requirementsTextView: UITextView!
     
     private let defaultImage = "macos-sierra"
-    private let separator = "\n"
    
     private var data: Version? {
         didSet {
@@ -44,7 +43,7 @@ class DetailViewController: UIViewController {
     }
     
     private func formRequerementsTextView() -> String {
-        let requirements = data?.requirements.joined(separator: separator) ?? ""
+        let requirements = data?.requirements.joined(separator: "\n") ?? ""
         return requirements
     }
 }
