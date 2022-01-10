@@ -1,0 +1,417 @@
+[
+        {
+            "family": "macOS",
+            "version": "10.12",
+            "codename": "Sierra",
+            "image": "macos-sierra",
+            "announced": "2016-06-13",
+            "released": "2016-09-20",
+            "requirements": [
+                "iMac (Late 2009 or newer)",
+                "Mac Mini (Mid 2010 or newer)",
+                "Mac Pro (Mid 2010 or newer)",
+                "MacBook (Late 2009 or newer)",
+                "MacBook Air (Late 2010 or newer)",
+                "MacBook Pro (Mid 2010 or newer)",
+                "2 GB of memory",
+                "8.8 GB of available disk space",
+                "OS X v10.7.5 or later"
+            ],
+            "releases": [
+                {
+                    "version": "10.12",
+                    "build": "16A323",
+                    "darwin": "16.0.0",
+                    "released": "2016-09-20"
+                },
+                {
+                    "version": "10.12.1",
+                    "build": "16B2555",
+                    "darwin": "16.1.0",
+                    "released": "2016-10-24"
+                },
+                {
+                    "version": "10.12.2",
+                    "build": "16C67",
+                    "darwin": "16.3.0",
+                    "released": "2016-12-13"
+                },
+                {
+                    "version": "10.12.3",
+                    "build": "16D32",
+                    "darwin": "16.4.0",
+                    "released": "2017-01-23"
+                },
+                {
+                    "version": "10.12.4",
+                    "build": "16E195",
+                    "darwin": "16.5.0",
+                    "released": "2017-03-27"
+                },
+                {
+                    "version": "10.12.5",
+                    "build": "16F73",
+                    "darwin": "16.6.0",
+                    "released": "2017-05-15"
+                },
+                {
+                    "version": "10.12.6",
+                    "build": "16G29",
+                    "darwin": "16.7.0",
+                    "released": "2017-07-19"
+                }
+            ]
+        },
+        {
+            "family": "macOS",
+            "version": "10.13",
+            "codename": "High Sierra",
+            "image": "macos-high-sierra",
+            "announced": "2017-06-05",
+            "released": "2017-09-25",
+            "requirements": [
+                "iMac (Late 2009 or newer)",
+                "Mac Mini (Mid 2010 or newer)",
+                "Mac Pro (Mid 2010 or newer)",
+                "MacBook (Late 2009 or newer)",
+                "MacBook Air (Late 2010 or newer)",
+                "MacBook Pro (Mid 2010 or newer)",
+                "2 GB of memory",
+                "14.3 GB of available disk space",
+                "OS X v10.8 or later"
+            ],
+            "releases": [
+                {
+                    "version": "10.13",
+                    "build": "17A365",
+                    "darwin": "17.0.0",
+                    "released": "2017-09-25"
+                },
+                {
+                    "version": "10.13.1",
+                    "build": "17B48",
+                    "darwin": "17.2.0",
+                    "released": "2017-10-31"
+                },
+                {
+                    "version": "10.13.2",
+                    "build": "17C88",
+                    "darwin": "17.3.0",
+                    "released": "2017-12-06"
+                },
+                {
+                    "version": "10.13.3",
+                    "build": "17D47",
+                    "darwin": "17.4.0",
+                    "released": "2018-01-23"
+                },
+                {
+                    "version": "10.13.4",
+                    "build": "17E199",
+                    "darwin": "17.5.0",
+                    "released": "2018-03-29"
+                },
+                {
+                    "version": "10.13.5",
+                    "build": "17F77",
+                    "darwin": "17.6.0",
+                    "released": "2018-06-01"
+                },
+                {
+                    "version": "10.13.6",
+                    "build": "17G65",
+                    "darwin": "17.7.0",
+                    "released": "2018-07-09"
+                }
+            ]
+        },
+        {
+            "family": "macOS",
+            "version": "10.14",
+            "codename": "Mojave",
+            "image": "macOS-Mojave-Messages-dark-mode-iMac-Pro-screen-09242018_big.jpg.large_2x",
+            "announced": "2018-06-04",
+            "released": "2018-09-24",
+            "requirements": [
+                "iMac (Late 2012 or newer)",
+                "iMac Pro (2017)",
+                "Mac Mini (Late 2012 or newer)",
+                "Mac Pro (Late 2013; Mid 2010 and Mid 2012 models with recommended Metal-capable graphics cards)",
+                "MacBook (Early 2015 or newer)",
+                "MacBook Air (Mid 2012 or newer)",
+                "MacBook Pro (Mid 2012 or newer)",
+                "2 GB of memory",
+                "12.5 - 18.5 GB of available avaialable disk space",
+                "OS X 10.8 or later"
+            ],
+            "releases": [
+                {
+                    "version": "10.14",
+                    "build": "18A391",
+                    "darwin": "18.0.0",
+                    "released": "2018-09-24"
+                },
+                {
+                    "version": "10.14.1",
+                    "build": "18B75",
+                    "darwin": "18.2.0",
+                    "released": "2018-10-30"
+                },
+                {
+                    "version": "10.14.2",
+                    "build": "18C54",
+                    "darwin": "18.2.0",
+                    "released": "2018-12-05"
+                },
+                {
+                    "version": "10.14.3",
+                    "build": "18D42",
+                    "darwin": "18.2.0",
+                    "released": "2019-01-22"
+                },
+                {
+                    "version": "10.14.4",
+                    "build": "18E226",
+                    "darwin": "18.5.0",
+                    "released": "2019-03-25"
+                },
+                {
+                    "version": "10.14.5",
+                    "build": "18F132",
+                    "darwin": "18.6.0",
+                    "released": "2019-05-13"
+                },
+                {
+                    "version": "10.14.6",
+                    "build": "18G84",
+                    "darwin": "18.7.0",
+                    "released": "2019-07-22"
+                }
+            ]
+        },
+        {
+            "family": "macOS",
+            "version": "10.15",
+            "codename": "Catalina",
+            "image": "macos-catalina",
+            "announced": "2019-06-03",
+            "released": "2019-10-07",
+            "requirements": [
+                "iMac (Late 2012 or newer)",
+                "iMac Pro (2017)",
+                "Mac Mini (Late 2012 or newer)",
+                "Mac Pro (Late 2013)",
+                "MacBook (Early 2015 or newer)",
+                "MacBook Air (Mid 2012 or newer)",
+                "MacBook Pro (Mid 2012 or newer)",
+                "4 GB of memory",
+                "12.5 GB of available avaialable disk space",
+                "OS X 10.11.5 or later"
+            ],
+            "releases": [
+                {
+                    "version": "10.15",
+                    "build": "19A583",
+                    "darwin": "19.0.0",
+                    "released": "2019-10-07"
+                },
+                {
+                    "version": "10.15.1",
+                    "build": "19B88",
+                    "darwin": "19.0.0",
+                    "released": "2019-10-29"
+                },
+                {
+                    "version": "10.15.2",
+                    "build": "19C57",
+                    "darwin": "19.2.0",
+                    "released": "2019-12-10"
+                },
+                {
+                    "version": "10.15.3",
+                    "build": "19D76",
+                    "darwin": "19.3.0",
+                    "released": "2020-01-28"
+                },
+                {
+                    "version": "10.15.4",
+                    "build": "19E266",
+                    "darwin": "19.4.0",
+                    "released": "2020-03-24"
+                },
+                {
+                    "version": "10.15.5",
+                    "build": "19F96",
+                    "darwin": "19.5.0",
+                    "released": "2020-05-26"
+                },
+                {
+                    "version": "10.15.6",
+                    "build": "19G73",
+                    "darwin": "19.6.0",
+                    "released": "2020-07-15"
+                },
+                {
+                    "version": "10.15.6",
+                    "build": "19G2021",
+                    "darwin": "19.6.0",
+                    "released": "2020-08-12"
+                },
+                {
+                    "version": "10.15.7",
+                    "build": "19H2",
+                    "darwin": "19.6.0",
+                    "released": "2020-09-24"
+                },
+                {
+                    "version": "10.15.7",
+                    "build": "19H15",
+                    "darwin": "19.6.0",
+                    "released": "2020-11-05"
+                }
+            ]
+        },
+        {
+            "family": "macOS",
+            "version": "11",
+            "codename": "Big Sur",
+            "image": "apple_macos-bigsur-availability_redesign_11122020_big.jpg.large",
+            "announced": "2020-06-22",
+            "released": "2020-11-12",
+            "requirements": [
+                "iMac (Mid 2014 or newer)",
+                "iMac Pro (2017)",
+                "Mac Mini (Late 2014 or newer)",
+                "Mac Pro (Late 2013 or newer)",
+                "MacBook (Early 2015 or newer)",
+                "MacBook Air (Mid 2013 or newer)",
+                "MacBook Pro (Late 2013 or newer)",
+                "Developer Transition Kit (2020)",
+                "4 GB of memory"
+            ],
+            "releases": [
+                {
+                    "version": "11.0.1",
+                    "build": "20B29",
+                    "darwin": "20.1.0",
+                    "released": "2020-11-12"
+                },
+                {
+                    "version": "11.1",
+                    "build": "20C69",
+                    "darwin": "20.2.0",
+                    "released": "2020-12-14"
+                },
+                {
+                    "version": "11.2",
+                    "build": "20D64",
+                    "darwin": "20.3.0",
+                    "released": "2021-02-01"
+                },
+                {
+                    "version": "11.2.1",
+                    "build": "20D74",
+                    "darwin": "20.3.0",
+                    "released": "2021-02-09"
+                },
+                {
+                    "version": "11.2.2",
+                    "build": "20D80",
+                    "darwin": "20.3.0",
+                    "released": "2021-02-25"
+                },
+                {
+                    "version": "11.2.3",
+                    "build": "20D91",
+                    "darwin": "20.3.0",
+                    "released": "2021-03-08"
+                },
+                {
+                    "version": "11.3",
+                    "build": "20E232",
+                    "darwin": "20.4.0",
+                    "released": "2021-04-26"
+                },
+                {
+                    "version": "11.3.1",
+                    "build": "20E241",
+                    "darwin": "20.4.0",
+                    "released": "2021-05-03"
+                },
+                {
+                    "version": "11.4",
+                    "build": "20F71",
+                    "darwin": "20.5.0",
+                    "released": "2021-05-24"
+                },
+                {
+                    "version": "11.5",
+                    "build": "20G71",
+                    "darwin": "20.6.0",
+                    "released": "2021-07-21"
+                },
+                {
+                    "version": "11.5.1",
+                    "build": "20G80",
+                    "darwin": "20.6.0",
+                    "released": "2021-07-26"
+                },
+                {
+                    "version": "11.5.2",
+                    "build": "20G95",
+                    "darwin": "20.6.0",
+                    "released": "2021-08-11"
+                },
+                {
+                    "version": "11.6",
+                    "build": "20G165",
+                    "darwin": "20.6.0",
+                    "released": "2021-09-13"
+                },
+                {
+                    "version": "11.6.1",
+                    "build": "20G224",
+                    "darwin": "20.6.0",
+                    "released": "2021-10-25"
+                },
+                {
+                    "version": "11.6.2",
+                    "build": "20G314",
+                    "darwin": "20.6.0",
+                    "released": "2021-12-13"
+                }
+            ]
+        },
+        {
+            "family": "macOS",
+            "version": "12",
+            "codename": "Monterey",
+            "image": "Apple_macos-monterey_shortcuts-gallery_06072021_big_carousel.jpg.large",
+            "announced": "2021-06-07",
+            "released": "2021-10-25",
+            "requirements": [
+                "iMac (Late 2015 and newer)",
+                "iMac Pro (Late 2017)",
+                "Mac Mini (Late 2014 and newer)",
+                "Mac Pro (Late 2013 and newer)",
+                "MacBook (Early 2016 and newer)",
+                "MacBook Air (Early 2015 and newer)",
+                "MacBook Pro (Early 2015 and newer)"
+            ],
+            "releases": [
+                {
+                    "version": "12.0.1",
+                    "build": "21A559",
+                    "darwin": "21.1.0",
+                    "released": "2021-10-25"
+                },
+                {
+                    "version": "12.1",
+                    "build": "21C52",
+                    "darwin": "21.2.0",
+                    "released": "2021-12-13"
+                }
+            ]
+        }
+    ]
+
