@@ -9,11 +9,18 @@ import Foundation
 import NotificationCenter
 
 struct NotificationManager {
-    let notificationCenter = UNUserNotificationCenter.current()
-    let notificationTitle = NotificationParameter.title.rawValue
-    let notificationBody = NotificationParameter.body.rawValue
-    let identifier = NotificationParameter.identifier.rawValue
-    let timeInterval: TimeInterval = NotificationParameter.interval
+    private let notificationCenter = UNUserNotificationCenter.current()
+    private let notificationTitle = NotificationParameter.title.rawValue
+    private let notificationBody = NotificationParameter.body.rawValue
+    private let identifier = NotificationParameter.identifier.rawValue
+    private let timeInterval: TimeInterval = NotificationParameter.interval
+    
+    private enum NotificationParameter: String {
+        case title = "Water reminder"
+        case body = "It's time to drink some water"
+        case identifier = "notification"
+        static let interval: TimeInterval = 10800
+    }
     
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in

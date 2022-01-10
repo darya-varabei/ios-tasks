@@ -14,9 +14,21 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonOnlyCleanWater: UIButton!
     @IBOutlet private var textFieldWaterToAdd: UITextField!
     @IBOutlet private var buttonAddWater: UIButton!
-    private let options = OptionsViewModel()
+    private let options = OptionCollection()
     private var consumption = Consumption()
     private let defaultImage = "arrowshape.turn.up.backward"
+    private let labelTextSize: CGFloat = 42
+    
+    private enum ButtonTitle: String {
+        case allBeverages = "All beverages"
+        case onlyCleanWater = "Only clean water"
+    }
+    
+    private enum CellIdentifier: String {
+        case optionViewCell = "OptionViewCell"
+        case collectionViewCell = "CollectionViewCell"
+        case cancelCell = "cancelCell"
+    }
     
     private enum Constraint: CGFloat {
         case collectionInstets = 28
@@ -30,11 +42,19 @@ class ViewController: UIViewController {
         case waveStepper = 30
     }
     
+    private enum WaveParameters: Int {
+        case size = 160
+        case borderSize = 170
+        case cornerRadius = 80
+        case borderRadius = 85
+        case borderOffset = 35
+        case waveOffset = 0
+    }
+    
     private var labelPercentCompleted: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
-        label.font = UIFont(name: "Futura-Medium", size: ControllerTextParameter.textSize.rawValue)
         label.textAlignment = .left
         return label
     }()
@@ -61,6 +81,7 @@ class ViewController: UIViewController {
         setupCollection()
         UserDefaults.lastAccessDate = Date()
         consumption.fetchUserStoredData()
+        setupPercentageLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,6 +96,7 @@ class ViewController: UIViewController {
     
     private func setupPercentageLabel() {
         wave?.addSubview(labelPercentCompleted)
+        labelPercentCompleted.font = UIFont(name: "Futura-Medium", size: labelTextSize)
         labelPercentCompleted.textColor = UIColor(named: CustomColor.buttonBlueOpaque.rawValue)
         labelPercentCompleted.centerYAnchor.constraint(equalTo: wave?.centerYAnchor ?? NSLayoutYAxisAnchor(), constant: 0).isActive = true
         labelPercentCompleted.centerXAnchor.constraint(equalTo: wave?.centerXAnchor ?? NSLayoutXAxisAnchor(), constant: 0).isActive = true

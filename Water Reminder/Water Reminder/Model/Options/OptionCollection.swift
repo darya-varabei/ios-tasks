@@ -7,7 +7,7 @@
 
 import Foundation
 
-class OptionsViewModel {
+class OptionCollection {
     var quickOptions = [Option]()
     
     func fillOptions() {
