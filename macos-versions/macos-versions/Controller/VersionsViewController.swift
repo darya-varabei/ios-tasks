@@ -34,6 +34,9 @@ class VersionsViewController: UIViewController {
         activityIndicator.startAnimating()
         DispatchQueue.global(qos: .background).async {
             self.fetchData()
+            DispatchQueue.main.async {
+                self.setupCollection()
+            }
         }
     }
     
@@ -51,9 +54,6 @@ class VersionsViewController: UIViewController {
                 guard let version = macosVersions, let versionX = macosXVersions else { return }
                 self?.macosVersions = versionX + version
             }
-        }
-        DispatchQueue.main.async {
-            self.setupCollection()
         }
     }
 }
