@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet private var buttonOnlyCleanWater: UIButton!
     @IBOutlet private var textFieldWaterToAdd: UITextField!
     @IBOutlet private var buttonAddWater: UIButton!
+    
     private let options = OptionCollection()
     private let defaultImage = "arrowshape.turn.up.backward"
     private let labelTextSize: CGFloat = 42
