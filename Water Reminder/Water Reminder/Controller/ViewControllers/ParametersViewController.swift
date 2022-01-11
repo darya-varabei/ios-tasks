@@ -22,7 +22,6 @@ class ParametersViewController: UIViewController {
     @IBOutlet private var buttonCancel: UIButton?
     private var user = User.shared
     
-    
     private enum LabelConstraint: CGFloat {
         case height = 20
         case top = 60
@@ -48,31 +47,39 @@ class ParametersViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        textFieldRecommended?.keyboardType = .numberPad
-        textFieldBodyWeight?.keyboardType = .numberPad
+        setupKeyboard()
         setUserParameters()
         hideKeyboardWhenTappedAround()
-        let bar = UIToolbar()
-        textFieldRecommended?.inputAccessoryView = bar.hideKeyboardToolbar()
-        textFieldBodyWeight?.inputAccessoryView = bar.hideKeyboardToolbar()
-        setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
-        textFieldBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         stepperActivity?.value = user.getActivity()
-        stepperActivity?.addTarget(self, action: #selector(stepperValueChange), for: .valueChanged)
-        setGender?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        defineControllersTargets()
     }
     
     private func setUserParameters() {
         if UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue) != 0 {
             textFieldBodyWeight?.text?.append(String(UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue)))
             labelActivity?.text = "\(String(UserDefaults.standard.double(forKey: UserParameters.activity.rawValue)))"
-            textFieldRecommended?.text?.append(String(round(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue) * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue)))
+            textFieldRecommended?.text?.append(String(round(UserDefaults.standard.double(forKey: UserParameters.doze.rawValue) * Double(ControllerParameters.toRound)) / Double(ControllerParameters.toRound)))
         }
         else {
             textFieldBodyWeight?.text?.append(String(user.getWeight()))
             labelActivity?.text = String(user.getActivity())
             textFieldRecommended?.text?.append(String(user.getRecommendedDoze()))
         }
+    }
+    
+    private func defineControllersTargets() {
+        setGender?.addTarget(self, action: #selector(genderValueChange), for: .valueChanged)
+        textFieldBodyWeight?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        stepperActivity?.addTarget(self, action: #selector(stepperValueChange), for: .valueChanged)
+        setGender?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    private func setupKeyboard() {
+        let bar = UIToolbar()
+        textFieldRecommended?.keyboardType = .numberPad
+        textFieldBodyWeight?.keyboardType = .numberPad
+        textFieldRecommended?.inputAccessoryView = bar.hideKeyboardToolbar()
+        textFieldBodyWeight?.inputAccessoryView = bar.hideKeyboardToolbar()
     }
 
     private func constForTextFieldRecommended() {
@@ -106,7 +113,7 @@ class ParametersViewController: UIViewController {
         labelActivity?.text = "\(Float(sender.value).description) hr"
         user.setActivity(newActivity: Double(sender.value))
         user.countRecommendedWater()
-        textFieldRecommended?.text = "\(round(user.getRecommendedDoze() * Double(ControllerParameters.toRound.rawValue)) / Double(ControllerParameters.toRound.rawValue))"
+        textFieldRecommended?.text = "\(round(user.getRecommendedDoze() * Double(ControllerParameters.toRound)) / Double(ControllerParameters.toRound))"
     }
     
     @IBAction private func buttonConfirmUser(_ sender: Any) {

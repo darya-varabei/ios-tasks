@@ -54,7 +54,6 @@ struct Consumption {
             user.setWeight(newWeight: UserDefaults.standard.double(forKey: UserParameters.bodyweight.rawValue))
             user.setActivity(newActivity: UserDefaults.standard.double(forKey: UserParameters.activity.rawValue))
             user.setRecommendedDoze(newDoze: UserDefaults.standard.double(forKey: UserParameters.doze.rawValue))
-            print(user.getRecommendedDoze())
             return
         }
     }
