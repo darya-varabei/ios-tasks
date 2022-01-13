@@ -11,7 +11,7 @@ import UIKit
 class LoginViewModel {
     
     private let loginManager: LoginManager
-  
+    
     private var credentials = UserCredentials() {
         didSet {
             username = credentials.username
@@ -32,7 +32,6 @@ class LoginViewModel {
         self.loginManager = loginManager
     }
     
-    //Here we update our model
     func updateCredentials(username: String, password: String, otp: String? = nil) {
         credentials.username = username
         credentials.password = password
@@ -40,13 +39,13 @@ class LoginViewModel {
     
     
     func login() {
-//        loginManager.loginWithCredentials(username: username, password: password) { [weak self] (error) in
-//            guard let error = error else {
-//                return
-//            }
-//
-//            self?.errorMessage.value = error.localizedDescription
-//        }
+        //        loginManager.loginWithCredentials(username: username, password: password) { [weak self] (error) in
+        //            guard let error = error else {
+        //                return
+        //            }
+        //
+        //            self?.errorMessage.value = error.localizedDescription
+        //        }
     }
     
     
