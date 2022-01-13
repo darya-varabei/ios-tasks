@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AA279048C400B5968D /* AppDelegate.swift */; };
 		D5DB55AD279048C400B5968D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AC279048C400B5968D /* SceneDelegate.swift */; };
-		D5DB55AF279048C400B5968D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AE279048C400B5968D /* ViewController.swift */; };
+		D5DB55AF279048C400B5968D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AE279048C400B5968D /* LoginViewController.swift */; };
 		D5DB55B2279048C400B5968D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5DB55B0279048C400B5968D /* Main.storyboard */; };
 		D5DB55B4279048C800B5968D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5DB55B3279048C800B5968D /* Assets.xcassets */; };
 		D5DB55B7279048C800B5968D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5DB55B5279048C800B5968D /* LaunchScreen.storyboard */; };
+		D5DB55C627904CFF00B5968D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55C527904CFF00B5968D /* User.swift */; };
+		D5DB55CC2790511000B5968D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55CB2790511000B5968D /* LoginViewModel.swift */; };
+		D5DB55CF2790518100B5968D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55CE2790518100B5968D /* Observable.swift */; };
+		D5DB55D22790568E00B5968D /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55D12790568E00B5968D /* LoginManager.swift */; };
+		D5DB55D52790571A00B5968D /* LoginViewModel+LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55D42790571A00B5968D /* LoginViewModel+LoginStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D5DB55A7279048C400B5968D /* MVVMaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB55AA279048C400B5968D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5DB55AC279048C400B5968D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D5DB55AE279048C400B5968D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5DB55AE279048C400B5968D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5DB55B1279048C400B5968D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5DB55B3279048C800B5968D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5DB55B6279048C800B5968D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5DB55B8279048C800B5968D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5DB55C527904CFF00B5968D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D5DB55CB2790511000B5968D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D5DB55CE2790518100B5968D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D5DB55D12790568E00B5968D /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		D5DB55D42790571A00B5968D /* LoginViewModel+LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginStatus.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,42 @@
 			children = (
 				D5DB55AA279048C400B5968D /* AppDelegate.swift */,
 				D5DB55AC279048C400B5968D /* SceneDelegate.swift */,
-				D5DB55AE279048C400B5968D /* ViewController.swift */,
+				D5DB55D12790568E00B5968D /* LoginManager.swift */,
+				D5DB55C427904CAC00B5968D /* ViewModel */,
+				D5DB55C927904D7D00B5968D /* ViewController */,
+				D5DB55C327904C9F00B5968D /* Model */,
 				D5DB55B0279048C400B5968D /* Main.storyboard */,
 				D5DB55B3279048C800B5968D /* Assets.xcassets */,
 				D5DB55B5279048C800B5968D /* LaunchScreen.storyboard */,
 				D5DB55B8279048C800B5968D /* Info.plist */,
 			);
 			path = MVVMaApp;
+			sourceTree = "<group>";
+		};
+		D5DB55C327904C9F00B5968D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB55C527904CFF00B5968D /* User.swift */,
+				D5DB55CE2790518100B5968D /* Observable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5DB55C427904CAC00B5968D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB55CB2790511000B5968D /* LoginViewModel.swift */,
+				D5DB55D42790571A00B5968D /* LoginViewModel+LoginStatus.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D5DB55C927904D7D00B5968D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB55AE279048C400B5968D /* LoginViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5DB55AF279048C400B5968D /* ViewController.swift in Sources */,
+				D5DB55D52790571A00B5968D /* LoginViewModel+LoginStatus.swift in Sources */,
+				D5DB55C627904CFF00B5968D /* User.swift in Sources */,
+				D5DB55AF279048C400B5968D /* LoginViewController.swift in Sources */,
+				D5DB55D22790568E00B5968D /* LoginManager.swift in Sources */,
 				D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */,
+				D5DB55CC2790511000B5968D /* LoginViewModel.swift in Sources */,
+				D5DB55CF2790518100B5968D /* Observable.swift in Sources */,
 				D5DB55AD279048C400B5968D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
