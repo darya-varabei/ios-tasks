@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5DB55A7279048C400B5968D /* MVVMaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5DB55A7279048C400B5968D /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB55AA279048C400B5968D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5DB55AC279048C400B5968D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D5DB55AE279048C400B5968D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		D5DB559E279048C400B5968D = {
 			isa = PBXGroup;
 			children = (
-				D5DB55A9279048C400B5968D /* MVVMaApp */,
+				D5DB55A9279048C400B5968D /* MVVMApp */,
 				D5DB55A8279048C400B5968D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +58,12 @@
 		D5DB55A8279048C400B5968D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5DB55A7279048C400B5968D /* MVVMaApp.app */,
+				D5DB55A7279048C400B5968D /* MVVMApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5DB55A9279048C400B5968D /* MVVMaApp */ = {
+		D5DB55A9279048C400B5968D /* MVVMApp */ = {
 			isa = PBXGroup;
 			children = (
 				D5DB55AA279048C400B5968D /* AppDelegate.swift */,
@@ -77,7 +77,7 @@
 				D5DB55B5279048C800B5968D /* LaunchScreen.storyboard */,
 				D5DB55B8279048C800B5968D /* Info.plist */,
 			);
-			path = MVVMaApp;
+			path = MVVMApp;
 			sourceTree = "<group>";
 		};
 		D5DB55C327904C9F00B5968D /* Model */ = {
@@ -109,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5DB55A6279048C400B5968D /* MVVMaApp */ = {
+		D5DB55A6279048C400B5968D /* MVVMApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5DB55BB279048C800B5968D /* Build configuration list for PBXNativeTarget "MVVMaApp" */;
+			buildConfigurationList = D5DB55BB279048C800B5968D /* Build configuration list for PBXNativeTarget "MVVMApp" */;
 			buildPhases = (
 				D5DB55A3279048C400B5968D /* Sources */,
 				D5DB55A4279048C400B5968D /* Frameworks */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = MVVMaApp;
+			name = MVVMApp;
 			productName = MVVMaApp;
-			productReference = D5DB55A7279048C400B5968D /* MVVMaApp.app */;
+			productReference = D5DB55A7279048C400B5968D /* MVVMApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5DB55A2279048C400B5968D /* Build configuration list for PBXProject "MVVMaApp" */;
+			buildConfigurationList = D5DB55A2279048C400B5968D /* Build configuration list for PBXProject "MVVMApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -153,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5DB55A6279048C400B5968D /* MVVMaApp */,
+				D5DB55A6279048C400B5968D /* MVVMApp */,
 			);
 		};
 /* End PBXProject section */
@@ -368,7 +368,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5DB55A2279048C400B5968D /* Build configuration list for PBXProject "MVVMaApp" */ = {
+		D5DB55A2279048C400B5968D /* Build configuration list for PBXProject "MVVMApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5DB55B9279048C800B5968D /* Debug */,
@@ -377,7 +377,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5DB55BB279048C800B5968D /* Build configuration list for PBXNativeTarget "MVVMaApp" */ = {
+		D5DB55BB279048C800B5968D /* Build configuration list for PBXNativeTarget "MVVMApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5DB55BC279048C800B5968D /* Debug */,
