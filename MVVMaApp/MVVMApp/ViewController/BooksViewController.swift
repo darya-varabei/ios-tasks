@@ -15,7 +15,7 @@ class BooksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackgroundColor()
+        
         categoriesCollectionView.delegate = self
         booksCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
@@ -23,6 +23,10 @@ class BooksViewController: UIViewController {
 //        setDelegates()
 //        setupButton()
 //        bindData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setupBackgroundColor()
     }
     
     private func setupBackgroundColor() {
@@ -34,7 +38,6 @@ class BooksViewController: UIViewController {
         gradient.colors = [pink, purple]
        
         view.layer.addSublayer(gradient)
-        //view.bringSubviewToFront(familyTableView)
     }
     
 //    @IBAction func pressLoginButton(_ sender: Any) {
@@ -116,6 +119,4 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return BookCollectionViewCell()
     }
-    
-    
 }
