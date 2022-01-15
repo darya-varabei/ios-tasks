@@ -14,6 +14,7 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setDelegates()
     }
     

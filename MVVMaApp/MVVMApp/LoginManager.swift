@@ -9,7 +9,7 @@ import Foundation
 
 
 class LoginManager {
-    func loginWithCredentials(completionHandler: @escaping() -> Void){//(username: String, password: String) throws {
+    func loginWithCredentials(completionHandler: @escaping() -> Void){
         
     }
 }

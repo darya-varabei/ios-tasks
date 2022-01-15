@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="863.768115942029" y="85.714285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="4xl-ia-5uf">
             <objects>
-                <viewController id="DmF-fX-P8p" sceneMemberID="viewController">
+                <viewController id="DmF-fX-P8p" customClass="DetailViewController" customModule="MVVMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlZ-v8-UyW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,6 +199,13 @@
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" secondItem="VDE-6L-iHL" secondAttribute="trailing" constant="34" id="yzh-8f-mll"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addToBookmarkButton" destination="VDE-6L-iHL" id="OhV-nv-lxY"/>
+                        <outlet property="bookImage" destination="Xio-aR-Nl6" id="VFN-yC-iKb"/>
+                        <outlet property="dateReleasedLabel" destination="afM-uc-FZy" id="cwK-Lg-pPs"/>
+                        <outlet property="numOfPagesLabel" destination="6f7-I0-bNr" id="w97-Tw-l5s"/>
+                        <outlet property="overviewTextView" destination="hM3-AM-EOe" id="Thu-QF-Zs3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXz-fS-8B0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
