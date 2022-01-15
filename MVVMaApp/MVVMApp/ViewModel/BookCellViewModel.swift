@@ -12,6 +12,10 @@ struct BookCellViewModel {
     
     private let book: Book
     
+    init(book: Book) {
+        self.book = book
+    }
+    
     var title: String {
         return book.title
     }

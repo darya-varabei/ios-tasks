@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookViewModel {
+class BookViewModel {
     private var bookService: BookServiceProtocol
     var reloadCollectionView: (() -> Void)?
     
@@ -23,7 +23,7 @@ struct BookViewModel {
         self.bookService = bookService
     }
     
-    mutating func getBooks() {
+    func getBooks() {
         bookService.getAllBooks { model, success in
             if success ?? false, let books = model {
                 self.fetchData(books: books)
@@ -33,23 +33,19 @@ struct BookViewModel {
         }
     }
     
-    mutating func fetchData(books: [Book]) {
+    func fetchData(books: [Book]) {
         self.books = books
         var vms = [BookCellViewModel]()
         for book in books {
-            vms.append(createCellModel(employee: book))
+            vms.append(createCellModel(book: book))
         }
         bookCellViewModels = vms
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
-        let title = book.title
-        let author = book.authors.joined(separator: ", ")
-        let image = book.thumbnailUrl
+        let bookModel = BookCellViewModel(book: book)
         
-        let bookModel = BookCellViewModel(book: (title, author, image))
-        
-        return BookCellViewModel(title, author, image)
+        return bookModel
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
