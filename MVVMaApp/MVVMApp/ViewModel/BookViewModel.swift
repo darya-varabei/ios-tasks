@@ -13,7 +13,7 @@ struct BookViewModel {
     
     var books = [Book]()
     
-    var bookCellViewModel = [BookCellViewModel]() {
+    var bookCellViewModels = [BookCellViewModel]() {
         didSet {
             reloadCollectionView?()
         }
@@ -23,9 +23,36 @@ struct BookViewModel {
         self.bookService = bookService
     }
     
-    func getBooks() {
+    mutating func getBooks() {
         bookService.getAllBooks { model, success in
-            
+            if success ?? false, let books = model {
+                self.fetchData(books: books)
+            } else {
+                print(success)
+            }
         }
+    }
+    
+    mutating func fetchData(books: [Book]) {
+        self.books = books
+        var vms = [BookCellViewModel]()
+        for book in books {
+            vms.append(createCellModel(employee: book))
+        }
+        bookCellViewModels = vms
+    }
+    
+    func createCellModel(book: Book) -> BookCellViewModel {
+        let title = book.title
+        let author = book.authors.joined(separator: ", ")
+        let image = book.thumbnailUrl
+        
+        let bookModel = BookCellViewModel(book: (title, author, image))
+        
+        return BookCellViewModel(title, author, image)
+    }
+    
+    func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
+        return bookCellViewModels[indexPath.row]
     }
 }
