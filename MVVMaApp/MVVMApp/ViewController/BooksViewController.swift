@@ -15,14 +15,7 @@ class BooksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        categoriesCollectionView.delegate = self
-        booksCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        booksCollectionView.dataSource = self
-//        setDelegates()
-//        setupButton()
-//        bindData()
+        setDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,6 +31,13 @@ class BooksViewController: UIViewController {
         gradient.colors = [pink, purple]
        
         view.layer.addSublayer(gradient)
+    }
+    
+    private func setDelegates() {
+        categoriesCollectionView.delegate = self
+        booksCollectionView.delegate = self
+        categoriesCollectionView.dataSource = self
+        booksCollectionView.dataSource = self
     }
     
 //    @IBAction func pressLoginButton(_ sender: Any) {

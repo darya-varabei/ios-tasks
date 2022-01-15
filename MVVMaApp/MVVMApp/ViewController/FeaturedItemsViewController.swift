@@ -14,7 +14,7 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     
     override func viewDidLoad() {
-
+        setDelegates()
     }
     
     override func viewDidLayoutSubviews() {
@@ -31,4 +31,21 @@ class FeaturedItemsViewController: UIViewController {
        
         view.layer.addSublayer(gradient)
     }
+    
+    private func setDelegates() {
+        featuredCollectionView.delegate = self
+        featuredCollectionView.dataSource = self
+    }
+}
+
+extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return BookCollectionViewCell()
+    }
+    
+    
 }
