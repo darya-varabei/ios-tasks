@@ -10,11 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var addToBookmarkButton: UIButton!
-    @IBOutlet weak var numOfPagesLabel: UILabel!
-    @IBOutlet weak var dateReleasedLabel: UILabel!
-    @IBOutlet weak var overviewTextView: UITextView!
+    @IBOutlet private var bookImage: UIImageView!
+    @IBOutlet private var addToBookmarkButton: UIButton!
+    @IBOutlet private var numOfPagesLabel: UILabel!
+    @IBOutlet private var dateReleasedLabel: UILabel!
+    @IBOutlet private var overviewTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

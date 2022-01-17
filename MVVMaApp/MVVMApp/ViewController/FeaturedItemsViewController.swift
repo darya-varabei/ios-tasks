@@ -10,8 +10,8 @@ import UIKit
 
 class FeaturedItemsViewController: UIViewController {
     
-    @IBOutlet weak var featuredTitleLabel: UILabel!
-    @IBOutlet weak var featuredCollectionView: UICollectionView!
+    @IBOutlet private var featuredTitleLabel: UILabel!
+    @IBOutlet private var featuredCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,4 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return BookCollectionViewCell()
     }
-    
-    
 }
