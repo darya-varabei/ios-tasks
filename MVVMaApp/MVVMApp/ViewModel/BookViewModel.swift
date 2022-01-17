@@ -44,7 +44,6 @@ class BookViewModel {
     
     func createCellModel(book: Book) -> BookCellViewModel {
         let bookModel = BookCellViewModel(book: book)
-        
         return bookModel
     }
     

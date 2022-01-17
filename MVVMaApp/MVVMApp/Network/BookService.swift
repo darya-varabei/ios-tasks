@@ -9,16 +9,16 @@ import Foundation
 
 class BookService: BookServiceProtocol {
     
-    var macosVersions: [Book]?
+    var books: [Book]?
     
     private enum Filename {
-        static let macosVersions = "Books"
-        static let macosXVersions = "MacosX-Versions"
+        static let bookList = "Books"
+        static let featuredBookList = "FeaturedBooks"
     }
     
     func getAllBooks(completion: @escaping ([Book]?, Bool?) -> Void) {
         
-        Parser.loadJSONFile(named: Filename.macosVersions, type: [Book].self) { (versions, error) in
+        Parser.loadJSONFile(named: Filename.bookList, type: [Book].self) { (models, error) in
             guard error == nil else {
                 completion(nil, false)
                 return
@@ -30,8 +30,8 @@ class BookService: BookServiceProtocol {
 //                    return
 //                }
 //
-                self.macosVersions = versions ?? []
-                completion(versions, true)
+                self.books = models ?? []
+                completion(models, true)
 //            }
         }
     }

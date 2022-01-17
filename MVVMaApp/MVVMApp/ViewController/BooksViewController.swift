@@ -71,9 +71,6 @@ class BooksViewController: UIViewController {
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if viewModel.books.count != 0 {
-            print(viewModel.books[0].title)
-        }
         return viewModel.books.count
     }
     
