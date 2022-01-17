@@ -49,6 +49,7 @@ class BooksViewController: UIViewController {
     }
     
     private func setDelegates() {
+        booksCollectionView.translatesAutoresizingMaskIntoConstraints = true
         categoriesCollectionView.delegate = self
         booksCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
@@ -85,9 +86,17 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return viewModel.books.count
         }
         else {
-            print(categoryViewModel.categories.count)
             return categoryViewModel.categories.count
        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //if collectionView.restorationIdentifier == "BooksCollectionView" {
+        return CGSize(width: UIScreen.main.bounds.width / 2 - 30, height: UIScreen.main.bounds.height / 3 - 50)
+//        }
+//        else {
+//            return CGSize
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

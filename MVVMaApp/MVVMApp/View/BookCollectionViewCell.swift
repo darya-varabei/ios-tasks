@@ -18,7 +18,7 @@ class BookCollectionViewCell: UICollectionViewCell {
 
     var cellViewModel: BookCellViewModel? {
         didSet {
-            //bookImage.image = UIImage(named: cellViewModel!.image)
+            bookImage.image = cellViewModel?.image
             nameLabel.text = cellViewModel?.title
             authorLabel.text = cellViewModel?.author
         }

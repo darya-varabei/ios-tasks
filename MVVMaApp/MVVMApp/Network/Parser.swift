@@ -52,19 +52,6 @@ struct Parser {
             do {
                 if let jsonData = data {
                     let decoder = JSONDecoder()
-                    
-//                    decoder.dateDecodingStrategy = .custom { (decoder) -> Date in
-//                        
-//                        let value = try decoder.singleValueContainer().decode(String.self)
-//                        
-//                        let formatter = DateFormatter()
-//                        formatter.dateFormat = ParsingParameters.dateFormat
-//                        if let date = formatter.date(from: value) {
-//                            return date
-//                        }
-//                        throw ParserError.invalidDateFormat
-//                    }
- //                   do{
                     let typedObject: T? = try decoder.decode(T.self, from: jsonData)
                     
                     if let dispatchQueue = queue {

@@ -91,11 +91,6 @@
                                     <constraint firstAttribute="width" secondItem="Xio-aR-Nl6" secondAttribute="height" multiplier="15:8" constant="-99.75" id="m9i-Ma-7QG"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="494-zc-o5T">
-                                <rect key="frame" x="0.0" y="146" width="414" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.5741117294520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Hy4-eT-9cM">
                                 <rect key="frame" x="40" y="360" width="334" height="68"/>
                                 <subviews>
@@ -165,6 +160,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="494-zc-o5T">
+                                <rect key="frame" x="0.0" y="190" width="414" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.5741117294520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RiO-uM-yNH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

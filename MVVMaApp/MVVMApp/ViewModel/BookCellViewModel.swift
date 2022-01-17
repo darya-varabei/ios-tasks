@@ -11,6 +11,7 @@ import UIKit
 struct BookCellViewModel {
     
     private let book: Book
+    private let service: BookService = BookService()
     
     init(book: Book) {
         self.book = book
@@ -24,8 +25,13 @@ struct BookCellViewModel {
         return book.authors.joined(separator: ", ")
     }
     
-    var image: String {
-        return book.thumbnailURL ?? ""
+    var image: UIImage {
+        if let url = URL(string: book.thumbnailURL ?? "") {
+//            DispatchQueue.main.async {
+            return service.loadImage(from: url)
+            // }
+        }
+        return UIImage()
     }
     
     var isbn: String {
