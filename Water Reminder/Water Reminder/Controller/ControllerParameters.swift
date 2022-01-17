@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
-enum ControllerParameters: Int {
-    case percentMultiplier = 1000
-    case toRound = 10
-    case controllerRadius = 15
-    case maxDisplayedWaterPercent = 999
+enum ControllerParameters {
+    static let percentMultiplier: CGFloat = 1000
+    static let toRound: CGFloat = 10
+    static let controllerRadius: CGFloat = 15
+    static let maxDisplayedWaterPercent: CGFloat = 999
 }

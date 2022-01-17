@@ -75,14 +75,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B3ACB77278D93D700D75F30 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4BBE57E1273A670500AF0B5E /* LaunchScreen.storyboard */,
+				4BBE57D9273A670400AF0B5E /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4B649577273BC4960028D261 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D5F1625E278C804700B93272 /* Options */,
 				D5F1625D278C800E00B93272 /* Enums */,
 				D5CE5160274B5FB30000CED6 /* NotificationManager.swift */,
-				4B649573273BBEB10028D261 /* Consumption.swift */,
 				4BBE57EC273A803E00AF0B5E /* User.swift */,
+				4B649573273BBEB10028D261 /* Consumption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,12 +117,11 @@
 			children = (
 				4BBE57D3273A670400AF0B5E /* AppDelegate.swift */,
 				4BBE57D5273A670400AF0B5E /* SceneDelegate.swift */,
+				4B3ACB77278D93D700D75F30 /* Resources */,
 				D5F16252278C6F6D00B93272 /* Controller */,
 				D5F16251278C6F6800B93272 /* View */,
 				4B649577273BC4960028D261 /* Model */,
-				4BBE57D9273A670400AF0B5E /* Main.storyboard */,
 				4BBE57DF273A670500AF0B5E /* Assets.xcassets */,
-				4BBE57E1273A670500AF0B5E /* LaunchScreen.storyboard */,
 				4BBE57E4273A670500AF0B5E /* Info.plist */,
 			);
 			path = "Water Reminder";

@@ -10,15 +10,15 @@ import NotificationCenter
 
 struct NotificationManager {
     private let notificationCenter = UNUserNotificationCenter.current()
-    private let notificationTitle = NotificationParameter.title.rawValue
-    private let notificationBody = NotificationParameter.body.rawValue
-    private let identifier = NotificationParameter.identifier.rawValue
+    private let notificationTitle = NotificationParameter.title
+    private let notificationBody = NotificationParameter.body
+    private let identifier = NotificationParameter.identifier
     private let timeInterval: TimeInterval = NotificationParameter.interval
     
-    private enum NotificationParameter: String {
-        case title = "Water reminder"
-        case body = "It's time to drink some water"
-        case identifier = "notification"
+    private enum NotificationParameter {
+        static let title = "Water reminder"
+        static let body = "It's time to drink some water"
+        static let identifier = "notification"
         static let interval: TimeInterval = 10800
     }
     
@@ -41,7 +41,6 @@ struct NotificationManager {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        notificationCenter.add(request) { (error) in
-        }
+        notificationCenter.add(request) { (error) in }
     }
 }
