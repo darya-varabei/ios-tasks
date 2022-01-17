@@ -21,8 +21,7 @@ class BookService: BookServiceProtocol {
     func loadImage(from url: URL) -> UIImage {
         var task: URLSessionDataTask!
         let queue = DispatchQueue(label: "loadImage")
-        //imageView = nil
-        //addSpinner()
+        
         if let task = task {
             task.cancel()
         }
@@ -31,7 +30,6 @@ class BookService: BookServiceProtocol {
             DispatchQueue.main.async {
                 self.imageView.image = imageFromCache
             }
-            //removeSpinner()
             return self.imageView.image ?? UIImage()
         }
         
@@ -44,8 +42,6 @@ class BookService: BookServiceProtocol {
                 self.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
                 DispatchQueue.main.async {
                     self.imageView.image = newImage
-                    print("Image loaded successfully")
-                    //self.removeSpinner()
                 }
             }
         }
@@ -60,16 +56,16 @@ class BookService: BookServiceProtocol {
                 completion(nil, false)
                 return
             }
-//
-//            Parser.loadJSONFile(named: Filename.macosXVersions, type: [Book].self) { (versionsX, error) in
-//                guard error == nil else {
-//                    completion(nil, false)
-//                    return
-//                }
-//
-                self.books = models ?? []
-                completion(models, true)
-//            }
+            //
+            //            Parser.loadJSONFile(named: Filename.macosXVersions, type: [Book].self) { (versionsX, error) in
+            //                guard error == nil else {
+            //                    completion(nil, false)
+            //                    return
+            //                }
+            //
+            self.books = models ?? []
+            completion(models, true)
+            //            }
         }
     }
 }
