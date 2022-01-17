@@ -19,10 +19,12 @@ class CategoryViewModel {
         }
     }
     
-    func getCategories(books: [Book]) -> [String] {
+    func getCategories(books: [Book]) {
         let bufferBookCategories = books.map { $0.categories }
         categories = Set(bufferBookCategories.flatMap { $0 })
-        return Array(categories)
+        for item in categories {
+            categoryCellViewModels.append(createCellModel(category: Category(name: item, color: UIColor.white)))
+        }
     }
     
     func createCellModel(category: Category) -> CategoryCellViewModel {

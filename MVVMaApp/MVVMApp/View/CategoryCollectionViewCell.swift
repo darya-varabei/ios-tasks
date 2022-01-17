@@ -11,6 +11,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     
+    class var identifier: String { return String(describing: self) }
+    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
+
+    var cellViewModel: CategoryCellViewModel? {
+        didSet {
+            categoryLabel.text = cellViewModel?.name
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setConstantProperties()

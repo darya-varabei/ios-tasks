@@ -18,6 +18,10 @@ class BooksViewController: UIViewController {
     lazy var viewModel = {
         BookViewModel()
     }()
+    
+    lazy var categoryViewModel = {
+        CategoryViewModel()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +61,19 @@ class BooksViewController: UIViewController {
     
     private func initViewModel() {
         viewModel.getBooks()
+        //categoryViewModel.getCategories(books: viewModel.books)
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
+                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [])
+                self?.categoriesCollectionView.reloadData()
             }
         }
+//        categoryViewModel.reloadCollectionView = { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.categoriesCollectionView.reloadData()
+//            }
+//        }
     }
     
     private func setupKeyboard() {
@@ -73,15 +85,32 @@ class BooksViewController: UIViewController {
 }
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.books.count
+        if collectionView.restorationIdentifier == "BooksCollectionView" {
+            return viewModel.books.count
+        }
+        else {
+            print(categoryViewModel.categories.count)
+            return categoryViewModel.categories.count
+       }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as? BookCollectionViewCell else { fatalError("xib does not exists") }
-        let cellVM = viewModel.getCellViewModel(at: indexPath)
-        cell.cellViewModel = cellVM
         
-        return cell
+        if collectionView.restorationIdentifier == "BooksCollectionView" {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as? BookCollectionViewCell else { fatalError("xib does not exists") }
+            let cellVM = viewModel.getCellViewModel(at: indexPath)
+            cell.cellViewModel = cellVM
+
+            return cell
+        }
+        else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { fatalError("xib does not exists") }
+            let cellVM = categoryViewModel.getCellViewModel(at: indexPath)
+            cell.cellViewModel = cellVM
+            
+            return cell
+        }
     }
 }
