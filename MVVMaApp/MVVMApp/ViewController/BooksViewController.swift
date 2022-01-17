@@ -9,17 +9,26 @@ import UIKit
 
 class BooksViewController: UIViewController {
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var categoriesCollectionView: UICollectionView!
-    @IBOutlet weak var booksCollectionView: UICollectionView!
+    @IBOutlet private var searchTextField: UITextField!
+    @IBOutlet private var categoriesCollectionView: UICollectionView!
+    @IBOutlet private var booksCollectionView: UICollectionView!
+    
+    lazy var viewModel = {
+        BookViewModel()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
+        initViewModel()
+        setupKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
         setupBackgroundColor()
+        view.bringSubviewToFront(searchTextField)
+        view.bringSubviewToFront(categoriesCollectionView)
+        view.bringSubviewToFront(booksCollectionView)
     }
     
     private func setupBackgroundColor() {
@@ -38,85 +47,41 @@ class BooksViewController: UIViewController {
         booksCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         booksCollectionView.dataSource = self
+        booksCollectionView.backgroundColor = UIColor.clear
+        categoriesCollectionView.backgroundColor = UIColor.clear
+        booksCollectionView.register(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BookCollectionViewCell")
     }
     
-//    @IBAction func pressLoginButton(_ sender: Any) {
-//
-//        loginViewModel.updateCredentials(username: usernameTextField.text!, password: passwordTextField.text!)
-//
-//        switch loginViewModel.credentialsInput() {
-//
-//        case .Correct:
-//            login()
-//        case .Incorrect:
-//            return
-//        }
-//    }
-//
-//    func bindData() {
-//        loginViewModel.credentialsInputErrorMessage.bind { [weak self] in
-//            self?.loginErrorDescriptionLabel.isHidden = false
-//            self?.loginErrorDescriptionLabel.text = $0
-//        }
-//
-//        loginViewModel.isUsernameTextFieldHighLighted.bind { [weak self] in
-//            if $0 { self?.highlightTextField((self?.usernameTextField)!)}
-//        }
-//
-//        loginViewModel.isPasswordTextFieldHighLighted.bind { [weak self] in
-//            if $0 { self?.highlightTextField((self?.passwordTextField)!)}
-//        }
-//
-//        loginViewModel.errorMessage.bind {
-//            guard let errorMessage = $0 else { return }
-//        }
-//    }
-//
-//    func login() {
-//        loginViewModel.login()
-//    }
-//
-//    func setupButton() {
-//        loginButton.layer.cornerRadius = 5
-//    }
-//
-//    func setDelegates() {
-//        usernameTextField.delegate = self
-//        passwordTextField.delegate = self
-//    }
-//
-//    func highlightTextField(_ textField: UITextField) {
-//        textField.resignFirstResponder()
-//        textField.layer.borderWidth = 1.0
-//        textField.layer.borderColor = UIColor.red.cgColor
-//        textField.layer.cornerRadius = 3
-//    }
+    private func initViewModel() {
+        viewModel.getBooks()
+        viewModel.reloadCollectionView = { [weak self] in
+            DispatchQueue.main.async {
+                self?.booksCollectionView.reloadData()
+            }
+        }
+    }
+    
+    private func setupKeyboard() {
+        hideKeyboardWhenTappedAround()
+        let bar = UIToolbar()
+        searchTextField.inputAccessoryView = bar.hideKeyboardToolbar()
+        searchTextField.keyboardType = .decimalPad
+    }
 }
-
-//extension LoginViewController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        usernameTextField.resignFirstResponder()
-//        passwordTextField.resignFirstResponder()
-//        return true
-//    }
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        loginErrorDescriptionLabel.isHidden = true
-//        usernameTextField.layer.borderWidth = 0
-//        passwordTextField.layer.borderWidth = 0
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
-//}
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        if viewModel.books.count != 0 {
+            print(viewModel.books[0].title)
+        }
+        return viewModel.books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return BookCollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as? BookCollectionViewCell else { fatalError("xib does not exists") }
+        let cellVM = viewModel.getCellViewModel(at: indexPath)
+        cell.cellViewModel = cellVM
+        
+        return cell
     }
 }

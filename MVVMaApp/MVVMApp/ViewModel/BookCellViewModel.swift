@@ -25,30 +25,26 @@ struct BookCellViewModel {
     }
     
     var image: String {
-        return book.thumbnailUrl
+        return book.thumbnailURL ?? ""
     }
     
     var isbn: String {
-        return book.isbn
+        return book.isbn ?? ""
     }
     
     var overview: String {
-        return book.longDescription
+        return book.longDescription ?? ""
     }
     
     var numOfPages: Int {
         return book.pageCount
     }
     
-    var publishedDate: PublishedDate {
-        return book.publishedDate
-    }
+//    var publishedDate: PublishedDate {
+//        return book.publishedDate ?? PublishedDate
+//    }
     
     var category: [String] {
         return book.categories
-    }
-    
-    var status: String {
-        return book.status
     }
 }

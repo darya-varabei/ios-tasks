@@ -23,9 +23,11 @@ struct Parser {
         guard let url = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else {
             if let dispatchQueue = queue {
                 dispatchQueue.async {
+                    print("file not found 1")
                     completionHandler(nil, .fileNotFound)
                 }
             } else {
+                print("file not found 2")
                 completionHandler(nil, .fileNotFound)
             }
             
@@ -44,6 +46,7 @@ struct Parser {
                     }
                 } else {
                     completionHandler(nil, .invalidRequest)
+                    print("Invalid request")
                 }
                 
                 return
@@ -52,27 +55,43 @@ struct Parser {
             do {
                 if let jsonData = data {
                     let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .custom { (decoder) -> Date in
-                        let value = try decoder.singleValueContainer().decode(String.self)
-                        
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = ParsingParameters.dateFormat
-                        
-                        if let date = formatter.date(from: value) {
-                            return date
-                        }
-                        
-                        throw ParserError.invalidDateFormat
-                    }
                     
+//                    decoder.dateDecodingStrategy = .custom { (decoder) -> Date in
+//                        
+//                        let value = try decoder.singleValueContainer().decode(String.self)
+//                        
+//                        let formatter = DateFormatter()
+//                        formatter.dateFormat = ParsingParameters.dateFormat
+//                        if let date = formatter.date(from: value) {
+//                            return date
+//                        }
+//                        throw ParserError.invalidDateFormat
+//                    }
+ //                   do{
                     let typedObject: T? = try decoder.decode(T.self, from: jsonData)
                     
+//                    } catch let DecodingError.dataCorrupted(context) {
+//                           print(context)
+//                       } catch let DecodingError.keyNotFound(key, context) {
+//                           print("Key '\(key)' not found:", context.debugDescription)
+//                           print("codingPath:", context.codingPath)
+//                       } catch let DecodingError.valueNotFound(value, context) {
+//                           print("Value '\(value)' not found:", context.debugDescription)
+//                           print("codingPath:", context.codingPath)
+//                       } catch let DecodingError.typeMismatch(type, context)  {
+//                           print("Type '\(type)' mismatch:", context.debugDescription)
+//                           print("codingPath:", context.codingPath)
+//                       } catch {
+//                           print("error: ", error)
+//                       }
                     if let dispatchQueue = queue {
                         dispatchQueue.async {
                             completionHandler(typedObject, nil)
+                            print("typed object 1")
                         }
                     } else {
                         completionHandler(typedObject, nil)
+                        print("typed object")
                     }
                 }
             } catch {
@@ -80,9 +99,11 @@ struct Parser {
                 if let dispatchQueue = queue {
                     dispatchQueue.async {
                         completionHandler(nil, .parsingError)
+                        print("parsing error 1")
                     }
                 } else {
                     completionHandler(nil, .parsingError)
+                    print("parsing error 2")
                 }
             }
         }

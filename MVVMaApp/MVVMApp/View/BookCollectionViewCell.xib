@@ -49,7 +49,9 @@
             </constraints>
             <size key="customSize" width="96" height="187"/>
             <connections>
+                <outlet property="authorLabel" destination="z7a-EA-qw0" id="BH0-VB-yMt"/>
                 <outlet property="bookImage" destination="mRY-CG-3Sz" id="0Xa-R6-G1L"/>
+                <outlet property="nameLabel" destination="hEp-YS-Opc" id="9dV-SF-nbh"/>
             </connections>
             <point key="canvasLocation" x="-115.94202898550725" y="122.20982142857142"/>
         </collectionViewCell>

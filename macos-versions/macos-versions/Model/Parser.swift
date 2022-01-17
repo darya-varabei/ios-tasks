@@ -80,6 +80,7 @@ struct Parser {
                 if let dispatchQueue = queue {
                     dispatchQueue.async {
                         completionHandler(nil, .parsingError)
+                        print("wyregfiuerhdofjvesndfv")
                     }
                 } else {
                     completionHandler(nil, .parsingError)

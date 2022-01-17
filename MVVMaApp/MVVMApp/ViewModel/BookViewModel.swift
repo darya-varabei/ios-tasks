@@ -28,7 +28,7 @@ class BookViewModel {
             if success ?? false, let books = model {
                 self.fetchData(books: books)
             } else {
-                print(success)
+                print(success!)
             }
         }
     }

@@ -12,7 +12,7 @@ class BookService: BookServiceProtocol {
     var macosVersions: [Book]?
     
     private enum Filename {
-        static let macosVersions = "Macos-Versions"
+        static let macosVersions = "Books"
         static let macosXVersions = "MacosX-Versions"
     }
     
@@ -23,16 +23,16 @@ class BookService: BookServiceProtocol {
                 completion(nil, false)
                 return
             }
-            
-            Parser.loadJSONFile(named: Filename.macosXVersions, type: [Book].self) { (versionsX, error) in
-                guard error == nil else {
-                    completion(nil, false)
-                    return
-                }
-                
+//
+//            Parser.loadJSONFile(named: Filename.macosXVersions, type: [Book].self) { (versionsX, error) in
+//                guard error == nil else {
+//                    completion(nil, false)
+//                    return
+//                }
+//
                 self.macosVersions = versions ?? []
                 completion(versions, true)
-            }
+//            }
         }
     }
 }
