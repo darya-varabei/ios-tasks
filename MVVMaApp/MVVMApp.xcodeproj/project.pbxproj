@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B3E31CA27953EFB002030E9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E31C927953EFB002030E9 /* Category.swift */; };
+		4B3E31CC27953F47002030E9 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E31CB27953F47002030E9 /* CategoryViewModel.swift */; };
+		4B3E31CE27953F56002030E9 /* CategoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E31CD27953F56002030E9 /* CategoryCellViewModel.swift */; };
 		D5233C642791B78E007196A6 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5233C632791B78E007196A6 /* Book.swift */; };
 		D5233C672791B8E5007196A6 /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = D5233C662791B8E5007196A6 /* Books.json */; };
 		D5233C6D2791F01F007196A6 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5233C6B2791F01F007196A6 /* BookCollectionViewCell.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B3E31C927953EFB002030E9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Category.swift; path = ../../../TableViewApp/TableViewApp/Extensions/Category.swift; sourceTree = "<group>"; };
+		4B3E31CB27953F47002030E9 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryViewModel.swift; path = ../../../TableViewApp/TableViewApp/Extensions/CategoryViewModel.swift; sourceTree = "<group>"; };
+		4B3E31CD27953F56002030E9 /* CategoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryCellViewModel.swift; path = ../../../TableViewApp/TableViewApp/Extensions/CategoryCellViewModel.swift; sourceTree = "<group>"; };
 		D5233C632791B78E007196A6 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D5233C662791B8E5007196A6 /* Books.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
 		D5233C6B2791F01F007196A6 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 			children = (
 				D5DB55CE2790518100B5968D /* Observable.swift */,
 				D5233C632791B78E007196A6 /* Book.swift */,
+				4B3E31C927953EFB002030E9 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +162,8 @@
 			children = (
 				D538822027934740007C03E0 /* BookCellViewModel.swift */,
 				D5388239279371C7007C03E0 /* BookViewModel.swift */,
+				4B3E31CD27953F56002030E9 /* CategoryCellViewModel.swift */,
+				4B3E31CB27953F47002030E9 /* CategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 			files = (
 				D538824527943993007C03E0 /* UIViewController+Keyboard.swift in Sources */,
 				D53882142792D8A8007C03E0 /* DetailViewController.swift in Sources */,
+				4B3E31CA27953EFB002030E9 /* Category.swift in Sources */,
 				D538823A279371C7007C03E0 /* BookViewModel.swift in Sources */,
 				D5DB55AF279048C400B5968D /* BooksViewController.swift in Sources */,
 				D538823327936FBB007C03E0 /* ParserError.swift in Sources */,
@@ -256,7 +266,9 @@
 				D5233C7F27923579007196A6 /* StatisticsViewController.swift in Sources */,
 				D5233C7C27923567007196A6 /* FeaturedItemsViewController.swift in Sources */,
 				D538824127937401007C03E0 /* BookService.swift in Sources */,
+				4B3E31CE27953F56002030E9 /* CategoryCellViewModel.swift in Sources */,
 				D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */,
+				4B3E31CC27953F47002030E9 /* CategoryViewModel.swift in Sources */,
 				D538822127934740007C03E0 /* BookCellViewModel.swift in Sources */,
 				D538824827943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift in Sources */,
 				D5233C642791B78E007196A6 /* Book.swift in Sources */,
