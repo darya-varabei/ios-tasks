@@ -13,6 +13,8 @@ class BooksViewController: UIViewController {
     @IBOutlet private var categoriesCollectionView: UICollectionView!
     @IBOutlet private var booksCollectionView: UICollectionView!
     
+    private var bufferBookCategories = [[String]]()
+    private var bookCategories: Set<String> = []
     lazy var viewModel = {
         BookViewModel()
     }()
@@ -50,10 +52,13 @@ class BooksViewController: UIViewController {
         booksCollectionView.backgroundColor = UIColor.clear
         categoriesCollectionView.backgroundColor = UIColor.clear
         booksCollectionView.register(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BookCollectionViewCell")
+        categoriesCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionViewCell")
     }
     
     private func initViewModel() {
         viewModel.getBooks()
+        bufferBookCategories = viewModel.books.map { $0.categories }
+        bookCategories = Set(bufferBookCategories.flatMap { $0 })
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
