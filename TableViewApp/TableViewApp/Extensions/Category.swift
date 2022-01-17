@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-struct Category {
+struct Category: Hashable {
     var name: String
-    var color: String
+    var color: UIColor
 }

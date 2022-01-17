@@ -57,8 +57,6 @@ class BooksViewController: UIViewController {
     
     private func initViewModel() {
         viewModel.getBooks()
-        bufferBookCategories = viewModel.books.map { $0.categories }
-        bookCategories = Set(bufferBookCategories.flatMap { $0 })
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
