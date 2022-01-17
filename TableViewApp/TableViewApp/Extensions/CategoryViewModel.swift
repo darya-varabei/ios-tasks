@@ -21,7 +21,7 @@ class CategoryViewModel {
     
     func getCategories(books: [Book]) {
         let bufferBookCategories = books.map { $0.categories }
-        categories = Set(bufferBookCategories.flatMap { $0 })
+        categories = Set(bufferBookCategories.flatMap { $0 }.filter({ $0.count != 0 }))
         for item in categories {
             categoryCellViewModels.append(createCellModel(category: Category(name: item, color: UIColor.white)))
         }

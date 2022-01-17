@@ -61,7 +61,6 @@ class BooksViewController: UIViewController {
     
     private func initViewModel() {
         viewModel.getBooks()
-        //categoryViewModel.getCategories(books: viewModel.books)
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
@@ -69,11 +68,6 @@ class BooksViewController: UIViewController {
                 self?.categoriesCollectionView.reloadData()
             }
         }
-//        categoryViewModel.reloadCollectionView = { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.categoriesCollectionView.reloadData()
-//            }
-//        }
     }
     
     private func setupKeyboard() {

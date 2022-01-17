@@ -23,11 +23,9 @@ struct Parser {
         guard let url = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else {
             if let dispatchQueue = queue {
                 dispatchQueue.async {
-                    print("file not found 1")
                     completionHandler(nil, .fileNotFound)
                 }
             } else {
-                print("file not found 2")
                 completionHandler(nil, .fileNotFound)
             }
             
@@ -46,7 +44,6 @@ struct Parser {
                     }
                 } else {
                     completionHandler(nil, .invalidRequest)
-                    print("Invalid request")
                 }
                 
                 return
@@ -73,11 +70,9 @@ struct Parser {
                     if let dispatchQueue = queue {
                         dispatchQueue.async {
                             completionHandler(typedObject, nil)
-                            print("typed object 1")
                         }
                     } else {
                         completionHandler(typedObject, nil)
-                        print("typed object")
                     }
                 }
             } catch {
@@ -85,11 +80,9 @@ struct Parser {
                 if let dispatchQueue = queue {
                     dispatchQueue.async {
                         completionHandler(nil, .parsingError)
-                        print("parsing error 1")
                     }
                 } else {
                     completionHandler(nil, .parsingError)
-                    print("parsing error 2")
                 }
             }
         }
