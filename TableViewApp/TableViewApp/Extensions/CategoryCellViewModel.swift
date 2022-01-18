@@ -38,13 +38,4 @@ struct CategoryCellViewModel {
             color = Observable(UIColor.init(white: 1, alpha: 0.5))
         }
     }
-    
-    private func generateColor() -> UIColor {
-        let redValue = CGFloat.random(in: 0...maxRGBComponent)
-        let greenValue = CGFloat.random(in: 0...maxRGBComponent)
-        let blueValue = CGFloat.random(in: 0...maxRGBComponent)
-        
-        let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: alphaComponent)
-        return randomColor
-    }
 }

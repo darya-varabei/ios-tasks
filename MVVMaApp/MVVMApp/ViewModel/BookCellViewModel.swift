@@ -28,10 +28,6 @@ struct BookCellViewModel {
         return book.thumbnailURL ?? ""
     }
     
-    var image: UIImage {
-        return UIImage()
-    }
-    
     var isbn: String {
         return book.isbn ?? ""
     }

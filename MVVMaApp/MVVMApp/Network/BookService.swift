@@ -21,18 +21,15 @@ class BookService: BookServiceProtocol {
         
         Parser.loadJSONFile(named: Filename.bookList, type: [Book].self) { (models, error) in
             guard error == nil else {
-                print("Completion 1")
                 completion(nil, false, nil, false)
                 return
             }
             
             Parser.loadJSONFile(named: Filename.featuredBookList, type: [String].self) { (featuredIsbn, error) in
                 guard error == nil else {
-                    print("Completion 2")
                     completion(nil, false, nil, false)
                     return
                 }
-                print("Completion 3")
                 self.books = models ?? []
                 completion(models, true, featuredIsbn, true)
             }

@@ -31,9 +31,7 @@ class BookViewModel {
             if success ?? false, let books = model, let featuredModel = featured {
                 self.fetchData(books: books)
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
-            } else {
-                print(success!)
-            }
+            } 
         }
     }
     
@@ -62,11 +60,7 @@ class BookViewModel {
     
     func getViewModel(index: Int) -> ViewModelGetObject {
             return ViewModelGetObject(book: books[index])
-        }
-    
-//    func filterFeaturedBooks() {
-//        featuredBooks = books.filter{ featuredIsbn.contains($0.isbn ?? "") }
-//    }
+    }
     
     func filterBooks(on category: String) {
         if books.count == booksToCollection.count {

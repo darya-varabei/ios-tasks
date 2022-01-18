@@ -13,6 +13,14 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
+    private enum BookViewControllerParameters {
+        static let gradientTopColor = "darkGradientTop"
+        static let gradientBottomColor = "darkGradientBottom"
+        static let bookCell = "BookCollectionViewCell"
+        static let fatalErrorMessage = "xib does not exists"
+        static let detailViewController = "DetailViewController"
+    }
+    
     lazy var viewModel = {
         FeaturedBookViewModel()
     }()
@@ -30,10 +38,10 @@ class FeaturedItemsViewController: UIViewController {
     private func setupBackgroundColor() {
         let gradient = CAGradientLayer()
         
-        guard let pink = UIColor(named: "darkGradientTop")?.cgColor else { return }
-        guard let purple = UIColor(named: "darkGradientBottom")?.cgColor else { return }
+        guard let top = UIColor(named: BookViewControllerParameters.gradientTopColor)?.cgColor else { return }
+        guard let bottom = UIColor(named: BookViewControllerParameters.gradientBottomColor)?.cgColor else { return }
         gradient.frame = view.bounds
-        gradient.colors = [pink, purple]
+        gradient.colors = [top, bottom]
        
         view.layer.addSublayer(gradient)
     }
@@ -42,7 +50,7 @@ class FeaturedItemsViewController: UIViewController {
         featuredCollectionView.delegate = self
         featuredCollectionView.dataSource = self
         featuredCollectionView.backgroundColor = UIColor.clear
-        featuredCollectionView.register(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BookCollectionViewCell")
+        featuredCollectionView.register(UINib(nibName: BookViewControllerParameters.bookCell, bundle: nil), forCellWithReuseIdentifier: BookViewControllerParameters.bookCell)
     }
     
     private func initViewModel() {
@@ -57,16 +65,21 @@ class FeaturedItemsViewController: UIViewController {
 
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    private enum CellSizeProperties {
+        static let width = UIScreen.main.bounds.width / 2 - 30
+        static let height = UIScreen.main.bounds.height / 3 - 50
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.featuredBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 2 - 30, height: UIScreen.main.bounds.height / 3 - 50)
+        return CGSize(width: CellSizeProperties.width, height: CellSizeProperties.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as? BookCollectionViewCell else { fatalError("xib does not exists") }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
         let cellVM = viewModel.getCellViewModel(at: indexPath)
         cell.cellViewModel = cellVM
         cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
@@ -74,7 +87,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: BookViewControllerParameters.detailViewController) as? DetailViewController {
             _ = viewController.view
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             viewController.cellViewModel = cellVM

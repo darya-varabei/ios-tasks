@@ -15,10 +15,6 @@ struct ViewModelGetObject {
         self.book = book
     }
     
-    func loadType() -> String {
-        return book.title
-    }
-    
     func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {
         let urlString = url
         guard let url = URL(string: urlString) else { return }

@@ -13,7 +13,6 @@ struct Parser {
     private enum ParsingParameters {
         static let successCode = 200
         static let fileExtension = "json"
-        //static let dateFormat = "yyyy-MM-dd"
     }
     
     static func loadJSONFile<T: Decodable>(named filename: String,

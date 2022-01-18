@@ -23,7 +23,6 @@ class DetailViewController: UIViewController {
         static let dateStrinOffset = 10
         static let darkGradientTop = "darkGradientTop"
         static let opaqueDarkTop = "opaqueDarkTop"
-        static let defaultImageURL = "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
         static let buttonCornerRadius: CGFloat = 20
     }
     
@@ -58,7 +57,8 @@ class DetailViewController: UIViewController {
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
-        viewModelGetObject?.loadImage(url: cellViewModel?.thumbnail ?? Literals.defaultImageURL) { (image) in
+        guard let thumbnail = cellViewModel?.thumbnail else { return }
+        viewModelGetObject?.loadImage(url: thumbnail) { (image) in
             DispatchQueue.main.async {
                 self.bookImage.image = image
             }
