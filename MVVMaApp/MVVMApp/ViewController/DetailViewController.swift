@@ -15,14 +15,14 @@ class DetailViewController: UIViewController {
     @IBOutlet private var numOfPagesLabel: UILabel!
     @IBOutlet private var dateReleasedLabel: UILabel!
     @IBOutlet private var overviewTextView: UITextView!
+    @IBOutlet private var imageBlurView: UIView!
     
     var cellViewModel: BookCellViewModel? {
         didSet {
             guard let countPages = cellViewModel?.numOfPages else { return }
             numOfPagesLabel.text = "\(countPages)"
             overviewTextView.text = cellViewModel?.overview
-            
-            
+            setupImageBlurColor()
         }
     }
     
@@ -31,6 +31,17 @@ class DetailViewController: UIViewController {
         overviewTextView.backgroundColor = UIColor.clear
         addToBookmarkButton.layer.cornerRadius = 20
         view.backgroundColor = UIColor(named: "darkGradientTop")
+    }
+    
+    private func setupImageBlurColor() {
+        let gradient = CAGradientLayer()
+        
+        guard let pink = UIColor(named: "opaqueDarkTop")?.cgColor else { return }
+        guard let purple = UIColor(named: "darkGradientTop")?.cgColor else { return }
+        gradient.frame = view.bounds
+        gradient.colors = [pink, purple]
+        gradient.frame = bookImage.frame
+        imageBlurView.layer.insertSublayer(gradient, at: 0)
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {

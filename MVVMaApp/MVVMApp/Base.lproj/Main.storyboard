@@ -152,19 +152,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDE-6L-iHL">
-                                <rect key="frame" x="335" y="32" width="45" height="45"/>
-                                <color key="backgroundColor" name="darkGradientTop"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="WqX-JF-6YC"/>
-                                    <constraint firstAttribute="height" constant="45" id="jwd-ZN-G2X"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-LY-kmH">
                                 <rect key="frame" x="40" y="444" width="77.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -179,24 +166,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="494-zc-o5T">
-                                <rect key="frame" x="0.0" y="159" width="414" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="494-zc-o5T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
                                 <color key="backgroundColor" white="1" alpha="0.5741117294520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDE-6L-iHL">
+                                <rect key="frame" x="335" y="32" width="45" height="45"/>
+                                <color key="backgroundColor" name="darkGradientTop"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="WqX-JF-6YC"/>
+                                    <constraint firstAttribute="height" constant="45" id="jwd-ZN-G2X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RiO-uM-yNH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Xio-aR-Nl6" firstAttribute="top" secondItem="RiO-uM-yNH" secondAttribute="top" id="3FZ-wS-BSk"/>
+                            <constraint firstItem="494-zc-o5T" firstAttribute="width" secondItem="Xio-aR-Nl6" secondAttribute="width" id="6Y0-zc-3FM"/>
                             <constraint firstItem="Xio-aR-Nl6" firstAttribute="leading" secondItem="RiO-uM-yNH" secondAttribute="leading" id="AFv-rM-Mre"/>
+                            <constraint firstItem="494-zc-o5T" firstAttribute="height" secondItem="Xio-aR-Nl6" secondAttribute="height" id="HCu-FU-FrJ"/>
                             <constraint firstItem="Sug-LY-kmH" firstAttribute="top" secondItem="Hy4-eT-9cM" secondAttribute="bottom" constant="60" id="IV0-s2-xc7"/>
                             <constraint firstItem="Sug-LY-kmH" firstAttribute="leading" secondItem="RiO-uM-yNH" secondAttribute="leading" constant="40" id="LwE-9u-QKi"/>
                             <constraint firstItem="Hy4-eT-9cM" firstAttribute="top" secondItem="Xio-aR-Nl6" secondAttribute="bottom" constant="42" id="Ve6-pB-EOn"/>
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" secondItem="Xio-aR-Nl6" secondAttribute="trailing" id="VmC-HG-lxk"/>
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="bottom" secondItem="hM3-AM-EOe" secondAttribute="bottom" constant="20" id="Vtc-uV-NzI"/>
+                            <constraint firstItem="494-zc-o5T" firstAttribute="leading" secondItem="Xio-aR-Nl6" secondAttribute="leading" id="Ze9-zd-CSf"/>
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" secondItem="hM3-AM-EOe" secondAttribute="trailing" constant="20" id="aba-4b-BHp"/>
                             <constraint firstItem="hM3-AM-EOe" firstAttribute="top" secondItem="Sug-LY-kmH" secondAttribute="bottom" constant="21.5" id="ciI-el-jXq"/>
+                            <constraint firstItem="494-zc-o5T" firstAttribute="top" secondItem="Xio-aR-Nl6" secondAttribute="top" id="gxS-fJ-aCJ"/>
                             <constraint firstItem="Hy4-eT-9cM" firstAttribute="centerX" secondItem="mlZ-v8-UyW" secondAttribute="centerX" id="jFJ-ZA-irO"/>
                             <constraint firstItem="VDE-6L-iHL" firstAttribute="top" secondItem="RiO-uM-yNH" secondAttribute="top" constant="32" id="mj4-PB-gWV"/>
                             <constraint firstItem="Hy4-eT-9cM" firstAttribute="leading" secondItem="RiO-uM-yNH" secondAttribute="leading" constant="40" id="sKF-UF-3jd"/>
@@ -210,13 +213,14 @@
                         <outlet property="addToBookmarkButton" destination="VDE-6L-iHL" id="OhV-nv-lxY"/>
                         <outlet property="bookImage" destination="Xio-aR-Nl6" id="VFN-yC-iKb"/>
                         <outlet property="dateReleasedLabel" destination="afM-uc-FZy" id="cwK-Lg-pPs"/>
+                        <outlet property="imageBlurView" destination="494-zc-o5T" id="Wv8-Vg-1y4"/>
                         <outlet property="numOfPagesLabel" destination="6f7-I0-bNr" id="w97-Tw-l5s"/>
                         <outlet property="overviewTextView" destination="hM3-AM-EOe" id="Thu-QF-Zs3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXz-fS-8B0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="833"/>
+            <point key="canvasLocation" x="840.57971014492762" y="832.36607142857144"/>
         </scene>
         <!--Featured Items View Controller-->
         <scene sceneID="IVp-9D-zjK">
@@ -344,7 +348,7 @@
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="wand.and.stars" catalog="system" width="128" height="113"/>
         <namedColor name="darkGradientTop">
-            <color red="0.12200000137090683" green="0.16500000655651093" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.16470588235294117" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
