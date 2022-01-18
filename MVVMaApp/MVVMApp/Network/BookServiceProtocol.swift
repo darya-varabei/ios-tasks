@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol BookServiceProtocol {
-    func getAllBooks(completion: @escaping(_ result: [Book]?, _ success: Bool?) -> Void)
+    func getAllBooks(completion: @escaping(_ result: [Book]?, _ success: Bool?, _ featuredResult: [String]?, _ featuredSuccess: Bool?) -> Void)
 }

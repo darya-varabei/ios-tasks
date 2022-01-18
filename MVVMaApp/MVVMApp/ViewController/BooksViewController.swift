@@ -97,7 +97,7 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
-            return viewModel.books.count
+            return viewModel.booksToCollection.count
         }
         else {
             return categoryViewModel.categories.count
