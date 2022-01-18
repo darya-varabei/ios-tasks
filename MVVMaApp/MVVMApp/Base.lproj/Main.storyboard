@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BooksCollectionView" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-xQ-L14">
-                                <rect key="frame" x="20" y="243" width="374" height="560"/>
+                                <rect key="frame" x="20" y="287" width="374" height="516"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mDN-8z-dfx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -36,6 +36,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="DmF-fX-P8p" kind="showDetail" identifier="DetailViewController" id="WO0-xj-jWO"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Cgb-3C-01r">
                                         <rect key="frame" x="246" y="0.0" width="128" height="128"/>
@@ -44,14 +47,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <segue destination="DmF-fX-P8p" kind="show" id="hyj-GQ-mAl"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="CategoryCollectionView" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9iC-Tk-Fe7">
-                                <rect key="frame" x="20" y="150" width="374" height="60"/>
+                                <rect key="frame" x="20" y="194" width="374" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="0NC-e1-bjJ"/>
@@ -65,7 +65,7 @@
                                 <cells/>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a book name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IsW-sJ-HuL">
-                                <rect key="frame" x="20" y="84" width="374" height="34"/>
+                                <rect key="frame" x="20" y="128" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -85,9 +85,7 @@
                             <constraint firstItem="9iC-Tk-Fe7" firstAttribute="trailing" secondItem="sVk-xQ-L14" secondAttribute="trailing" id="yCP-Jk-NJu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="s8A-KQ-J8Z">
-                        <color key="badgeColor" name="darkGradientTop"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="6tO-DO-ZYc"/>
                     <connections>
                         <outlet property="booksCollectionView" destination="sVk-xQ-L14" id="5fU-JR-nM8"/>
                         <outlet property="categoriesCollectionView" destination="9iC-Tk-Fe7" id="0JH-x3-fX5"/>
@@ -96,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863.768115942029" y="85.714285714285708"/>
+            <point key="canvasLocation" x="1712" y="473"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="4xl-ia-5uf">
@@ -259,9 +257,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <segue destination="DmF-fX-P8p" kind="show" id="yFf-Df-4IG"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -285,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDr-nu-4GC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692.753623188406" y="94.419642857142847"/>
+            <point key="canvasLocation" x="2602.898550724638" y="94.419642857142847"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="PFV-JQ-0Up">
@@ -301,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKw-ak-Vby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2492.753623188406" y="97.767857142857139"/>
+            <point key="canvasLocation" x="3402.898550724638" y="97.767857142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xTo-Fl-xeQ">
@@ -314,7 +309,7 @@
                         <color key="backgroundColor" name="darkGradientTop"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="4oY-Eq-zbi"/>
+                        <segue destination="qI3-Di-EgC" kind="relationship" relationship="viewControllers" id="4oY-Eq-zbi"/>
                         <segue destination="Ith-JV-x6h" kind="relationship" relationship="viewControllers" id="hv9-QZ-P0z"/>
                         <segue destination="tVr-7Q-Oat" kind="relationship" relationship="viewControllers" id="UB9-R5-btm"/>
                     </connections>
@@ -323,10 +318,28 @@
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="85.714285714285708"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zGo-cB-iPY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qI3-Di-EgC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="s8A-KQ-J8Z">
+                        <color key="badgeColor" name="darkGradientTop"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcl-TB-cfI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ERs-2l-N51"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MEd-kN-4Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863.768115942029" y="85.714285714285708"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="hyj-GQ-mAl"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="wand.and.stars" catalog="system" width="128" height="113"/>
