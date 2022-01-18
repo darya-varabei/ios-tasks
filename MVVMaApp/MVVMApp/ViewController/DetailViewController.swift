@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet private var dateReleasedLabel: UILabel!
     @IBOutlet private var overviewTextView: UITextView!
     @IBOutlet private var imageBlurView: UIView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var authorsLabel: UILabel!
     
     var cellViewModel: BookCellViewModel? {
         didSet {
@@ -23,6 +25,8 @@ class DetailViewController: UIViewController {
             numOfPagesLabel.text = "\(countPages)"
             overviewTextView.text = cellViewModel?.overview
             setupImageBlurColor()
+            titleLabel.text = cellViewModel?.title
+            authorsLabel.text = cellViewModel?.author
         }
     }
     

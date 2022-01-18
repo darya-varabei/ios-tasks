@@ -10,5 +10,5 @@ import UIKit
 
 struct Category: Hashable {
     var name: String
-    var color: UIColor
+    var isSelected: Bool
 }

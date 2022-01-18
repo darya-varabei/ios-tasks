@@ -13,21 +13,30 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
-
+    //var color: Observable<UIColor> = Observable(UIColor.init(white: 1, alpha: 0.1))
+    var color: UIColor? {
+        didSet {
+            layer.backgroundColor = color?.cgColor
+        }
+    }
     var cellViewModel: CategoryCellViewModel? {
         didSet {
             categoryLabel.text = cellViewModel?.name
+    //layer.backgroundColor = color //cellViewModel?.color.cgColor
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
         setConstantProperties()
-        setDefaultAppearance()
+        //layer.backgroundColor = UIColor.clear.cgColor
+        //setDefaultAppearance()
+        
     }
     
     func setDefaultAppearance() {
-        layer.backgroundColor = UIColor.clear.cgColor
+        //layer.backgroundColor = color.value.cgColor
     }
     
     func setSelectedPropertyAppearance() {

@@ -123,12 +123,20 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
         if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
             _ = viewController.view
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             viewController.cellViewModel = cellVM
             viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
             navigationController?.pushViewController(viewController, animated: true)
+        }
+        }
+        else {
+            var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
+            cellVM.cellTap()
+            categoriesCollectionView.reloadData()
         }
     }
 }

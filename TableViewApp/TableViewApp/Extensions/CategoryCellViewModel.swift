@@ -22,8 +22,25 @@ struct CategoryCellViewModel {
         return category.name
     }
     
-    var color: UIColor {
-        return generateColor()
+    var color: Observable<UIColor>?//{
+//        return Observable<UIColor>(UIColor.init(white: 1, alpha: 0.1))//isSelected ? (Observable<UIColor.init(white: 1, alpha: 0.5)>) : Observable<UIColor.init(white: 1, alpha: 0.1)>
+//    }
+    
+    var isSelected: Bool {
+        return category.isSelected
+    }
+    
+    mutating func cellTap() {
+        if isSelected {
+            category.isSelected = false
+            color = Observable(UIColor.init(white: 1, alpha: 0.1))
+            //return UIColor.init(white: 1, alpha: 0.1)
+        }
+        else {
+            category.isSelected = true
+            color = Observable(UIColor.init(white: 1, alpha: 0.5))
+            //return UIColor.init(white: 1, alpha: 0.5)
+        }
     }
     
     private func generateColor() -> UIColor {
