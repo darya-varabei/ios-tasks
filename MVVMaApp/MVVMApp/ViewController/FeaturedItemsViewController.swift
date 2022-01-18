@@ -14,12 +14,13 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
     lazy var viewModel = {
-        BookViewModel()
+        FeaturedBookViewModel()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
+        initViewModel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,7 +58,7 @@ class FeaturedItemsViewController: UIViewController {
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.books.count
+        return viewModel.featuredBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

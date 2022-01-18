@@ -1,18 +1,17 @@
 //
-//  BookViewModel.swift
+//  FeaturedBookViewModel.swift
 //  MVVMApp
 //
-//  Created by Дарья Воробей on 1/16/22.
+//  Created by Дарья Воробей on 1/19/22.
 //
 
 import Foundation
 
-class BookViewModel {
+class FeaturedBookViewModel {
     private var bookService: BookServiceProtocol
     var reloadCollectionView: (() -> Void)?
     
-    var books = [Book]()
-    var booksToCollection = [Book]()
+    var featuredBooks = [Book]()
     var featuredIsbn = [String]()
     
     var bookCellViewModels = [BookCellViewModel]() {
@@ -23,7 +22,6 @@ class BookViewModel {
     
     init(bookService: BookServiceProtocol = BookService()) {
         self.bookService = bookService
-        self.booksToCollection = books
     }
     
     func getBooks() {
@@ -38,10 +36,10 @@ class BookViewModel {
     }
     
     func fetchData(books: [Book]) {
-        self.books = books
-        self.booksToCollection = books
+        self.featuredBooks = books
         var vms = [BookCellViewModel]()
-        for book in booksToCollection {
+        filterFeaturedBooks()
+        for book in featuredBooks {
             vms.append(createCellModel(book: book))
         }
         bookCellViewModels = vms
@@ -61,26 +59,11 @@ class BookViewModel {
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
-            return ViewModelGetObject(book: books[index])
+            return ViewModelGetObject(book: featuredBooks[index])
         }
     
-//    func filterFeaturedBooks() {
-//        featuredBooks = books.filter{ featuredIsbn.contains($0.isbn ?? "") }
-//    }
-    
-    func filterBooks(on category: String) {
-        if books.count == booksToCollection.count {
-            booksToCollection.removeAll()
-            for book in books {
-                if book.categories.contains(category) {
-                    booksToCollection.append(book)
-                }
-            }
-            fetchData(books: booksToCollection)
-        }
-        else {
-            booksToCollection = books
-            fetchData(books: booksToCollection)
-        }
+    func filterFeaturedBooks() {
+        let bufferArray = featuredBooks.filter{ featuredIsbn.contains($0.isbn ?? "") }
+        featuredBooks = bufferArray
     }
 }
