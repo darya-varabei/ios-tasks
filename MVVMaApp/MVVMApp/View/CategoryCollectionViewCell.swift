@@ -11,6 +11,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     
+    private enum Literals {
+        static let semiClearWhite = "semiClearWhite"
+        static let cornerRadius: CGFloat = 20
+        static let borderWidth: CGFloat = 2
+    }
+    
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     
@@ -36,12 +42,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func setSelectedPropertyAppearance() {
-        layer.backgroundColor = UIColor(named: "semiClearWhite")?.cgColor
+        layer.backgroundColor = UIColor(named: Literals.semiClearWhite)?.cgColor
     }
     
     func setConstantProperties() {
-        layer.borderWidth = 2
+        layer.borderWidth = Literals.borderWidth
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 20
+        layer.cornerRadius = Literals.cornerRadius
     }
 }

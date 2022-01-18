@@ -19,6 +19,14 @@ class DetailViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var authorsLabel: UILabel!
     
+    private enum Literals {
+        static let dateStrinOffset = 10
+        static let darkGradientTop = "darkGradientTop"
+        static let opaqueDarkTop = "opaqueDarkTop"
+        static let defaultImageURL = "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
+        static let buttonCornerRadius: CGFloat = 20
+    }
+    
     var cellViewModel: BookCellViewModel? {
         didSet {
             guard let countPages = cellViewModel?.numOfPages else { return }
@@ -27,33 +35,33 @@ class DetailViewController: UIViewController {
             setupImageBlurColor()
             titleLabel.text = cellViewModel?.title
             authorsLabel.text = cellViewModel?.author
-            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: 10)
+            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: Literals.dateStrinOffset)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         overviewTextView.backgroundColor = UIColor.clear
-        addToBookmarkButton.layer.cornerRadius = 20
-        view.backgroundColor = UIColor(named: "darkGradientTop")
+        addToBookmarkButton.layer.cornerRadius = Literals.buttonCornerRadius
+        view.backgroundColor = UIColor(named: Literals.darkGradientTop)
     }
     
     private func setupImageBlurColor() {
         let gradient = CAGradientLayer()
         
-        guard let pink = UIColor(named: "opaqueDarkTop")?.cgColor else { return }
-        guard let purple = UIColor(named: "darkGradientTop")?.cgColor else { return }
+        guard let top = UIColor(named: Literals.opaqueDarkTop)?.cgColor else { return }
+        guard let bottom = UIColor(named: Literals.darkGradientTop)?.cgColor else { return }
         gradient.frame = view.bounds
-        gradient.colors = [pink, purple]
+        gradient.colors = [top, bottom]
         gradient.frame = bookImage.frame
         imageBlurView.layer.insertSublayer(gradient, at: 0)
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
-        viewModelGetObject?.loadImage(url: cellViewModel?.thumbnail ?? "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg") { (image) in
-                DispatchQueue.main.async {
-                    self.bookImage.image = image
-                }
+        viewModelGetObject?.loadImage(url: cellViewModel?.thumbnail ?? Literals.defaultImageURL) { (image) in
+            DispatchQueue.main.async {
+                self.bookImage.image = image
             }
         }
+    }
 }

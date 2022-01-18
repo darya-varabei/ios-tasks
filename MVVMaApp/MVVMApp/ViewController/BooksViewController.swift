@@ -16,6 +16,7 @@ class BooksViewController: UIViewController {
         static let categoryCell = "CategoryCollectionViewCell"
         static let bookCollectionIdentifier = "BooksCollectionView"
         static let fatalErrorMessage = "xib does not exists"
+        static let detailViewController = "DetailViewController"
     }
     
     @IBOutlet private var searchTextField: UITextField!
@@ -49,10 +50,10 @@ class BooksViewController: UIViewController {
     private func setupBackgroundColor() {
         let gradient = CAGradientLayer()
         
-        guard let pink = UIColor(named: BookViewControllerParameters.gradientTopColor)?.cgColor else { return }
-        guard let purple = UIColor(named: BookViewControllerParameters.gradientBottomColor)?.cgColor else { return }
+        guard let top = UIColor(named: BookViewControllerParameters.gradientTopColor)?.cgColor else { return }
+        guard let bottom = UIColor(named: BookViewControllerParameters.gradientBottomColor)?.cgColor else { return }
         gradient.frame = view.bounds
-        gradient.colors = [pink, purple]
+        gradient.colors = [top, bottom]
        
         view.layer.addSublayer(gradient)
     }
@@ -85,11 +86,14 @@ class BooksViewController: UIViewController {
         let bar = UIToolbar()
         searchTextField.inputAccessoryView = bar.hideKeyboardToolbar()
     }
-    
-    
 }
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    private enum CellSizeProperties {
+        static let width = UIScreen.main.bounds.width / 2 - 30
+        static let height = UIScreen.main.bounds.height / 3 - 50
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
@@ -101,7 +105,7 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 2 - 30, height: UIScreen.main.bounds.height / 3 - 50)
+        return CGSize(width: CellSizeProperties.width, height: CellSizeProperties.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -125,13 +129,13 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
-        if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
-            _ = viewController.view
-            let cellVM = viewModel.getCellViewModel(at: indexPath)
-            viewController.cellViewModel = cellVM
-            viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+            if let viewController = storyboard?.instantiateViewController(identifier: BookViewControllerParameters.detailViewController) as? DetailViewController {
+                _ = viewController.view
+                let cellVM = viewModel.getCellViewModel(at: indexPath)
+                viewController.cellViewModel = cellVM
+                viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+                navigationController?.pushViewController(viewController, animated: true)
+            }
         }
         else {
             var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
