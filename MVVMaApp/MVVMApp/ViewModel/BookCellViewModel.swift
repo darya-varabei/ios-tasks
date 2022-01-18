@@ -11,7 +11,7 @@ import UIKit
 struct BookCellViewModel {
     
     private let book: Book
-    private let service: BookService = BookService()
+    //private let service: BookService = BookService()
     
     init(book: Book) {
         self.book = book
@@ -26,11 +26,11 @@ struct BookCellViewModel {
     }
     
     var image: UIImage {
-        if let url = URL(string: book.thumbnailURL ?? "") {
-//            DispatchQueue.main.async {
-            return service.loadImage(from: url)
-            // }
-        }
+//        if let url = URL(string: book.thumbnailURL ?? "") {
+////            DispatchQueue.main.async {
+//            return service.loadImage(from: url)
+//            // }
+//        }
         return UIImage()
     }
     

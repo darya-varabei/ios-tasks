@@ -105,10 +105,10 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.bookCollectionIdentifier, for: indexPath) as? BookCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             cell.cellViewModel = cellVM
-
+            cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
             return cell
         }
         else {
@@ -117,6 +117,12 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
             cell.cellViewModel = cellVM
             
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let viewController = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+            //_ = viewController.v
         }
     }
 }

@@ -10,5 +10,5 @@ import UIKit
 
 protocol BookServiceProtocol {
     func getAllBooks(completion: @escaping(_ result: [Book]?, _ success: Bool?) -> Void)
-    func loadImage(from url: URL) -> UIImage
+    //func loadImage(from url: URL) -> UIImage
 }

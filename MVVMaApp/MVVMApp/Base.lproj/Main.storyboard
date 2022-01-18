@@ -101,7 +101,7 @@
         <!--Detail View Controller-->
         <scene sceneID="4xl-ia-5uf">
             <objects>
-                <viewController id="DmF-fX-P8p" customClass="DetailViewController" customModule="MVVMApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailViewController" storyboardIdentifier="DetailViewController" id="DmF-fX-P8p" customClass="DetailViewController" customModule="MVVMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlZ-v8-UyW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

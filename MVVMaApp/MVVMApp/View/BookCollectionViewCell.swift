@@ -18,7 +18,7 @@ class BookCollectionViewCell: UICollectionViewCell {
 
     var cellViewModel: BookCellViewModel? {
         didSet {
-            bookImage.image = cellViewModel?.image
+            //bookImage.image = cellViewModel?.image
             nameLabel.text = cellViewModel?.title
             authorLabel.text = cellViewModel?.author
         }
@@ -27,4 +27,13 @@ class BookCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func configure(viewModelGetObject: ViewModelGetObject?) {
+            self.nameLabel.text = viewModelGetObject?.loadType()
+            viewModelGetObject?.loadImage { (image) in
+                DispatchQueue.main.async {
+                    self.bookImage.image = image
+                }
+            }
+        }
 }

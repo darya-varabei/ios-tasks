@@ -48,6 +48,10 @@ class BookViewModel {
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
-        return bookCellViewModels[indexPath.row]
+        return bookCellViewModels[0]
     }
+    
+    func getViewModel(index: Int) -> ViewModelGetObject {
+            return ViewModelGetObject(book: books[index])
+        }
 }
