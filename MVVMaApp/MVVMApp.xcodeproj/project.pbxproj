@@ -11,6 +11,7 @@
 		4B3E31CC27953F47002030E9 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E31CB27953F47002030E9 /* CategoryViewModel.swift */; };
 		4B3E31CE27953F56002030E9 /* CategoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E31CD27953F56002030E9 /* CategoryCellViewModel.swift */; };
 		4BB58C572796B2B50024CC37 /* ViewModelGetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB58C562796B2B50024CC37 /* ViewModelGetObject.swift */; };
+		4BB58C592796FB9E0024CC37 /* String+Indexation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB58C582796FB9E0024CC37 /* String+Indexation.swift */; };
 		D5233C642791B78E007196A6 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5233C632791B78E007196A6 /* Book.swift */; };
 		D5233C672791B8E5007196A6 /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = D5233C662791B8E5007196A6 /* Books.json */; };
 		D5233C6D2791F01F007196A6 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5233C6B2791F01F007196A6 /* BookCollectionViewCell.swift */; };
@@ -43,6 +44,7 @@
 		4B3E31CB27953F47002030E9 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryViewModel.swift; path = ../../../TableViewApp/TableViewApp/Extensions/CategoryViewModel.swift; sourceTree = "<group>"; };
 		4B3E31CD27953F56002030E9 /* CategoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryCellViewModel.swift; path = ../../../TableViewApp/TableViewApp/Extensions/CategoryCellViewModel.swift; sourceTree = "<group>"; };
 		4BB58C562796B2B50024CC37 /* ViewModelGetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelGetObject.swift; sourceTree = "<group>"; };
+		4BB58C582796FB9E0024CC37 /* String+Indexation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Indexation.swift"; sourceTree = "<group>"; };
 		D5233C632791B78E007196A6 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D5233C662791B8E5007196A6 /* Books.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
 		D5233C6B2791F01F007196A6 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BB58C5A2796FBDD0024CC37 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D538824427943993007C03E0 /* UIViewController+Keyboard.swift */,
+				D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */,
+				4BB58C582796FB9E0024CC37 /* String+Indexation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D5233C702791F02A007196A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,8 +190,7 @@
 				D5233C7B27923567007196A6 /* FeaturedItemsViewController.swift */,
 				D5233C7E27923579007196A6 /* StatisticsViewController.swift */,
 				D53882132792D8A8007C03E0 /* DetailViewController.swift */,
-				D538824427943993007C03E0 /* UIViewController+Keyboard.swift */,
-				D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */,
+				4BB58C5A2796FBDD0024CC37 /* Extensions */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -275,6 +286,7 @@
 				4BB58C572796B2B50024CC37 /* ViewModelGetObject.swift in Sources */,
 				D538822127934740007C03E0 /* BookCellViewModel.swift in Sources */,
 				D538824827943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift in Sources */,
+				4BB58C592796FB9E0024CC37 /* String+Indexation.swift in Sources */,
 				D5233C642791B78E007196A6 /* Book.swift in Sources */,
 				D5233C78279234F1007196A6 /* CategoryCollectionViewCell.swift in Sources */,
 				D538822E27936F8E007C03E0 /* Parser.swift in Sources */,

@@ -19,8 +19,8 @@ struct ViewModelGetObject {
         return book.title
     }
     
-    func loadImage(completion: @escaping(UIImage?) -> Void) {
-        let urlString = "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"//book.thumbnailURL!
+    func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {
+        let urlString = url
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else { return }

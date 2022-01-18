@@ -22,9 +22,7 @@ struct CategoryCellViewModel {
         return category.name
     }
     
-    var color: Observable<UIColor>?//{
-//        return Observable<UIColor>(UIColor.init(white: 1, alpha: 0.1))//isSelected ? (Observable<UIColor.init(white: 1, alpha: 0.5)>) : Observable<UIColor.init(white: 1, alpha: 0.1)>
-//    }
+    var color: Observable<UIColor>?
     
     var isSelected: Bool {
         return category.isSelected
@@ -34,12 +32,10 @@ struct CategoryCellViewModel {
         if isSelected {
             category.isSelected = false
             color = Observable(UIColor.init(white: 1, alpha: 0.1))
-            //return UIColor.init(white: 1, alpha: 0.1)
         }
         else {
             category.isSelected = true
             color = Observable(UIColor.init(white: 1, alpha: 0.5))
-            //return UIColor.init(white: 1, alpha: 0.5)
         }
     }
     

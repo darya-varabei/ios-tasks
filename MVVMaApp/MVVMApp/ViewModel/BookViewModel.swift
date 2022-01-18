@@ -12,6 +12,7 @@ class BookViewModel {
     var reloadCollectionView: (() -> Void)?
     
     var books = [Book]()
+    var booksToCollection = [Book]()
     
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
@@ -21,6 +22,7 @@ class BookViewModel {
     
     init(bookService: BookServiceProtocol = BookService()) {
         self.bookService = bookService
+        self.booksToCollection = books
     }
     
     func getBooks() {
@@ -35,8 +37,9 @@ class BookViewModel {
     
     func fetchData(books: [Book]) {
         self.books = books
+        self.booksToCollection = books
         var vms = [BookCellViewModel]()
-        for book in books {
+        for book in booksToCollection {
             vms.append(createCellModel(book: book))
         }
         bookCellViewModels = vms
@@ -48,10 +51,26 @@ class BookViewModel {
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
-        return bookCellViewModels[0]
+        return bookCellViewModels[indexPath.item]
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
             return ViewModelGetObject(book: books[index])
         }
+    
+    func filterBooks(on category: String) {
+        if books.count == booksToCollection.count {
+            booksToCollection.removeAll()
+            for book in books {
+                if book.categories.contains(category) {
+                    booksToCollection.append(book)
+                }
+            }
+            fetchData(books: booksToCollection)
+        }
+        else {
+            booksToCollection = books
+            fetchData(books: booksToCollection)
+        }
+    }
 }

@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
             setupImageBlurColor()
             titleLabel.text = cellViewModel?.title
             authorsLabel.text = cellViewModel?.author
+            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: 10)
         }
     }
     
@@ -49,7 +50,7 @@ class DetailViewController: UIViewController {
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
-            viewModelGetObject?.loadImage { (image) in
+        viewModelGetObject?.loadImage(url: cellViewModel?.thumbnail ?? "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg") { (image) in
                 DispatchQueue.main.async {
                     self.bookImage.image = image
                 }

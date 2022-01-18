@@ -213,6 +213,7 @@
                             <constraint firstItem="494-zc-o5T" firstAttribute="height" secondItem="Xio-aR-Nl6" secondAttribute="height" id="HCu-FU-FrJ"/>
                             <constraint firstItem="Sug-LY-kmH" firstAttribute="top" secondItem="Hy4-eT-9cM" secondAttribute="bottom" constant="60" id="IV0-s2-xc7"/>
                             <constraint firstItem="Sug-LY-kmH" firstAttribute="leading" secondItem="RiO-uM-yNH" secondAttribute="leading" constant="40" id="LwE-9u-QKi"/>
+                            <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sug-LY-kmH" secondAttribute="trailing" symbolic="YES" id="RkA-Qe-SXF"/>
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" secondItem="Pze-YW-Q5D" secondAttribute="trailing" constant="20" id="Ueb-JS-Dxb"/>
                             <constraint firstItem="Hy4-eT-9cM" firstAttribute="top" secondItem="Xio-aR-Nl6" secondAttribute="bottom" constant="42" id="Ve6-pB-EOn"/>
                             <constraint firstItem="RiO-uM-yNH" firstAttribute="trailing" secondItem="Xio-aR-Nl6" secondAttribute="trailing" id="VmC-HG-lxk"/>
@@ -295,6 +296,7 @@
                         <constraints>
                             <constraint firstItem="8CT-8I-VVd" firstAttribute="top" secondItem="Z7B-sU-yii" secondAttribute="top" constant="49" id="7Fy-m8-yNk"/>
                             <constraint firstItem="S8h-A1-6nf" firstAttribute="top" secondItem="8CT-8I-VVd" secondAttribute="bottom" constant="30" id="MSr-BQ-7qy"/>
+                            <constraint firstItem="Z7B-sU-yii" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8CT-8I-VVd" secondAttribute="trailing" symbolic="YES" id="UeL-rV-Wsn"/>
                             <constraint firstItem="8CT-8I-VVd" firstAttribute="leading" secondItem="Z7B-sU-yii" secondAttribute="leading" constant="40" id="rmh-sl-f6N"/>
                             <constraint firstItem="Z7B-sU-yii" firstAttribute="bottom" secondItem="S8h-A1-6nf" secondAttribute="bottom" constant="30" id="stx-Wj-13B"/>
                             <constraint firstItem="Z7B-sU-yii" firstAttribute="trailing" secondItem="S8h-A1-6nf" secondAttribute="trailing" constant="20" id="uPP-dF-wUp"/>

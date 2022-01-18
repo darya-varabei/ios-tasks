@@ -18,7 +18,6 @@ class BookCollectionViewCell: UICollectionViewCell {
 
     var cellViewModel: BookCellViewModel? {
         didSet {
-            //bookImage.image = cellViewModel?.image
             nameLabel.text = cellViewModel?.title
             authorLabel.text = cellViewModel?.author
         }
@@ -30,7 +29,7 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
             self.nameLabel.text = viewModelGetObject?.loadType()
-            viewModelGetObject?.loadImage { (image) in
+        viewModelGetObject?.loadImage(url: cellViewModel?.thumbnail ?? "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg") { (image) in
                 DispatchQueue.main.async {
                     self.bookImage.image = image
                 }

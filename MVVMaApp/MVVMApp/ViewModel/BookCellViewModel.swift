@@ -11,7 +11,6 @@ import UIKit
 struct BookCellViewModel {
     
     private let book: Book
-    //private let service: BookService = BookService()
     
     init(book: Book) {
         self.book = book
@@ -25,12 +24,11 @@ struct BookCellViewModel {
         return book.authors.joined(separator: ", ")
     }
     
+    var thumbnail: String {
+        return book.thumbnailURL ?? ""
+    }
+    
     var image: UIImage {
-//        if let url = URL(string: book.thumbnailURL ?? "") {
-////            DispatchQueue.main.async {
-//            return service.loadImage(from: url)
-//            // }
-//        }
         return UIImage()
     }
     
@@ -46,9 +44,9 @@ struct BookCellViewModel {
         return book.pageCount
     }
     
-//    var publishedDate: PublishedDate {
-//        return book.publishedDate ?? PublishedDate
-//    }
+    var publishedDate: PublishedDate {
+        return book.publishedDate ?? PublishedDate(date: "12.12.2001")
+    }
     
     var category: [String] {
         return book.categories
