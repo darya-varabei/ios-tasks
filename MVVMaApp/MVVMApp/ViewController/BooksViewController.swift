@@ -9,16 +9,6 @@ import UIKit
 
 class BooksViewController: UIViewController {
     
-    private enum BookViewControllerParameters {
-        static let gradientTopColor = "darkGradientTop"
-        static let gradientBottomColor = "darkGradientBottom"
-        static let bookCell = "BookCollectionViewCell"
-        static let categoryCell = "CategoryCollectionViewCell"
-        static let bookCollectionIdentifier = "BooksCollectionView"
-        static let fatalErrorMessage = "xib does not exists"
-        static let detailViewController = "DetailViewController"
-    }
-    
     @IBOutlet private var searchTextField: UITextField!
     @IBOutlet private var categoriesCollectionView: UICollectionView!
     @IBOutlet private var booksCollectionView: UICollectionView!
@@ -50,8 +40,8 @@ class BooksViewController: UIViewController {
     private func setupBackgroundColor() {
         let gradient = CAGradientLayer()
         
-        guard let top = UIColor(named: BookViewControllerParameters.gradientTopColor)?.cgColor else { return }
-        guard let bottom = UIColor(named: BookViewControllerParameters.gradientBottomColor)?.cgColor else { return }
+        guard let top = UIColor(named: Literals.gradientTopColor)?.cgColor else { return }
+        guard let bottom = UIColor(named: Literals.gradientBottomColor)?.cgColor else { return }
         gradient.frame = view.bounds
         gradient.colors = [top, bottom]
        
@@ -66,8 +56,8 @@ class BooksViewController: UIViewController {
         booksCollectionView.dataSource = self
         booksCollectionView.backgroundColor = UIColor.clear
         categoriesCollectionView.backgroundColor = UIColor.clear
-        booksCollectionView.register(UINib(nibName: BookViewControllerParameters.bookCell, bundle: nil), forCellWithReuseIdentifier: BookViewControllerParameters.bookCell)
-        categoriesCollectionView.register(UINib(nibName: BookViewControllerParameters.categoryCell, bundle: nil), forCellWithReuseIdentifier: BookViewControllerParameters.categoryCell)
+        booksCollectionView.register(UINib(nibName: Literals.bookCell, bundle: nil), forCellWithReuseIdentifier: Literals.bookCell)
+        categoriesCollectionView.register(UINib(nibName: Literals.categoryCell, bundle: nil), forCellWithReuseIdentifier: Literals.categoryCell)
     }
     
     private func initViewModel() {
@@ -90,13 +80,8 @@ class BooksViewController: UIViewController {
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private enum CellSizeProperties {
-        static let width = UIScreen.main.bounds.width / 2 - 30
-        static let height = UIScreen.main.bounds.height / 3 - 50
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
+        if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
             return viewModel.booksToCollection.count
         }
         else {
@@ -110,15 +95,15 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
+        if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             cell.cellViewModel = cellVM
             cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
             return cell
         }
         else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.categoryCell, for: indexPath) as? CategoryCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.categoryCell, for: indexPath) as? CategoryCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
             let cellVM = categoryViewModel.getCellViewModel(at: indexPath)
             cell.cellViewModel = cellVM
             
@@ -128,8 +113,8 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView.restorationIdentifier == BookViewControllerParameters.bookCollectionIdentifier {
-            if let viewController = storyboard?.instantiateViewController(identifier: BookViewControllerParameters.detailViewController) as? DetailViewController {
+        if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
+            if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? DetailViewController {
                 _ = viewController.view
                 let cellVM = viewModel.getCellViewModel(at: indexPath)
                 viewController.cellViewModel = cellVM

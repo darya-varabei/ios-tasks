@@ -29,9 +29,7 @@ class FeaturedBookViewModel {
             if success ?? false, let books = model, let featuredModel = featured {
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
                 self.fetchData(books: books)
-            } else {
-                print(success!)
-            }
+            } 
         }
     }
     

@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var authorsLabel: UILabel!
     
-    private enum Literals {
+    private enum DetailViewLiterals {
         static let dateStrinOffset = 10
         static let darkGradientTop = "darkGradientTop"
         static let opaqueDarkTop = "opaqueDarkTop"
@@ -34,22 +34,22 @@ class DetailViewController: UIViewController {
             setupImageBlurColor()
             titleLabel.text = cellViewModel?.title
             authorsLabel.text = cellViewModel?.author
-            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: Literals.dateStrinOffset)
+            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: DetailViewLiterals.dateStrinOffset)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         overviewTextView.backgroundColor = UIColor.clear
-        addToBookmarkButton.layer.cornerRadius = Literals.buttonCornerRadius
-        view.backgroundColor = UIColor(named: Literals.darkGradientTop)
+        addToBookmarkButton.layer.cornerRadius = DetailViewLiterals.buttonCornerRadius
+        view.backgroundColor = UIColor(named: DetailViewLiterals.darkGradientTop)
     }
     
     private func setupImageBlurColor() {
         let gradient = CAGradientLayer()
         
-        guard let top = UIColor(named: Literals.opaqueDarkTop)?.cgColor else { return }
-        guard let bottom = UIColor(named: Literals.darkGradientTop)?.cgColor else { return }
+        guard let top = UIColor(named: DetailViewLiterals.opaqueDarkTop)?.cgColor else { return }
+        guard let bottom = UIColor(named: DetailViewLiterals.darkGradientTop)?.cgColor else { return }
         gradient.frame = view.bounds
         gradient.colors = [top, bottom]
         gradient.frame = bookImage.frame

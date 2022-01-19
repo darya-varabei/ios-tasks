@@ -59,7 +59,7 @@ class BookViewModel {
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
-            return ViewModelGetObject(book: books[index])
+        return ViewModelGetObject(book: books[index])
     }
     
     func filterBooks(on category: String) {

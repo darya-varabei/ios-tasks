@@ -10,9 +10,6 @@ import UIKit
 
 class BookService: BookServiceProtocol {
     
-    var books: [Book]?
-    var indexes: [Identifier]?
-    
     private enum Filename {
         static let bookList = "Books"
         static let featuredBookList = "FeaturedBooks"
@@ -31,9 +28,6 @@ class BookService: BookServiceProtocol {
                     completion(nil, false, nil, false)
                     return
                 }
-                self.books = models ?? []
-                self.indexes = featuredIsbn ?? []
-                print("***************\(featuredIsbn?.count ?? 1)")
                 completion(models, true, featuredIsbn, true)
             }
         }

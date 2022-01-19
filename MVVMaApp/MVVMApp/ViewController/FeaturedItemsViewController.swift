@@ -13,14 +13,6 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
-    private enum BookViewControllerParameters {
-        static let gradientTopColor = "darkGradientTop"
-        static let gradientBottomColor = "darkGradientBottom"
-        static let bookCell = "BookCollectionViewCell"
-        static let fatalErrorMessage = "xib does not exists"
-        static let detailViewController = "DetailViewController"
-    }
-    
     lazy var viewModel = {
         FeaturedBookViewModel()
     }()
@@ -40,8 +32,8 @@ class FeaturedItemsViewController: UIViewController {
     private func setupBackgroundColor() {
         let gradient = CAGradientLayer()
         
-        guard let top = UIColor(named: BookViewControllerParameters.gradientTopColor)?.cgColor else { return }
-        guard let bottom = UIColor(named: BookViewControllerParameters.gradientBottomColor)?.cgColor else { return }
+        guard let top = UIColor(named: Literals.gradientTopColor)?.cgColor else { return }
+        guard let bottom = UIColor(named: Literals.gradientBottomColor)?.cgColor else { return }
         gradient.frame = view.bounds
         gradient.colors = [top, bottom]
        
@@ -52,7 +44,7 @@ class FeaturedItemsViewController: UIViewController {
         featuredCollectionView.delegate = self
         featuredCollectionView.dataSource = self
         featuredCollectionView.backgroundColor = UIColor.clear
-        featuredCollectionView.register(UINib(nibName: BookViewControllerParameters.bookCell, bundle: nil), forCellWithReuseIdentifier: BookViewControllerParameters.bookCell)
+        featuredCollectionView.register(UINib(nibName: Literals.bookCell, bundle: nil), forCellWithReuseIdentifier: Literals.bookCell)
     }
     
     private func initViewModel() {
@@ -67,11 +59,6 @@ class FeaturedItemsViewController: UIViewController {
 
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private enum CellSizeProperties {
-        static let width = UIScreen.main.bounds.width / 2 - 30
-        static let height = UIScreen.main.bounds.height / 3 - 50
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.featuredBooks.count
     }
@@ -81,7 +68,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookViewControllerParameters.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(BookViewControllerParameters.fatalErrorMessage) }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
         let cellVM = viewModel.getCellViewModel(at: indexPath)
         cell.cellViewModel = cellVM
         cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
@@ -89,7 +76,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let viewController = storyboard?.instantiateViewController(identifier: BookViewControllerParameters.detailViewController) as? DetailViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? DetailViewController {
             _ = viewController.view
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             viewController.cellViewModel = cellVM
