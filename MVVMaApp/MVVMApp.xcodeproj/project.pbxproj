@@ -31,6 +31,7 @@
 		D538824527943993007C03E0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824427943993007C03E0 /* UIViewController+Keyboard.swift */; };
 		D538824827943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */; };
 		D56579D1279763CD00691D83 /* FeaturedBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56579D0279763CD00691D83 /* FeaturedBookViewModel.swift */; };
+		D5A593362798029A008EEC17 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A593352798029A008EEC17 /* Identifier.swift */; };
 		D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AA279048C400B5968D /* AppDelegate.swift */; };
 		D5DB55AD279048C400B5968D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AC279048C400B5968D /* SceneDelegate.swift */; };
 		D5DB55AF279048C400B5968D /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AE279048C400B5968D /* BooksViewController.swift */; };
@@ -65,6 +66,7 @@
 		D538824427943993007C03E0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolBar+HiddingKeyboard.swift"; sourceTree = "<group>"; };
 		D56579D0279763CD00691D83 /* FeaturedBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedBookViewModel.swift; sourceTree = "<group>"; };
+		D5A593352798029A008EEC17 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		D5DB55A7279048C400B5968D /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DB55AA279048C400B5968D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5DB55AC279048C400B5968D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				D5DB55CE2790518100B5968D /* Observable.swift */,
 				D5233C632791B78E007196A6 /* Book.swift */,
+				D5A593352798029A008EEC17 /* Identifier.swift */,
 				4B3E31C927953EFB002030E9 /* Category.swift */,
 			);
 			path = Model;
@@ -293,6 +296,7 @@
 				4BB58C592796FB9E0024CC37 /* String+Indexation.swift in Sources */,
 				D5233C642791B78E007196A6 /* Book.swift in Sources */,
 				D5233C78279234F1007196A6 /* CategoryCollectionViewCell.swift in Sources */,
+				D5A593362798029A008EEC17 /* Identifier.swift in Sources */,
 				D538822E27936F8E007C03E0 /* Parser.swift in Sources */,
 				D5DB55CF2790518100B5968D /* Observable.swift in Sources */,
 				D5DB55AD279048C400B5968D /* SceneDelegate.swift in Sources */,

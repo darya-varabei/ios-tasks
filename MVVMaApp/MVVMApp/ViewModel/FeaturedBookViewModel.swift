@@ -12,7 +12,7 @@ class FeaturedBookViewModel {
     var reloadCollectionView: (() -> Void)?
     
     var featuredBooks = [Book]()
-    var featuredIsbn = [String]()
+    var featuredIsbn = [Identifier]() 
     
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
@@ -27,8 +27,8 @@ class FeaturedBookViewModel {
     func getBooks() {
         bookService.getAllBooks { model, success, featured, featuredSuccess in
             if success ?? false, let books = model, let featuredModel = featured {
-                self.fetchData(books: books)
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
+                self.fetchData(books: books)
             } else {
                 print(success!)
             }
@@ -45,7 +45,7 @@ class FeaturedBookViewModel {
         bookCellViewModels = vms
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: [String]) {
+    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
         self.featuredIsbn = featuredIsbn
     }
     
@@ -63,7 +63,11 @@ class FeaturedBookViewModel {
         }
     
     func filterFeaturedBooks() {
-        let bufferArray = featuredBooks.filter{ featuredIsbn.contains($0.isbn ?? "") }
+        var indexes: [String] = []
+        for i in featuredIsbn {
+            indexes.append(i.isbn)
+        }
+        let bufferArray = featuredBooks.filter { indexes.contains($0.isbn ?? "") }
         featuredBooks = bufferArray
     }
 }

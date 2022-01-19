@@ -13,7 +13,7 @@ class BookViewModel {
     
     var books = [Book]()
     var booksToCollection = [Book]()
-    var featuredIsbn = [String]()
+    var featuredIsbn = [Identifier]()
     
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
@@ -45,7 +45,7 @@ class BookViewModel {
         bookCellViewModels = vms
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: [String]) {
+    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
         self.featuredIsbn = featuredIsbn
     }
     

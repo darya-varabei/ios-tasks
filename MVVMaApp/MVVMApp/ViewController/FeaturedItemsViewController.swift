@@ -33,6 +33,8 @@ class FeaturedItemsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         setupBackgroundColor()
+        view.bringSubviewToFront(featuredCollectionView)
+        view.bringSubviewToFront(featuredTitleLabel)
     }
     
     private func setupBackgroundColor() {
