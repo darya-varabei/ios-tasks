@@ -57,8 +57,8 @@ class FeaturedBookViewModel {
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
-            return ViewModelGetObject(book: featuredBooks[index])
-        }
+        return ViewModelGetObject(book: featuredBooks[index], isFeatured: true)
+    }
     
     func filterFeaturedBooks() {
         var indexes: [String] = []

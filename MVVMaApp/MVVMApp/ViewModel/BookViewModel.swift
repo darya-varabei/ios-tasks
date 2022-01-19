@@ -35,6 +35,10 @@ class BookViewModel {
         }
     }
     
+    func loadIndexes(items: [Identifier]) {
+        bookService.writeFeaturedIndexes(items: items)
+    }
+    
     func fetchData(books: [Book]) {
         self.books = books
         self.booksToCollection = books
@@ -59,7 +63,16 @@ class BookViewModel {
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
-        return ViewModelGetObject(book: books[index])
+        var indexes: [String] = []
+        var isFeatured = false
+        for i in featuredIsbn {
+            indexes.append(i.isbn)
+        }
+        
+        if indexes.contains(books[index].isbn ?? "") {
+            isFeatured = true
+        }
+        return ViewModelGetObject(book: books[index], isFeatured: isFeatured)
     }
     
     func filterBooks(on category: String) {

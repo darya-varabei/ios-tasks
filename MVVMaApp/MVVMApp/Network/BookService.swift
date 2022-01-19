@@ -32,4 +32,8 @@ class BookService: BookServiceProtocol {
             }
         }
     }
+    
+    func writeFeaturedIndexes(items: [Identifier]) {
+        Parser.writeToJsonFile(named: Filename.featuredBookList, items: items)
+    }
 }

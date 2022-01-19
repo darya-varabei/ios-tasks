@@ -18,6 +18,10 @@ struct BookCellViewModel {
         self.book = book
     }
     
+    var isFeatured: Bool {
+        return true
+    }
+    
     var title: String {
         return book.title
     }

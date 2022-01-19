@@ -52,6 +52,11 @@ class DetailViewController: UIViewController {
                 self.bookImage.image = image
             }
         }
+        
+        guard let isFeatured = viewModelGetObject?.setIfFeatured() else { return  }
+        if isFeatured {
+            addToBookmarkButton.imageView?.image = UIImage(systemName: "bookmark.fill")
+        }
     }
     
     private func setupImageBlurColor() {

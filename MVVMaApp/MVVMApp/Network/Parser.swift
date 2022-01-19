@@ -74,4 +74,16 @@ struct Parser {
         }
         dataTask.resume()
     }
+    
+    static func writeToJsonFile(named filename: String,
+                                queue: DispatchQueue? = DispatchQueue.global(qos: .background), items: [Identifier]) {
+        do {
+            guard let fileURL = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else { return }
+            
+            let encoder = JSONEncoder()
+            try encoder.encode(items).write(to: fileURL)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

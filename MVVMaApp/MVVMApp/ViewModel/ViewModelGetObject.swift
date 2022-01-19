@@ -10,9 +10,15 @@ import UIKit
 
 struct ViewModelGetObject {
     private let book: Book
+    private let isFeatured: Bool
     
-    init(book: Book) {
+    init(book: Book, isFeatured: Bool) {
         self.book = book
+        self.isFeatured = isFeatured
+    }
+    
+    func setIfFeatured() -> Bool {
+        return isFeatured
     }
     
     func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {

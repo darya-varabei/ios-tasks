@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Identifier: Decodable {
+struct Identifier: Codable {
     let isbn: String
 }
