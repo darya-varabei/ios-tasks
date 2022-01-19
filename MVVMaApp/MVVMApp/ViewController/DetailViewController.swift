@@ -55,7 +55,7 @@ class DetailViewController: UIViewController {
         
         guard let isFeatured = viewModelGetObject?.setIfFeatured() else { return  }
         if isFeatured {
-            addToBookmarkButton.imageView?.image = UIImage(systemName: "bookmark.fill")
+            addToBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         }
     }
     
@@ -68,10 +68,6 @@ class DetailViewController: UIViewController {
         gradient.colors = [top, bottom]
         gradient.frame = bookImage.frame
         imageBlurView.layer.insertSublayer(gradient, at: 0)
-    }
-    
-    private func textOnEmptyOverview() {
-        
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

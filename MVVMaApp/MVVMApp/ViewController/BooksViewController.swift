@@ -28,7 +28,6 @@ class BooksViewController: UIViewController {
         setDelegates()
         initViewModel()
         setupKeyboard()
-        viewModel.loadIndexes(items: viewModel.featuredIsbn)
     }
     
     override func viewDidLayoutSubviews() {

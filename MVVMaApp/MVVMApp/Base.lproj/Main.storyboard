@@ -196,6 +196,7 @@
                                 <state key="normal">
                                     <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
                                 </state>
+                                <state key="selected" image="bookmark.fill" catalog="system"/>
                                 <connections>
                                     <action selector="addBookToFeatured:" destination="DmF-fX-P8p" eventType="touchUpInside" id="x3m-Rs-RJa"/>
                                 </connections>
@@ -401,6 +402,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="wand.and.stars" catalog="system" width="128" height="113"/>
         <namedColor name="darkGradientTop">
             <color red="0.12200000137090683" green="0.16500000655651093" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
