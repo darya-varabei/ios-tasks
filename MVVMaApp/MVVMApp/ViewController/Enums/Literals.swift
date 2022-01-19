@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Literals {
+public enum Literals {
     static let gradientTopColor = "darkGradientTop"
     static let gradientBottomColor = "darkGradientBottom"
     static let bookCell = "BookCollectionViewCell"

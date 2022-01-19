@@ -45,6 +45,15 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(named: DetailViewLiterals.darkGradientTop)
     }
     
+    func configure(viewModelGetObject: ViewModelGetObject?) {
+        guard let thumbnail = cellViewModel?.thumbnail else { return }
+        viewModelGetObject?.loadImage(url: thumbnail) { (image) in
+            DispatchQueue.main.async {
+                self.bookImage.image = image
+            }
+        }
+    }
+    
     private func setupImageBlurColor() {
         let gradient = CAGradientLayer()
         
@@ -56,12 +65,10 @@ class DetailViewController: UIViewController {
         imageBlurView.layer.insertSublayer(gradient, at: 0)
     }
     
-    func configure(viewModelGetObject: ViewModelGetObject?) {
-        guard let thumbnail = cellViewModel?.thumbnail else { return }
-        viewModelGetObject?.loadImage(url: thumbnail) { (image) in
-            DispatchQueue.main.async {
-                self.bookImage.image = image
-            }
-        }
+    private func textOnEmptyOverview() {
+        
+    }
+    
+    @IBAction private func addBookToFeatured(_ sender: Any) {
     }
 }

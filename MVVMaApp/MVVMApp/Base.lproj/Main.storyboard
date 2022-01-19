@@ -196,6 +196,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
                                 </state>
+                                <connections>
+                                    <action selector="addBookToFeatured:" destination="DmF-fX-P8p" eventType="touchUpInside" id="x3m-Rs-RJa"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pze-YW-Q5D">
                                 <rect key="frame" x="20" y="266.5" width="374" height="20.5"/>

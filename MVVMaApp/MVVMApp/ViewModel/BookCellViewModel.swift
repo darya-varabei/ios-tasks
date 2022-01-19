@@ -11,6 +11,8 @@ import UIKit
 struct BookCellViewModel {
     
     private let book: Book
+    let noOverviewAvailable = "No overview available"
+    let noDateAvailable = "12.12.2001"
     
     init(book: Book) {
         self.book = book
@@ -33,7 +35,14 @@ struct BookCellViewModel {
     }
     
     var overview: String {
-        return book.longDescription ?? ""
+        guard let description = book.longDescription else { return noOverviewAvailable
+        }
+        if description != "" {
+            return description
+        }
+        else {
+            return noOverviewAvailable
+        }
     }
     
     var numOfPages: Int {
@@ -41,7 +50,7 @@ struct BookCellViewModel {
     }
     
     var publishedDate: PublishedDate {
-        return book.publishedDate ?? PublishedDate(date: "12.12.2001")
+        return book.publishedDate ?? PublishedDate(date: noDateAvailable)
     }
     
     var category: [String] {
