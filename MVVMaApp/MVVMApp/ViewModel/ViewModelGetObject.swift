@@ -10,7 +10,7 @@ import UIKit
 
 struct ViewModelGetObject {
     private let book: Book
-    private let isFeatured: Bool
+    private var isFeatured: Bool
     
     init(book: Book, isFeatured: Bool) {
         self.book = book
@@ -19,6 +19,10 @@ struct ViewModelGetObject {
     
     func setIfFeatured() -> Bool {
         return isFeatured
+    }
+    
+    mutating func toggleFeaturedState() {
+        isFeatured.toggle()
     }
     
     func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {

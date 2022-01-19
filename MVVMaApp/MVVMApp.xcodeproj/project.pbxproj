@@ -134,13 +134,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D5A593422798292A008EEC17 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		D5DB559E279048C400B5968D = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +202,6 @@
 				D53882132792D8A8007C03E0 /* DetailViewController.swift */,
 				D5A5933C279825B2008EEC17 /* Literals.swift */,
 				D5A5933F279828E7008EEC17 /* CellSizeProperties.swift */,
-				D5A593422798292A008EEC17 /* Enums */,
 				4BB58C5A2796FBDD0024CC37 /* Extensions */,
 			);
 			path = ViewController;

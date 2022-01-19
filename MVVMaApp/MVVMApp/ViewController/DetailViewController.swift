@@ -26,6 +26,8 @@ class DetailViewController: UIViewController {
         static let buttonCornerRadius: CGFloat = 20
     }
     
+    var viewModelObject: ViewModelGetObject?
+    
     var cellViewModel: BookCellViewModel? {
         didSet {
             guard let countPages = cellViewModel?.numOfPages else { return }
@@ -46,6 +48,7 @@ class DetailViewController: UIViewController {
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
+        viewModelObject = viewModelGetObject
         guard let thumbnail = cellViewModel?.thumbnail else { return }
         viewModelGetObject?.loadImage(url: thumbnail) { (image) in
             DispatchQueue.main.async {
@@ -71,5 +74,13 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {
+        guard let isFeatured = viewModelObject?.setIfFeatured() else { return  }
+        if isFeatured {
+            addToBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+        else {
+            addToBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        viewModelObject?.toggleFeaturedState()
     }
 }
