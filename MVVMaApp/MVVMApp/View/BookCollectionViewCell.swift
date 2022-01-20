@@ -1,5 +1,6 @@
-//
-//  BookCollectionViewCell.swiftViewCell {
+import Foundation
+import UIKit
+class BookCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private var bookImage: UIImageView!
     @IBOutlet private var nameLabel: UILabel!
