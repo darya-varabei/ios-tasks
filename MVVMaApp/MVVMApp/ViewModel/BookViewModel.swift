@@ -45,12 +45,13 @@ class BookViewModel {
         bookCellViewModels = vms
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: String) {
-        let listFeaturedIsbn = featuredIsbn.components(separatedBy: "-")
-        
-        for i in listFeaturedIsbn {
-            self.featuredIsbn.append(Identifier(isbn: i))
-        }
+    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
+        self.featuredIsbn = featuredIsbn
+//        let listFeaturedIsbn = featuredIsbn.components(separatedBy: "-")
+//
+//        for i in listFeaturedIsbn {
+//            self.featuredIsbn.append(Identifier(isbn: i))
+//        }
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -98,6 +99,6 @@ class BookViewModel {
         }
         let stringOfItems = indexes.joined(separator: "-")
         print(stringOfItems)
-        bookService.writeFeaturedIndexes(items: stringOfItems)
+        bookService.writeFeaturedIndexes(items: items)
     }
 }

@@ -78,15 +78,15 @@ struct Parser {
     }
     
     static func writeToJsonFile(named filename: String,
-                                queue: DispatchQueue? = DispatchQueue.global(qos: .background), items: String) {
-        do {
-            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: false)
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(encodedData, forKey: "featured")
-        }
-        catch {
-            
-        }
+                                queue: DispatchQueue? = DispatchQueue.global(qos: .background), items: [Identifier]) {
+//        do {
+//            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: false)
+//            let userDefaults = UserDefaults.standard
+//            userDefaults.set(encodedData, forKey: "featured")
+//        }
+//        catch {
+//
+//        }
         //UserDefaults.standard.setValue(items, forKey: "featured")
 //        let str = "arrayOfCountries.map { $0.city  + String($0.isMarked)}.joined(separator:)"
 //                print("rRRRRRRRRRRRRRRRRRRRRRRRR")
@@ -136,16 +136,16 @@ struct Parser {
 //        } catch {
 //            print("Failed to write JSON data: \(error.localizedDescription)")
 //        }
-//        do {
-//            guard let fileURL = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else { return }
-//
-//            let encoder = JSONEncoder()
-//            try encoder.encode(items).write(to: fileURL)
-//            print("4444444444444444444444444444444444")
-//            print(items)
-//            print("\n\n\n\n\n\n\n\n\n\n")
-//        } catch {
-//            print(error.localizedDescription)
-//        }
+        do {
+            guard let fileURL = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else { return }
+
+            let encoder = JSONEncoder()
+            try encoder.encode(items).write(to: fileURL)
+            print("4444444444444444444444444444444444")
+            print(items)
+            print("\n\n\n\n\n\n\n\n\n\n")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
