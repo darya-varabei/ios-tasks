@@ -116,7 +116,7 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
         else {
             var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
             viewModel.filterBooks(on: cellVM.name)
-            cellVM.cellTap()
+            cellVM.toggleIfSelected()
             booksCollectionView.reloadData()
             categoriesCollectionView.reloadData()
         }

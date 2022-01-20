@@ -11,8 +11,6 @@ import UIKit
 struct CategoryCellViewModel {
     
     private var category: Category
-    private let maxRGBComponent: CGFloat = 1
-    private let alphaComponent: CGFloat = 1.0
     
     init(category: Category) {
         self.category = category
@@ -24,18 +22,22 @@ struct CategoryCellViewModel {
     
     var color: Observable<UIColor>?
     
-    var isSelected: Bool {
-        return category.isSelected
+    var isSelected: Observable<Bool> {
+        return Observable(category.isSelected)
     }
     
-    mutating func cellTap() {
-        if isSelected {
-            category.isSelected = false
-            color = Observable(UIColor.init(white: 1, alpha: 0.1))
-        }
-        else {
-            category.isSelected = true
-            color = Observable(UIColor.init(white: 1, alpha: 0.5))
-        }
+    mutating func toggleIfSelected() {
+        category.isSelected.toggle()
     }
+    
+//    mutating func cellTap() {
+//        if Observable(isSelected) {
+//            category.isSelected = false
+//            color = Observable(UIColor.init(white: 1, alpha: 0.1))
+//        }
+//        else {
+//            category.isSelected = true
+//            color = Observable(UIColor.init(white: 1, alpha: 0.5))
+//        }
+//    }
 }

@@ -139,9 +139,6 @@ struct Parser {
 
             let encoder = JSONEncoder()
             try encoder.encode(items).write(to: fileURL)
-            print("4444444444444444444444444444444444")
-            print(items)
-            print("\n\n\n\n\n\n\n\n\n\n")
         } catch {
             print(error.localizedDescription)
         }

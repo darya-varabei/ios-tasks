@@ -49,7 +49,6 @@ struct ViewModelGetObject {
         
         case true, !indexes.contains(isbn):
             array.append(Identifier(isbn: isbn))
-            //bookViewModel.modifyIndexesFile(items: array)
             break
             
         case false, indexes.contains(isbn):
@@ -59,9 +58,9 @@ struct ViewModelGetObject {
                     break
                 }
             }
-            //bookViewModel.featuredIsbn.remove(at: indexToRemove)
+           
             bookViewModel.modifyIndexesFile(items: array)
-            //bookViewModel.bookService.writeFeaturedIndexes(items: array)
+            
             break
             
         default:

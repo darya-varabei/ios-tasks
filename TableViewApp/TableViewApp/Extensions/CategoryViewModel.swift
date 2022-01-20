@@ -13,7 +13,7 @@ class CategoryViewModel {
     
     var categories: Set<String> = []
     
-    var categoryCellViewModels = [CategoryCellViewModel]() {
+    private var categoryCellViewModels = [CategoryCellViewModel]() {
         didSet {
             reloadCollectionView?()
         }

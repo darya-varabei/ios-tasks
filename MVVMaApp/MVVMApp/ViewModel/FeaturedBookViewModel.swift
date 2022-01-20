@@ -7,35 +7,36 @@
 
 import Foundation
 
-class FeaturedBookViewModel {
-    private var bookService: BookServiceProtocol
-    var reloadCollectionView: (() -> Void)?
+class FeaturedBookViewModel: BookViewModel {
+    //private var bookService: BookServiceProtocol
+    //var reloadCollectionView: (() -> Void)?
     var bookModel: BookViewModel?
     
     var featuredBooks = [Book]()
-    var featuredIsbn = [Identifier]() 
+    //var featuredIsbn = [Identifier]()
     
-    var bookCellViewModels = [BookCellViewModel]() {
-        didSet {
-            reloadCollectionView?()
-        }
+   // var bookCellViewModels = [BookCellViewModel]() {
+//        didSet {
+//            reloadCollectionView?()
+//        }
+//    }
+    
+    override init(bookService: BookServiceProtocol = BookService()) {
+        super.init(bookService: bookService)
+        //self.bookService = bookService
     }
     
-    init(bookService: BookServiceProtocol = BookService()) {
-        self.bookService = bookService
-    }
-    
-    func getBooks() {
+    override func getBooks() {
         bookService.getAllBooks { model, success, identifiers, identifiersSuccess in
-            if success ?? false, let books = model {
-                self.featuredIsbn = UserDefaults.standard.value(forKey: "featured") as? [Identifier] ?? []
-                //self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
+            if success ?? false, let books = model , let featuredIsbn = identifiers{
+                //self.featuredIsbn = featuredIsbn
+                self.fetchFeaturedIsbn(featuredIsbn: featuredIsbn)
                 self.fetchData(books: books)
             } 
         }
     }
     
-    func fetchData(books: [Book]) {
+    override func fetchData(books: [Book]) {
         self.featuredBooks = books
         var vms = [BookCellViewModel]()
         filterFeaturedBooks()
@@ -45,20 +46,20 @@ class FeaturedBookViewModel {
         bookCellViewModels = vms
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
-        self.featuredIsbn = UserDefaults.standard.value(forKey: "featured") as? [Identifier] ?? []
-    }
+//    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
+//        self.featuredIsbn = featuredIsbn
+//    }
     
-    func createCellModel(book: Book) -> BookCellViewModel {
-        let bookModel = BookCellViewModel(book: book)
-        return bookModel
-    }
+//    func createCellModel(book: Book) -> BookCellViewModel {
+//        let bookModel = BookCellViewModel(book: book)
+//        return bookModel
+//    }
     
-    func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
-        return bookCellViewModels[indexPath.item]
-    }
+//    func getCellViewModel(at indexPath: IndexPath) -> BookCellViewModel {
+//        return bookCellViewModels[indexPath.item]
+//    }
     
-    func getViewModel(index: Int) -> ViewModelGetObject {
+    override func getViewModel(index: Int) -> ViewModelGetObject {
         return ViewModelGetObject(book: featuredBooks[index], isFeatured: true, bookViewModel: bookModel!)
     }
     

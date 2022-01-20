@@ -9,7 +9,7 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet private var categoryLabel: UILabel!
     
     private enum Literals {
         static let semiClearWhite = "semiClearWhite"
@@ -17,8 +17,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         static let borderWidth: CGFloat = 2
     }
     
-    class var identifier: String { return String(describing: self) }
-    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
+//    class var identifier: String { return String(describing: self) }
+//    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     
     var color: UIColor? {
         didSet {
@@ -33,7 +33,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
+        cellViewModel?.isSelected.bind { [weak self] isSelected in
+            if isSelected {
+                self?.color = UIColor(named: Literals.semiClearWhite)
+            }
+            else {
+                self?.color = UIColor.clear
+            }
+        }
+        //cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
         setConstantProperties()
     }
     
