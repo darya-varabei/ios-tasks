@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BooksCollectionView" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-xQ-L14">
-                                <rect key="frame" x="20" y="177" width="280" height="332"/>
+                                <rect key="frame" x="20" y="144" width="280" height="365"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mDN-8z-dfx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -30,10 +30,10 @@
                                 <cells/>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="CategoryCollectionView" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9iC-Tk-Fe7">
-                                <rect key="frame" x="20" y="84" width="280" height="60"/>
+                                <rect key="frame" x="20" y="54" width="280" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Evr-p4-44l"/>
+                                    <constraint firstAttribute="height" constant="70" id="Evr-p4-44l"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YDE-Eg-fda">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,10 +47,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sVk-xQ-L14" firstAttribute="top" secondItem="9iC-Tk-Fe7" secondAttribute="bottom" constant="33" id="QwK-fV-Ue8"/>
+                            <constraint firstItem="sVk-xQ-L14" firstAttribute="top" secondItem="9iC-Tk-Fe7" secondAttribute="bottom" constant="20" id="QwK-fV-Ue8"/>
                             <constraint firstItem="9iC-Tk-Fe7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Tve-0K-6tC"/>
                             <constraint firstItem="sVk-xQ-L14" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dAs-9D-x9f"/>
-                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="dvg-qG-yQu"/>
+                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="dvg-qG-yQu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sVk-xQ-L14" secondAttribute="bottom" constant="10" id="fkm-Q2-mah"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9iC-Tk-Fe7" secondAttribute="trailing" constant="20" id="oH1-jz-wPv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sVk-xQ-L14" secondAttribute="trailing" constant="20" id="zdv-kS-uqE"/>

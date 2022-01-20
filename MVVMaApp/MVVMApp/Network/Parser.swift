@@ -56,11 +56,9 @@ struct Parser {
                     if let dispatchQueue = queue {
                         dispatchQueue.async {
                             completionHandler(typedObject, nil)
-                            print(url.absoluteURL)
                         }
                     } else {
                         completionHandler(typedObject, nil)
-                        print(url.absoluteURL)
                     }
                 }
             } catch {

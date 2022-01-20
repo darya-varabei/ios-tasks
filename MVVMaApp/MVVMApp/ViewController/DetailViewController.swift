@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
         static let buttonCornerRadius: CGFloat = 20
         static let featuredBookmark = "bookmark.fill"
         static let unfeaturedBookmark = "bookmark"
+        static let backButtonTitle = "Back"
     }
     
     var viewModelObject: ViewModelGetObject?
@@ -35,7 +36,6 @@ class DetailViewController: UIViewController {
             guard let countPages = cellViewModel?.numOfPages else { return }
             numOfPagesLabel.text = "\(countPages)"
             overviewTextView.text = cellViewModel?.overview
-            setupImageBlurColor()
             titleLabel.text = cellViewModel?.title
             authorsLabel.text = cellViewModel?.author
             dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: DetailViewLiterals.dateStrinOffset)
@@ -48,6 +48,10 @@ class DetailViewController: UIViewController {
         addToBookmarkButton.layer.cornerRadius = DetailViewLiterals.buttonCornerRadius
         view.backgroundColor = UIColor(named: DetailViewLiterals.darkGradientTop)
         setupBackButton()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setupImageBlurColor()
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
@@ -73,12 +77,13 @@ class DetailViewController: UIViewController {
         gradient.frame = view.bounds
         gradient.colors = [top, bottom]
         gradient.frame = bookImage.frame
+        
         imageBlurView.layer.insertSublayer(gradient, at: 0)
     }
     
     private func setupBackButton() {
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonTap))
+        let newBackButton = UIBarButtonItem(title: DetailViewLiterals.backButtonTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonTap))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     

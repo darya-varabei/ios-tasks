@@ -9,7 +9,6 @@ import UIKit
 
 class BooksViewController: UIViewController {
     
-    //@IBOutlet private var searchTextField: UITextField!
     @IBOutlet private var categoriesCollectionView: UICollectionView!
     @IBOutlet private var booksCollectionView: UICollectionView!
     
@@ -27,12 +26,10 @@ class BooksViewController: UIViewController {
         super.viewDidLoad()
         setDelegates()
         initViewModel()
-        //setupKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
         setupBackgroundColor()
-        //view.bringSubviewToFront(searchTextField)
         view.bringSubviewToFront(categoriesCollectionView)
         view.bringSubviewToFront(booksCollectionView)
     }
@@ -70,12 +67,6 @@ class BooksViewController: UIViewController {
             }
         }
     }
-    
-//    private func setupKeyboard() {
-//        hideKeyboardWhenTappedAround()
-//        let bar = UIToolbar()
-//        searchTextField.inputAccessoryView = bar.hideKeyboardToolbar()
-//    }
 }
 
 extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSource {
