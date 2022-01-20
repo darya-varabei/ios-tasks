@@ -33,7 +33,7 @@
                                 <rect key="frame" x="20" y="128" width="374" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="0NC-e1-bjJ"/>
+                                    <constraint firstAttribute="height" constant="60" id="Evr-p4-44l"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YDE-Eg-fda">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,13 +47,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="BwQ-4T-w5h"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sVk-xQ-L14" secondAttribute="bottom" constant="10" id="Eee-5G-Duv"/>
-                            <constraint firstItem="sVk-xQ-L14" firstAttribute="top" secondItem="9iC-Tk-Fe7" secondAttribute="bottom" constant="33" id="FD1-wU-MV3"/>
-                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JqJ-Mj-nsV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9iC-Tk-Fe7" secondAttribute="trailing" constant="20" id="N2j-M7-Y9S"/>
-                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="leading" secondItem="sVk-xQ-L14" secondAttribute="leading" id="quy-8A-nyw"/>
-                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="trailing" secondItem="sVk-xQ-L14" secondAttribute="trailing" id="yCP-Jk-NJu"/>
+                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6xA-mk-8PA"/>
+                            <constraint firstItem="sVk-xQ-L14" firstAttribute="width" secondItem="9iC-Tk-Fe7" secondAttribute="width" id="D8m-YX-bEB"/>
+                            <constraint firstItem="sVk-xQ-L14" firstAttribute="top" secondItem="9iC-Tk-Fe7" secondAttribute="bottom" constant="33" id="ELd-Cu-6Zu"/>
+                            <constraint firstItem="sVk-xQ-L14" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JPn-PY-AY9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sVk-xQ-L14" secondAttribute="bottom" constant="10" id="jiH-Cy-IZF"/>
+                            <constraint firstItem="9iC-Tk-Fe7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="p3o-RZ-Q4N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9iC-Tk-Fe7" secondAttribute="trailing" constant="20" id="tIR-PO-C97"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6tO-DO-ZYc"/>
