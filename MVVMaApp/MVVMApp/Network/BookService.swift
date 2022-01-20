@@ -15,7 +15,7 @@ class BookService: BookServiceProtocol {
         static let featuredBookList = "FeaturedBooks"
     }
     
-    func getAllBooks(completion: @escaping ([Book]?, Bool?, [Identifier]?, Bool?) -> Void) {
+    func getAllBooks(completion: @escaping ([Book]?, Bool?, String?, Bool?) -> Void) {
         
         Parser.loadJSONFile(named: Filename.bookList, type: [Book].self) { (models, error) in
             guard error == nil else {
@@ -23,17 +23,25 @@ class BookService: BookServiceProtocol {
                 return
             }
             
-            Parser.loadJSONFile(named: Filename.featuredBookList, type: [Identifier].self) { (featuredIsbn, error) in
-                guard error == nil else {
-                    completion(nil, false, nil, false)
-                    return
-                }
-                completion(models, true, featuredIsbn, true)
+            //            Parser.loadJSONFile(named: Filename.featuredBookList, type: [Identifier].self) { (featuredIsbn, error) in
+            //                guard error == nil else {
+            //                    completion(nil, false, nil, false)
+            //                    return
+            //                }
+            
+            if UserDefaults.standard.string(forKey: "featured") != nil{
+                
+                completion(models, true, UserDefaults.standard.string(forKey: "featured"), true)
             }
+            else {
+                completion(models, true, "-", true)
+            }
+            //            }
         }
     }
     
-    func writeFeaturedIndexes(items: [Identifier]) {
-        Parser.writeToJsonFile(named: Filename.featuredBookList, items: items)
+    func writeFeaturedIndexes(items: String) {
+        print(items)
+        Parser.writeToJsonFile(named: "Test", items: items)
     }
 }

@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 protocol BookServiceProtocol {
-    func getAllBooks(completion: @escaping(_ result: [Book]?, _ success: Bool?, _ featuredResult: [Identifier]?, _ featuredSuccess: Bool?) -> Void)
-    func writeFeaturedIndexes(items: [Identifier])
+    func getAllBooks(completion: @escaping(_ result: [Book]?, _ success: Bool?, _ featured: String?, _ identifierSuccess: Bool?) -> Void)
+    func writeFeaturedIndexes(items: String)
 }

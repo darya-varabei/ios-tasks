@@ -8,7 +8,7 @@
 import Foundation
 
 class BookViewModel {
-    private var bookService: BookServiceProtocol
+    var bookService: BookServiceProtocol
     var reloadCollectionView: (() -> Void)?
     
     var books = [Book]()
@@ -27,16 +27,12 @@ class BookViewModel {
     }
     
     func getBooks() {
-        bookService.getAllBooks { model, success, featured, featuredSuccess in
-            if success ?? false, let books = model, let featuredModel = featured {
+        bookService.getAllBooks { model, success, identifiers, identifiersSuccess in
+            if success ?? false, let books = model, let featuredModel = identifiers {
                 self.fetchData(books: books)
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
             } 
         }
-    }
-    
-    func loadIndexes(items: [Identifier]) {
-        bookService.writeFeaturedIndexes(items: items)
     }
     
     func fetchData(books: [Book]) {
@@ -49,8 +45,12 @@ class BookViewModel {
         bookCellViewModels = vms
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
-        self.featuredIsbn = featuredIsbn
+    func fetchFeaturedIsbn(featuredIsbn: String) {
+        let listFeaturedIsbn = featuredIsbn.components(separatedBy: "-")
+        
+        for i in listFeaturedIsbn {
+            self.featuredIsbn.append(Identifier(isbn: i))
+        }
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -72,7 +72,7 @@ class BookViewModel {
         if indexes.contains(books[index].isbn ?? "") {
             isFeatured = true
         }
-        return ViewModelGetObject(book: books[index], isFeatured: isFeatured)
+        return ViewModelGetObject(book: books[index], isFeatured: isFeatured, bookViewModel: self)
     }
     
     func filterBooks(on category: String) {
@@ -89,5 +89,15 @@ class BookViewModel {
             booksToCollection = books
             fetchData(books: booksToCollection)
         }
+    }
+    
+    func modifyIndexesFile(items: [Identifier]) {
+        var indexes: [String] = []
+        for i in items {
+            indexes.append(i.isbn)
+        }
+        let stringOfItems = indexes.joined(separator: "-")
+        print(stringOfItems)
+        bookService.writeFeaturedIndexes(items: stringOfItems)
     }
 }

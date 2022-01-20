@@ -10,6 +10,7 @@ import Foundation
 class FeaturedBookViewModel {
     private var bookService: BookServiceProtocol
     var reloadCollectionView: (() -> Void)?
+    var bookModel: BookViewModel?
     
     var featuredBooks = [Book]()
     var featuredIsbn = [Identifier]() 
@@ -25,9 +26,10 @@ class FeaturedBookViewModel {
     }
     
     func getBooks() {
-        bookService.getAllBooks { model, success, featured, featuredSuccess in
-            if success ?? false, let books = model, let featuredModel = featured {
-                self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
+        bookService.getAllBooks { model, success, identifiers, identifiersSuccess in
+            if success ?? false, let books = model {
+                self.featuredIsbn = UserDefaults.standard.value(forKey: "featured") as? [Identifier] ?? []
+                //self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
                 self.fetchData(books: books)
             } 
         }
@@ -44,7 +46,7 @@ class FeaturedBookViewModel {
     }
     
     func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
-        self.featuredIsbn = featuredIsbn
+        self.featuredIsbn = UserDefaults.standard.value(forKey: "featured") as? [Identifier] ?? []
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -57,7 +59,7 @@ class FeaturedBookViewModel {
     }
     
     func getViewModel(index: Int) -> ViewModelGetObject {
-        return ViewModelGetObject(book: featuredBooks[index], isFeatured: true)
+        return ViewModelGetObject(book: featuredBooks[index], isFeatured: true, bookViewModel: bookModel!)
     }
     
     func filterFeaturedBooks() {

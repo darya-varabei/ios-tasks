@@ -24,6 +24,8 @@ class DetailViewController: UIViewController {
         static let darkGradientTop = "darkGradientTop"
         static let opaqueDarkTop = "opaqueDarkTop"
         static let buttonCornerRadius: CGFloat = 20
+        static let featuredBookmark = "bookmark.fill"
+        static let unfeaturedBookmark = "bookmark"
     }
     
     var viewModelObject: ViewModelGetObject?
@@ -45,6 +47,7 @@ class DetailViewController: UIViewController {
         overviewTextView.backgroundColor = UIColor.clear
         addToBookmarkButton.layer.cornerRadius = DetailViewLiterals.buttonCornerRadius
         view.backgroundColor = UIColor(named: DetailViewLiterals.darkGradientTop)
+        setupBackButton()
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
@@ -58,7 +61,7 @@ class DetailViewController: UIViewController {
         
         guard let isFeatured = viewModelGetObject?.setIfFeatured() else { return  }
         if isFeatured {
-            addToBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.featuredBookmark), for: .normal)
         }
     }
     
@@ -73,13 +76,24 @@ class DetailViewController: UIViewController {
         imageBlurView.layer.insertSublayer(gradient, at: 0)
     }
     
+    private func setupBackButton() {
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonTap))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    @objc func backButtonTap() {
+        viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction private func addBookToFeatured(_ sender: Any) {
         guard let isFeatured = viewModelObject?.setIfFeatured() else { return  }
         if isFeatured {
-            addToBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.unfeaturedBookmark), for: .normal)
         }
         else {
-            addToBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.featuredBookmark), for: .normal)
         }
         viewModelObject?.toggleFeaturedState()
     }
