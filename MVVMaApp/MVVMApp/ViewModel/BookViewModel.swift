@@ -88,12 +88,6 @@ class BookViewModel {
     }
     
     func modifyIndexesFile(items: [Identifier]) {
-        var indexes: [String] = []
-        for i in items {
-            indexes.append(i.isbn)
-        }
-        let stringOfItems = indexes.joined(separator: "-")
-        print(stringOfItems)
         bookService.writeFeaturedIndexes(items: items)
     }
 }
