@@ -29,8 +29,8 @@ class BookViewModel {
     func getBooks() {
         bookService.getAllBooks { model, success, identifiers, identifiersSuccess in
             if success ?? false, let books = model, let featuredModel = identifiers {
-                self.fetchData(books: books)
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
+                self.fetchData(books: books)
             } 
         }
     }

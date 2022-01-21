@@ -91,7 +91,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYN-sf-BFu">
                                                 <rect key="frame" x="315" y="30" width="45" height="45"/>
-                                                <color key="backgroundColor" red="0.11351426135772162" green="0.12980384463351041" blue="0.29145963308585854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="darkGradientTop"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="HU6-WV-KVf"/>
                                                     <constraint firstAttribute="width" constant="45" id="MyH-iU-2hS"/>
