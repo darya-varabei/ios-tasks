@@ -114,11 +114,8 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
         }
         else {
-            var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
+            let cellVM = categoryViewModel.getCellViewModel(at: indexPath)
             viewModel.filterBooks(on: cellVM.name)
-            cellVM.toggleIfSelected()
-//            booksCollectionView.reloadData()
-//            categoriesCollectionView.reloadData()
         }
     }
 }

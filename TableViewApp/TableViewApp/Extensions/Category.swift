@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 struct Category: Hashable {
+    
     var name: String
     var isSelected: Bool
+    //var backgroundColor: Observable<UIColor>
 }

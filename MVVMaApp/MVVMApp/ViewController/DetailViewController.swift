@@ -50,10 +50,6 @@ class DetailViewController: UIViewController {
         setupBackButton()
     }
     
-    override func viewDidLayoutSubviews() {
-        setupImageBlurColor()
-    }
-    
     func configure(viewModelGetObject: ViewModelGetObject?) {
         viewModelObject = viewModelGetObject
         guard let thumbnail = cellViewModel?.thumbnail else { return }
@@ -68,19 +64,7 @@ class DetailViewController: UIViewController {
             addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.featuredBookmark), for: .normal)
         }
     }
-    
-    private func setupImageBlurColor() {
-        let gradient = CAGradientLayer()
-        
-        guard let top = UIColor(named: DetailViewLiterals.opaqueDarkTop)?.cgColor else { return }
-        guard let bottom = UIColor(named: DetailViewLiterals.darkGradientTop)?.cgColor else { return }
-        gradient.frame = view.bounds
-        gradient.colors = [top, bottom]
-        gradient.frame = bookImage.frame
-        
-        imageBlurView.layer.insertSublayer(gradient, at: 0)
-    }
-    
+
     private func setupBackButton() {
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: DetailViewLiterals.backButtonTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonTap))

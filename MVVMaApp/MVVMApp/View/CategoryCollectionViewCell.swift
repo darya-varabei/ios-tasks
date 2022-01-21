@@ -33,6 +33,11 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
+        setConstantProperties()
+    }
+    
+    func bindColor() {
         cellViewModel?.isSelected.bind { [weak self] isSelected in
             if isSelected {
                 self?.color = UIColor(named: Literals.semiClearWhite)
@@ -41,8 +46,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
                 self?.color = UIColor.clear
             }
         }
-        //cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
-        setConstantProperties()
     }
     
     func setDefaultAppearance() {
