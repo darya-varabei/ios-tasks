@@ -23,8 +23,7 @@ class CategoryViewModel {
         let bufferBookCategories = books.map { $0.categories }
         
         categories = Set(bufferBookCategories.flatMap { $0 }.filter({ $0.count != 0 }))
-        
-        //if let categoryselectedCategories != nil {
+       
         for item in categories {
             if item != selectedCategory {
             categoryCellViewModels.append(createCellModel(category: Category(name: item, isSelected: false)))

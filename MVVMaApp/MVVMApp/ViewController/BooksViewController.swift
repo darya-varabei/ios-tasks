@@ -63,7 +63,7 @@ class BooksViewController: UIViewController {
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
-                //self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: self?.selectedCategory)
+                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: self?.selectedCategory)
                 self?.categoriesCollectionView.reloadData()
             }
         }

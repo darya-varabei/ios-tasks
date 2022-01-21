@@ -28,6 +28,5 @@ struct CategoryCellViewModel {
     
     mutating func toggleIfSelected() {
         category.isSelected.toggle()
-        //isSelected.value.toggle()
     }
 }

@@ -13,10 +13,6 @@ class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func configure(viewModelGetObject: ViewModelGetObject?) {
         guard let thumbnail = cellViewModel?.thumbnail else { return }
         viewModelGetObject?.loadImage(url: thumbnail) { (image) in

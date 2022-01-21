@@ -17,9 +17,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         static let borderWidth: CGFloat = 2
     }
     
-//    class var identifier: String { return String(describing: self) }
-//    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
-    
     var color: UIColor? {
         didSet {
             layer.backgroundColor = color?.cgColor
@@ -33,7 +30,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //cellViewModel?.color?.bindAndFire { [self] _ in color = UIColor.white }
         setConstantProperties()
     }
     
