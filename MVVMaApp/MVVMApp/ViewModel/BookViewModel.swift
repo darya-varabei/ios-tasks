@@ -78,23 +78,24 @@ class BookViewModel {
     }
     
     func filterBooks(on category: String, isSelected: Observable<Bool>) {
-        if !isBeingFiltered && !isSelected.value {
+        if !isSelected.value {
             booksToCollection.removeAll()
             booksToCollection = books.filter { $0.categories.contains(category) }
             createCellViewModel()
             isBeingFiltered.toggle()
         }
-        else if isBeingFiltered && isSelected.value {
+        else if isSelected.value {
+            booksToCollection.removeAll()
             booksToCollection = books
             createCellViewModel()
             isBeingFiltered.toggle()
         }
-        else {
-            booksToCollection.removeAll()
-            booksToCollection = books.filter { $0.categories.contains(category) }
-            createCellViewModel()
-            isBeingFiltered.toggle()
-        }
+//        else {
+//            booksToCollection.removeAll()
+//            booksToCollection = books.filter { $0.categories.contains(category) }
+//            createCellViewModel()
+//            isBeingFiltered.toggle()
+//        }
     }
     
     func modifyIndexesFile(items: [Identifier]) {

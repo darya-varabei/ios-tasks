@@ -11,19 +11,24 @@ import UIKit
 class CategoryViewModel {
     var reloadCollectionView: (() -> Void)?
     
-    var categories: Set<String> = []
+    var categories: [String] = []
     
-    private var categoryCellViewModels = [CategoryCellViewModel]() //{
-//        didSet {
-//            reloadCollectionView?()
-//        }
-//    }
+    private var categoryCellViewModels = [CategoryCellViewModel]() {
+        didSet {
+            reloadCollectionView?()
+        }
+    }
     
-    func getCategories(books: [Book], selectedCategory: String?) {
-        let bufferBookCategories = books.map { $0.categories }
-        
-        categories = Set(bufferBookCategories.flatMap { $0 }.filter({ $0.count != 0 }))
-       
+    func getCategories(books: [Book], selectedCategory: String) {
+ 
+        for i in books {
+            for j in i.categories {
+                if !categories.contains(j) {
+                    categories.append(j)
+                }
+            }
+        }
+    
         for item in categories {
             if item != selectedCategory {
             categoryCellViewModels.append(createCellModel(category: Category(name: item, isSelected: false)))
@@ -35,6 +40,8 @@ class CategoryViewModel {
     }
     
     func createCellModel(category: Category) -> CategoryCellViewModel {
+//        print(category.name)
+//        print(category.isSelected)
         return CategoryCellViewModel(category: category)
     }
     

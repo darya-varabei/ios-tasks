@@ -13,8 +13,8 @@ class BooksViewController: UIViewController {
     @IBOutlet private var booksCollectionView: UICollectionView!
     
     private var bufferBookCategories = [[String]]()
-    private var bookCategories: Set<String> = []
-    private var selectedCategory: String? = nil
+    private var bookCategories: Array<String> = []
+    private var selectedCategory: String? = "o"
     lazy var viewModel = {
         BookViewModel()
     }()
@@ -61,9 +61,12 @@ class BooksViewController: UIViewController {
     private func initViewModel() {
         viewModel.getBooks()
         viewModel.reloadCollectionView = { [weak self] in
+            //if let category = selectedCategory {} else { category = ""}
             DispatchQueue.main.async {
+                guard let category = self?.selectedCategory else { return }
                 self?.booksCollectionView.reloadData()
-                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: self?.selectedCategory)
+                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: category)
+                print("\n\n\n\n\n\n\n\n")
                 self?.categoriesCollectionView.reloadData()
             }
         }
@@ -74,6 +77,8 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
+            print("###############")
+            print(viewModel.booksToCollection.count)
             return viewModel.booksToCollection.count
         }
         else {
@@ -116,13 +121,19 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
         else {
             var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
-            if selectedCategory == cellVM.name {
-            viewModel.filterBooks(on: cellVM.name, isSelected: Observable(true))
+            if cellVM.isSelected.value {
+                selectedCategory = "-"
+                print("**************")
+                print("1")
+                viewModel.filterBooks(on: cellVM.name, isSelected: Observable(true))
             }
             else {
                 selectedCategory = cellVM.name
+                print("**************")
+                print("2")
                 viewModel.filterBooks(on: cellVM.name, isSelected: Observable(false))
             }
+            //viewModel.filterBooks(on: cellVM.name, isSelected: cellVM.isSelected)
             cellVM.toggleIfSelected()
             
         }
