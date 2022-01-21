@@ -77,15 +77,23 @@ class BookViewModel {
         return ViewModelGetObject(book: books[index], isFeatured: isFeatured, bookViewModel: self)
     }
     
-    func filterBooks(on category: String) {
-        if !isBeingFiltered {
+    func filterBooks(on category: String, isSelected: Observable<Bool>) {
+        if !isBeingFiltered && !isSelected.value {
             booksToCollection.removeAll()
             booksToCollection = books.filter { $0.categories.contains(category) }
             createCellViewModel()
+            isBeingFiltered.toggle()
+        }
+        else if isBeingFiltered && isSelected.value {
+            booksToCollection = books
+            createCellViewModel()
+            isBeingFiltered.toggle()
         }
         else {
-            booksToCollection = books
-            fetchData(books: booksToCollection)
+            booksToCollection.removeAll()
+            booksToCollection = books.filter { $0.categories.contains(category) }
+            createCellViewModel()
+            isBeingFiltered.toggle()
         }
     }
     

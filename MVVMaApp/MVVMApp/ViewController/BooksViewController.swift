@@ -14,6 +14,7 @@ class BooksViewController: UIViewController {
     
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Set<String> = []
+    private var selectedCategory: String? = nil
     lazy var viewModel = {
         BookViewModel()
     }()
@@ -62,7 +63,7 @@ class BooksViewController: UIViewController {
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.booksCollectionView.reloadData()
-                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [])
+                //self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: self?.selectedCategory)
                 self?.categoriesCollectionView.reloadData()
             }
         }
@@ -114,8 +115,16 @@ extension BooksViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
         }
         else {
-            let cellVM = categoryViewModel.getCellViewModel(at: indexPath)
-            viewModel.filterBooks(on: cellVM.name)
+            var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
+            if selectedCategory == cellVM.name {
+            viewModel.filterBooks(on: cellVM.name, isSelected: Observable(true))
+            }
+            else {
+                selectedCategory = cellVM.name
+                viewModel.filterBooks(on: cellVM.name, isSelected: Observable(false))
+            }
+            cellVM.toggleIfSelected()
+            
         }
     }
 }
