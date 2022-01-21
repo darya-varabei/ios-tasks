@@ -29,15 +29,4 @@ struct CategoryCellViewModel {
     mutating func toggleIfSelected() {
         category.isSelected.toggle()
     }
-    
-//    mutating func cellTap() {
-//        if Observable(isSelected) {
-//            category.isSelected = false
-//            color = Observable(UIColor.init(white: 1, alpha: 0.1))
-//        }
-//        else {
-//            category.isSelected = true
-//            color = Observable(UIColor.init(white: 1, alpha: 0.5))
-//        }
-//    }
 }

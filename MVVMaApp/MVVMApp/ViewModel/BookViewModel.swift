@@ -15,6 +15,8 @@ class BookViewModel {
     var booksToCollection = [Book]()
     var featuredIsbn = [Identifier]()
     
+    var isBeingFiltered = false
+    
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
             reloadCollectionView?()
@@ -38,6 +40,10 @@ class BookViewModel {
     func fetchData(books: [Book]) {
         self.books = books
         self.booksToCollection = books
+        createCellViewModel()
+    }
+    
+    func createCellViewModel() {
         var vms = [BookCellViewModel]()
         for book in booksToCollection {
             vms.append(createCellModel(book: book))
@@ -72,14 +78,10 @@ class BookViewModel {
     }
     
     func filterBooks(on category: String) {
-        if books.count == booksToCollection.count {
+        if !isBeingFiltered {
             booksToCollection.removeAll()
-            for book in books {
-                if book.categories.contains(category) {
-                    booksToCollection.append(book)
-                }
-            }
-            fetchData(books: booksToCollection)
+            booksToCollection = books.filter { $0.categories.contains(category) }
+            createCellViewModel()
         }
         else {
             booksToCollection = books

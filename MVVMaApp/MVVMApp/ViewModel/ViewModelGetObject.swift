@@ -60,7 +60,6 @@ struct ViewModelGetObject {
             }
            
             bookViewModel.modifyIndexesFile(items: array)
-            
             break
             
         default:
