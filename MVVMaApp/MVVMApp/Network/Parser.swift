@@ -77,63 +77,6 @@ struct Parser {
     
     static func writeToJsonFile(named filename: String,
                                 queue: DispatchQueue? = DispatchQueue.global(qos: .background), items: [Identifier]) {
-//        do {
-//            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: false)
-//            let userDefaults = UserDefaults.standard
-//            userDefaults.set(encodedData, forKey: "featured")
-//        }
-//        catch {
-//
-//        }
-        //UserDefaults.standard.setValue(items, forKey: "featured")
-//        let str = "arrayOfCountries.map { $0.city  + String($0.isMarked)}.joined(separator:)"
-//                print("rRRRRRRRRRRRRRRRRRRRRRRRR")
-//                do {
-//                    if let path = Bundle.main.url(forResource: "cities", withExtension: "txt") {
-//                        try str.write(toFile: String(contentsOf: path), atomically: true, encoding: .utf8)
-//                    }
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-        
-//        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-//            let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
-//
-//            let personArray =  [["person": ["name": "Dani", "age": "24"]], ["person": ["name": "ray", "age": "70"]]]
-//
-//            // Transform array into data and save it into file
-//            do {
-//                let data = try JSONSerialization.data(withJSONObject: personArray, options: [])
-//                try data.write(to: fileUrl, options: [])
-//            } catch {
-//                print(error)
-//            }
-        
-//        guard let url = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else {
-//            if let dispatchQueue = queue {
-//                dispatchQueue.async {
-//                    print(ParserError.fileNotFound)
-//                   // completionHandler(nil, .fileNotFound)
-//                }
-//            } else {
-//                print(ParserError.fileNotFound)
-//               // completionHandler(nil, .fileNotFound)
-//            }
-//
-//            return
-//        }
-//        let pathDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        try? FileManager().createDirectory(at: pathDirectory, withIntermediateDirectories: true)
-//        let filePath = pathDirectory.appendingPathComponent("FeaturedBooks.json")
-//
-//        let levels = ["unlocked", "locked", "locked"]
-//        let json = try? JSONEncoder().encode(levels)
-//
-//        do {
-//             try json!.write(to: filePath)
-//        } catch {
-//            print("Failed to write JSON data: \(error.localizedDescription)")
-//        }
         do {
             guard let fileURL = Bundle.main.url(forResource: filename, withExtension: ParsingParameters.fileExtension) else { return }
 

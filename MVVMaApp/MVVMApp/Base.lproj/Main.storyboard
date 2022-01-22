@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m4k-cj-zue">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m4k-cj-zue">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -300,22 +300,6 @@
             </objects>
             <point key="canvasLocation" x="3416" y="473"/>
         </scene>
-        <!--Statistics-->
-        <scene sceneID="PFV-JQ-0Up">
-            <objects>
-                <viewController id="tVr-7Q-Oat" customClass="StatisticsViewController" customModule="MVVMApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MHl-Gx-uD7">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="99X-Ec-g8c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" selectedImage="wand.and.stars" catalog="system" id="E3V-sE-cXV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tKw-ak-Vby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4313.04347826087" y="97.767857142857139"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xTo-Fl-xeQ">
             <objects>
@@ -329,7 +313,6 @@
                     <connections>
                         <segue destination="qI3-Di-EgC" kind="relationship" relationship="viewControllers" id="4oY-Eq-zbi"/>
                         <segue destination="Acg-Iw-7qn" kind="relationship" relationship="viewControllers" id="hv9-QZ-P0z"/>
-                        <segue destination="tVr-7Q-Oat" kind="relationship" relationship="viewControllers" id="UB9-R5-btm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FC-uE-X80" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -379,7 +362,6 @@
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="wand.and.stars" catalog="system" width="128" height="113"/>
         <namedColor name="darkGradientTop">
             <color red="0.12200000137090683" green="0.16500000655651093" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
