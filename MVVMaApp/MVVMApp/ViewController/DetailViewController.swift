@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, BooksBaseCoordinated {
+    
+    var coordinator: BooksBaseCoordinator?
+    
+   // var coordinator: FeaturedBaseCoordinator?
+    
     
     @IBOutlet private var bookImage: UIImageView!
     @IBOutlet private var addToBookmarkButton: UIButton!
@@ -29,7 +34,25 @@ class DetailViewController: UIViewController {
         static let backButtonTitle = "Back"
     }
     
+//    var coordinator: Coordinator?
     var viewModelObject: ViewModelGetObject?
+    
+    
+    init(coordinator: BooksBaseCoordinator) {
+        super.init(nibName: nil, bundle: nil)
+        self.coordinator = coordinator
+        title = "Details"
+    }
+    
+//    init(coordinator: FeaturedBaseCoordinator) {
+//        super.init(nibName: nil, bundle: nil)
+//        self.coordinator = coordinator
+//        title = "Details"
+//    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var cellViewModel: BookCellViewModel? {
         didSet {

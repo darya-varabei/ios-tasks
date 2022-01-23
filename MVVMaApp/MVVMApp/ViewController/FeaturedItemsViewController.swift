@@ -8,10 +8,22 @@
 import Foundation
 import UIKit
 
-class FeaturedItemsViewController: UIViewController {
+class FeaturedItemsViewController: UIViewController, FeaturedBaseCoordinated {
     
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
+    
+    var coordinator: FeaturedBaseCoordinator?
+    
+    init(coordinator: FeaturedBaseCoordinator) {
+        super.init(nibName: nil, bundle: nil)
+        self.coordinator = coordinator
+        title = "Favourite"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var viewModel = {
         FeaturedBookViewModel()
