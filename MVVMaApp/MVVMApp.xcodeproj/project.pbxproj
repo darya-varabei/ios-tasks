@@ -168,13 +168,29 @@
 			path = BookDetail;
 			sourceTree = "<group>";
 		};
-		D5233C702791F02A007196A6 /* View */ = {
+		D50F0E42279E06E7006F55D6 /* Book Cell */ = {
 			isa = PBXGroup;
 			children = (
 				D5233C6B2791F01F007196A6 /* BookCollectionViewCell.swift */,
 				D5233C6C2791F01F007196A6 /* BookCollectionViewCell.xib */,
+			);
+			path = "Book Cell";
+			sourceTree = "<group>";
+		};
+		D50F0E43279E06F6006F55D6 /* Category Cell */ = {
+			isa = PBXGroup;
+			children = (
 				D5233C76279234F1007196A6 /* CategoryCollectionViewCell.swift */,
 				D5233C77279234F1007196A6 /* CategoryCollectionViewCell.xib */,
+			);
+			path = "Category Cell";
+			sourceTree = "<group>";
+		};
+		D5233C702791F02A007196A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D50F0E42279E06E7006F55D6 /* Book Cell */,
+				D50F0E43279E06F6006F55D6 /* Category Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,10 +234,10 @@
 		D5DB55A9279048C400B5968D /* MVVMApp */ = {
 			isa = PBXGroup;
 			children = (
-				D50F0DDB279C695F006F55D6 /* Coordinator */,
-				D538823827937140007C03E0 /* Resources */,
 				D5DB55AA279048C400B5968D /* AppDelegate.swift */,
 				D5DB55AC279048C400B5968D /* SceneDelegate.swift */,
+				D50F0DDB279C695F006F55D6 /* Coordinator */,
+				D538823827937140007C03E0 /* Resources */,
 				D538822C27936EFF007C03E0 /* Network */,
 				D5233C702791F02A007196A6 /* View */,
 				D5DB55C427904CAC00B5968D /* ViewModel */,
