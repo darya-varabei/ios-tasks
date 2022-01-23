@@ -11,11 +11,11 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
 
     @IBOutlet private var categoryCollection: UICollectionView!
     @IBOutlet private var booksCollection: UICollectionView!
-    var coordinator: BooksBaseCoordinator?
     
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = "o"
+    var coordinator: BooksBaseCoordinator?
     lazy var viewModel = {
         BookViewModel()
     }()

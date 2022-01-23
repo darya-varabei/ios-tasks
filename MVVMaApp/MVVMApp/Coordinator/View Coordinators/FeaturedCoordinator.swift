@@ -22,13 +22,13 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
     func moveTo(flow: AppFlow, userData: [String : Any]? = nil) {
         switch flow {
         case .featured(let screen):
-            handleOrdersFlow(for: screen, userData: userData)
+            handleFeaturedFlow(for: screen, userData: userData)
         default:
             parentCoordinator?.moveTo(flow: flow, userData: userData)
         }
     }
     
-    private func handleOrdersFlow(for screen: FeaturedBooks, userData: [String : Any]? = nil) {
+    private func handleFeaturedFlow(for screen: FeaturedBooks, userData: [String : Any]? = nil) {
         switch screen {
         case .firstScreen:
             resetToRoot(animated: false)

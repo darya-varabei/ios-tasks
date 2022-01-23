@@ -37,12 +37,6 @@ class BookDetailViewController: UIViewController {
         title = "Details"
     }
     
-//    init(coordinator: FeaturedBaseCoordinator) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.coordinator = coordinator
-//        title = "Details"
-//    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

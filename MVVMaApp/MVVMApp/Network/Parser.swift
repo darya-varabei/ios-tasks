@@ -44,7 +44,6 @@ struct Parser {
                 } else {
                     completionHandler(nil, .invalidRequest)
                 }
-                
                 return
             }
             

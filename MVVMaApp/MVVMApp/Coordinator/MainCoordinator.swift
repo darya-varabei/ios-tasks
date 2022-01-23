@@ -24,24 +24,30 @@ enum FeaturedBooks {
 }
 
 class MainCoordinator: BaseCoordinator {
+    
+    private enum ToolbarItems {
+        static let booksTitle = "Books"
+        static let bookSymbol = "book"
+        static let favouriteTitle = "Favourite"
+        static let starSymbol = "star"
+    }
 
     var parentCoordinator: BaseCoordinator?
-    
     lazy var booksCoordinator: BooksBaseCoordinator = BooksCoordinator()
     lazy var featuredCoordinator: FeaturedBaseCoordinator = FeaturedCoordinator()
     lazy var rootViewController: UIViewController  = UITabBarController()
     
     func start() -> UIViewController {
         
-        let homeViewController = booksCoordinator.start()
+        let booksViewController = booksCoordinator.start()
         booksCoordinator.parentCoordinator = self
-        homeViewController.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book"), tag: 0)
+        booksViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
         
-        let ordersViewController = featuredCoordinator.start()
+        let featuredViewController = featuredCoordinator.start()
         featuredCoordinator.parentCoordinator = self
-        ordersViewController.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(systemName: "star"), tag: 1)
+        featuredViewController.tabBarItem = UITabBarItem(title: ToolbarItems.favouriteTitle, image: UIImage(systemName: ToolbarItems.starSymbol), tag: 1)
         
-        (rootViewController as? UITabBarController)?.viewControllers = [homeViewController,ordersViewController]
+        (rootViewController as? UITabBarController)?.viewControllers = [booksViewController, featuredViewController]
                 
         return rootViewController
     }
@@ -58,13 +64,11 @@ class MainCoordinator: BaseCoordinator {
     private func goToFeaturedFlow(_ flow: AppFlow) {
         featuredCoordinator.moveTo(flow: flow, userData: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 1
-        
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
         booksCoordinator.moveTo(flow: flow, userData: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 0
-        
     }
 
     func resetToRoot() -> Self {
@@ -72,5 +76,4 @@ class MainCoordinator: BaseCoordinator {
         moveTo(flow: .books(.initialScreen), userData: nil)
         return self
     }
-    
 }

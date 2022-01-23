@@ -22,23 +22,23 @@ class BooksCoordinator: BooksBaseCoordinator {
     func moveTo(flow: AppFlow, userData: [String : Any]? = nil) {
         switch flow {
         case .books(let screen):
-            handleHomeFlow(for: screen, userData: userData)
+            handleBooksFlow(for: screen, userData: userData)
         default:
             parentCoordinator?.moveTo(flow: flow, userData: userData)
         }
     }
     
-    private func handleHomeFlow(for screen: Books, userData: [String: Any]?) {
+    private func handleBooksFlow(for screen: Books, userData: [String: Any]?) {
         switch screen {
         case .initialScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
         case .doubleButtonScreen:
             guard let title = userData?["title"] as? String else { return }
-            goToHome2ScreenWith(title: title)
+            goToDetailScreenWith(title: title)
         }
     }
     
-    func goToHome2ScreenWith(title: String) {
+    func goToDetailScreenWith(title: String) {
         let home2ViewController = BookDetailViewController(coordinator: self)
         home2ViewController.title = title
         navigationRootViewController?.pushViewController(home2ViewController, animated: true)

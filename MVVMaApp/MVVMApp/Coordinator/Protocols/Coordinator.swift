@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-//protocol Coordinator {
-//  func start()
-//}
-
 protocol FlowCoordinator: AnyObject {
     var parentCoordinator: BaseCoordinator? { get set }
 }
