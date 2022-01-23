@@ -29,8 +29,6 @@ class MainCoordinator: BaseCoordinator {
     
     lazy var booksCoordinator: BooksBaseCoordinator = BooksCoordinator()
     lazy var featuredCoordinator: FeaturedBaseCoordinator = FeaturedCoordinator()
-   // lazy var deepLinkCoordinator: DeepLinkBaseCoordinator = DeepLinkCoordinator(mainBaseCoordinator: self)
-    
     lazy var rootViewController: UIViewController  = UITabBarController()
     
     func start() -> UIViewController {
@@ -68,11 +66,7 @@ class MainCoordinator: BaseCoordinator {
         (rootViewController as? UITabBarController)?.selectedIndex = 0
         
     }
-//
-//    func handleDeepLink(text: String) {
-//        deepLinkCoordinator.handleDeeplink(deepLink: text)
-//    }
-    
+
     func resetToRoot() -> Self {
         booksCoordinator.resetToRoot(animated: false)
         moveTo(flow: .books(.initialScreen), userData: nil)

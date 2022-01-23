@@ -39,28 +39,10 @@ class BooksCoordinator: BooksBaseCoordinator {
     }
     
     func goToHome2ScreenWith(title: String) {
-        let home2ViewController = DetailViewController(coordinator: self)
+        let home2ViewController = BookDetailViewController(coordinator: self)
         home2ViewController.title = title
         navigationRootViewController?.pushViewController(home2ViewController, animated: true)
     }
-//
-//    func goToFavoritesFlow() {
-//        parentCoordinator?.moveTo(flow: .orders(.firstScreen))
-//    }
-//
-//    func goToDeepViewInFavoriteTab() {
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-//                self?.parentCoordinator?.ordersCoordinator
-//                    .resetToRoot(animated: false)
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) { [weak self] in
-//                self?.parentCoordinator?.ordersCoordinator
-//                    .goToOrder2Screen(animated: false)
-//                    .goToOrder3Screen(animated: false)
-//                self?.parentCoordinator?.moveTo(flow: .orders)
-//            }
-//    }
     
     func resetToRoot() -> Self {
         navigationRootViewController?.popToRootViewController(animated: false)

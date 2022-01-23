@@ -86,7 +86,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? DetailViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? BookDetailViewController {
             _ = viewController.view
             let cellVM = viewModel.getCellViewModel(at: indexPath)
             viewController.cellViewModel = cellVM

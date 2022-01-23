@@ -1,19 +1,13 @@
 //
-//  DetailViewController.swift
+//  BookDetailViewController.swift
 //  MVVMApp
 //
-//  Created by Дарья Воробей on 1/15/22.
+//  Created by Дарья Воробей on 1/24/22.
 //
 
-import Foundation
 import UIKit
 
-class DetailViewController: UIViewController, BooksBaseCoordinated {
-    
-    var coordinator: BooksBaseCoordinator?
-    
-   // var coordinator: FeaturedBaseCoordinator?
-    
+class BookDetailViewController: UIViewController {
     
     @IBOutlet private var bookImage: UIImageView!
     @IBOutlet private var addToBookmarkButton: UIButton!
@@ -33,12 +27,11 @@ class DetailViewController: UIViewController, BooksBaseCoordinated {
         static let unfeaturedBookmark = "bookmark"
         static let backButtonTitle = "Back"
     }
-    
-//    var coordinator: Coordinator?
+
     var viewModelObject: ViewModelGetObject?
+    var coordinator: Coordinator?
     
-    
-    init(coordinator: BooksBaseCoordinator) {
+    init(coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
         title = "Details"

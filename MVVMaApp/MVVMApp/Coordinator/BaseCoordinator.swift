@@ -10,8 +10,6 @@ import Foundation
 protocol BaseCoordinator: Coordinator {
     var booksCoordinator: BooksBaseCoordinator { get }
     var featuredCoordinator: FeaturedBaseCoordinator { get }
-    //var deepLinkCoordinator: DeepLinkBaseCoordinator { get }
-    //func handleDeepLink(text: String)
 }
 
 protocol BooksBaseCoordinated {

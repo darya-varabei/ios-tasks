@@ -34,24 +34,8 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
             resetToRoot(animated: false)
         case .secondScreen:
             break
-           // handleGoToSecondScreen()
-//        case .thirdScreen:
-//            handleGoToThirdScreen()
         }
     }
-    
-//    private func handleGoToSecondScreen() {
-//        resetToRoot(animated: false)
-//        navigationRootViewController?.pushViewController(DetailViewController(coordinator: self), animated: false)
-//
-//    }
-//
-//    private func handleGoToThirdScreen() {
-//        resetToRoot(animated: false)
-//        navigationRootViewController?.pushViewController(Orders2ViewController(coordinator: self), animated: false)
-//        navigationRootViewController?.pushViewController(Orders3ViewController(coordinator: self), animated: false)
-
- //   }
    
     @discardableResult
     func resetToRoot(animated: Bool) -> Self {
