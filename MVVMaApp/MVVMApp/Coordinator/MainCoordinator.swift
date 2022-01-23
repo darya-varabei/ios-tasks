@@ -52,7 +52,7 @@ class MainCoordinator: BaseCoordinator {
         return rootViewController
     }
         
-    func moveTo(flow: AppFlow, userData: [String : Any]?) {
+    func moveTo(flow: AppFlow, userData: BookCellViewModel?) {
         switch flow {
         case .books:
             goToBooksFlow(flow)

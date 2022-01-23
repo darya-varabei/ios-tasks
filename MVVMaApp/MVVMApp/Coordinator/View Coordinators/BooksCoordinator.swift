@@ -19,7 +19,7 @@ class BooksCoordinator: BooksBaseCoordinator {
         return rootViewController
     }
     
-    func moveTo(flow: AppFlow, userData: [String : Any]? = nil) {
+    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil) {
         switch flow {
         case .books(let screen):
             handleBooksFlow(for: screen, userData: userData)
@@ -28,20 +28,19 @@ class BooksCoordinator: BooksBaseCoordinator {
         }
     }
     
-    private func handleBooksFlow(for screen: Books, userData: [String: Any]?) {
+    private func handleBooksFlow(for screen: Books, userData: BookCellViewModel?) {
         switch screen {
         case .initialScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
         case .doubleButtonScreen:
-            guard let title = userData?["title"] as? String else { return }
-            goToDetailScreenWith(title: title)
+            guard let data = userData  else { return }
+            goToDetailScreenWith(cellViewModel: data)
         }
     }
     
-    func goToDetailScreenWith(title: String) {
-        let home2ViewController = BookDetailViewController(coordinator: self)
-        home2ViewController.title = title
-        navigationRootViewController?.pushViewController(home2ViewController, animated: true)
+    func goToDetailScreenWith(cellViewModel: BookCellViewModel) {
+        let detailViewController = BookDetailViewController(coordinator: self, cellViewModel: cellViewModel)
+        navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
     
     func resetToRoot() -> Self {

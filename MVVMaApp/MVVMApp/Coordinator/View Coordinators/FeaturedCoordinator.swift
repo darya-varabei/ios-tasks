@@ -19,7 +19,7 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
         return rootViewController
     }
     
-    func moveTo(flow: AppFlow, userData: [String : Any]? = nil) {
+    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil) {
         switch flow {
         case .featured(let screen):
             handleFeaturedFlow(for: screen, userData: userData)
@@ -28,7 +28,7 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
         }
     }
     
-    private func handleFeaturedFlow(for screen: FeaturedBooks, userData: [String : Any]? = nil) {
+    private func handleFeaturedFlow(for screen: FeaturedBooks, userData: BookCellViewModel? = nil) {
         switch screen {
         case .firstScreen:
             resetToRoot(animated: false)

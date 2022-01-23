@@ -31,10 +31,11 @@ class BookDetailViewController: UIViewController {
     var viewModelObject: ViewModelGetObject?
     var coordinator: Coordinator?
     
-    init(coordinator: Coordinator) {
+    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
         title = "Details"
+        self.cellViewModel = cellViewModel
     }
     
     required init?(coder: NSCoder) {

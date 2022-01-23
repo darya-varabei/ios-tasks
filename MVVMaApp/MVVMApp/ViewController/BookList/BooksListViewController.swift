@@ -130,7 +130,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
                 let cellVM = viewModel.getCellViewModel(at: indexPath)
                 viewController.cellViewModel = cellVM
                 viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
-                navigationController?.pushViewController(viewController, animated: true)
+//                navigationController?.pushViewController(viewController, animated: true)
             }
         }
         else {
