@@ -11,8 +11,8 @@ import UIKit
 struct BookCellViewModel {
     
     private let book: Book
-    let noOverviewAvailable = "No overview available"
-    let noDateAvailable = "12.12.2001"
+    private let noOverviewAvailable = "No overview available"
+    private let noDateAvailable = "12.12.2001"
     
     init(book: Book) {
         self.book = book

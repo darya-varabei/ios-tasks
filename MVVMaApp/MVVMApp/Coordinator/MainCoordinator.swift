@@ -14,13 +14,13 @@ enum AppFlow {
 }
 
 enum Books {
-    case initialScreen
-    case doubleButtonScreen
+    case allBooksScreen
+    case detailsScreen
 }
 
 enum FeaturedBooks {
-    case firstScreen
-    case secondScreen
+    case featuredScreen
+    case detailScreen
 }
 
 class MainCoordinator: BaseCoordinator {
@@ -73,7 +73,7 @@ class MainCoordinator: BaseCoordinator {
 
     func resetToRoot() -> Self {
         booksCoordinator.resetToRoot(animated: false)
-        moveTo(flow: .books(.initialScreen), userData: nil)
+        moveTo(flow: .books(.allBooksScreen), userData: nil)
         return self
     }
 }

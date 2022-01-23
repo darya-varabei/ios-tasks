@@ -14,7 +14,6 @@ class BookDetailViewController: UIViewController {
     @IBOutlet private var numOfPagesLabel: UILabel!
     @IBOutlet private var dateReleasedLabel: UILabel!
     @IBOutlet private var overviewTextView: UITextView!
-    @IBOutlet private var imageBlurView: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var authorsLabel: UILabel!
     
@@ -28,21 +27,20 @@ class BookDetailViewController: UIViewController {
         static let backButtonTitle = "Back"
     }
 
-    var viewModelObject: ViewModelGetObject?
-    var coordinator: Coordinator?
+    private var viewModelObject: ViewModelGetObject?
+    private var coordinator: Coordinator?
     
     init(coordinator: Coordinator, cellViewModel: BookCellViewModel?) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
-        title = "Details"
         self.cellViewModel = cellViewModel
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Literals.errorInitMessage)
     }
     
-    var cellViewModel: BookCellViewModel? {
+    private var cellViewModel: BookCellViewModel? {
         didSet {
             guard let countPages = cellViewModel?.numOfPages else { return }
             numOfPagesLabel.text = "\(countPages)"

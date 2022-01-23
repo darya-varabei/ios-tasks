@@ -8,14 +8,13 @@
 import Foundation
 
 class BookViewModel {
-    var bookService: BookServiceProtocol
-    var reloadCollectionView: (() -> Void)?
+    private var bookService: BookServiceProtocol
+    private var isBeingFiltered = false
     
+    var reloadCollectionView: (() -> Void)?
     var books = [Book]()
     var booksToCollection = [Book]()
     var featuredIsbn = [Identifier]()
-    
-    var isBeingFiltered = false
     
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {

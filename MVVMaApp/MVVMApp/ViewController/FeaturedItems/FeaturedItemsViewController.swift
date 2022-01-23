@@ -11,21 +11,20 @@ class FeaturedItemsViewController: UIViewController {
     
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
-    var coordinator: FeaturedBaseCoordinator?
+    private var coordinator: FeaturedBaseCoordinator?
+    
+    private lazy var viewModel = {
+        FeaturedBookViewModel()
+    }()
 
     init(coordinator: FeaturedBaseCoordinator) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
-        title = "Favourite"
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Literals.errorInitMessage)
     }
-
-    lazy var viewModel = {
-        FeaturedBookViewModel()
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +88,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
         if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? BookDetailViewController {
             _ = viewController.view
             let cellVM = viewModel.getCellViewModel(at: indexPath)
-            viewController.cellViewModel = cellVM
+            //viewController.cellViewModel = cellVM
             viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
             navigationController?.pushViewController(viewController, animated: true)
         }

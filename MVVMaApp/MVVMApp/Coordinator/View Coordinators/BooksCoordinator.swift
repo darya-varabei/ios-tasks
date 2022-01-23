@@ -30,9 +30,9 @@ class BooksCoordinator: BooksBaseCoordinator {
     
     private func handleBooksFlow(for screen: Books, userData: BookCellViewModel?) {
         switch screen {
-        case .initialScreen:
+        case .allBooksScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
-        case .doubleButtonScreen:
+        case .detailsScreen:
             guard let data = userData  else { return }
             goToDetailScreenWith(cellViewModel: data)
         }

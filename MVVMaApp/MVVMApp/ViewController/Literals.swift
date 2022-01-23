@@ -15,4 +15,5 @@ public enum Literals {
     static let bookCollectionIdentifier = "BooksCollectionView"
     static let fatalErrorMessage = "xib does not exists"
     static let detailViewController = "DetailViewController"
+    static let errorInitMessage = "init(coder:) has not been implemented"
 }

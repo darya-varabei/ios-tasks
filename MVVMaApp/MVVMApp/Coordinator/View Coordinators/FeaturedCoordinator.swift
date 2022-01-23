@@ -11,7 +11,6 @@ import UIKit
 class FeaturedCoordinator: FeaturedBaseCoordinator {
     
     var parentCoordinator: BaseCoordinator?
-    
     var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
@@ -30,9 +29,9 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
     
     private func handleFeaturedFlow(for screen: FeaturedBooks, userData: BookCellViewModel? = nil) {
         switch screen {
-        case .firstScreen:
+        case .featuredScreen:
             resetToRoot(animated: false)
-        case .secondScreen:
+        case .detailScreen:
             break
         }
     }

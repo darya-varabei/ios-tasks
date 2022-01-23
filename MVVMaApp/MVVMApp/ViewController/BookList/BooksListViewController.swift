@@ -15,20 +15,19 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = "o"
-    var coordinator: BooksBaseCoordinator?
-    lazy var viewModel = {
+    private lazy var viewModel = {
         BookViewModel()
     }()
     
-    lazy var categoryViewModel = {
+    private lazy var categoryViewModel = {
         CategoryViewModel()
     }()
-
     
+    var coordinator: BooksBaseCoordinator?
+
     init(coordinator: BooksBaseCoordinator) {
         super.init(nibName: "BooksListViewController", bundle: nil)
         self.coordinator = coordinator
-        title = "Books"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -128,7 +127,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
             if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? BookDetailViewController {
                 _ = viewController.view
                 let cellVM = viewModel.getCellViewModel(at: indexPath)
-                viewController.cellViewModel = cellVM
+              //  viewController.cellViewModel = cellVM
                 viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
 //                navigationController?.pushViewController(viewController, animated: true)
             }

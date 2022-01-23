@@ -40,8 +40,6 @@ class CategoryViewModel {
     }
     
     func createCellModel(category: Category) -> CategoryCellViewModel {
-//        print(category.name)
-//        print(category.isSelected)
         return CategoryCellViewModel(category: category)
     }
     
