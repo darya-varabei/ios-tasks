@@ -57,7 +57,7 @@ class BookDetailViewController: UIViewController {
         getInfoFromModel()
     }
     
-    func configure(viewModelGetObject: ViewModelGetObject?) {
+    private func configure(viewModelGetObject: ViewModelGetObject?) {
         viewModelObject = viewModelGetObject
         guard let thumbnail = cellViewModel?.thumbnail else { return }
         viewModelGetObject?.loadImage(url: thumbnail) { (image) in
@@ -87,7 +87,7 @@ class BookDetailViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
-    @objc func backButtonTap() {
+    @objc private func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
         coordinator?.moveTo(flow: flow!, userData: nil, viewModelObject: nil)
     }

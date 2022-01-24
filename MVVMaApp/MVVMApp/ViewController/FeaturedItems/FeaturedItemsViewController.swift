@@ -72,10 +72,6 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
         return viewModel.books.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CellSizeProperties.width, height: CellSizeProperties.height)
-    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
         let cellVM = viewModel.getCellViewModel(at: indexPath)

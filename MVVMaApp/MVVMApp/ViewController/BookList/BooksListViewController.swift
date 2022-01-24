@@ -11,15 +11,15 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
 
     @IBOutlet private var categoryCollection: UICollectionView!
     @IBOutlet private var booksCollection: UICollectionView!
-    
+
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
-    private var selectedCategory: String? = "o"
-    private lazy var viewModel = {
+    private var selectedCategory: String? = ""
+    private var viewModel = {
         BookViewModel()
     }()
     
-    private lazy var categoryViewModel = {
+    private var categoryViewModel = {
         CategoryViewModel()
     }()
     
@@ -36,12 +36,12 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegates()
         initViewModel()
-        setupBackgroundColor()
+        setDelegates()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setupBackgroundColor()
         view.bringSubviewToFront(categoryCollection)
         view.bringSubviewToFront(booksCollection)
@@ -59,7 +59,6 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
     }
     
     private func setDelegates() {
-        booksCollection.translatesAutoresizingMaskIntoConstraints = true
         categoryCollection.delegate = self
         booksCollection.delegate = self
         categoryCollection.dataSource = self
@@ -94,15 +93,15 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            return CGSize(width: CellSizeProperties.width, height: CellSizeProperties.height)
-        }
-        else {
-            return CGSize(width: CellSizeProperties.width, height: 60.0)
-        }
-    }
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView.restorationIdentifier == "BookCollectionView" {
+//            return CGSize(width: 128, height: 187)
+//        }
+//        else {
+//            return CGSize(width: 128, height: 40)
+//        }
+//    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
