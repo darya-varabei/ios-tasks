@@ -18,12 +18,12 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
         return rootViewController
     }
     
-    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil) {
+    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
         switch flow {
         case .featured(let screen):
             handleFeaturedFlow(for: screen, userData: userData)
         default:
-            parentCoordinator?.moveTo(flow: flow, userData: userData)
+            parentCoordinator?.moveTo(flow: flow, userData: userData, viewModelObject: nil)
         }
     }
     

@@ -30,26 +30,18 @@ class BookDetailViewController: UIViewController {
     private var viewModelObject: ViewModelGetObject?
     private var coordinator: Coordinator?
     
-    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?) {
+    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
         self.cellViewModel = cellViewModel
+        self.viewModelObject = viewModelObject
     }
     
     required init?(coder: NSCoder) {
         fatalError(Literals.errorInitMessage)
     }
     
-    private var cellViewModel: BookCellViewModel? {
-        didSet {
-            guard let countPages = cellViewModel?.numOfPages else { return }
-            numOfPagesLabel.text = "\(countPages)"
-            overviewTextView.text = cellViewModel?.overview
-            titleLabel.text = cellViewModel?.title
-            authorsLabel.text = cellViewModel?.author
-            dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: DetailViewLiterals.dateStrinOffset)
-        }
-    }
+    private var cellViewModel: BookCellViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +49,11 @@ class BookDetailViewController: UIViewController {
         addToBookmarkButton.layer.cornerRadius = DetailViewLiterals.buttonCornerRadius
         view.backgroundColor = UIColor(named: DetailViewLiterals.darkGradientTop)
         setupBackButton()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        configure(viewModelGetObject: viewModelObject)
+        getInfoFromModel()
     }
     
     func configure(viewModelGetObject: ViewModelGetObject?) {
@@ -73,6 +70,15 @@ class BookDetailViewController: UIViewController {
             addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.featuredBookmark), for: .normal)
         }
     }
+    
+    private func getInfoFromModel() {
+        guard let countPages = cellViewModel?.numOfPages else { return }
+        numOfPagesLabel.text = "\(countPages)"
+        overviewTextView.text = cellViewModel?.overview
+        titleLabel.text = cellViewModel?.title
+        authorsLabel.text = cellViewModel?.author
+        dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: DetailViewLiterals.dateStrinOffset)
+    }
 
     private func setupBackButton() {
         self.navigationItem.hidesBackButton = true
@@ -82,7 +88,8 @@ class BookDetailViewController: UIViewController {
     
     @objc func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        self.navigationController?.popViewController(animated: true)
+        coordinator?.moveTo(flow: .books(.allBooksScreen), userData: nil, viewModelObject: nil)
+        //self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

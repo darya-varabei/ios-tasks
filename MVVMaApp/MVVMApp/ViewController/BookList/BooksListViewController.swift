@@ -124,13 +124,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? BookDetailViewController {
-                _ = viewController.view
-                let cellVM = viewModel.getCellViewModel(at: indexPath)
-              //  viewController.cellViewModel = cellVM
-                viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
-//                navigationController?.pushViewController(viewController, animated: true)
-            }
+                coordinator?.moveTo(flow: .books(.detailsScreen), userData: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
         }
         else {
             var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
