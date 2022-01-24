@@ -85,12 +85,6 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let viewController = storyboard?.instantiateViewController(identifier: Literals.detailViewController) as? BookDetailViewController {
-            _ = viewController.view
-            let cellVM = viewModel.getCellViewModel(at: indexPath)
-            //viewController.cellViewModel = cellVM
-            viewController.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+        coordinator?.moveTo(flow: .featured(.detailScreen), userData: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
     }
 }

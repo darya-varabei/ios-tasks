@@ -26,12 +26,15 @@ class BookDetailViewController: UIViewController {
         static let unfeaturedBookmark = "bookmark"
         static let backButtonTitle = "Back"
     }
-
+    
     private var viewModelObject: ViewModelGetObject?
     private var coordinator: Coordinator?
+    private var cellViewModel: BookCellViewModel?
+    private var flow: AppFlow?
     
-    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?, flow: AppFlow) {
         super.init(nibName: nil, bundle: nil)
+        self.flow = flow
         self.coordinator = coordinator
         self.cellViewModel = cellViewModel
         self.viewModelObject = viewModelObject
@@ -40,8 +43,6 @@ class BookDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError(Literals.errorInitMessage)
     }
-    
-    private var cellViewModel: BookCellViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,7 @@ class BookDetailViewController: UIViewController {
         authorsLabel.text = cellViewModel?.author
         dateReleasedLabel.text = cellViewModel?.publishedDate.date.substring(to: DetailViewLiterals.dateStrinOffset)
     }
-
+    
     private func setupBackButton() {
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: DetailViewLiterals.backButtonTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(backButtonTap))
@@ -88,8 +89,7 @@ class BookDetailViewController: UIViewController {
     
     @objc func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        coordinator?.moveTo(flow: .books(.allBooksScreen), userData: nil, viewModelObject: nil)
-        //self.navigationController?.popViewController(animated: true)
+        coordinator?.moveTo(flow: flow!, userData: nil, viewModelObject: nil)
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

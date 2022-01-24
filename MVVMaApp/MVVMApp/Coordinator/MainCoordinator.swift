@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 enum AppFlow {
-    case books(Books)
-    case featured(FeaturedBooks)
+    case books(Books?)
+    case featured(FeaturedBooks?)
 }
 
 enum Books {

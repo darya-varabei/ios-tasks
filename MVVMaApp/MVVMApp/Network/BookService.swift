@@ -35,7 +35,6 @@ class BookService: BookServiceProtocol {
     }
     
     func writeFeaturedIndexes(items: [Identifier]) {
-        print(items)
         Parser.writeToJsonFile(named: "Test", items: items)
     }
 }
