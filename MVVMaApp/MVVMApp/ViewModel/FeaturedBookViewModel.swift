@@ -15,12 +15,12 @@ class FeaturedBookViewModel: BookViewModel {
     
     override  func fetchData(books: [Book]) {
         self.books = books
-        var vms = [BookCellViewModel]()
+        var cellViewModel = [BookCellViewModel]()
         filterFeaturedBooks()
         for book in books {
-            vms.append(createCellModel(book: book))
+            cellViewModel.append(createCellModel(book: book))
         }
-        bookCellViewModels = vms
+        bookCellViewModels = cellViewModel
     }
     
     override func getViewModel(index: Int) -> ViewModelGetObject {
@@ -29,8 +29,8 @@ class FeaturedBookViewModel: BookViewModel {
     
     func filterFeaturedBooks() {
         var indexes: [String] = []
-        for i in featuredIsbn {
-            indexes.append(i.isbn)
+        for index in featuredIsbn {
+            indexes.append(index.isbn)
         }
         let bufferArray = books.filter { indexes.contains($0.isbn ?? "") }
         books = bufferArray

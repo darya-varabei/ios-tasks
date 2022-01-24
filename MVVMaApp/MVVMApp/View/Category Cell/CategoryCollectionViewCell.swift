@@ -12,7 +12,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var categoryLabel: UILabel!
     
     private enum Literals {
-        static let semiClearWhite = "semiClearWhite"
         static let cornerRadius: CGFloat = 20
         static let borderWidth: CGFloat = 2
     }
@@ -31,21 +30,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setConstantProperties()
-    }
-    
-    func bindColor() {
-        cellViewModel?.isSelected.bind { [weak self] isSelected in
-            if isSelected {
-                self?.color = UIColor(named: Literals.semiClearWhite)
-            }
-            else {
-                self?.color = UIColor.clear
-            }
-        }
-    }
-    
-    func setSelectedPropertyAppearance() {
-        layer.backgroundColor = UIColor(named: Literals.semiClearWhite)?.cgColor
     }
     
     func setConstantProperties() {

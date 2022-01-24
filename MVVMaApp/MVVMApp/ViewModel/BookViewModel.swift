@@ -42,15 +42,15 @@ class BookViewModel {
         createCellViewModel()
     }
     
-    func createCellViewModel() {
-        var vms = [BookCellViewModel]()
+    private func createCellViewModel() {
+        var cellViewModels = [BookCellViewModel]()
         for book in booksToCollection {
-            vms.append(createCellModel(book: book))
+            cellViewModels.append(createCellModel(book: book))
         }
-        bookCellViewModels = vms
+        bookCellViewModels = cellViewModels
     }
     
-    func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
+    private func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
         self.featuredIsbn = featuredIsbn
     }
     
@@ -66,8 +66,8 @@ class BookViewModel {
     func getViewModel(index: Int) -> ViewModelGetObject {
         var indexes: [String] = []
         var isFeatured = false
-        for i in featuredIsbn {
-            indexes.append(i.isbn)
+        for index in featuredIsbn {
+            indexes.append(index.isbn)
         }
         
         if indexes.contains(books[index].isbn ?? "") {
@@ -77,24 +77,19 @@ class BookViewModel {
     }
     
     func filterBooks(on category: String, isSelected: Observable<Bool>) {
-        if !isSelected.value {
-            booksToCollection.removeAll()
+        
+        booksToCollection.removeAll()
+        if !isSelected.value && !isBeingFiltered {
             booksToCollection = books.filter { $0.categories.contains(category) }
-            createCellViewModel()
-            isBeingFiltered.toggle()
         }
-        else if isSelected.value {
-            booksToCollection.removeAll()
+        else if isSelected.value && isBeingFiltered {
             booksToCollection = books
-            createCellViewModel()
-            isBeingFiltered.toggle()
         }
-//        else {
-//            booksToCollection.removeAll()
-//            booksToCollection = books.filter { $0.categories.contains(category) }
-//            createCellViewModel()
-//            isBeingFiltered.toggle()
-//        }
+        else {
+            booksToCollection = books.filter { $0.categories.contains(category) }
+        }
+        createCellViewModel()
+        isBeingFiltered.toggle()
     }
     
     func modifyIndexesFile(items: [Identifier]) {

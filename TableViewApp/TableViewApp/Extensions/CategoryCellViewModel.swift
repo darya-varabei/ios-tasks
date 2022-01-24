@@ -20,8 +20,6 @@ struct CategoryCellViewModel {
         return category.name
     }
     
-    var color: Observable<UIColor>?
-    
     var isSelected: Observable<Bool> {
         return Observable(category.isSelected)
     }

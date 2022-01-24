@@ -66,7 +66,7 @@ class BookDetailViewController: UIViewController {
             }
         }
         
-        guard let isFeatured = viewModelGetObject?.setIfFeatured() else { return  }
+        guard let isFeatured = viewModelGetObject?.setIfFeatured() else { return }
         if isFeatured {
             addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.featuredBookmark), for: .normal)
         }
@@ -89,11 +89,12 @@ class BookDetailViewController: UIViewController {
     
     @objc private func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        coordinator?.moveTo(flow: flow!, cellViewModel: nil, viewModelObject: nil)
+        guard let flowUnit = flow else { return }
+        coordinator?.moveTo(flow: flowUnit, cellViewModel: nil, viewModelObject: nil)
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {
-        guard let isFeatured = viewModelObject?.setIfFeatured() else { return  }
+        guard let isFeatured = viewModelObject?.setIfFeatured() else { return }
         if isFeatured {
             addToBookmarkButton.setImage(UIImage(systemName: DetailViewLiterals.unfeaturedBookmark), for: .normal)
         }

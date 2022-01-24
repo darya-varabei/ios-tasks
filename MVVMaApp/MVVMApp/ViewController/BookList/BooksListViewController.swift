@@ -104,9 +104,8 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.categoryCell, for: indexPath) as? CategoryCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-            let cellVM = categoryViewModel.getCellViewModel(at: indexPath)
-            cell.cellViewModel = cellVM
-            
+            let cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
+            cell.cellViewModel = cellViewModel
             return cell
         }
     }

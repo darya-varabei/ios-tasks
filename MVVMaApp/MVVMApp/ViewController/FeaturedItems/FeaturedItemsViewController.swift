@@ -11,8 +11,8 @@ class FeaturedItemsViewController: UIViewController {
     
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
-    private var coordinator: FeaturedBaseCoordinator?
     
+    private var coordinator: FeaturedBaseCoordinator?
     private var viewModel = {
         FeaturedBookViewModel()
     }()
@@ -74,8 +74,8 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-        let cellVM = viewModel.getCellViewModel(at: indexPath)
-        cell.cellViewModel = cellVM
+        let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+        cell.cellViewModel = cellViewModel
         cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
         return cell
     }

@@ -24,10 +24,10 @@ class CategoryViewModel {
     
     func getCategories(books: [Book], selectedCategory: String) {
  
-        for i in books {
-            for j in i.categories {
-                if !categories.contains(j) {
-                    categories.append(j)
+        for book in books {
+            for category in book.categories {
+                if !categories.contains(category) {
+                    categories.append(category)
                 }
             }
         }

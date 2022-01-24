@@ -31,6 +31,7 @@ struct ViewModelGetObject {
     func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {
         let urlString = url
         guard let url = URL(string: urlString) else { return }
+        
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else { return }
             let image = UIImage(data: data)
@@ -41,25 +42,25 @@ struct ViewModelGetObject {
     func updateFeaturedIndexes(isbn: String, setFeatured: Bool) {
         
         var indexes: [String] = []
-        var array = bookViewModel.featuredIsbn
-        for i in bookViewModel.featuredIsbn {
-            indexes.append(i.isbn)
+        var featuredIsbn = bookViewModel.featuredIsbn
+        for index in bookViewModel.featuredIsbn {
+            indexes.append(index.isbn)
         }
         switch(setFeatured) {
         
         case true, !indexes.contains(isbn):
-            array.append(Identifier(isbn: isbn))
+            featuredIsbn.append(Identifier(isbn: isbn))
             break
             
         case false, indexes.contains(isbn):
-            for i in 0..<bookViewModel.featuredIsbn.count {
-                if bookViewModel.featuredIsbn[i].isbn == isbn {
-                    array.remove(at: i)
+            for index in 0..<bookViewModel.featuredIsbn.count {
+                if bookViewModel.featuredIsbn[index].isbn == isbn {
+                    featuredIsbn.remove(at: index)
                     break
                 }
             }
            
-            bookViewModel.modifyIndexesFile(items: array)
+            bookViewModel.modifyIndexesFile(items: featuredIsbn)
             break
             
         default:

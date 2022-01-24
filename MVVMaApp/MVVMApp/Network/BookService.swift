@@ -25,7 +25,7 @@ class BookService: BookServiceProtocol {
             
             Parser.loadJSONFile(named: Filename.featuredBookList, type: [Identifier].self) { (featuredIsbn, error) in
                 guard error == nil else {
-                    Parser.writeToJsonFile(named: Filename.featuredBookList, items: [Identifier(isbn: "yfgfiyeg"), Identifier(isbn: "yfgfiyeg") ])
+                    Parser.writeToJsonFile(named: Filename.featuredBookList, items: featuredIsbn ?? [])
                     completion(nil, false, nil, false)
                     return
                 }
@@ -35,7 +35,7 @@ class BookService: BookServiceProtocol {
     }
     
     func writeFeaturedIndexes(items: [Identifier]) {
-        Parser.writeToJsonFile(named: "FeaturedBooks", items: items)
+        Parser.writeToJsonFile(named: Filename.featuredBookList, items: items)
     }
 }
 
