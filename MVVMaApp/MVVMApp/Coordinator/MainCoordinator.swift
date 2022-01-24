@@ -52,7 +52,7 @@ class MainCoordinator: BaseCoordinator {
         return rootViewController
     }
         
-    func moveTo(flow: AppFlow, userData: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
         switch flow {
         case .books:
             goToBooksFlow(flow)
@@ -62,18 +62,18 @@ class MainCoordinator: BaseCoordinator {
     }
     
     private func goToFeaturedFlow(_ flow: AppFlow) {
-        featuredCoordinator.moveTo(flow: flow, userData: nil, viewModelObject: nil)
+        featuredCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 1
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
-        booksCoordinator.moveTo(flow: flow, userData: nil, viewModelObject: nil)
+        booksCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 0
     }
 
     func resetToRoot() -> Self {
         booksCoordinator.resetToRoot(animated: false)
-        moveTo(flow: .books(.allBooksScreen), userData: nil, viewModelObject: nil)
+        moveTo(flow: .books(.allBooksScreen), cellViewModel: nil, viewModelObject: nil)
         return self
     }
 }

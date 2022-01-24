@@ -18,21 +18,22 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
         return rootViewController
     }
     
-    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
+    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
         switch flow {
         case .featured(let screen):
-            handleFeaturedFlow(for: screen!, userData: userData, viewModelObject: viewModelObject)
+            guard let scene = screen else { return }
+            handleFeaturedFlow(for: scene, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         default:
-            parentCoordinator?.moveTo(flow: .featured(.featuredScreen), userData: userData, viewModelObject: nil)
+            parentCoordinator?.moveTo(flow: .featured(.featuredScreen), cellViewModel: cellViewModel, viewModelObject: nil)
         }
     }
     
-    private func handleFeaturedFlow(for screen: FeaturedBooks, userData: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
+    private func handleFeaturedFlow(for screen: FeaturedBooks, cellViewModel: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
         switch screen {
         case .featuredScreen:
             resetToRoot(animated: false)
         case .detailScreen:
-            guard let data = userData  else { return }
+            guard let data = cellViewModel  else { return }
             goToDetailScreenWith(cellViewModel: data, viewModelObject: viewModelObject)
             break
         }

@@ -9,14 +9,17 @@ import Foundation
 import UIKit
 
 class CategoryViewModel {
-    var reloadCollectionView: (() -> Void)?
-    
-    var categories: [String] = []
-    
+    private var categories: [String] = []
     private var categoryCellViewModels = [CategoryCellViewModel]() {
         didSet {
             reloadCollectionView?()
         }
+    }
+    
+    var reloadCollectionView: (() -> Void)?
+    
+    func getCateroriesList() -> [String] {
+        return categories
     }
     
     func getCategories(books: [Book], selectedCategory: String) {

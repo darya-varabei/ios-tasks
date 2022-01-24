@@ -26,7 +26,7 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
     var coordinator: BooksBaseCoordinator?
 
     init(coordinator: BooksBaseCoordinator) {
-        super.init(nibName: "BooksListViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
     }
     
@@ -89,25 +89,16 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
             return viewModel.booksToCollection.count
         }
         else {
-            return categoryViewModel.categories.count
+            return categoryViewModel.getCateroriesList().count
        }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView.restorationIdentifier == "BookCollectionView" {
-//            return CGSize(width: 128, height: 187)
-//        }
-//        else {
-//            return CGSize(width: 128, height: 40)
-//        }
-//    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-            let cellVM = viewModel.getCellViewModel(at: indexPath)
-            cell.cellViewModel = cellVM
+            let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+            cell.cellViewModel = cellViewModel
             cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
             return cell
         }
@@ -123,19 +114,18 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-                coordinator?.moveTo(flow: .books(.detailsScreen), userData: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+                coordinator?.moveTo(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
         }
         else {
-            var cellVM = categoryViewModel.getCellViewModel(at: indexPath)
-            if cellVM.isSelected.value {
+            var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
+            if cellViewModel.isSelected.value {
                 selectedCategory = "-"
-                viewModel.filterBooks(on: cellVM.name, isSelected: Observable(true))
             }
             else {
-                selectedCategory = cellVM.name
-                viewModel.filterBooks(on: cellVM.name, isSelected: Observable(false))
+                selectedCategory = cellViewModel.name
             }
-            cellVM.toggleIfSelected()
+            viewModel.filterBooks(on: cellViewModel.name, isSelected: cellViewModel.isSelected)
+            cellViewModel.toggleIfSelected()
         }
     }
 }

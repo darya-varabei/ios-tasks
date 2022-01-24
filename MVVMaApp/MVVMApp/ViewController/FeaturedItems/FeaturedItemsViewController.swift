@@ -13,7 +13,7 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredCollectionView: UICollectionView!
     private var coordinator: FeaturedBaseCoordinator?
     
-    private lazy var viewModel = {
+    private var viewModel = {
         FeaturedBookViewModel()
     }()
 
@@ -81,6 +81,6 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.moveTo(flow: .featured(.detailScreen), userData: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+        coordinator?.moveTo(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
     }
 }

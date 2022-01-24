@@ -39,8 +39,7 @@ struct BookCellViewModel {
     }
     
     var overview: String {
-        guard let description = book.longDescription else { return noOverviewAvailable
-        }
+        guard let description = book.longDescription else { return noOverviewAvailable }
         if description != "" {
             return description
         }

@@ -15,7 +15,7 @@ protocol FlowCoordinator: AnyObject {
 protocol Coordinator: FlowCoordinator {
     var rootViewController: UIViewController { get set }
     func start() -> UIViewController
-    func moveTo(flow: AppFlow, userData: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
+    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
     @discardableResult func resetToRoot(animated: Bool) -> Self
 }
 

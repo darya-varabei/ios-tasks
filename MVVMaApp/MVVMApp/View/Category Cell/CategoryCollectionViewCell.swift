@@ -44,10 +44,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setDefaultAppearance() {
-        
-    }
-    
     func setSelectedPropertyAppearance() {
         layer.backgroundColor = UIColor(named: Literals.semiClearWhite)?.cgColor
     }

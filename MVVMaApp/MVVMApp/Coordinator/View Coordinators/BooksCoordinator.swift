@@ -19,22 +19,23 @@ class BooksCoordinator: BooksBaseCoordinator {
         return rootViewController
     }
     
-    func moveTo(flow: AppFlow, userData: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
+    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel? = nil, viewModelObject: ViewModelGetObject? = nil) {
         switch flow {
         case .books(let screen):
-            handleBooksFlow(for: screen!, userData: userData, viewModelObject: viewModelObject)
+            guard let scene = screen else { return }
+            handleBooksFlow(for: scene, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         default:
-            parentCoordinator?.moveTo(flow: .books(.allBooksScreen), userData: userData, viewModelObject: viewModelObject)
+            parentCoordinator?.moveTo(flow: .books(.allBooksScreen), cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         }
     }
     
-    private func handleBooksFlow(for screen: Books, userData: BookCellViewModel?, viewModelObject: ViewModelGetObject? = nil) {
+    private func handleBooksFlow(for screen: Books, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject? = nil) {
         switch screen {
         case .allBooksScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
         case .detailsScreen:
-            guard let data = userData  else { return }
-            goToDetailScreenWith(cellViewModel: data, viewModelObject: viewModelObject)
+            guard let cellViewModel = cellViewModel  else { return }
+            goToDetailScreenWith(cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         }
     }
     

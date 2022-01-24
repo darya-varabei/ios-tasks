@@ -11,8 +11,8 @@ import UIKit
 struct ViewModelGetObject {
     
     private let book: Book
-    private var isFeatured: Bool
     private unowned let bookViewModel: BookViewModel
+    private var isFeatured: Bool
     
     init(book: Book, isFeatured: Bool, bookViewModel: BookViewModel) {
         self.book = book
@@ -45,7 +45,7 @@ struct ViewModelGetObject {
         for i in bookViewModel.featuredIsbn {
             indexes.append(i.isbn)
         }
-        switch(setFeatured){
+        switch(setFeatured) {
         
         case true, !indexes.contains(isbn):
             array.append(Identifier(isbn: isbn))
