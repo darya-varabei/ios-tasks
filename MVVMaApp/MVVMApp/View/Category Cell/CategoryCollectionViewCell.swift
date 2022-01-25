@@ -16,7 +16,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         static let borderWidth: CGFloat = 2
     }
     
-    var color: UIColor? {
+    private var color: UIColor? {
         didSet {
             layer.backgroundColor = color?.cgColor
         }
@@ -32,7 +32,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         setConstantProperties()
     }
     
-    func setConstantProperties() {
+    private func setConstantProperties() {
         layer.borderWidth = Literals.borderWidth
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = Literals.cornerRadius
