@@ -11,11 +11,3 @@ protocol BaseCoordinator: Coordinator {
     var booksCoordinator: BooksCoordinator { get }
     var featuredCoordinator: FeaturedCoordinator { get }
 }
-//
-//protocol BooksBaseCoordinated {
-//    var coordinator: BooksBaseCoordinator? { get }
-//}
-//
-//protocol FeaturedBaseCoordinated {
-//    var coordinator: FeaturedBaseCoordinator? { get }
-//}

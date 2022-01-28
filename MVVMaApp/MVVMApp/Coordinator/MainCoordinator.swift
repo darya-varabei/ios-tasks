@@ -32,20 +32,15 @@ class MainCoordinator: BaseCoordinator {
         static let starSymbol = "star"
     }
 
-    //var parentCoordinator: BaseCoordinator?
     lazy var booksCoordinator: BooksCoordinator = BooksCoordinator()
     lazy var featuredCoordinator: FeaturedCoordinator = FeaturedCoordinator()
     lazy var rootViewController: UIViewController  = UITabBarController()
     
     func start() -> UIViewController {
-        
-        print("111111111111111111")
         let booksViewController = booksCoordinator.start()
-        //booksCoordinator.parentCoordinator = self
         booksViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
         
         let featuredViewController = featuredCoordinator.start()
-        //featuredCoordinator.parentCoordinator = self
         featuredViewController.tabBarItem = UITabBarItem(title: ToolbarItems.favouriteTitle, image: UIImage(systemName: ToolbarItems.starSymbol), tag: 1)
         
         (rootViewController as? UITabBarController)?.viewControllers = [booksViewController, featuredViewController]
@@ -61,20 +56,17 @@ class MainCoordinator: BaseCoordinator {
             goToFeaturedFlow(flow)
         }
     }
+
+    func resetToRoot() -> Self {
+        moveTo(flow: .books(.allBooksScreen), cellViewModel: nil, viewModelObject: nil)
+        return self
+    }
     
     private func goToFeaturedFlow(_ flow: AppFlow) {
-        featuredCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 1
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
-        //booksCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 0
-    }
-
-    func resetToRoot() -> Self {
-        booksCoordinator.resetToRoot(animated: false)
-        moveTo(flow: .books(.allBooksScreen), cellViewModel: nil, viewModelObject: nil)
-        return self
     }
 }

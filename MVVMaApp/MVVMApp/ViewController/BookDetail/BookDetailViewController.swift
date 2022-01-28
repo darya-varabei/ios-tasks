@@ -31,7 +31,7 @@ class BookDetailViewController: UIViewController {
     private var delegate: ControllerDelegate?
     private var cellViewModel: BookCellViewModel?
     
-    init(delegate: ControllerDelegate, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?, flow: AppFlow) {
+    init(delegate: ControllerDelegate, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
         self.cellViewModel = cellViewModel

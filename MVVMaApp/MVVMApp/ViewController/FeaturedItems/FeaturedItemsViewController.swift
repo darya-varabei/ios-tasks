@@ -19,7 +19,7 @@ class FeaturedItemsViewController: UIViewController {
 
     init(delegate: FeaturedItemsViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
-    self.delegate = delegate
+        self.delegate = delegate
     }
 
     required init?(coder: NSCoder) {
@@ -81,7 +81,6 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // delegate?.moveTo(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
         delegate?.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
     }
 }

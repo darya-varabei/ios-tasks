@@ -8,10 +8,10 @@
 import UIKit
 
 class BooksListViewController: UIViewController {
-
+    
     @IBOutlet private var categoryCollection: UICollectionView!
     @IBOutlet private var booksCollection: UICollectionView!
-
+    
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = ""
@@ -24,16 +24,16 @@ class BooksListViewController: UIViewController {
     }()
     
     private var delegate: BookListViewControllerDelegate?
-
+    
     init(delegate: BookListViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
@@ -54,7 +54,7 @@ class BooksListViewController: UIViewController {
         guard let bottom = UIColor(named: Literals.gradientBottomColor)?.cgColor else { return }
         gradient.frame = view.bounds
         gradient.colors = [top, bottom]
-       
+        
         view.layer.addSublayer(gradient)
     }
     
@@ -90,9 +90,9 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         else {
             return categoryViewModel.getCateroriesList().count
-       }
+        }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
@@ -113,7 +113,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-                delegate?.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+            delegate?.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
         }
         else {
             var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
