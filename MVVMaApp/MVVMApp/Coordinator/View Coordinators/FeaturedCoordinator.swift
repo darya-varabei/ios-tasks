@@ -8,13 +8,16 @@
 import Foundation
 import UIKit
 
-class FeaturedCoordinator: FeaturedBaseCoordinator {
+protocol FeaturedItemsViewControllerDelegate: class, ControllerDelegate {
+}
+
+class FeaturedCoordinator: FeaturedBaseCoordinator, FeaturedItemsViewControllerDelegate {
     
     var parentCoordinator: BaseCoordinator?
     var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
-        rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(coordinator: self))
+        rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(delegate: self))
         return rootViewController
     }
     
@@ -24,7 +27,8 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
             guard let scene = screen else { return }
             handleFeaturedFlow(for: scene, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         default:
-            parentCoordinator?.moveTo(flow: .featured(.featuredScreen), cellViewModel: cellViewModel, viewModelObject: nil)
+            break
+            //parentCoordinator?.moveTo(flow: .featured(.featuredScreen), cellViewModel: cellViewModel, viewModelObject: nil)
         }
     }
     
@@ -34,13 +38,13 @@ class FeaturedCoordinator: FeaturedBaseCoordinator {
             resetToRoot(animated: false)
         case .detailScreen:
             guard let data = cellViewModel  else { return }
-            goToDetailScreenWith(cellViewModel: data, viewModelObject: viewModelObject)
+            goToDetailView(flow: .featured(.detailScreen), cellViewModel: data, viewModelObject: viewModelObject)
             break
         }
     }
-    
-    func goToDetailScreenWith(cellViewModel: BookCellViewModel, viewModelObject: ViewModelGetObject?) {
-        let detailViewController = BookDetailViewController(coordinator: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject, flow: .featured(.featuredScreen))
+//
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+        let detailViewController = BookDetailViewController(delegate: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject, flow: .featured(.featuredScreen))
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
    

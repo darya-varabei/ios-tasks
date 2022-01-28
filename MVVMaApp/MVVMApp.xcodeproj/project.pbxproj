@@ -40,6 +40,7 @@
 		D538824127937401007C03E0 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824027937401007C03E0 /* BookService.swift */; };
 		D538824527943993007C03E0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824427943993007C03E0 /* UIViewController+Keyboard.swift */; };
 		D538824827943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */; };
+		D5626B0327A3CA1400754CA9 /* DetailViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5626B0227A3CA1400754CA9 /* DetailViewCoordinator.swift */; };
 		D56579D1279763CD00691D83 /* FeaturedBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56579D0279763CD00691D83 /* FeaturedBookViewModel.swift */; };
 		D5A593362798029A008EEC17 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A593352798029A008EEC17 /* Identifier.swift */; };
 		D5A5933D279825B3008EEC17 /* Literals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A5933C279825B2008EEC17 /* Literals.swift */; };
@@ -84,6 +85,7 @@
 		D538824027937401007C03E0 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		D538824427943993007C03E0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		D538824727943AA6007C03E0 /* UIToolBar+HiddingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolBar+HiddingKeyboard.swift"; sourceTree = "<group>"; };
+		D5626B0227A3CA1400754CA9 /* DetailViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCoordinator.swift; sourceTree = "<group>"; };
 		D56579D0279763CD00691D83 /* FeaturedBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedBookViewModel.swift; sourceTree = "<group>"; };
 		D5A593352798029A008EEC17 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		D5A5933C279825B2008EEC17 /* Literals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literals.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				D50F0DFB279CA175006F55D6 /* BooksCoordinator.swift */,
 				D50F0E00279CAA5E006F55D6 /* FeaturedCoordinator.swift */,
+				D5626B0227A3CA1400754CA9 /* DetailViewCoordinator.swift */,
 			);
 			path = "View Coordinators";
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			files = (
 				D50F0DFC279CA175006F55D6 /* BooksCoordinator.swift in Sources */,
 				D538824527943993007C03E0 /* UIViewController+Keyboard.swift in Sources */,
+				D5626B0327A3CA1400754CA9 /* DetailViewCoordinator.swift in Sources */,
 				4B3E31CA27953EFB002030E9 /* Category.swift in Sources */,
 				D50F0E3A279DFB9D006F55D6 /* BookDetailViewController.swift in Sources */,
 				D538823A279371C7007C03E0 /* BookViewModel.swift in Sources */,

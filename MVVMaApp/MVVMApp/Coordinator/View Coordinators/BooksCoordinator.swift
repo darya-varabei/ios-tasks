@@ -8,14 +8,24 @@
 import Foundation
 import UIKit
 
-class BooksCoordinator: BooksBaseCoordinator {
+protocol ControllerDelegate {
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
+    @discardableResult func resetToRoot(animated: Bool) -> Self
+}
 
-    var parentCoordinator: BaseCoordinator?
+protocol BookListViewControllerDelegate: ControllerDelegate {}
+
+
+class BooksCoordinator: BooksBaseCoordinator, BookListViewControllerDelegate {
+
+    //var parentCoordinator: BaseCoordinator?
+    var childCoordinators: [Coordinator] = []
     
     lazy var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
-        rootViewController = UINavigationController(rootViewController: BooksListViewController(coordinator: self))
+        rootViewController = UINavigationController(rootViewController: BooksListViewController(delegate: self))
+        //rootViewController.
         return rootViewController
     }
     
@@ -23,24 +33,25 @@ class BooksCoordinator: BooksBaseCoordinator {
         switch flow {
         case .books(let screen):
             guard let scene = screen else { return }
-            handleBooksFlow(for: scene, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+            //handleBooksFlow(for: scene, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         default:
-            parentCoordinator?.moveTo(flow: .books(.allBooksScreen), cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+            break
+            //parentCoordinator?.moveTo(flow: .books(.allBooksScreen), cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         }
     }
     
-    private func handleBooksFlow(for screen: Books, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject? = nil) {
-        switch screen {
-        case .allBooksScreen:
-            navigationRootViewController?.popToRootViewController(animated: true)
-        case .detailsScreen:
-            guard let cellViewModel = cellViewModel  else { return }
-            goToDetailScreenWith(cellViewModel: cellViewModel, viewModelObject: viewModelObject)
-        }
-    }
+//    private func handleBooksFlow(for screen: Books, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject? = nil) {
+//        switch screen {
+//        case .allBooksScreen:
+//            navigationRootViewController?.popToRootViewController(animated: true)
+//        case .detailsScreen:
+//            guard let cellViewModel = cellViewModel  else { return }
+//            goToDetailScreenWith(cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+//        }
+//    }
     
-    func goToDetailScreenWith(cellViewModel: BookCellViewModel, viewModelObject: ViewModelGetObject?) {
-        let detailViewController = BookDetailViewController(coordinator: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject, flow: .books(.allBooksScreen))
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+        let detailViewController = BookDetailViewController(delegate: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject, flow: .books(.allBooksScreen))
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
     

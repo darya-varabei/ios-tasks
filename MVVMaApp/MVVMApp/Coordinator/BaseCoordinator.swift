@@ -8,15 +8,14 @@
 import Foundation
 
 protocol BaseCoordinator: Coordinator {
-    var booksCoordinator: BooksBaseCoordinator { get }
-    var featuredCoordinator: FeaturedBaseCoordinator { get }
+    var booksCoordinator: BooksCoordinator { get }
+    var featuredCoordinator: FeaturedCoordinator { get }
 }
-
-protocol BooksBaseCoordinated {
-    var coordinator: BooksBaseCoordinator? { get }
-}
-
-protocol FeaturedBaseCoordinated {
-    var coordinator: FeaturedBaseCoordinator? { get }
-}
-
+//
+//protocol BooksBaseCoordinated {
+//    var coordinator: BooksBaseCoordinator? { get }
+//}
+//
+//protocol FeaturedBaseCoordinated {
+//    var coordinator: FeaturedBaseCoordinator? { get }
+//}

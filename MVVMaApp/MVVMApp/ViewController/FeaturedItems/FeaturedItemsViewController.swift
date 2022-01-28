@@ -12,14 +12,14 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
-    private var coordinator: FeaturedBaseCoordinator?
+    private var delegate: FeaturedItemsViewControllerDelegate?
     private var viewModel = {
         FeaturedBookViewModel()
     }()
 
-    init(coordinator: FeaturedBaseCoordinator) {
+    init(delegate: FeaturedItemsViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
-        self.coordinator = coordinator
+    self.delegate = delegate
     }
 
     required init?(coder: NSCoder) {
@@ -81,6 +81,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.moveTo(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+       // delegate?.moveTo(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+        delegate?.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
     }
 }

@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-protocol FlowCoordinator: AnyObject {
-    var parentCoordinator: BaseCoordinator? { get set }
-}
+//protocol FlowCoordinator: AnyObject {
+//    //var parentCoordinator: BaseCoordinator? { get set }
+//}
 
-protocol Coordinator: FlowCoordinator {
+protocol Coordinator {
     var rootViewController: UIViewController { get set }
     func start() -> UIViewController
-    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
-    @discardableResult func resetToRoot(animated: Bool) -> Self
+    //func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
+//    @discardableResult func resetToRoot(animated: Bool) -> Self
 }
 
 extension Coordinator {

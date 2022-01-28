@@ -28,14 +28,12 @@ class BookDetailViewController: UIViewController {
     }
     
     private var viewModelObject: ViewModelGetObject?
-    private var coordinator: Coordinator?
+    private var delegate: ControllerDelegate?
     private var cellViewModel: BookCellViewModel?
-    private var flow: AppFlow?
     
-    init(coordinator: Coordinator, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?, flow: AppFlow) {
+    init(delegate: ControllerDelegate, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?, flow: AppFlow) {
         super.init(nibName: nil, bundle: nil)
-        self.flow = flow
-        self.coordinator = coordinator
+        self.delegate = delegate
         self.cellViewModel = cellViewModel
         self.viewModelObject = viewModelObject
     }
@@ -89,8 +87,7 @@ class BookDetailViewController: UIViewController {
     
     @objc private func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        guard let flowUnit = flow else { return }
-        coordinator?.moveTo(flow: flowUnit, cellViewModel: nil, viewModelObject: nil)
+        delegate?.resetToRoot(animated: true)
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

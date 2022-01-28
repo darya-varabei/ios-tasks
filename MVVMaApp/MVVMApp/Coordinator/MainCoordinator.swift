@@ -32,19 +32,20 @@ class MainCoordinator: BaseCoordinator {
         static let starSymbol = "star"
     }
 
-    var parentCoordinator: BaseCoordinator?
-    lazy var booksCoordinator: BooksBaseCoordinator = BooksCoordinator()
-    lazy var featuredCoordinator: FeaturedBaseCoordinator = FeaturedCoordinator()
+    //var parentCoordinator: BaseCoordinator?
+    lazy var booksCoordinator: BooksCoordinator = BooksCoordinator()
+    lazy var featuredCoordinator: FeaturedCoordinator = FeaturedCoordinator()
     lazy var rootViewController: UIViewController  = UITabBarController()
     
     func start() -> UIViewController {
         
+        print("111111111111111111")
         let booksViewController = booksCoordinator.start()
-        booksCoordinator.parentCoordinator = self
+        //booksCoordinator.parentCoordinator = self
         booksViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
         
         let featuredViewController = featuredCoordinator.start()
-        featuredCoordinator.parentCoordinator = self
+        //featuredCoordinator.parentCoordinator = self
         featuredViewController.tabBarItem = UITabBarItem(title: ToolbarItems.favouriteTitle, image: UIImage(systemName: ToolbarItems.starSymbol), tag: 1)
         
         (rootViewController as? UITabBarController)?.viewControllers = [booksViewController, featuredViewController]
@@ -67,7 +68,7 @@ class MainCoordinator: BaseCoordinator {
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
-        booksCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
+        //booksCoordinator.moveTo(flow: flow, cellViewModel: nil, viewModelObject: nil)
         (rootViewController as? UITabBarController)?.selectedIndex = 0
     }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BooksListViewController: UIViewController, BooksBaseCoordinated {
+class BooksListViewController: UIViewController {
 
     @IBOutlet private var categoryCollection: UICollectionView!
     @IBOutlet private var booksCollection: UICollectionView!
@@ -23,11 +23,11 @@ class BooksListViewController: UIViewController, BooksBaseCoordinated {
         CategoryViewModel()
     }()
     
-    var coordinator: BooksBaseCoordinator?
+    private var delegate: BookListViewControllerDelegate?
 
-    init(coordinator: BooksBaseCoordinator) {
+    init(delegate: BookListViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
-        self.coordinator = coordinator
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,7 +113,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-                coordinator?.moveTo(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+                delegate?.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
         }
         else {
             var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
