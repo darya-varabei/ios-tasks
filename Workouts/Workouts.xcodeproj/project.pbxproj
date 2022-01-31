@@ -17,6 +17,8 @@
 		D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9FB27A7E05300F67771 /* Exercise.swift */; };
 		D58ABA0027A7E08700F67771 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9FF27A7E08700F67771 /* Workout.swift */; };
 		D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */; };
+		D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */; };
+		D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D58AB9FB27A7E05300F67771 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		D58AB9FF27A7E08700F67771 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStack.swift; sourceTree = "<group>"; };
+		D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			children = (
 				D58AB9E027A7D48700F67771 /* AppDelegate.swift */,
 				D58AB9E227A7D48700F67771 /* SceneDelegate.swift */,
+				D58ABA0527A7EADB00F67771 /* Cells */,
 				D58AB9FA27A7E01400F67771 /* Model */,
 				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
 				D58AB9E427A7D48700F67771 /* ViewController.swift */,
@@ -85,6 +90,23 @@
 				D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D58ABA0527A7EADB00F67771 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABA0627A7EAE600F67771 /* WorkoutCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D58ABA0627A7EAE600F67771 /* WorkoutCell */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */,
+				D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */,
+			);
+			path = WorkoutCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */,
 				D58AB9ED27A7D48800F67771 /* LaunchScreen.storyboard in Resources */,
 				D58AB9EA27A7D48800F67771 /* Assets.xcassets in Resources */,
 				D58AB9E827A7D48700F67771 /* Main.storyboard in Resources */,
@@ -161,6 +184,7 @@
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
 				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
+				D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
 				D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */,
 				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
