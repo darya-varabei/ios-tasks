@@ -19,6 +19,7 @@
 		D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */; };
 		D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */; };
 		D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */; };
+		D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStack.swift; sourceTree = "<group>"; };
 		D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCollectionViewCell.xib; sourceTree = "<group>"; };
+		D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,7 @@
 				D58ABA0527A7EADB00F67771 /* Cells */,
 				D58AB9FA27A7E01400F67771 /* Model */,
 				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
-				D58AB9E427A7D48700F67771 /* ViewController.swift */,
+				D58ABA1027A7F68D00F67771 /* View Controllers */,
 				D58AB9E627A7D48700F67771 /* Main.storyboard */,
 				D58AB9E927A7D48800F67771 /* Assets.xcassets */,
 				D58AB9EB27A7D48800F67771 /* LaunchScreen.storyboard */,
@@ -107,6 +109,15 @@
 				D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */,
 			);
 			path = WorkoutCell;
+			sourceTree = "<group>";
+		};
+		D58ABA1027A7F68D00F67771 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D58AB9E427A7D48700F67771 /* ViewController.swift */,
+				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 			files = (
 				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
+				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
 				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
 				D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */,
