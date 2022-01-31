@@ -20,6 +20,8 @@
 		D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */; };
 		D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */; };
 		D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */; };
+		D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */; };
+		D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCollectionViewCell.xib; sourceTree = "<group>"; };
 		D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
+		D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAreaCollectionViewCell.swift; sourceTree = "<group>"; };
+		D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetAreaCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		D58ABA0527A7EADB00F67771 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D58ABA1227A7F82700F67771 /* TargetAreaCell */,
 				D58ABA0627A7EAE600F67771 /* WorkoutCell */,
 			);
 			path = Cells;
@@ -118,6 +123,15 @@
 				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D58ABA1227A7F82700F67771 /* TargetAreaCell */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */,
+				D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */,
+			);
+			path = TargetAreaCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */,
 				D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */,
 				D58AB9ED27A7D48800F67771 /* LaunchScreen.storyboard in Resources */,
 				D58AB9EA27A7D48800F67771 /* Assets.xcassets in Resources */,
@@ -193,6 +208,7 @@
 			files = (
 				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
+				D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */,
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
 				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
