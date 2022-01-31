@@ -13,6 +13,10 @@
 		D58AB9E827A7D48700F67771 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58AB9E627A7D48700F67771 /* Main.storyboard */; };
 		D58AB9EA27A7D48800F67771 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58AB9E927A7D48800F67771 /* Assets.xcassets */; };
 		D58AB9ED27A7D48800F67771 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58AB9EB27A7D48800F67771 /* LaunchScreen.storyboard */; };
+		D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */; };
+		D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9FB27A7E05300F67771 /* Exercise.swift */; };
+		D58ABA0027A7E08700F67771 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9FF27A7E08700F67771 /* Workout.swift */; };
+		D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D58AB9E927A7D48800F67771 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D58AB9EC27A7D48800F67771 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D58AB9EE27A7D48800F67771 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58AB9F727A7D52D00F67771 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D58AB9FB27A7E05300F67771 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		D58AB9FF27A7E08700F67771 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,8 @@
 			children = (
 				D58AB9E027A7D48700F67771 /* AppDelegate.swift */,
 				D58AB9E227A7D48700F67771 /* SceneDelegate.swift */,
+				D58AB9FA27A7E01400F67771 /* Model */,
+				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
 				D58AB9E427A7D48700F67771 /* ViewController.swift */,
 				D58AB9E627A7D48700F67771 /* Main.storyboard */,
 				D58AB9E927A7D48800F67771 /* Assets.xcassets */,
@@ -65,6 +75,16 @@
 				D58AB9EE27A7D48800F67771 /* Info.plist */,
 			);
 			path = Workouts;
+			sourceTree = "<group>";
+		};
+		D58AB9FA27A7E01400F67771 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D58AB9FB27A7E05300F67771 /* Exercise.swift */,
+				D58AB9FF27A7E08700F67771 /* Workout.swift */,
+				D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
+				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
+				D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */,
+				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +367,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D58AB9F727A7D52D00F67771 /* Model.xcdatamodel */,
+			);
+			currentVersion = D58AB9F727A7D52D00F67771 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D58AB9D527A7D48700F67771 /* Project object */;
 }
