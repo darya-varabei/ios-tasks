@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D56D599127A878F200A87326 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D598F27A878F200A87326 /* ExerciseCollectionViewCell.swift */; };
+		D56D599227A878F200A87326 /* ExerciseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D56D599027A878F200A87326 /* ExerciseCollectionViewCell.xib */; };
+		D56D599527A8867800A87326 /* UpdateExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D599427A8867800A87326 /* UpdateExerciseViewController.swift */; };
 		D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E027A7D48700F67771 /* AppDelegate.swift */; };
 		D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E227A7D48700F67771 /* SceneDelegate.swift */; };
 		D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E427A7D48700F67771 /* ViewController.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D56D598F27A878F200A87326 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
+		D56D599027A878F200A87326 /* ExerciseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCollectionViewCell.xib; sourceTree = "<group>"; };
+		D56D599427A8867800A87326 /* UpdateExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExerciseViewController.swift; sourceTree = "<group>"; };
 		D58AB9DD27A7D48700F67771 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AB9E027A7D48700F67771 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58AB9E227A7D48700F67771 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D56D598E27A878CA00A87326 /* ExerciseCell */ = {
+			isa = PBXGroup;
+			children = (
+				D56D598F27A878F200A87326 /* ExerciseCollectionViewCell.swift */,
+				D56D599027A878F200A87326 /* ExerciseCollectionViewCell.xib */,
+			);
+			path = ExerciseCell;
+			sourceTree = "<group>";
+		};
 		D58AB9D427A7D48700F67771 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +116,7 @@
 		D58ABA0527A7EADB00F67771 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D56D598E27A878CA00A87326 /* ExerciseCell */,
 				D58ABA1227A7F82700F67771 /* TargetAreaCell */,
 				D58ABA0627A7EAE600F67771 /* WorkoutCell */,
 			);
@@ -121,6 +137,7 @@
 			children = (
 				D58AB9E427A7D48700F67771 /* ViewController.swift */,
 				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
+				D56D599427A8867800A87326 /* UpdateExerciseViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56D599227A878F200A87326 /* ExerciseCollectionViewCell.xib in Resources */,
 				D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */,
 				D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */,
 				D58AB9ED27A7D48800F67771 /* LaunchScreen.storyboard in Resources */,
@@ -212,10 +230,12 @@
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
 				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
+				D56D599127A878F200A87326 /* ExerciseCollectionViewCell.swift in Sources */,
 				D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
 				D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */,
 				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
+				D56D599527A8867800A87326 /* UpdateExerciseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
