@@ -13,6 +13,7 @@ class UpdateExerciseViewController: UIViewController {
     @IBOutlet private var exerciseNameTextField: UITextField!
     @IBOutlet private var setsTextField: UITextField!
     @IBOutlet private var repeatsTextField: UITextField!
+    @IBOutlet private var saveExerciseButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

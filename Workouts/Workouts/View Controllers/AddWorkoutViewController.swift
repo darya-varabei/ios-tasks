@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 
 class AddWorkoutViewController: UIViewController {
+    
     @IBOutlet private var nameTextField: UITextField!
-    @IBOutlet private var descriptionTextField: UITextField!
     @IBOutlet private var targetAreasCollection: UICollectionView!
     @IBOutlet private var exercisesTableView: UITableView!
     @IBOutlet private var addWorkoutButton: UIButton!
+    @IBOutlet private var startWorkoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
