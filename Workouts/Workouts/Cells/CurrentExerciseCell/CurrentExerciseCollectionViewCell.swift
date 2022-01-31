@@ -8,6 +8,7 @@
 import UIKit
 
 class CurrentExerciseCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var repeatsLabel: UILabel!
     

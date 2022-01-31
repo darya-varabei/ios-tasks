@@ -106,9 +106,9 @@
 			children = (
 				D58AB9E027A7D48700F67771 /* AppDelegate.swift */,
 				D58AB9E227A7D48700F67771 /* SceneDelegate.swift */,
+				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
 				D58ABA0527A7EADB00F67771 /* Cells */,
 				D58AB9FA27A7E01400F67771 /* Model */,
-				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
 				D58ABA1027A7F68D00F67771 /* View Controllers */,
 				D58AB9E627A7D48700F67771 /* Main.storyboard */,
 				D58AB9E927A7D48800F67771 /* Assets.xcassets */,
