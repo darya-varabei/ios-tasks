@@ -14,7 +14,7 @@ class BookViewModel {
     fileprivate var featuredIsbn = [Identifier]()
 
     private var delegate: ControllerDelegate = BooksCoordinator()
-    var controllerDelegate: ControllerDelegate?
+    private var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
     
@@ -45,18 +45,6 @@ class BookViewModel {
         self.books = books
         self.booksToCollection = books
         createCellViewModel()
-    }
-    
-    private func createCellViewModel() {
-        var cellViewModels = [BookCellViewModel]()
-        for book in booksToCollection {
-            cellViewModels.append(createCellModel(book: book))
-        }
-        bookCellViewModels = cellViewModels
-    }
-    
-    private func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
-        self.featuredIsbn = featuredIsbn
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -113,12 +101,28 @@ class BookViewModel {
         return featuredIsbn
     }
     
+    func getViewControllerDelegate() -> ControllerDelegate? {
+        return controllerDelegate
+    }
+    
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: ViewModelGetObject?) {
         delegate.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelGetObject)
     }
     
     func resetToRoot() {
         delegate.resetToRoot(animated: true)
+    }
+    
+    private func createCellViewModel() {
+        var cellViewModels = [BookCellViewModel]()
+        for book in booksToCollection {
+            cellViewModels.append(createCellModel(book: book))
+        }
+        bookCellViewModels = cellViewModels
+    }
+    
+    private func fetchFeaturedIsbn(featuredIsbn: [Identifier]) {
+        self.featuredIsbn = featuredIsbn
     }
 }
 

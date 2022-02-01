@@ -69,7 +69,7 @@ struct ViewModelGetObject {
     }
     
     func resetToRoot() {
-        bookViewModel.controllerDelegate?.resetToRoot(animated: true)
+        bookViewModel.getViewControllerDelegate()?.resetToRoot(animated: true)
     }
     
     func getBookViewModel() -> BookViewModel {
