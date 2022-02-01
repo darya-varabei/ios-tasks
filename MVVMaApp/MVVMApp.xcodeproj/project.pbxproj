@@ -296,11 +296,11 @@
 			children = (
 				D5DB55AA279048C400B5968D /* AppDelegate.swift */,
 				D5DB55AC279048C400B5968D /* SceneDelegate.swift */,
-				D599A97727A9DB5F00A148C4 /* Helpers */,
+				D50F0DDB279C695F006F55D6 /* Main Coordinator */,
 				D599A97627A9DAEF00A148C4 /* View Controllers */,
 				D599A97327A9DA3200A148C4 /* Category */,
-				D50F0DDB279C695F006F55D6 /* Main Coordinator */,
 				D5233C702791F02A007196A6 /* Collection Cells */,
+				D599A97727A9DB5F00A148C4 /* Helpers */,
 				D5DB55B3279048C800B5968D /* Assets.xcassets */,
 				D5DB55B5279048C800B5968D /* LaunchScreen.storyboard */,
 				D5DB55B8279048C800B5968D /* Info.plist */,
