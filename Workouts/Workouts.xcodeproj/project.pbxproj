@@ -85,6 +85,22 @@
 			path = ExerciseCell;
 			sourceTree = "<group>";
 		};
+		D57271FD27A9375D00C45931 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABA0527A7EADB00F67771 /* Cells */,
+				D58ABA1027A7F68D00F67771 /* View Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D57271FE27A9377700C45931 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D58AB9D427A7D48700F67771 = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +122,9 @@
 			children = (
 				D58AB9E027A7D48700F67771 /* AppDelegate.swift */,
 				D58AB9E227A7D48700F67771 /* SceneDelegate.swift */,
-				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
-				D58ABA0527A7EADB00F67771 /* Cells */,
+				D57271FE27A9377700C45931 /* Controller */,
+				D57271FD27A9375D00C45931 /* View */,
 				D58AB9FA27A7E01400F67771 /* Model */,
-				D58ABA1027A7F68D00F67771 /* View Controllers */,
 				D58AB9E627A7D48700F67771 /* Main.storyboard */,
 				D58AB9E927A7D48800F67771 /* Assets.xcassets */,
 				D58AB9EB27A7D48800F67771 /* LaunchScreen.storyboard */,
@@ -121,6 +136,7 @@
 		D58AB9FA27A7E01400F67771 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D58AB9F627A7D52D00F67771 /* Model.xcdatamodeld */,
 				D58AB9FB27A7E05300F67771 /* Exercise.swift */,
 				D58AB9FF27A7E08700F67771 /* Workout.swift */,
 				D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */,
