@@ -20,8 +20,15 @@ class FeaturedCoordinator: Coordinator, ControllerDelegate {
         let detailViewController = BookDetailViewController( cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
-   
-    @discardableResult
+}
+
+extension FeaturedCoordinator {
+    var navigationRootViewController: UINavigationController? {
+        get {
+            (rootViewController as? UINavigationController)
+        }
+    }
+    
     func resetToRoot(animated: Bool) -> Self {
         navigationRootViewController?.popToRootViewController(animated: animated)
         return self

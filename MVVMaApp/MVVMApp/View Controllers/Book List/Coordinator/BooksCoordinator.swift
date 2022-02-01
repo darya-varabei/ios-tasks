@@ -8,11 +8,6 @@
 import Foundation
 import UIKit
 
-protocol ControllerDelegate {
-    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?)
-    @discardableResult func resetToRoot(animated: Bool) -> Self
-}
-
 class BooksCoordinator: Coordinator, ControllerDelegate {
 
     lazy var rootViewController: UIViewController = UIViewController()
@@ -26,9 +21,17 @@ class BooksCoordinator: Coordinator, ControllerDelegate {
         let detailViewController = BookDetailViewController( cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
+}
+
+extension BooksCoordinator {
+    var navigationRootViewController: UINavigationController? {
+        get {
+            (rootViewController as? UINavigationController)
+        }
+    }
     
-    func resetToRoot() -> Self {
-        navigationRootViewController?.popToRootViewController(animated: false)
+    func resetToRoot(animated: Bool) -> Self {
+        navigationRootViewController?.popToRootViewController(animated: animated)
         return self
     }
 }

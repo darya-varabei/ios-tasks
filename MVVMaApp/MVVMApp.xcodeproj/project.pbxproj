@@ -36,6 +36,7 @@
 		D538823A279371C7007C03E0 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5388239279371C7007C03E0 /* BookViewModel.swift */; };
 		D538823E27937209007C03E0 /* BookServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538823D27937209007C03E0 /* BookServiceProtocol.swift */; };
 		D538824127937401007C03E0 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D538824027937401007C03E0 /* BookService.swift */; };
+		D599A97B27A9DFBD00A148C4 /* ControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599A97A27A9DFBD00A148C4 /* ControllerDelegate.swift */; };
 		D5A593362798029A008EEC17 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A593352798029A008EEC17 /* Identifier.swift */; };
 		D5A5933D279825B3008EEC17 /* Literals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A5933C279825B2008EEC17 /* Literals.swift */; };
 		D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB55AA279048C400B5968D /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		D5388239279371C7007C03E0 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		D538823D27937209007C03E0 /* BookServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServiceProtocol.swift; sourceTree = "<group>"; };
 		D538824027937401007C03E0 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		D599A97A27A9DFBD00A148C4 /* ControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerDelegate.swift; sourceTree = "<group>"; };
 		D5A593352798029A008EEC17 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		D5A5933C279825B2008EEC17 /* Literals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literals.swift; sourceTree = "<group>"; };
 		D5DB55A7279048C400B5968D /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				D50F0DD8279C6959006F55D6 /* Coordinator.swift */,
+				D599A97A27A9DFBD00A148C4 /* ControllerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				D50F0DF3279C9E21006F55D6 /* MainCoordinator.swift in Sources */,
 				D50F0DEE279C9C75006F55D6 /* BaseCoordinator.swift in Sources */,
 				D538824127937401007C03E0 /* BookService.swift in Sources */,
+				D599A97B27A9DFBD00A148C4 /* ControllerDelegate.swift in Sources */,
 				4B3E31CE27953F56002030E9 /* CategoryCellViewModel.swift in Sources */,
 				D5DB55AB279048C400B5968D /* AppDelegate.swift in Sources */,
 				4B3E31CC27953F47002030E9 /* CategoryViewModel.swift in Sources */,

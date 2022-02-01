@@ -12,16 +12,3 @@ protocol Coordinator {
     var rootViewController: UIViewController { get set }
     func start()
 }
-
-extension Coordinator {
-    var navigationRootViewController: UINavigationController? {
-        get {
-            (rootViewController as? UINavigationController)
-        }
-    }
-    
-    func resetToRoot(animated: Bool) -> Self {
-        navigationRootViewController?.popToRootViewController(animated: animated)
-        return self
-    }
-}
