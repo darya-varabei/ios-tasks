@@ -13,6 +13,10 @@
 		D56D599E27A8924000A87326 /* CurrentExerciseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D56D599C27A8924000A87326 /* CurrentExerciseCollectionViewCell.xib */; };
 		D57271FA27A9355700C45931 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57271F827A9355700C45931 /* ExerciseTableViewCell.swift */; };
 		D57271FB27A9355700C45931 /* ExerciseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D57271F927A9355700C45931 /* ExerciseTableViewCell.xib */; };
+		D572720227A93EB400C45931 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720127A93EB400C45931 /* Managed.swift */; };
+		D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720427A93EE100C45931 /* ManagedObjectObserver.swift */; };
+		D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */; };
+		D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */; };
 		D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E027A7D48700F67771 /* AppDelegate.swift */; };
 		D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E227A7D48700F67771 /* SceneDelegate.swift */; };
 		D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E427A7D48700F67771 /* ViewController.swift */; };
@@ -37,6 +41,10 @@
 		D56D599C27A8924000A87326 /* CurrentExerciseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentExerciseCollectionViewCell.xib; sourceTree = "<group>"; };
 		D57271F827A9355700C45931 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		D57271F927A9355700C45931 /* ExerciseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseTableViewCell.xib; sourceTree = "<group>"; };
+		D572720127A93EB400C45931 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		D572720427A93EE100C45931 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
+		D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDidChangeNotification.swift; sourceTree = "<group>"; };
+		D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Insertion.swift"; sourceTree = "<group>"; };
 		D58AB9DD27A7D48700F67771 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AB9E027A7D48700F67771 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58AB9E227A7D48700F67771 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,8 +105,36 @@
 		D57271FE27A9377700C45931 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D572720E27A9424A00C45931 /* Workout */,
+				D572720D27A9424100C45931 /* Exercise */,
+				D572720027A93EA400C45931 /* Managed */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D572720027A93EA400C45931 /* Managed */ = {
+			isa = PBXGroup;
+			children = (
+				D572720127A93EB400C45931 /* Managed.swift */,
+				D572720427A93EE100C45931 /* ManagedObjectObserver.swift */,
+				D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */,
+				D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */,
+			);
+			path = Managed;
+			sourceTree = "<group>";
+		};
+		D572720D27A9424100C45931 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		D572720E27A9424A00C45931 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Workout;
 			sourceTree = "<group>";
 		};
 		D58AB9D427A7D48700F67771 = {
@@ -260,12 +296,16 @@
 			files = (
 				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
+				D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */,
 				D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */,
 				D57271FA27A9355700C45931 /* ExerciseTableViewCell.swift in Sources */,
+				D572720227A93EB400C45931 /* Managed.swift in Sources */,
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
+				D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */,
 				D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */,
 				D56D599D27A8924000A87326 /* CurrentExerciseCollectionViewCell.swift in Sources */,
+				D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */,
 				D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */,
 				D56D599827A88F7A00A87326 /* CurrentWorkoutViewController.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
