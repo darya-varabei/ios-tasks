@@ -50,6 +50,7 @@
                     <navigationItem key="navigationItem" id="KKw-6o-jeC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Awu-Nw-XKe">
                             <connections>
+                                <action selector="addNewWorkout:" destination="BYZ-38-t0r" id="m7T-hw-reX"/>
                                 <segue destination="XGK-4e-zos" kind="show" id="Gzf-r9-3bT"/>
                             </connections>
                         </barButtonItem>
@@ -143,12 +144,16 @@
                                                 <rect key="frame" x="40" y="683" width="334" height="30"/>
                                                 <state key="normal" title="Start"/>
                                                 <connections>
+                                                    <action selector="startWorkout:" destination="XGK-4e-zos" eventType="touchUpInside" id="hmX-DL-tOW"/>
                                                     <segue destination="DCp-fm-e6a" kind="show" id="974-vp-HlD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-Kc-1FB">
                                                 <rect key="frame" x="40" y="633" width="334" height="30"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveWorkout:" destination="XGK-4e-zos" eventType="touchUpInside" id="pD3-Ns-nca"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
