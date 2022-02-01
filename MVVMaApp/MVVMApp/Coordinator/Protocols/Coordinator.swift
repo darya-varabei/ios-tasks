@@ -10,7 +10,7 @@ import UIKit
 
 protocol Coordinator {
     var rootViewController: UIViewController { get set }
-    func start() -> UIViewController
+    func start()
 }
 
 extension Coordinator {

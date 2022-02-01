@@ -36,16 +36,16 @@ class MainCoordinator: BaseCoordinator {
     lazy var featuredCoordinator: FeaturedCoordinator = FeaturedCoordinator()
     lazy var rootViewController: UIViewController  = UITabBarController()
     
-    func start() -> UIViewController {
-        let booksViewController = booksCoordinator.start()
-        booksViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
+    func start() {
+        booksCoordinator.start()
+        let bookViewController = booksCoordinator.rootViewController
+        bookViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
         
-        let featuredViewController = featuredCoordinator.start()
+        featuredCoordinator.start()
+        let featuredViewController = featuredCoordinator.rootViewController
         featuredViewController.tabBarItem = UITabBarItem(title: ToolbarItems.favouriteTitle, image: UIImage(systemName: ToolbarItems.starSymbol), tag: 1)
         
-        (rootViewController as? UITabBarController)?.viewControllers = [booksViewController, featuredViewController]
-                
-        return rootViewController
+        (rootViewController as? UITabBarController)?.viewControllers = [bookViewController, featuredViewController]
     }
         
     func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {

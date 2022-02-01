@@ -17,10 +17,9 @@ class BooksCoordinator: Coordinator, ControllerDelegate {
 
     lazy var rootViewController: UIViewController = UIViewController()
     
-    func start() -> UIViewController {
+    func start() {
         let viewModel = BookViewModel(delegate: self)
         rootViewController = UINavigationController(rootViewController: BooksListViewController(viewModel: viewModel))
-        return rootViewController
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {

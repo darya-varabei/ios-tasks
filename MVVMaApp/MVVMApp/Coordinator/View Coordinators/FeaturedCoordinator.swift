@@ -12,9 +12,8 @@ class FeaturedCoordinator: Coordinator, ControllerDelegate {
     
     var rootViewController: UIViewController = UIViewController()
     
-    func start() -> UIViewController {
+    func start() {
         rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(delegate: self))
-        return rootViewController
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
