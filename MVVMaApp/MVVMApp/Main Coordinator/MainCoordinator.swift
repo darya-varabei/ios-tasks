@@ -56,11 +56,6 @@ class MainCoordinator: BaseCoordinator {
             goToFeaturedFlow(flow)
         }
     }
-
-    func resetToRoot() -> Self {
-        moveTo(flow: .books(.allBooksScreen), cellViewModel: nil, viewModelObject: nil)
-        return self
-    }
     
     private func goToFeaturedFlow(_ flow: AppFlow) {
         (rootViewController as? UITabBarController)?.selectedIndex = 1
