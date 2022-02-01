@@ -105,8 +105,6 @@
 		D57271FE27A9377700C45931 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D572720E27A9424A00C45931 /* Workout */,
-				D572720D27A9424100C45931 /* Exercise */,
 				D572720027A93EA400C45931 /* Managed */,
 			);
 			path = Controller;
@@ -121,20 +119,6 @@
 				D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */,
 			);
 			path = Managed;
-			sourceTree = "<group>";
-		};
-		D572720D27A9424100C45931 /* Exercise */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Exercise;
-			sourceTree = "<group>";
-		};
-		D572720E27A9424A00C45931 /* Workout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Workout;
 			sourceTree = "<group>";
 		};
 		D58AB9D427A7D48700F67771 = {
