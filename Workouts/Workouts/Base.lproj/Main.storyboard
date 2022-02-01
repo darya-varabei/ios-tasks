@@ -37,13 +37,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No workouts currently added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ4-gz-abb" userLabel="No workouts currently added">
+                                <rect key="frame" x="97" y="437.5" width="220.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kQ4-gz-abb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RU4-po-FqW"/>
                             <constraint firstItem="2Fx-QC-Z0p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="TNr-Us-jB8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Fx-QC-Z0p" secondAttribute="trailing" constant="20" id="W6y-ua-cW1"/>
                             <constraint firstItem="2Fx-QC-Z0p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Z4D-uD-Yt9"/>
+                            <constraint firstItem="kQ4-gz-abb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w9n-Ua-3KT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Fx-QC-Z0p" secondAttribute="bottom" constant="20" id="wLP-Dp-XVV"/>
                         </constraints>
                     </view>
@@ -56,6 +64,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyCollectionLabel" destination="kQ4-gz-abb" id="Uhv-zb-boa"/>
                         <outlet property="workoutsCollectionView" destination="2Fx-QC-Z0p" id="g04-DO-Hgi"/>
                     </connections>
                 </viewController>
@@ -118,7 +127,7 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4H-gL-3Sv">
-                                                <rect key="frame" x="20" y="259" width="72" height="21"/>
+                                                <rect key="frame" x="20" y="259" width="374" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -180,6 +189,7 @@
                                             <constraint firstItem="RS7-lb-rca" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="vcf-fV-Dev"/>
                                             <constraint firstAttribute="trailing" secondItem="j42-6i-gar" secondAttribute="trailing" constant="40" id="wDT-sC-gd1"/>
                                             <constraint firstItem="f6A-GA-lBR" firstAttribute="top" secondItem="xWr-Zl-WNl" secondAttribute="top" constant="20" id="wzj-7E-zzG"/>
+                                            <constraint firstItem="l4H-gL-3Sv" firstAttribute="centerX" secondItem="RS7-lb-rca" secondAttribute="centerX" id="xus-nn-Tpk"/>
                                             <constraint firstAttribute="trailing" secondItem="Of9-Kc-1FB" secondAttribute="trailing" constant="40" id="z2h-es-Hme"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fkv-YV-QpJ" secondAttribute="trailing" constant="20" symbolic="YES" id="zSb-MT-JiL"/>
                                             <constraint firstItem="Of9-Kc-1FB" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="40" id="zzu-pI-7NF"/>

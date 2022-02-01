@@ -10,6 +10,19 @@ import UIKit
 class ViewController: UIViewController{
 
     @IBOutlet private var workoutsCollectionView: UICollectionView!
+    @IBOutlet private var emptyCollectionLabel: UILabel!
+    
+    private var workoutsArray: [String] = [] {
+       didSet {
+          if workoutsArray.count > 0 {
+            workoutsCollectionView.isHidden = true
+            emptyCollectionLabel.isHidden = false
+          } else {
+            workoutsCollectionView.isHidden = false
+            emptyCollectionLabel.isHidden = true
+          }
+       }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
