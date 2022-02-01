@@ -42,8 +42,8 @@ struct ViewModelGetObject {
     func updateFeaturedIndexes(isbn: String, setFeatured: Bool) {
         
         var indexes: [String] = []
-        var featuredIsbn = bookViewModel.featuredIsbn
-        for index in bookViewModel.featuredIsbn {
+        var featuredIsbn = bookViewModel.getFeaturedIsbn()
+        for index in bookViewModel.getFeaturedIsbn() {
             indexes.append(index.isbn)
         }
         switch(setFeatured) {
@@ -53,8 +53,8 @@ struct ViewModelGetObject {
             break
             
         case false, indexes.contains(isbn):
-            for index in 0..<bookViewModel.featuredIsbn.count {
-                if bookViewModel.featuredIsbn[index].isbn == isbn {
+            for index in 0..<bookViewModel.getFeaturedIsbn().count {
+                if bookViewModel.getFeaturedIsbn()[index].isbn == isbn {
                     featuredIsbn.remove(at: index)
                     break
                 }
@@ -66,5 +66,9 @@ struct ViewModelGetObject {
         default:
             break
         }
+    }
+    
+    func resetToRoot() {
+        bookViewModel.controllerDelegate?.resetToRoot(animated: true)
     }
 }

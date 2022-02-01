@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-protocol FeaturedItemsViewControllerDelegate: class, ControllerDelegate {}
-
-class FeaturedCoordinator: FeaturedBaseCoordinator, FeaturedItemsViewControllerDelegate {
+class FeaturedCoordinator: Coordinator, ControllerDelegate {
     
     var rootViewController: UIViewController = UIViewController()
     
@@ -20,7 +18,7 @@ class FeaturedCoordinator: FeaturedBaseCoordinator, FeaturedItemsViewControllerD
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
-        let detailViewController = BookDetailViewController(delegate: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+        let detailViewController = BookDetailViewController( cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
    

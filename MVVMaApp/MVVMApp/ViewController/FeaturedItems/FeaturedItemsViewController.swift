@@ -12,20 +12,19 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
-    private var delegate: FeaturedItemsViewControllerDelegate?
-    private var viewModel = {
-        FeaturedBookViewModel()
-    }()
+    private var delegate: ControllerDelegate
+    private var viewModel: FeaturedBookViewModel?// = {
 
-    init(delegate: FeaturedItemsViewControllerDelegate) {
-        super.init(nibName: nil, bundle: nil)
+    init(delegate: ControllerDelegate) {
         self.delegate = delegate
+        viewModel = FeaturedBookViewModel(delegate: delegate)
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
-        fatalError(Literals.errorInitMessage)
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
@@ -57,8 +56,8 @@ class FeaturedItemsViewController: UIViewController {
     }
 
     private func initViewModel() {
-        viewModel.getBooks()
-        viewModel.reloadCollectionView = { [weak self] in
+        viewModel?.getBooks()
+        viewModel?.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.featuredCollectionView.reloadData()
             }
@@ -69,18 +68,18 @@ class FeaturedItemsViewController: UIViewController {
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.books.count
+        return viewModel?.getAllBooks().count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-        let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+        let cellViewModel = viewModel?.getCellViewModel(at: indexPath)
         cell.cellViewModel = cellViewModel
-        cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+        cell.configure(viewModelGetObject: viewModel?.getViewModel(index: indexPath.row))
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+        viewModel?.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel?.getCellViewModel(at: indexPath), viewModelGetObject: viewModel?.getViewModel(index: indexPath.row))
     }
 }

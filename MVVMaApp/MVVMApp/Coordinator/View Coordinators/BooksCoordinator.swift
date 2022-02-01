@@ -13,20 +13,18 @@ protocol ControllerDelegate {
     @discardableResult func resetToRoot(animated: Bool) -> Self
 }
 
-protocol BookListViewControllerDelegate: ControllerDelegate {}
-
-
-class BooksCoordinator: BooksBaseCoordinator, BookListViewControllerDelegate {
+class BooksCoordinator: Coordinator, ControllerDelegate {
 
     lazy var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
-        rootViewController = UINavigationController(rootViewController: BooksListViewController(delegate: self))
+        let viewModel = BookViewModel(delegate: self)
+        rootViewController = UINavigationController(rootViewController: BooksListViewController(viewModel: viewModel))
         return rootViewController
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
-        let detailViewController = BookDetailViewController(delegate: self, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+        let detailViewController = BookDetailViewController( cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }
     

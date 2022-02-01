@@ -28,12 +28,10 @@ class BookDetailViewController: UIViewController {
     }
     
     private var viewModelObject: ViewModelGetObject?
-    private var delegate: ControllerDelegate?
     private var cellViewModel: BookCellViewModel?
     
-    init(delegate: ControllerDelegate, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    init(cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
         super.init(nibName: nil, bundle: nil)
-        self.delegate = delegate
         self.cellViewModel = cellViewModel
         self.viewModelObject = viewModelObject
     }
@@ -87,7 +85,7 @@ class BookDetailViewController: UIViewController {
     
     @objc private func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        delegate?.resetToRoot(animated: true)
+        viewModelObject?.resetToRoot()
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

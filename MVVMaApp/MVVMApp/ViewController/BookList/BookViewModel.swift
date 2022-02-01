@@ -8,13 +8,17 @@
 import Foundation
 
 class BookViewModel {
+
+    fileprivate var books = [Book]()
+    fileprivate var booksToCollection = [Book]()
+    fileprivate var featuredIsbn = [Identifier]()
+
+    private var delegate: ControllerDelegate = BooksCoordinator() //= BooksCoordinator()
+    var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
     
     var reloadCollectionView: (() -> Void)?
-    var books = [Book]()
-    var booksToCollection = [Book]()
-    var featuredIsbn = [Identifier]()
     
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
@@ -22,7 +26,8 @@ class BookViewModel {
         }
     }
     
-    init(bookService: BookServiceProtocol = BookService()) {
+    init(bookService: BookServiceProtocol = BookService(), delegate: ControllerDelegate) {
+        self.delegate = delegate
         self.bookService = bookService
         self.booksToCollection = books
     }
@@ -94,5 +99,54 @@ class BookViewModel {
     
     func modifyIndexesFile(items: [Identifier]) {
         bookService.writeFeaturedIndexes(items: items)
+    }
+    
+    func getAllBooks() -> [Book] {
+        return books
+    }
+    
+    func getBooksForCollection() -> [Book] {
+        return booksToCollection
+    }
+    
+    func getFeaturedIsbn() -> [Identifier] {
+        return featuredIsbn
+    }
+    
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: ViewModelGetObject?) {
+        delegate.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelGetObject)
+    }
+}
+
+
+class FeaturedBookViewModel: BookViewModel {
+    
+    private var delegate: ControllerDelegate?
+    
+    override init(bookService: BookServiceProtocol = BookService(), delegate: ControllerDelegate) {
+        super.init(bookService: bookService, delegate: delegate)
+    }
+    
+    override  func fetchData(books: [Book]) {
+        self.books = books
+        var cellViewModel = [BookCellViewModel]()
+        filterFeaturedBooks()
+        for book in books {
+            cellViewModel.append(createCellModel(book: book))
+        }
+        bookCellViewModels = cellViewModel
+    }
+    
+    override func getViewModel(index: Int) -> ViewModelGetObject {
+        return ViewModelGetObject(book: books[index], isFeatured: true, bookViewModel: self)
+    }
+    
+    func filterFeaturedBooks() {
+        var indexes: [String] = []
+        for index in featuredIsbn {
+            indexes.append(index.isbn)
+        }
+        let bufferArray = books.filter { indexes.contains($0.isbn ?? "") }
+        books = bufferArray
     }
 }

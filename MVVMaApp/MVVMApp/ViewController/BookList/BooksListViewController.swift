@@ -15,23 +15,21 @@ class BooksListViewController: UIViewController {
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = ""
-    private var viewModel = {
-        BookViewModel()
-    }()
+    private var viewModel: BookViewModel// = {
+//        BookViewModel()
+//    }()
     
     private var categoryViewModel = {
         CategoryViewModel()
     }()
     
-    private var delegate: BookListViewControllerDelegate?
-    
-    init(delegate: BookListViewControllerDelegate) {
+    init(viewModel: BookViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.delegate = delegate
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -75,7 +73,7 @@ class BooksListViewController: UIViewController {
             DispatchQueue.main.async {
                 guard let category = self?.selectedCategory else { return }
                 self?.booksCollection.reloadData()
-                self?.categoryViewModel.getCategories(books: self?.viewModel.books ?? [], selectedCategory: category)
+                self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks() ?? [], selectedCategory: category)
                 self?.categoryCollection.reloadData()
             }
         }
@@ -86,7 +84,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            return viewModel.booksToCollection.count
+            return viewModel.getBooksForCollection().count
         }
         else {
             return categoryViewModel.getCateroriesList().count
@@ -113,7 +111,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            delegate?.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelObject: viewModel.getViewModel(index: indexPath.row))
+            viewModel.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
         }
         else {
             var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
