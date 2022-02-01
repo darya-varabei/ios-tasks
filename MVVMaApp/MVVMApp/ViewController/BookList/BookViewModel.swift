@@ -13,7 +13,7 @@ class BookViewModel {
     fileprivate var booksToCollection = [Book]()
     fileprivate var featuredIsbn = [Identifier]()
 
-    private var delegate: ControllerDelegate = BooksCoordinator() //= BooksCoordinator()
+    private var delegate: ControllerDelegate = BooksCoordinator()
     var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
@@ -115,6 +115,10 @@ class BookViewModel {
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: ViewModelGetObject?) {
         delegate.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelGetObject)
+    }
+    
+    func resetToRoot() {
+        delegate.resetToRoot(animated: true)
     }
 }
 

@@ -85,7 +85,7 @@ class BookDetailViewController: UIViewController {
     
     @objc private func backButtonTap() {
         viewModelObject?.updateFeaturedIndexes(isbn: cellViewModel?.isbn ?? "-", setFeatured: viewModelObject?.setIfFeatured() ?? false)
-        viewModelObject?.resetToRoot()
+        viewModelObject?.getBookViewModel().resetToRoot()
     }
     
     @IBAction private func addBookToFeatured(_ sender: Any) {

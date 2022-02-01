@@ -15,9 +15,7 @@ class BooksListViewController: UIViewController {
     private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = ""
-    private var viewModel: BookViewModel// = {
-//        BookViewModel()
-//    }()
+    private var viewModel: BookViewModel
     
     private var categoryViewModel = {
         CategoryViewModel()
