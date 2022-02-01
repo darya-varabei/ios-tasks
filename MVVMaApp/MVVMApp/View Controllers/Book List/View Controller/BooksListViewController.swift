@@ -12,7 +12,6 @@ class BooksListViewController: UIViewController {
     @IBOutlet private var categoryCollection: UICollectionView!
     @IBOutlet private var booksCollection: UICollectionView!
     
-    private var bufferBookCategories = [[String]]()
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = ""
     private var viewModel: BookViewModel
