@@ -50,7 +50,7 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         configure(viewModelGetObject: viewModelObject)
-        getInfoFromModel()
+        getInformationFromModel()
     }
     
     private func configure(viewModelGetObject: ViewModelGetObject?) {
@@ -68,7 +68,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    private func getInfoFromModel() {
+    private func getInformationFromModel() {
         guard let countPages = cellViewModel?.numOfPages else { return }
         numOfPagesLabel.text = "\(countPages)"
         overviewTextView.text = cellViewModel?.overview

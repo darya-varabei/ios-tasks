@@ -25,7 +25,7 @@ enum FeaturedBooks {
 
 class MainCoordinator: BaseCoordinator {
     
-    private enum ToolbarItems {
+    private enum TabBarItems {
         static let booksTitle = "Books"
         static let bookSymbol = "book"
         static let favouriteTitle = "Favourite"
@@ -39,11 +39,11 @@ class MainCoordinator: BaseCoordinator {
     func start() {
         booksCoordinator.start()
         let bookViewController = booksCoordinator.rootViewController
-        bookViewController.tabBarItem = UITabBarItem(title: ToolbarItems.booksTitle, image: UIImage(systemName: ToolbarItems.bookSymbol), tag: 0)
+        bookViewController.tabBarItem = UITabBarItem(title: TabBarItems.booksTitle, image: UIImage(systemName: TabBarItems.bookSymbol), tag: 0)
         
         featuredCoordinator.start()
         let featuredViewController = featuredCoordinator.rootViewController
-        featuredViewController.tabBarItem = UITabBarItem(title: ToolbarItems.favouriteTitle, image: UIImage(systemName: ToolbarItems.starSymbol), tag: 1)
+        featuredViewController.tabBarItem = UITabBarItem(title: TabBarItems.favouriteTitle, image: UIImage(systemName: TabBarItems.starSymbol), tag: 1)
         
         (rootViewController as? UITabBarController)?.viewControllers = [bookViewController, featuredViewController]
     }
