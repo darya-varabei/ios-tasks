@@ -16,6 +16,11 @@ class AddWorkoutViewController: UIViewController {
     @IBOutlet private var addWorkoutButton: UIButton!
     @IBOutlet private var startWorkoutButton: UIButton!
     
+    private enum Literals {
+        static let cellIdentifier = "TargetAreaCollectionViewCell"
+        static let tableCellIdentifier = "ExerciseTableViewCell"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -25,7 +30,7 @@ class AddWorkoutViewController: UIViewController {
     private func setupCollectionView() {
         targetAreasCollection.delegate = self
         targetAreasCollection.dataSource = self
-        targetAreasCollection.register(UINib(nibName: "TargetAreaCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TargetAreaCollectionViewCell")
+        targetAreasCollection.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
         targetAreasCollection.allowsSelection = true
         targetAreasCollection.allowsMultipleSelection = true
     }
@@ -48,7 +53,7 @@ extension AddWorkoutViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: TargetAreaCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "TargetAreaCollectionViewCell", for: indexPath) as? TargetAreaCollectionViewCell) else { return TargetAreaCollectionViewCell() }
+        guard let cell: TargetAreaCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? TargetAreaCollectionViewCell) else { return TargetAreaCollectionViewCell() }
         return cell
     }
     
@@ -60,7 +65,7 @@ extension AddWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = Bundle.main.loadNibNamed("ExerciseTableViewCell", owner: self, options: nil)?.first as? ExerciseTableViewCell else { return ExerciseTableViewCell() }
+        guard let cell = Bundle.main.loadNibNamed(Literals.tableCellIdentifier, owner: self, options: nil)?.first as? ExerciseTableViewCell else { return ExerciseTableViewCell() }
         return cell
     }
 }

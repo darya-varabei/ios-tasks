@@ -13,6 +13,10 @@ class CurrentWorkoutViewController: UIViewController {
     @IBOutlet private var workoutCollectionView: UICollectionView!
     @IBOutlet private var completeWorkoutButton: UIButton!
     
+    private enum Literals {
+        static let cellIdentifier = "CurrentExerciseCollectionViewCell"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,7 +24,7 @@ class CurrentWorkoutViewController: UIViewController {
     private func setupCollectionView() {
         workoutCollectionView.dataSource = self
         workoutCollectionView.delegate = self
-        workoutCollectionView.register(UINib(nibName: "CurrentExerciseCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CurrentExerciseCollectionViewCell")
+        workoutCollectionView.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
     }
 }
 
@@ -30,7 +34,7 @@ extension CurrentWorkoutViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: CurrentExerciseCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentExerciseCollectionViewCell", for: indexPath) as? CurrentExerciseCollectionViewCell) else { return CurrentExerciseCollectionViewCell() }
+        guard let cell: CurrentExerciseCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? CurrentExerciseCollectionViewCell) else { return CurrentExerciseCollectionViewCell() }
         return cell
     }
 }

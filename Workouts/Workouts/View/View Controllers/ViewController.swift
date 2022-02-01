@@ -12,6 +12,11 @@ class ViewController: UIViewController{
     @IBOutlet private var workoutsCollectionView: UICollectionView!
     @IBOutlet private var emptyCollectionLabel: UILabel!
     
+    private enum Literals {
+        static let cellIdentifier = "WorkoutCollectionViewCell"
+        static let segueIdentifier = "workout"
+    }
+    
     private var workoutsArray: [String] = [] {
        didSet {
           if workoutsArray.count > 0 {
@@ -32,7 +37,7 @@ class ViewController: UIViewController{
     private func setupCollectionView() {
         workoutsCollectionView.delegate = self
         workoutsCollectionView.dataSource = self
-        workoutsCollectionView.register(UINib(nibName: "WorkoutCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WorkoutCollectionViewCell")
+        workoutsCollectionView.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
     }
 
     @IBAction func addNewWorkout(_ sender: Any) {
@@ -45,13 +50,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: WorkoutCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "WorkoutCollectionViewCell", for: indexPath) as? WorkoutCollectionViewCell) else { return WorkoutCollectionViewCell() }
+        guard let cell: WorkoutCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? WorkoutCollectionViewCell) else { return WorkoutCollectionViewCell() }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let viewController = storyboard?.instantiateViewController(identifier: "workout") as? AddWorkoutViewController {
+        if let viewController = storyboard?.instantiateViewController(identifier: Literals.segueIdentifier) as? AddWorkoutViewController {
             _ = viewController.view
             navigationController?.pushViewController(viewController, animated: true)
         }
