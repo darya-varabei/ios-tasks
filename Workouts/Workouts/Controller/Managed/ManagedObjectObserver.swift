@@ -23,20 +23,20 @@ final class ManagedObjectObserver {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(token)
+        NotificationCenter.default.removeObserver(token!)
     }
 
     fileprivate var token: NSObjectProtocol!
 
     fileprivate func changeType(of object: NSManagedObject, in note: ObjectsDidChangeNotification) -> ChangeType? {
         let deleted = note.deletedObjects.union(note.invalidatedObjects)
-        if note.invalidatedAllObjects || deleted.containsObjectIdentical(to: object) {
+        if note.invalidatedAllObjects {// || deleted.containsObjectIdentical(to: object) {
             return .delete
         }
         let updated = note.updatedObjects.union(note.refreshedObjects)
-        if updated.containsObjectIdentical(to: object) {
+        //if updated.containsObjectIdentical(to: object) {
             return .update
-        }
+       // }
         return nil
     }
 }

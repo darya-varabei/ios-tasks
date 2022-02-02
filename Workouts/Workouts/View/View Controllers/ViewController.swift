@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController{
 
     @IBOutlet private var workoutsCollectionView: UICollectionView!
     @IBOutlet private var emptyCollectionLabel: UILabel!
+    
+    var managedObjectContext: NSManagedObjectContext!
     
     private enum Literals {
         static let cellIdentifier = "WorkoutCollectionViewCell"

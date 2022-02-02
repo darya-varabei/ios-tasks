@@ -32,6 +32,8 @@
 		D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */; };
 		D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */; };
 		D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */; };
+		D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */; };
+		D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetAreaCollectionViewCell.xib; sourceTree = "<group>"; };
+		D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		D57271FE27A9377700C45931 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D5B4152727AAC2AA0009C81E /* Helpers */,
 				D572720027A93EA400C45931 /* Managed */,
 			);
 			path = Controller;
@@ -204,6 +209,15 @@
 			path = TargetAreaCell;
 			sourceTree = "<group>";
 		};
+		D5B4152727AAC2AA0009C81E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */,
+				D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,6 +298,7 @@
 				D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */,
 				D57271FA27A9355700C45931 /* ExerciseTableViewCell.swift in Sources */,
 				D572720227A93EB400C45931 /* Managed.swift in Sources */,
+				D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */,
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
 				D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */,
@@ -294,6 +309,7 @@
 				D56D599827A88F7A00A87326 /* CurrentWorkoutViewController.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
 				D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */,
+				D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */,
 				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
 				D56D599527A8867800A87326 /* UpdateExerciseViewController.swift in Sources */,
 			);
