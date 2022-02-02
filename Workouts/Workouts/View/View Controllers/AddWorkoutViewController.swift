@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class AddWorkoutViewController: UIViewController {
     
@@ -15,7 +16,7 @@ class AddWorkoutViewController: UIViewController {
     @IBOutlet private var exercisesTableView: UITableView!
     @IBOutlet private var addWorkoutButton: UIButton!
     @IBOutlet private var startWorkoutButton: UIButton!
-    
+    var managedObjectContext: NSManagedObjectContext!
     private enum Literals {
         static let cellIdentifier = "TargetAreaCollectionViewCell"
         static let tableCellIdentifier = "ExerciseTableViewCell"

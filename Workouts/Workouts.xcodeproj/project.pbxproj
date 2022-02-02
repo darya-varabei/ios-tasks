@@ -34,6 +34,7 @@
 		D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */; };
 		D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */; };
 		D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */; };
+		D5B4152F27AACEC50009C81E /* WorkoutsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetAreaCollectionViewCell.xib; sourceTree = "<group>"; };
 		D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
 				D56D599427A8867800A87326 /* UpdateExerciseViewController.swift */,
 				D56D599727A88F7A00A87326 /* CurrentWorkoutViewController.swift */,
+				D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B4152F27AACEC50009C81E /* WorkoutsCollectionView.swift in Sources */,
 				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
 				D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */,

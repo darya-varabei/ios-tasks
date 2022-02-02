@@ -49,15 +49,10 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         collectionView.reloadData()
     }
 
-
-    // MARK: Private
-
     fileprivate let collectionView: UICollectionView
     fileprivate let fetchedResultsController: NSFetchedResultsController<Object>
     fileprivate weak var delegate: Delegate!
     fileprivate let cellIdentifier: String
-
-    // MARK: UITableViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let section = fetchedResultsController.sections?[section] else { return 0 }
@@ -71,8 +66,6 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         delegate.configure(cell, for: object)
         return cell
     }
-
-    // MARK: NSFetchedResultsControllerDelegate
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         //collectionView.begin

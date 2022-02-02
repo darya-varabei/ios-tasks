@@ -30,7 +30,7 @@ extension Managed {
 }
 
 extension Managed where Self: NSManagedObject {
-    static var entityName: String { return entity().name!  }
+    static var entityName: String { return entity().name ?? ""  }
 
     static func fetch(in context: NSManagedObjectContext, configurationBlock: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
         let request = NSFetchRequest<Self>(entityName: Self.entityName)

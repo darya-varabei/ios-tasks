@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-
 func createMoodyContainer(completion: @escaping (NSPersistentContainer) -> ()) {
     let container = NSPersistentContainer(name: "Model")
     container.loadPersistentStores { _, error in

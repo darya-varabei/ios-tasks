@@ -8,11 +8,23 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
 
     @IBOutlet private var workoutsCollectionView: UICollectionView!
     @IBOutlet private var emptyCollectionLabel: UILabel!
     
+    fileprivate var dataSource: CollectionViewDataSource<ViewController>!
+    
+    var persistentContainer: NSPersistentContainer = {
+          let container = NSPersistentContainer(name: "Model")
+          container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+              if let error = error as NSError? {
+                  fatalError("Unresolved error \(error), \(error.userInfo)")
+              }
+          })
+          return container
+      }()
+
     var managedObjectContext: NSManagedObjectContext!
     
     private enum Literals {
@@ -34,12 +46,17 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        managedObjectContext = persistentContainer.viewContext
         setupCollectionView()
     }
-
+    
     private func setupCollectionView() {
-        workoutsCollectionView.delegate = self
-        workoutsCollectionView.dataSource = self
+        let request = Workout.sortedFetchRequest
+        request.fetchBatchSize = 20
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: "WorkoutCollectionViewCell", fetchedResultsController: frc, delegate: self)
+        //workoutsCollectionView.delegate = self
+        //workoutsCollectionView.dataSource = self
         workoutsCollectionView.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
     }
 
@@ -47,21 +64,31 @@ class ViewController: UIViewController{
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: WorkoutCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? WorkoutCollectionViewCell) else { return WorkoutCollectionViewCell() }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if let viewController = storyboard?.instantiateViewController(identifier: Literals.segueIdentifier) as? AddWorkoutViewController {
-            _ = viewController.view
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+extension ViewController: CollectionViewDataSourceDelegate {
+    func configure(_ cell: WorkoutCollectionViewCell, for object: Workout) {
+        guard object != nil else { fatalError("Wrong object type") }
+        //cell.configure(for: region)
     }
 }
+
+//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 0
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell: WorkoutCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? WorkoutCollectionViewCell) else { return WorkoutCollectionViewCell() }
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        if let viewController = storyboard?.instantiateViewController(identifier: Literals.segueIdentifier) as? AddWorkoutViewController {
+//            _ = viewController.view
+//            navigationController?.pushViewController(viewController, animated: true)
+//        }
+//    }
+//}
+
+
+
