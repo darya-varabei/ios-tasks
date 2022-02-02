@@ -13,22 +13,33 @@ final class Exercise: NSManagedObject {
     @NSManaged fileprivate(set) var targetArea: String
     @NSManaged fileprivate(set) var repeats: Int16
     @NSManaged fileprivate(set) var sets: Int8
-    @NSManaged fileprivate(set) var id: UUID
+    @NSManaged fileprivate(set) var id: Int16
+    @NSManaged fileprivate(set) var workout: Workout?
     
-    static func findOrCreate(for idCode: UUID, in context: NSManagedObjectContext) -> Exercise {
+    static func findOrCreate(for idCode: Int16, in context: NSManagedObjectContext, workout: Workout, exercise: Exercise) -> Exercise {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), Int(idCode))
-        let country = findOrCreate(in: context, matching: predicate) {
-            $0.iso3166Code = isoCountry
-            $0.updatedAt = Date()
-            $0.continent = Continent.findOrCreateContinent(for: isoCountry, in: context)
+        let exercise = findOrCreate(in: context, matching: predicate) {
+            $0.name = exercise.name
+            $0.targetArea = exercise.targetArea
+            $0.repeats = exercise.repeats
+            $0.sets = exercise.sets
+            $0.id = exercise.id
+            $0.workout = workout
+            //$0.workout = Continent.findOrCreateContinent(for: isoCountry, in: context)
         }
-        return country
+        return exercise
     }
 
     override func prepareForDeletion() {
-        guard let c = continent else { return }
-        if c.countries.filter({ !$0.isDeleted }).isEmpty {
+        guard let c = workout else { return }
+        if c.exercises.filter({ !($0 as AnyObject).isDeleted }).isEmpty {
             managedObjectContext?.delete(c)
         }
+    }
+}
+
+extension Exercise: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(id), ascending: false)]
     }
 }

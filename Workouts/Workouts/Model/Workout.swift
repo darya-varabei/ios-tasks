@@ -20,4 +20,23 @@ final class Workout: NSManagedObject {
             $0.id.hashValue < $1.id.hashValue
         }
     }
+    
+    static func findOrCreateContinent(for workoutId: Int16, in context: NSManagedObjectContext, workout: Workout) -> Workout? {
+       // guard let iso3166 = ISO3166.Continent(country: isoCountry) else { return nil }
+        let predicate = NSPredicate(format: "%K == %d", #keyPath(dateLastCompleted), Int(workoutId))
+        let continent = findOrCreate(in: context, matching: predicate) {
+            $0.name = workout.name
+            $0.dateLastCompleted = Date()
+            $0.id = workout.id
+            $0.exercises = workout.exercises
+        }
+        return continent
+    }
+
+}
+
+extension Workout: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(dateLastCompleted), ascending: false)]
+    }
 }
