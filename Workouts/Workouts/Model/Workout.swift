@@ -11,8 +11,9 @@ import CoreData
 final class Workout: NSManagedObject {
     @NSManaged fileprivate(set) var name: String
     @NSManaged fileprivate(set) var dateLastCompleted: Date
-    @NSManaged fileprivate(set) var id: UUID
+    @NSManaged fileprivate(set) var id: Int16
     @NSManaged fileprivate(set) var exercises: NSSet
+    @NSManaged fileprivate(set) var targerAreas: String
     
     var listExercises: [Exercise] {
         let set = exercises as? Set<Exercise> ?? []
@@ -29,10 +30,25 @@ final class Workout: NSManagedObject {
             $0.dateLastCompleted = Date()
             $0.id = workout.id
             $0.exercises = workout.exercises
+            $0.targerAreas = workout.targerAreas
         }
         return continent
     }
 
+    public static func insert(into context: NSManagedObjectContext, name: String, exercises: [Exercise], targetAreas: String) -> Workout {
+        let workout: Workout = context.insertObject()
+        workout.name = name
+        workout.dateLastCompleted = Date()
+        workout.targerAreas = targetAreas
+        workout.exercises = Exercise.addOnNewWorkout(in: context, workout: workout, exercises: exercises)
+        return workout
+    }
+
+//    override public func prepareForDeletion() {
+//        if country.moods.filter({ !$0.isDeleted }).isEmpty {
+//            managedObjectContext?.delete(country)
+//        }
+//    }
 }
 
 extension Workout: Managed {

@@ -10,15 +10,17 @@ import UIKit
 class ExerciseTableViewCell: UITableViewCell {
 
     @IBOutlet private var exerciseParametersLabel: UILabel!
+    var labelText: String? {
+        didSet {
+            exerciseParametersLabel.text = labelText
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
 }

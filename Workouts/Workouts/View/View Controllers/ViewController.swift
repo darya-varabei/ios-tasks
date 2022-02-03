@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     
     fileprivate var dataSource: CollectionViewDataSource<ViewController>!
     
+    private enum SegueIdentifier: String {
+        case embedNavigation = "addWorkout"
+        case embedCamera = "workout"
+    }
+    
     var persistentContainer: NSPersistentContainer = {
           let container = NSPersistentContainer(name: "Model")
           container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -50,14 +55,25 @@ class ViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            guard let nc = segue.destination as? AddWorkoutViewController
+                //let vc = nc.viewControllers.first as? AddWorkoutViewController
+            else { fatalError("wrong view controller type") }
+            nc.managedObjectContext = managedObjectContext
+    }
+    
     private func setupCollectionView() {
         let request = Workout.sortedFetchRequest
         request.fetchBatchSize = 20
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: "WorkoutCollectionViewCell", fetchedResultsController: frc, delegate: self)
-        //workoutsCollectionView.delegate = self
-        //workoutsCollectionView.dataSource = self
-        workoutsCollectionView.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
+        if ((frc.fetchedObjects?.isEmpty) != nil) {
+            workoutsCollectionView.isHidden = true
+            emptyCollectionLabel.isHidden = false
+        } else {
+            workoutsCollectionView.isHidden = false
+            emptyCollectionLabel.isHidden = true
+        }
     }
 
     @IBAction func addNewWorkout(_ sender: Any) {

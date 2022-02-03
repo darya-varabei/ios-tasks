@@ -15,6 +15,7 @@
         <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="targetAreas" optional="YES" attributeType="String"/>
         <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="workout" inverseEntity="Exercise"/>
         <fetchIndex name="byPropertyIndex">
             <fetchIndexElement property="id" type="Binary" order="ascending"/>
@@ -22,6 +23,6 @@
     </entity>
     <elements>
         <element name="Exercise" positionX="185.796875" positionY="-15.64453125" width="128" height="133"/>
-        <element name="Workout" positionX="-54" positionY="27" width="128" height="103"/>
+        <element name="Workout" positionX="-54" positionY="27" width="128" height="118"/>
     </elements>
 </model>

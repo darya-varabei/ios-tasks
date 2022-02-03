@@ -29,6 +29,14 @@ final class Exercise: NSManagedObject {
         }
         return exercise
     }
+    
+    static func addOnNewWorkout(in context: NSManagedObjectContext, workout: Workout, exercises: [Exercise]) -> NSSet{
+        var items: Array<Exercise> = []
+        for exercise in exercises {
+            items.append(Exercise.findOrCreate(for: workout.id, in: context, workout: workout, exercise: exercise))
+        }
+        return NSSet(object: items)
+    }
 
     override func prepareForDeletion() {
         guard let c = workout else { return }
