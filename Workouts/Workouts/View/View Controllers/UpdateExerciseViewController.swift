@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class UpdateExerciseViewController: UIViewController {
     
@@ -14,6 +15,8 @@ class UpdateExerciseViewController: UIViewController {
     @IBOutlet private var setsTextField: UITextField!
     @IBOutlet private var repeatsTextField: UITextField!
     @IBOutlet private var saveExerciseButton: UIButton!
+    
+    var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()

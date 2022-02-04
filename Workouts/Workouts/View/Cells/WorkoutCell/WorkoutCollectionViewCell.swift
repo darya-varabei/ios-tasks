@@ -16,7 +16,14 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.lightGray.cgColor
     }
 
+}
+extension WorkoutCollectionViewCell {
+    func configure(for workout: Session) {
+        workoutNameLabel.text = workout.name
+        //tergetAreasLabel.text = workout.targerAreas.joined(separator: ", ")
+    }
 }

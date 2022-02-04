@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="Model">
-    <entity name="Exercise" representedClassName=".Exercise" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="repeats" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="targetArea" optional="YES" attributeType="String"/>
-        <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="exercises" inverseEntity="Workout"/>
-        <fetchIndex name="byPropertyIndex">
-            <fetchIndexElement property="id" type="Binary" order="ascending"/>
-        </fetchIndex>
-    </entity>
-    <entity name="Workout" representedClassName=".Workout" syncable="YES">
+    <entity name="Session" representedClassName=".Session" syncable="YES">
         <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="exercises" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="targetAreas" optional="YES" attributeType="String"/>
-        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="workout" inverseEntity="Exercise"/>
+        <attribute name="targetAreas" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <fetchIndex name="byPropertyIndex">
             <fetchIndexElement property="id" type="Binary" order="ascending"/>
         </fetchIndex>
     </entity>
     <elements>
-        <element name="Exercise" positionX="185.796875" positionY="-15.64453125" width="128" height="133"/>
-        <element name="Workout" positionX="-54" positionY="27" width="128" height="118"/>
+        <element name="Session" positionX="-54" positionY="27" width="128" height="118"/>
     </elements>
 </model>

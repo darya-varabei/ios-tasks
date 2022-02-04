@@ -28,6 +28,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         super.init()
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
+        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.reloadData()
     }
@@ -75,7 +76,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         switch type {
         case .insert:
             guard let indexPath = newIndexPath else { fatalError("Index path should be not nil") }
-            collectionView.insertItems(at: [indexPath])//, with: .fade)
+            collectionView.insertItems(at: [indexPath])
         case .update:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             let object = objectAtIndexPath(indexPath)
@@ -84,11 +85,11 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         case .move:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             guard let newIndexPath = newIndexPath else { fatalError("New index path should be not nil") }
-            collectionView.deleteItems(at: [indexPath])//, with: .fade)
-            collectionView.insertItems(at: [newIndexPath])//, with: .fade)
+            collectionView.deleteItems(at: [indexPath])
+            collectionView.insertItems(at: [newIndexPath])
         case .delete:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
-            collectionView.deleteItems(at: [indexPath])//, with: .fade)
+            collectionView.deleteItems(at: [indexPath])
         default:
         break
         }

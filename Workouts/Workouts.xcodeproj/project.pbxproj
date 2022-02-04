@@ -32,9 +32,11 @@
 		D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */; };
 		D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */; };
 		D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */; };
+		D599A45527AC6FB900CE1BF6 /* Sequence+Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */; };
 		D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */; };
 		D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */; };
 		D5B4152F27AACEC50009C81E /* WorkoutsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */; };
+		D5D45C5227ABD1F100C21F46 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D45C5127ABD1F100C21F46 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,9 +67,11 @@
 		D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetAreaCollectionViewCell.xib; sourceTree = "<group>"; };
+		D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Iterator.swift"; sourceTree = "<group>"; };
 		D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsCollectionView.swift; sourceTree = "<group>"; };
+		D5D45C5127ABD1F100C21F46 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				D572720427A93EE100C45931 /* ManagedObjectObserver.swift */,
 				D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */,
 				D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */,
+				D5D45C5127ABD1F100C21F46 /* DataSource.swift */,
 			);
 			path = Managed;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 			children = (
 				D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */,
 				D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */,
+				D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 				D58AB9F827A7D52D00F67771 /* Model.xcdatamodeld in Sources */,
 				D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */,
 				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
+				D5D45C5227ABD1F100C21F46 /* DataSource.swift in Sources */,
+				D599A45527AC6FB900CE1BF6 /* Sequence+Iterator.swift in Sources */,
 				D56D599527A8867800A87326 /* UpdateExerciseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

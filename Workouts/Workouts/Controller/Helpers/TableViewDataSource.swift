@@ -15,6 +15,8 @@ protocol TableViewDataSourceDelegate: class {
     func configure(_ cell: Cell, for object: Object)
 }
 
+
+/// Note: this class doesn't support working with multiple sections
 class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     typealias Object = Delegate.Object
     typealias Cell = Delegate.Cell
@@ -47,10 +49,15 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
         tableView.reloadData()
     }
 
+
+    // MARK: Private
+
     fileprivate let tableView: UITableView
     fileprivate let fetchedResultsController: NSFetchedResultsController<Object>
     fileprivate weak var delegate: Delegate!
     fileprivate let cellIdentifier: String
+
+    // MARK: UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let section = fetchedResultsController.sections?[section] else { return 0 }
@@ -64,6 +71,8 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
         delegate.configure(cell, for: object)
         return cell
     }
+
+    // MARK: NSFetchedResultsControllerDelegate
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -87,6 +96,8 @@ class TableViewDataSource<Delegate: TableViewDataSourceDelegate>: NSObject, UITa
         case .delete:
             guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
             tableView.deleteRows(at: [indexPath], with: .fade)
+        default:
+            break
         }
     }
 

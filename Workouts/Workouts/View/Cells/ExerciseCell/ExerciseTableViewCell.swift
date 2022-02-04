@@ -24,3 +24,11 @@ class ExerciseTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 }
+
+extension ExerciseTableViewCell {
+    func configure(for exercise: Exercise) {
+        labelText = "\(String(describing: exercise.getName)),  \(String(describing: exercise.getSets))x\(String(describing: exercise.getRepeats))"
+    }
+}
+
+
