@@ -27,7 +27,19 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="o1v-ip-fiT">
+                                        <rect key="frame" x="37" y="0.0" width="300" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GSd-jy-7Q0">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="XGK-4e-zos" kind="show" identifier="workout" id="FKa-Gy-eLF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No workouts currently added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ4-gz-abb" userLabel="No workouts currently added">
                                 <rect key="frame" x="97" y="437.5" width="220.5" height="21"/>
@@ -51,7 +63,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Awu-Nw-XKe">
                             <connections>
                                 <action selector="addNewWorkout:" destination="BYZ-38-t0r" id="m7T-hw-reX"/>
-                                <segue destination="XGK-4e-zos" kind="show" id="qNX-XW-Agj"/>
+                                <segue destination="XGK-4e-zos" kind="show" identifier="addWorkout" id="qNX-XW-Agj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -211,9 +223,16 @@
                             <constraint firstItem="0vw-MS-i1g" firstAttribute="leading" secondItem="HDL-EH-YW4" secondAttribute="leading" id="gld-lu-8Sx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IhO-KA-Phh"/>
+                    <navigationItem key="navigationItem" id="IhO-KA-Phh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Dof-ct-67q">
+                            <connections>
+                                <action selector="deleteWorkout:" destination="XGK-4e-zos" id="hh0-KD-2QY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addWorkoutButton" destination="Of9-Kc-1FB" id="e0q-bF-Wkm"/>
+                        <outlet property="deleteWorkoutButton" destination="Dof-ct-67q" id="CQY-hh-0A8"/>
                         <outlet property="exercisesTableView" destination="RS7-lb-rca" id="hyt-Do-yJa"/>
                         <outlet property="nameTextField" destination="bTo-tC-UfW" id="1bB-hh-V7P"/>
                         <outlet property="startWorkoutButton" destination="j42-6i-gar" id="bVg-tN-Aa6"/>
@@ -433,6 +452,9 @@
             <point key="canvasLocation" x="1047.8260869565217" y="73.660714285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FKa-Gy-eLF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

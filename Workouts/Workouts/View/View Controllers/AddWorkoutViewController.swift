@@ -16,9 +16,11 @@ class AddWorkoutViewController: UIViewController {
     @IBOutlet private var exercisesTableView: UITableView!
     @IBOutlet private var addWorkoutButton: UIButton!
     @IBOutlet private var startWorkoutButton: UIButton!
+    @IBOutlet private var deleteWorkoutButton: UIBarButtonItem!
     private let targetAreasItems = ["Legs", "Glutes", "Core", "Back", "Shoulders", "Arms", "Cardio", "Full body", "Chest", "Stretching"]
     var managedObjectContext: NSManagedObjectContext!
     var exercises: [Exercise] = []
+    var workout: Session?
    
     //fileprivate var dataSource: TableViewDataSource<AddWorkoutViewController>?
     
@@ -32,6 +34,7 @@ class AddWorkoutViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         setupTableView()
+        defineDeletionButtonState()
     }
     
     private func setupCollectionView() {
@@ -58,6 +61,11 @@ class AddWorkoutViewController: UIViewController {
 //            vc.mood = mood
 //    }
 
+    private func defineDeletionButtonState() {
+        if workout == nil {
+            deleteWorkoutButton.isEnabled = false
+        }
+    }
     
     @IBAction private func saveWorkout(_ sender: Any) {
         let name = nameTextField.text ?? ""
@@ -74,6 +82,13 @@ class AddWorkoutViewController: UIViewController {
     }
     
     @IBAction private func startWorkout(_ sender: Any) {
+    }
+    
+    @IBAction func deleteWorkout(_ sender: Any) {
+        guard let session = workout else { return }
+        session.managedObjectContext?.performChanges {
+            session.managedObjectContext?.delete(session)
+        }
     }
 }
 

@@ -35,7 +35,6 @@
 		D599A45527AC6FB900CE1BF6 /* Sequence+Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */; };
 		D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */; };
 		D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */; };
-		D5B4152F27AACEC50009C81E /* WorkoutsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */; };
 		D5D45C5227ABD1F100C21F46 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D45C5127ABD1F100C21F46 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +69,6 @@
 		D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Iterator.swift"; sourceTree = "<group>"; };
 		D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsCollectionView.swift; sourceTree = "<group>"; };
 		D5D45C5127ABD1F100C21F46 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,7 +201,6 @@
 				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
 				D56D599427A8867800A87326 /* UpdateExerciseViewController.swift */,
 				D56D599727A88F7A00A87326 /* CurrentWorkoutViewController.swift */,
-				D5B4152E27AACEC50009C81E /* WorkoutsCollectionView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5B4152F27AACEC50009C81E /* WorkoutsCollectionView.swift in Sources */,
 				D58AB9FC27A7E05300F67771 /* Exercise.swift in Sources */,
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
 				D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */,
