@@ -13,7 +13,7 @@ final class Session: NSManagedObject {
     @NSManaged fileprivate(set) var dateLastCompleted: Date
     @NSManaged fileprivate(set) var id: Int16
     @NSManaged fileprivate(set) var exercises: [String]
-    @NSManaged fileprivate(set) var targerAreas: [String]
+    @NSManaged fileprivate(set) var targetAreas: [String]
 
     public static func insert(into context: NSManagedObjectContext, name: String, exercises: [String], targetAreas: [String]) -> Session {
         let workout: Session = context.insertObject()

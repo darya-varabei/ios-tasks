@@ -2,10 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="Model">
     <entity name="Session" representedClassName=".Session" syncable="YES">
         <attribute name="dateLastCompleted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="exercises" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="exercises" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedString" customClassName="[String]"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="targetAreas" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="targetAreas" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedString" customClassName="[String]"/>
         <fetchIndex name="byPropertyIndex">
             <fetchIndexElement property="id" type="Binary" order="ascending"/>
         </fetchIndex>

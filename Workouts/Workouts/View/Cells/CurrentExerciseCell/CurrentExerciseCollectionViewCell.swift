@@ -14,7 +14,10 @@ class CurrentExerciseCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
+    func getData(name: String, repeats: Int, sets: Int) {
+        nameLabel.text = name
+        repeatsLabel.text = "\(sets)sets \(repeats) repeats"
+    }
 }

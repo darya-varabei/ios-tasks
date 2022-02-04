@@ -8,39 +8,36 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, SegueHandler {
+    
     @IBOutlet private var workoutsCollectionView: UICollectionView!
     @IBOutlet private var emptyCollectionLabel: UILabel!
     
-    fileprivate var dataSource: CollectionViewDataSource<ViewController>!
-    
-    private enum SegueIdentifier: String {
-        case embedNavigation = "addWorkout"
-        case embedCamera = "workout"
+    enum SegueIdentifier: String {
+        case workout = "workout"
+        case addWorkout = "addWorkout"
     }
     
     var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Model")
+        let container = NSPersistentContainer(name: Literals.persistentContainer)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
+            if let error = error as NSError? { return }
         })
         return container
     }()
-
+    
     var managedObjectContext: NSManagedObjectContext!
     
+    fileprivate var dataSource: CollectionViewDataSource<ViewController>!
+    
     private enum Literals {
-        static let cellIdentifier = "WorkoutCollectionViewCell"
-        static let segueIdentifier = "workout"
+        static let cellIdentifier = "SessionCollectionViewCell"
+        static let persistentContainer = "Model"
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         managedObjectContext = persistentContainer.viewContext
-        setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,43 +45,40 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            guard let nc = segue.destination as? AddWorkoutViewController
-            else { fatalError("wrong view controller type") }
-            nc.managedObjectContext = managedObjectContext
+        switch segueIdentifier(for: segue) {
+        case .workout:
+            guard let vc = segue.destination as? AddWorkoutViewController else { return }
+            guard let mood = dataSource.selectedObject else { return }
+            vc.workout = mood
+            vc.managedObjectContext = managedObjectContext
+        case .addWorkout:
+            guard let vc = segue.destination as? AddWorkoutViewController else { return }
+            vc.managedObjectContext = managedObjectContext
+        case nil:
+            break
+        }
     }
     
     private func setupCollectionView() {
         let request = Session.sortedFetchRequest
         request.fetchBatchSize = 20
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: "WorkoutCollectionViewCell", fetchedResultsController: frc, delegate: self)
-//        if ((frc.fetchedObjects?.isEmpty) != nil) {
-//            workoutsCollectionView.isHidden = true
-//            emptyCollectionLabel.isHidden = false
-//        } else {
-//            workoutsCollectionView.isHidden = false
-            emptyCollectionLabel.isHidden = true
-//        }
-    }
-
-    @IBAction func addNewWorkout(_ sender: Any) {
+        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: Literals.cellIdentifier, fetchedResultsController: frc, delegate: self)
+        //        if ((frc.fetchedObjects?.isEmpty) != nil) {
+        //            workoutsCollectionView.isHidden = true
+        //            emptyCollectionLabel.isHidden = false
+        //        } else {
+        //            workoutsCollectionView.isHidden = false
+        emptyCollectionLabel.isHidden = true
+        //        }
     }
 }
 
 extension ViewController: CollectionViewDataSourceDelegate {
-    func configure(_ cell: WorkoutCollectionViewCell, for object: Session) {
+    func configure(_ cell: SessionCollectionViewCell, for object: Session) {
         cell.configure(for: object)
     }
 }
-
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        if let viewController = storyboard?.instantiateViewController(identifier: Literals.segueIdentifier) as? AddWorkoutViewController {
-//            _ = viewController.view
-//            navigationController?.pushViewController(viewController, animated: true)
-//        }
-//    }
-//}
 
 
 

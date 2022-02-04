@@ -35,6 +35,7 @@ class AddWorkoutViewController: UIViewController {
         setupCollectionView()
         setupTableView()
         defineDeletionButtonState()
+        fillFields()
     }
     
     private func setupCollectionView() {
@@ -67,6 +68,16 @@ class AddWorkoutViewController: UIViewController {
         }
     }
     
+    private func fillFields() {
+        if workout != nil {
+            nameTextField.text = workout?.name
+            for i in workout?.targetAreas ?? [] {
+                targetAreas.append(i)
+            }
+            targetAreasCollection.reloadData()
+        }
+    }
+    
     @IBAction private func saveWorkout(_ sender: Any) {
         let name = nameTextField.text ?? ""
         var totalExercises: [String] = []
@@ -74,11 +85,12 @@ class AddWorkoutViewController: UIViewController {
             totalExercises.append(item.description())
         }
         
-       // if name.count != 0 && exercises.count != 0 {
+        if name.count != 0 && exercises.count != 0 {
             self.managedObjectContext.performChanges {
                 let _ = Session.insert(into: self.managedObjectContext, name: name, exercises: totalExercises, targetAreas: ["Glutes"])
             }
-        //}
+        }
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func startWorkout(_ sender: Any) {
@@ -89,6 +101,7 @@ class AddWorkoutViewController: UIViewController {
         session.managedObjectContext?.performChanges {
             session.managedObjectContext?.delete(session)
         }
+        navigationController?.popViewController(animated: true)
     }
 }
 

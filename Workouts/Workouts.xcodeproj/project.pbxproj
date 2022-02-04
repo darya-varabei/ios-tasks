@@ -17,6 +17,8 @@
 		D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720427A93EE100C45931 /* ManagedObjectObserver.swift */; };
 		D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */; };
 		D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */; };
+		D5894E8B27AD72E500C39CF1 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */; };
+		D5894E9427ADBD8400C39CF1 /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */; };
 		D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E027A7D48700F67771 /* AppDelegate.swift */; };
 		D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E227A7D48700F67771 /* SceneDelegate.swift */; };
 		D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9E427A7D48700F67771 /* ViewController.swift */; };
@@ -28,7 +30,6 @@
 		D58ABA0027A7E08700F67771 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AB9FF27A7E08700F67771 /* Workout.swift */; };
 		D58ABA0327A7E9D900F67771 /* WorkoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */; };
 		D58ABA0927A7EAFB00F67771 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */; };
-		D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */; };
 		D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */; };
 		D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */; };
 		D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */; };
@@ -49,6 +50,8 @@
 		D572720427A93EE100C45931 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDidChangeNotification.swift; sourceTree = "<group>"; };
 		D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Insertion.swift"; sourceTree = "<group>"; };
+		D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
+		D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58AB9DD27A7D48700F67771 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AB9E027A7D48700F67771 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58AB9E227A7D48700F67771 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +65,6 @@
 		D58AB9FF27A7E08700F67771 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D58ABA0227A7E9D900F67771 /* WorkoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStack.swift; sourceTree = "<group>"; };
 		D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
-		D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutCollectionViewCell.xib; sourceTree = "<group>"; };
 		D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		D58ABA1327A7F84100F67771 /* TargetAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58ABA1427A7F84100F67771 /* TargetAreaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetAreaCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -189,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				D58ABA0727A7EAFB00F67771 /* WorkoutCollectionViewCell.swift */,
-				D58ABA0827A7EAFB00F67771 /* WorkoutCollectionViewCell.xib */,
+				D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */,
 			);
 			path = WorkoutCell;
 			sourceTree = "<group>";
@@ -220,6 +222,7 @@
 				D5B4152827AAC2C80009C81E /* CollectionViewDataSource.swift */,
 				D5B4152B27AAC5E30009C81E /* TableViewDataSource.swift */,
 				D599A45427AC6FB900CE1BF6 /* Sequence+Iterator.swift */,
+				D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -282,7 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58ABA1627A7F84100F67771 /* TargetAreaCollectionViewCell.xib in Resources */,
-				D58ABA0A27A7EAFB00F67771 /* WorkoutCollectionViewCell.xib in Resources */,
 				D58AB9ED27A7D48800F67771 /* LaunchScreen.storyboard in Resources */,
 				D58AB9EA27A7D48800F67771 /* Assets.xcassets in Resources */,
 				D57271FB27A9355700C45931 /* ExerciseTableViewCell.xib in Resources */,
@@ -304,6 +306,7 @@
 				D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */,
 				D57271FA27A9355700C45931 /* ExerciseTableViewCell.swift in Sources */,
 				D572720227A93EB400C45931 /* Managed.swift in Sources */,
+				D5894E8B27AD72E500C39CF1 /* SegueHandler.swift in Sources */,
 				D5B4152C27AAC5E30009C81E /* TableViewDataSource.swift in Sources */,
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
@@ -318,6 +321,7 @@
 				D5B4152927AAC2C80009C81E /* CollectionViewDataSource.swift in Sources */,
 				D58ABA0027A7E08700F67771 /* Workout.swift in Sources */,
 				D5D45C5227ABD1F100C21F46 /* DataSource.swift in Sources */,
+				D5894E9427ADBD8400C39CF1 /* SessionCollectionViewCell.swift in Sources */,
 				D599A45527AC6FB900CE1BF6 /* Sequence+Iterator.swift in Sources */,
 				D56D599527A8867800A87326 /* UpdateExerciseViewController.swift in Sources */,
 			);

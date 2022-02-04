@@ -8,8 +8,7 @@
 import UIKit
 
 class WorkoutCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet private var startButton: UIButton!
+    
     @IBOutlet private var workoutNameLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var tergetAreasLabel: UILabel!

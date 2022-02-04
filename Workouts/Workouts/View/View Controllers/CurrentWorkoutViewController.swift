@@ -12,6 +12,7 @@ class CurrentWorkoutViewController: UIViewController {
     
     @IBOutlet private var workoutCollectionView: UICollectionView!
     @IBOutlet private var completeWorkoutButton: UIButton!
+    var exercises: [Exercise]?
     
     private enum Literals {
         static let cellIdentifier = "CurrentExerciseCollectionViewCell"
@@ -30,11 +31,12 @@ class CurrentWorkoutViewController: UIViewController {
 
 extension CurrentWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return exercises?.count ?? 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: CurrentExerciseCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? CurrentExerciseCollectionViewCell) else { return CurrentExerciseCollectionViewCell() }
+        cell.getData(name: exercises?[indexPath.item].getName() ?? "", repeats:  exercises?[indexPath.item].getRepeats() ?? 1, sets:  exercises?[indexPath.item].getSets() ?? 1)
         return cell
     }
 }
