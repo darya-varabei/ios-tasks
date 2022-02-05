@@ -184,7 +184,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <segue destination="Bal-nD-78H" kind="presentation" id="pBY-7j-1Cj"/>
+                                                            <segue destination="Bal-nD-78H" kind="presentation" identifier="addWorkout" id="pBY-7j-1Cj"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -194,7 +194,7 @@
                                                 <state key="normal" title="Start"/>
                                                 <connections>
                                                     <action selector="startWorkout:" destination="XGK-4e-zos" eventType="touchUpInside" id="hmX-DL-tOW"/>
-                                                    <segue destination="DCp-fm-e6a" kind="show" id="974-vp-HlD"/>
+                                                    <segue destination="DCp-fm-e6a" kind="show" identifier="startWorkout" id="974-vp-HlD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-Kc-1FB">
@@ -337,7 +337,7 @@
         <!--Update Exercise View Controller-->
         <scene sceneID="yC7-nZ-0QO">
             <objects>
-                <viewController id="Bal-nD-78H" customClass="UpdateExerciseViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateExerciseViewController" id="Bal-nD-78H" customClass="UpdateExerciseViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="McY-Hh-KW2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,6 +417,9 @@
                                                     <constraint firstAttribute="height" constant="50" id="diE-IA-0nX"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="saveExerciseState:" destination="Bal-nD-78H" eventType="touchUpInside" id="TO1-qR-ptV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -8,11 +8,13 @@
 import Foundation
 import CoreData
 
+enum ChangeType {
+    case delete
+    case update
+    case create
+}
+
 final class ManagedObjectObserver {
-    enum ChangeType {
-        case delete
-        case update
-    }
 
     init?(object: NSManagedObject, changeHandler: @escaping (ChangeType) -> ()) {
         guard let moc = object.managedObjectContext else { return nil }
