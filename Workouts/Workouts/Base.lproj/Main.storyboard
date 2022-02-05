@@ -166,29 +166,34 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4H-gL-3Sv">
-                                                <rect key="frame" x="20" y="259" width="374" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4H-gL-3Sv">
+                                                <rect key="frame" x="20" y="259" width="49" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RS7-lb-rca">
-                                                <rect key="frame" x="20" y="300" width="374" height="293"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvF-DG-usP">
+                                                <rect key="frame" x="10" y="307" width="394" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gv-uc-okB">
+                                                <rect key="frame" x="20" y="381" width="94" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-qa-ObY">
+                                                <rect key="frame" x="20" y="422" width="294" height="54"/>
+                                            </datePicker>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9xm-If-HJ4">
+                                                <rect key="frame" x="20" y="484" width="374" height="101"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="PCq-lV-zO2">
-                                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PCq-lV-zO2" id="dsc-cL-Ed8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </tableViewCellContentView>
-                                                        <connections>
-                                                            <segue destination="Bal-nD-78H" kind="presentation" identifier="addWorkout" id="pBY-7j-1Cj"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                            </tableView>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j42-6i-gar">
                                                 <rect key="frame" x="40" y="683" width="334" height="30"/>
                                                 <state key="normal" title="Start"/>
@@ -210,32 +215,40 @@
                                             <constraint firstItem="Fkv-YV-QpJ" firstAttribute="top" secondItem="bTo-tC-UfW" secondAttribute="bottom" constant="30" id="0lg-sf-Kgb"/>
                                             <constraint firstItem="bTo-tC-UfW" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="1m5-A3-zFs"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l4H-gL-3Sv" secondAttribute="trailing" constant="20" symbolic="YES" id="2rS-dD-flj"/>
+                                            <constraint firstItem="UNl-qa-ObY" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="3qf-Qe-f4e"/>
                                             <constraint firstAttribute="trailing" secondItem="j42-6i-gar" secondAttribute="trailing" constant="40" id="AVR-Rd-06D"/>
-                                            <constraint firstItem="Of9-Kc-1FB" firstAttribute="top" secondItem="RS7-lb-rca" secondAttribute="bottom" constant="40" id="DCU-62-VG5"/>
                                             <constraint firstItem="Fkv-YV-QpJ" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="FHm-Yl-j2m"/>
+                                            <constraint firstItem="0gv-uc-okB" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="GGb-e6-c4A"/>
                                             <constraint firstAttribute="trailing" secondItem="VH7-RU-146" secondAttribute="trailing" constant="20" id="JTQ-cL-cjQ"/>
                                             <constraint firstAttribute="trailing" secondItem="f6A-GA-lBR" secondAttribute="trailing" constant="20" id="KdN-CY-61Z"/>
+                                            <constraint firstItem="9xm-If-HJ4" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" symbolic="YES" id="LQh-4Q-vP0"/>
+                                            <constraint firstAttribute="trailing" secondItem="0gv-uc-okB" secondAttribute="trailing" constant="300" id="Mwt-Nz-L8N"/>
                                             <constraint firstItem="f6A-GA-lBR" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="Q3D-nY-i3u"/>
+                                            <constraint firstAttribute="trailing" secondItem="9xm-If-HJ4" secondAttribute="trailing" constant="20" symbolic="YES" id="QDJ-Kj-qU7"/>
+                                            <constraint firstItem="Of9-Kc-1FB" firstAttribute="top" secondItem="9xm-If-HJ4" secondAttribute="bottom" constant="48" id="QfL-zB-4l2"/>
                                             <constraint firstItem="j42-6i-gar" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="40" id="QtI-OQ-40C"/>
+                                            <constraint firstAttribute="trailing" secondItem="rvF-DG-usP" secondAttribute="trailing" constant="10" id="T9k-u4-wyr"/>
                                             <constraint firstItem="l4H-gL-3Sv" firstAttribute="top" secondItem="VH7-RU-146" secondAttribute="bottom" constant="40" id="TNW-el-e72"/>
-                                            <constraint firstItem="RS7-lb-rca" firstAttribute="top" secondItem="l4H-gL-3Sv" secondAttribute="bottom" constant="20" id="Tqf-rW-C70"/>
                                             <constraint firstItem="j42-6i-gar" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="40" id="ULS-M5-eFS"/>
                                             <constraint firstItem="j42-6i-gar" firstAttribute="top" secondItem="Of9-Kc-1FB" secondAttribute="bottom" constant="20" id="Zis-HL-hfl"/>
+                                            <constraint firstAttribute="trailing" secondItem="UNl-qa-ObY" secondAttribute="trailing" constant="100" id="ba1-5L-1od"/>
+                                            <constraint firstItem="0gv-uc-okB" firstAttribute="top" secondItem="rvF-DG-usP" secondAttribute="bottom" constant="40" id="cbr-Nj-SiM"/>
                                             <constraint firstItem="VH7-RU-146" firstAttribute="top" secondItem="Fkv-YV-QpJ" secondAttribute="bottom" constant="20" id="dCu-el-WJQ"/>
+                                            <constraint firstItem="rvF-DG-usP" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="10" id="eIn-JR-Ylv"/>
                                             <constraint firstAttribute="trailing" secondItem="Of9-Kc-1FB" secondAttribute="trailing" constant="40" id="g75-ZK-HSB"/>
-                                            <constraint firstAttribute="trailing" secondItem="RS7-lb-rca" secondAttribute="trailing" constant="20" id="g7N-Qq-WJ3"/>
                                             <constraint firstItem="bTo-tC-UfW" firstAttribute="top" secondItem="f6A-GA-lBR" secondAttribute="bottom" constant="20" id="kYX-Rq-v27"/>
                                             <constraint firstItem="VH7-RU-146" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="mGo-NQ-SpD"/>
+                                            <constraint firstItem="rvF-DG-usP" firstAttribute="top" secondItem="l4H-gL-3Sv" secondAttribute="bottom" constant="27" id="ncF-dF-kt2"/>
                                             <constraint firstAttribute="trailing" secondItem="bTo-tC-UfW" secondAttribute="trailing" constant="20" id="o7j-8R-C52"/>
                                             <constraint firstAttribute="bottom" secondItem="j42-6i-gar" secondAttribute="bottom" constant="20" id="tHh-gT-Tpa"/>
                                             <constraint firstItem="l4H-gL-3Sv" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="uW1-Jn-ili"/>
-                                            <constraint firstItem="RS7-lb-rca" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="20" id="vcf-fV-Dev"/>
+                                            <constraint firstItem="UNl-qa-ObY" firstAttribute="top" secondItem="0gv-uc-okB" secondAttribute="bottom" constant="20" id="vXv-PV-pmY"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j42-6i-gar" secondAttribute="trailing" constant="20" symbolic="YES" id="wDT-sC-gd1"/>
                                             <constraint firstItem="f6A-GA-lBR" firstAttribute="top" secondItem="xWr-Zl-WNl" secondAttribute="top" constant="20" id="wzj-7E-zzG"/>
                                             <constraint firstItem="Of9-Kc-1FB" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="40" id="xac-8t-GSZ"/>
-                                            <constraint firstItem="l4H-gL-3Sv" firstAttribute="centerX" secondItem="RS7-lb-rca" secondAttribute="centerX" id="xus-nn-Tpk"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Of9-Kc-1FB" secondAttribute="trailing" constant="20" symbolic="YES" id="z2h-es-Hme"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fkv-YV-QpJ" secondAttribute="trailing" constant="20" symbolic="YES" id="zSb-MT-JiL"/>
+                                            <constraint firstItem="9xm-If-HJ4" firstAttribute="top" secondItem="UNl-qa-ObY" secondAttribute="bottom" constant="8.5" id="zVx-b9-Nb0"/>
                                             <constraint firstItem="Of9-Kc-1FB" firstAttribute="leading" secondItem="xWr-Zl-WNl" secondAttribute="leading" constant="40" id="zzu-pI-7NF"/>
                                         </constraints>
                                     </view>
@@ -268,11 +281,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addWorkoutButton" destination="Of9-Kc-1FB" id="e0q-bF-Wkm"/>
+                        <outlet property="coachTextField" destination="rvF-DG-usP" id="IZo-80-Tmi"/>
                         <outlet property="deleteWorkoutButton" destination="Dof-ct-67q" id="CQY-hh-0A8"/>
-                        <outlet property="exercisesTableView" destination="RS7-lb-rca" id="hyt-Do-yJa"/>
+                        <outlet property="infoTextArea" destination="9xm-If-HJ4" id="2ZP-DP-I91"/>
                         <outlet property="nameTextField" destination="bTo-tC-UfW" id="1bB-hh-V7P"/>
                         <outlet property="startWorkoutButton" destination="j42-6i-gar" id="bVg-tN-Aa6"/>
                         <outlet property="targetAreasCollection" destination="VH7-RU-146" id="KHH-1t-VIY"/>
+                        <outlet property="timePicker" destination="UNl-qa-ObY" id="eNt-bQ-W3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiD-ix-oRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -339,14 +354,14 @@
             <objects>
                 <viewController storyboardIdentifier="UpdateExerciseViewController" id="Bal-nD-78H" customClass="UpdateExerciseViewController" customModule="Workouts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="McY-Hh-KW2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-3d-5q2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="931-58-Ixe">
-                                        <rect key="frame" x="8" y="0.0" width="398" height="808"/>
+                                        <rect key="frame" x="8" y="0.0" width="398" height="818"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-kw-aya">
                                                 <rect key="frame" x="20" y="40" width="358" height="29"/>
@@ -495,6 +510,9 @@
         <segue reference="qNX-XW-Agj"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

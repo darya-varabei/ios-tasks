@@ -23,7 +23,7 @@ class SessionCollectionViewCell: UICollectionViewCell {
 extension SessionCollectionViewCell {
     func configure(for workout: Session) {
         nameLabel.text = workout.name
-        targetAreasLabel.text = workout.targetAreas.joined(separator: ", ")
-        dateLastCompleted.text = "Last completed: \(workout.dateLastCompleted)"
+        targetAreasLabel.text = workout.type
+        dateLastCompleted.text = "Scheduled at: \(workout.time)"
     }
 }

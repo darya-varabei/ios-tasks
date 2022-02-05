@@ -64,13 +64,13 @@ class ViewController: UIViewController, SegueHandler {
         request.fetchBatchSize = 20
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: Literals.cellIdentifier, fetchedResultsController: frc, delegate: self)
-        //        if ((frc.fetchedObjects?.isEmpty) != nil) {
-        //            workoutsCollectionView.isHidden = true
-        //            emptyCollectionLabel.isHidden = false
-        //        } else {
-        //            workoutsCollectionView.isHidden = false
-        emptyCollectionLabel.isHidden = true
-        //        }
+        if frc.fetchedObjects?.count != 0 {
+            workoutsCollectionView.isHidden = false
+            emptyCollectionLabel.isHidden = true
+        } else {
+            workoutsCollectionView.isHidden = true
+            emptyCollectionLabel.isHidden = false
+        }
     }
 }
 

@@ -21,12 +21,12 @@ extension DataSource {
         }
     }
 
-    var predicate: NSPredicate {
-        switch self  {
-        case .session(let c):
-            return NSPredicate(format: "exercises in %@", argumentArray: [c.exercises])
-        }
-    }
+//    var predicate: NSPredicate {
+//        switch self  {
+//        case .session(let c):
+//            return NSPredicate(format: "exercises in %@", argumentArray: [c.exercises])
+//        }
+//    }
 
     var managedObject: NSManagedObject? {
         switch self {
