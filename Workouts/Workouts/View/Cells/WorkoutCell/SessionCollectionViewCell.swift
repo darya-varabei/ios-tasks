@@ -13,10 +13,13 @@ class SessionCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var targetAreasLabel: UILabel!
     @IBOutlet private var dateLastCompleted: UILabel!
     
+    let cornerRadius: CGFloat = 15
+    let borderWidth: CGFloat = 2
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 15
-        layer.borderWidth = 2
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
         layer.borderColor = UIColor.lightGray.cgColor
     }
 }
@@ -25,6 +28,6 @@ extension SessionCollectionViewCell {
     func configure(for workout: Session) {
         nameLabel.text = workout.name
         targetAreasLabel.text = workout.type
-        dateLastCompleted.text = "Scheduled at: \(workout.time)"
+        dateLastCompleted.text = "Scheduled at: \(workout.time.getFormattedDate())"
     }
 }

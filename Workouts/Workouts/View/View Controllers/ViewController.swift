@@ -33,6 +33,7 @@ class ViewController: UIViewController, SegueHandler {
     private enum Literals {
         static let cellIdentifier = "SessionCollectionViewCell"
         static let persistentContainer = "Model"
+        static let batchSize = 20
     }
     
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ class ViewController: UIViewController, SegueHandler {
     
     private func setupCollectionView() {
         let request = Session.sortedFetchRequest
-        request.fetchBatchSize = 20
+        request.fetchBatchSize = Literals.batchSize
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: Literals.cellIdentifier, fetchedResultsController: frc, delegate: self)
         if frc.fetchedObjects?.count != 0 {
