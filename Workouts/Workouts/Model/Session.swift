@@ -14,7 +14,8 @@ final class Session: NSManagedObject {
     @NSManaged fileprivate(set) var info: String
     @NSManaged fileprivate(set) var type: String
     @NSManaged fileprivate(set) var coach: String
-
+    @NSManaged fileprivate(set) var id: Int64
+    
     public static func insert(into context: NSManagedObjectContext, name: String, time: Date, typeOfClass: String, info: String, coach: String) -> Session {
         let workout: Session = context.insertObject()
         workout.name = name
@@ -23,6 +24,26 @@ final class Session: NSManagedObject {
         workout.info = info
         workout.coach = coach
         return workout
+    }
+    
+    public override func willSave() {
+        super.willSave()
+        
+        if self.id == 0 {
+            setPrimitiveValue(getAutoIncremenet(), forKey: "id")
+        }
+    }
+    
+    func getAutoIncremenet() -> Int64   {
+        let url = self.objectID.uriRepresentation()
+        let urlString = url.absoluteString
+        if let pN = urlString.components(separatedBy: "/").last {
+            let numberPart = pN.replacingOccurrences(of: "p", with: "")
+            if let number = Int64(numberPart) {
+                return number
+            }
+        }
+        return 0
     }
 }
 
