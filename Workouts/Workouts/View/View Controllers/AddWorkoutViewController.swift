@@ -22,11 +22,10 @@ class AddWorkoutViewController: UIViewController {
     var exercises: [Exercise] = []
     var workout: Session?
    
-    //fileprivate var dataSource: TableViewDataSource<AddWorkoutViewController>?
-    
     private enum Literals {
         static let cellIdentifier = "TargetAreaCollectionViewCell"
         static let tableCellIdentifier = "ExerciseTableViewCell"
+        static let addExerciseRow = "Add new exercise"
     }
     private var targetAreas: [String] = []
     
@@ -42,25 +41,12 @@ class AddWorkoutViewController: UIViewController {
         targetAreasCollection.delegate = self
         targetAreasCollection.dataSource = self
         targetAreasCollection.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
-        targetAreasCollection.allowsSelection = true
-        targetAreasCollection.allowsMultipleSelection = true
     }
     
     fileprivate func setupTableView() {
-        let request = Session.sortedFetchRequest
-//        exercisesTableView.rowHeight = UITableView.automaticDimension
-//        exercisesTableView.estimatedRowHeight = 55
-        request.fetchBatchSize = 20
-        request.returnsObjectsAsFaults = false
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-//        dataSource = TableViewDataSource(tableView: exercisesTableView, cellIdentifier: "MoodCell", fetchedResultsController: frc, delegate: self)
+        exercisesTableView.dataSource = self
+        exercisesTableView.delegate = self
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            guard let vc = segue.destination as? UpdateExerciseViewController else { fatalError("Wrong view controller type") }
-//        guard let mood = dataSource?.selectedObject else { fatalError("Showing detail, but no selected row?") }
-//            vc.mood = mood
-//    }
 
     private func defineDeletionButtonState() {
         if workout == nil {
@@ -87,7 +73,7 @@ class AddWorkoutViewController: UIViewController {
         
         if name.count != 0 && exercises.count != 0 {
             self.managedObjectContext.performChanges {
-                let _ = Session.insert(into: self.managedObjectContext, name: name, exercises: totalExercises, targetAreas: ["Glutes"])
+                let _ = Session.insert(into: self.managedObjectContext, name: name, exercises: totalExercises, targetAreas: self.targetAreas)
             }
         }
         navigationController?.popViewController(animated: true)
@@ -133,13 +119,6 @@ extension AddWorkoutViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-//extension AddWorkoutViewController: TableViewDataSourceDelegate {
-//    func configure(_ cell: ExerciseTableViewCell, for object: Exercise) {
-//        cell.configure(for: object)
-//    }
-//}
-
-
 extension AddWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count + 1
@@ -152,7 +131,7 @@ extension AddWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = Bundle.main.loadNibNamed(Literals.tableCellIdentifier, owner: self, options: nil)?.first as? ExerciseTableViewCell else { return ExerciseTableViewCell() }
         if indexPath.row == exercises.count {
-            cell.labelText = "Add new exercise"
+            cell.labelText = Literals.addExerciseRow
         }
         else {
             cell.labelText = formTextForExerciseCell(exercise: exercises[indexPath.row])

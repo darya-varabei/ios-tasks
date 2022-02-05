@@ -19,8 +19,8 @@ final class Session: NSManagedObject {
         let workout: Session = context.insertObject()
         workout.name = name
         workout.dateLastCompleted = Date()
-        //workout.targerAreas = [""]
-        //workout.exercises = exercises
+        workout.targetAreas = targetAreas
+        workout.exercises = exercises
         return workout
     }
 }
