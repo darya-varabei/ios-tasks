@@ -24,7 +24,7 @@ fileprivate enum Update<Object> {
 
 
 class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
-
+    
     typealias Object = Delegate.Object
     typealias Cell = Delegate.Cell
     
@@ -33,7 +33,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     fileprivate let fetchedResultsController: NSFetchedResultsController<Object>
     fileprivate weak var delegate: Delegate!
     fileprivate var updates: [Update<Object>] = []
-
+    
     required init(collectionView: UICollectionView, cellIdentifier: String, fetchedResultsController: NSFetchedResultsController<Object>, delegate: Delegate) {
         self.collectionView = collectionView
         self.cellIdentifier = cellIdentifier
@@ -45,28 +45,28 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         collectionView.dataSource = self
         collectionView.reloadData()
     }
-
+    
     var selectedObject: Object? {
         guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return nil }
         return objectAtIndexPath(indexPath)
     }
-
+    
     func objectAtIndexPath(_ indexPath: IndexPath) -> Object {
         return fetchedResultsController.object(at: indexPath)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let section = fetchedResultsController.sections?[section] else { return 0 }
         return section.numberOfObjects
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let object = objectAtIndexPath(indexPath)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? Cell else { return UICollectionViewCell() }
         delegate.configure(cell, for: object)
         return cell
     }
-
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:

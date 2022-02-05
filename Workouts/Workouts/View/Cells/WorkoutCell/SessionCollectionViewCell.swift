@@ -15,6 +15,7 @@ class SessionCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        layer.cornerRadius = 15
         layer.borderWidth = 2
         layer.borderColor = UIColor.lightGray.cgColor
     }
