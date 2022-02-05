@@ -9,55 +9,30 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddWorkoutViewController: UIViewController, SegueHandler {
+class AddWorkoutViewController: UIViewController {
     
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var targetAreasCollection: UICollectionView!
     @IBOutlet private var addWorkoutButton: UIButton!
-    @IBOutlet private var startWorkoutButton: UIButton!
     @IBOutlet private var coachTextField: UITextField!
     @IBOutlet private var timePicker: UIDatePicker!
     @IBOutlet private var infoTextArea: UITextView!
+    @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var deleteWorkoutButton: UIBarButtonItem!
     private let targetAreasItems = ["Pilates", "Stretching", "Cardio", "Legs strenght", "HIIT", "Crossfit", "Arms&Core", "Full body", "Aerobics", "Kids"]
-    var managedObjectContext: NSManagedObjectContext!
-    var workout: Session?
-    
-    enum SegueIdentifier: String {
-        case addExercise = "addExercise"
-        case updateExercise = "updateExercise"
-        case startWorkout = "startWorkout"
-    }
     private var selectedWorkoutType = ""
-    private var dataSource: CollectionViewDataSource<ViewController>!
+    
     private enum Literals {
         static let cellIdentifier = "TargetAreaCollectionViewCell"
-        static let tableCellIdentifier = "ExerciseTableViewCell"
-        static let addExerciseRow = "Add new exercise"
     }
+    var managedObjectContext: NSManagedObjectContext!
+    var workout: Session?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fillFields()
         setupCollectionView()
         defineDeletionButtonState()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segueIdentifier(for: segue) {
-        case .updateExercise:
-            guard let vc = segue.destination as? UpdateExerciseViewController else { return }
-//            guard let mood = dataSource.selectedObject?.exercises[selectedRow] else { return }
-           // vc.exercise = mood
-            vc.managedObjectContext = managedObjectContext
-        case .addExercise:
-            guard let vc = segue.destination as? UpdateExerciseViewController else { return }
-            vc.managedObjectContext = managedObjectContext
-        case .startWorkout:
-            break
-        case .none:
-            break
-        }
     }
     
     private func setupCollectionView() {
@@ -77,23 +52,23 @@ class AddWorkoutViewController: UIViewController, SegueHandler {
             nameTextField.text = workout?.name
             coachTextField.text = workout?.coach
             infoTextArea.text = workout?.info
-            timePicker.date = (workout?.time)!
+            timePicker.date = workout?.time ?? Date()
             selectedWorkoutType = workout?.type ?? ""
         }
+        errorLabel.isHidden = true
     }
     
     @IBAction private func saveWorkout(_ sender: Any) {
-        let name = nameTextField.text ?? ""
-
-        //if name.count != 0 && exercises.count != 0 {
+        if nameTextField.text?.count != 0 && coachTextField.text?.count != 0 && selectedWorkoutType.count != 0 {
             self.managedObjectContext.performChanges {
-                let _ = Session.insert(into: self.managedObjectContext, name: name, time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
+                let _ = Session.insert(into: self.managedObjectContext, name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
             }
-       // }
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction private func startWorkout(_ sender: Any) {
+            navigationController?.popViewController(animated: true)
+            errorLabel.isHidden = true
+        }
+        else {
+            errorLabel.isHidden = false
+        }
     }
     
     @IBAction func deleteWorkout(_ sender: Any) {

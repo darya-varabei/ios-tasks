@@ -51,16 +51,3 @@ struct ObjectsDidChangeNotification {
     }
 
 }
-
-
-extension NSManagedObjectContext {
-
-    func addObjectsDidChangeNotificationObserver(_ handler: @escaping (ObjectsDidChangeNotification) -> ()) -> NSObjectProtocol {
-        let nc = NotificationCenter.default
-        return nc.addObserver(forName: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: self, queue: nil) { note in
-            let wrappedNote = ObjectsDidChangeNotification(note: note)
-            handler(wrappedNote)
-        }
-    }
-
-}
