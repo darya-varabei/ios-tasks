@@ -26,6 +26,15 @@ final class Session: NSManagedObject {
         return workout
     }
     
+    public static func update(into context: NSManagedObjectContext, object: Session, name: String, time: Date, typeOfClass: String, info: String, coach: String) -> Session {
+        object.setValue(name, forKey: "name")
+        object.setValue(time, forKey: "time")
+        object.setValue(typeOfClass, forKey: "type")
+        object.setValue(info, forKey: "info")
+        object.setValue(coach, forKey: "coach")
+        return object
+    }
+    
     public override func willSave() {
         super.willSave()
         
