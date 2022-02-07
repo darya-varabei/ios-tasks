@@ -13,7 +13,7 @@ class BookViewModel {
     fileprivate var booksToCollection = [Book]()
     fileprivate var featuredIsbn = [Identifier]()
 
-    private var delegate: ControllerDelegate = BooksCoordinator()
+    private var delegate: ControllerDelegate// = BooksCoordinator()
     private var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false

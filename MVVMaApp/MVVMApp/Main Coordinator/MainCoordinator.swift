@@ -40,8 +40,8 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        childCoordinators.append(BooksCoordinator())
-        childCoordinators.append(FeaturedCoordinator())
+        childCoordinators.append(BooksCoordinator(tabBarController: UINavigationController()))
+        childCoordinators.append(FeaturedCoordinator(tabBarController: UINavigationController()))
         childCoordinators[1].start()
         childCoordinators[0].start()
         let bookViewController = childCoordinators[0].rootViewController
@@ -64,11 +64,9 @@ class MainCoordinator: Coordinator {
     
     private func goToFeaturedFlow(_ flow: AppFlow) {
         (rootViewController as? UITabBarController)?.selectedIndex = 1
-        //childCoordinators[1].start()
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
         (rootViewController as? UITabBarController)?.selectedIndex = 0
-        //childCoordinators[0].start()
     }
 }

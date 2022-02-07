@@ -13,6 +13,10 @@ class FeaturedCoordinator: Coordinator, ControllerDelegate {
     var rootViewController: UIViewController = UIViewController()
     var childCoordinators: [Coordinator] = []
     
+    init(tabBarController: UINavigationController) {
+        self.rootViewController = tabBarController
+    }
+    
     func start() {
         rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(delegate: self))
     }

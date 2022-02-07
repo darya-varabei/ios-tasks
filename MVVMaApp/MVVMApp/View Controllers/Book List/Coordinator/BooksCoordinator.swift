@@ -10,8 +10,12 @@ import UIKit
 
 class BooksCoordinator: Coordinator, ControllerDelegate {
 
-    var rootViewController: UIViewController = UIViewController()
+    var rootViewController: UIViewController
     var childCoordinators: [Coordinator] = []
+    
+    init(tabBarController: UINavigationController) {
+        self.rootViewController = tabBarController
+    }
     
     func start() {
         let viewModel = BookViewModel(delegate: self)
