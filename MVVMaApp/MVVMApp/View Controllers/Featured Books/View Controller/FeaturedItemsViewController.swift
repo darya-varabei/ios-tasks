@@ -68,7 +68,7 @@ class FeaturedItemsViewController: UIViewController {
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getAllBooks().count
+        return viewModel.getAllBooks().value?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

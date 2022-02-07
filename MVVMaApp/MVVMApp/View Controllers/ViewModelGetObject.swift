@@ -14,8 +14,8 @@ struct ViewModelGetObject {
     private unowned let bookViewModel: BookViewModel
     private var isFeatured: Bool
     
-    init(book: Book, isFeatured: Bool, bookViewModel: BookViewModel) {
-        self.book = book
+    init(book: Book?, isFeatured: Bool, bookViewModel: BookViewModel) {
+        self.book = book!
         self.isFeatured = isFeatured
         self.bookViewModel = bookViewModel
     }

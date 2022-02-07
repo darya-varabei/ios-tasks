@@ -9,11 +9,11 @@ import Foundation
 
 class BookViewModel {
 
-    fileprivate var books = [Book]()
-    fileprivate var booksToCollection = [Book]()
+    fileprivate var books = Observable<[Book]>()
+    fileprivate var booksToCollection = Observable<[Book]>()
     fileprivate var featuredIsbn = [Identifier]()
 
-    private var delegate: ControllerDelegate// = BooksCoordinator()
+    private var delegate: ControllerDelegate
     private var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
@@ -42,8 +42,8 @@ class BookViewModel {
     }
     
     func fetchData(books: [Book]) {
-        self.books = books
-        self.booksToCollection = books
+        self.books.value = books
+        self.booksToCollection.value = books
         createCellViewModel()
     }
     
@@ -63,23 +63,23 @@ class BookViewModel {
             indexes.append(index.isbn)
         }
         
-        if indexes.contains(books[index].isbn ?? "") {
+        if indexes.contains(books.value?[index].isbn ?? "") {
             isFeatured = true
         }
-        return ViewModelGetObject(book: books[index], isFeatured: isFeatured, bookViewModel: self)
+        return ViewModelGetObject(book: books.value?[index], isFeatured: isFeatured, bookViewModel: self)
     }
     
-    func filterBooks(on category: String, isSelected: Observable<Bool>) {
+    func filterBooks(on category: String, isSelected: Bool) {
         
-        booksToCollection.removeAll()
-        if !isSelected.value && !isBeingFiltered {
-            booksToCollection = books.filter { $0.categories.contains(category) }
+        booksToCollection.value?.removeAll()
+        if !isSelected && !isBeingFiltered {
+            booksToCollection.value = (books.value ?? []).filter { $0.categories.contains(category) }
         }
-        else if isSelected.value && isBeingFiltered {
+        else if isSelected && isBeingFiltered {
             booksToCollection = books
         }
         else {
-            booksToCollection = books.filter { $0.categories.contains(category) }
+            booksToCollection.value = (books.value ?? []).filter { $0.categories.contains(category) }
         }
         createCellViewModel()
         isBeingFiltered.toggle()
@@ -89,11 +89,11 @@ class BookViewModel {
         bookService.writeFeaturedIndexes(items: items)
     }
     
-    func getAllBooks() -> [Book] {
+    func getAllBooks() -> Observable<[Book]> {
         return books
     }
     
-    func getBooksForCollection() -> [Book] {
+    func getBooksForCollection() -> Observable<[Book]> {
         return booksToCollection
     }
     
@@ -115,7 +115,7 @@ class BookViewModel {
     
     private func createCellViewModel() {
         var cellViewModels = [BookCellViewModel]()
-        for book in booksToCollection {
+        for book in booksToCollection.value ?? [] {
             cellViewModels.append(createCellModel(book: book))
         }
         bookCellViewModels = cellViewModels
@@ -136,7 +136,7 @@ class FeaturedBookViewModel: BookViewModel {
     }
     
     override  func fetchData(books: [Book]) {
-        self.books = books
+        self.books.value = books
         var cellViewModel = [BookCellViewModel]()
         filterFeaturedBooks()
         for book in books {
@@ -146,7 +146,7 @@ class FeaturedBookViewModel: BookViewModel {
     }
     
     override func getViewModel(index: Int) -> ViewModelGetObject {
-        return ViewModelGetObject(book: books[index], isFeatured: true, bookViewModel: self)
+        return ViewModelGetObject(book: books.value?[index], isFeatured: true, bookViewModel: self)
     }
     
     func filterFeaturedBooks() {
@@ -154,7 +154,7 @@ class FeaturedBookViewModel: BookViewModel {
         for index in featuredIsbn {
             indexes.append(index.isbn)
         }
-        let bufferArray = books.filter { indexes.contains($0.isbn ?? "") }
-        books = bufferArray
+        let bufferArray = (books.value ?? []).filter { indexes.contains($0.isbn ?? "") }
+        books.value = bufferArray
     }
 }

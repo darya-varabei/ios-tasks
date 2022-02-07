@@ -20,8 +20,8 @@ struct CategoryCellViewModel {
         return category.name
     }
     
-    var isSelected: Observable<Bool> {
-        return Observable(category.isSelected)
+    var isSelected: Bool {//Observable<Bool> {
+        return category.isSelected
     }
     
     mutating func toggleIfSelected() {

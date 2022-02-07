@@ -70,7 +70,7 @@ class BooksListViewController: UIViewController {
             DispatchQueue.main.async {
                 guard let category = self?.selectedCategory else { return }
                 self?.booksCollection.reloadData()
-                self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks() ?? [], selectedCategory: category)
+                self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks().value ?? [], selectedCategory: category)
                 self?.categoryCollection.reloadData()
             }
         }
@@ -81,7 +81,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            return viewModel.getBooksForCollection().count
+            return viewModel.getBooksForCollection().value?.count ?? 0
         }
         else {
             return categoryViewModel.getCateroriesList().count
@@ -112,7 +112,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         else {
             var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
-            if cellViewModel.isSelected.value {
+            if cellViewModel.isSelected {
                 selectedCategory = "-"
             }
             else {
