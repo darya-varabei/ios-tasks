@@ -11,7 +11,6 @@
 		D551CB2627B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */; };
 		D572720227A93EB400C45931 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720127A93EB400C45931 /* Managed.swift */; };
 		D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720427A93EE100C45931 /* ManagedObjectObserver.swift */; };
-		D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */; };
 		D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */; };
 		D5894E8B27AD72E500C39CF1 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */; };
 		D5894E9427ADBD8400C39CF1 /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */; };
@@ -35,7 +34,6 @@
 		D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+KeyboardDismiss.swift"; sourceTree = "<group>"; };
 		D572720127A93EB400C45931 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		D572720427A93EE100C45931 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
-		D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDidChangeNotification.swift; sourceTree = "<group>"; };
 		D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Insertion.swift"; sourceTree = "<group>"; };
 		D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				D58ABA0527A7EADB00F67771 /* Cells */,
-				D58ABA1027A7F68D00F67771 /* View Controllers */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -79,6 +76,7 @@
 		D57271FE27A9377700C45931 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D58ABA1027A7F68D00F67771 /* View Controllers */,
 				D5B4152727AAC2AA0009C81E /* Helpers */,
 				D572720027A93EA400C45931 /* Managed */,
 			);
@@ -90,7 +88,6 @@
 			children = (
 				D572720127A93EB400C45931 /* Managed.swift */,
 				D572720427A93EE100C45931 /* ManagedObjectObserver.swift */,
-				D572720727A93F1700C45931 /* ObjectDidChangeNotification.swift */,
 				D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */,
 			);
 			path = Managed;
@@ -157,10 +154,9 @@
 		D58ABA1027A7F68D00F67771 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D5F8F14E27B10DDD007AF55B /* Extensions */,
 				D58AB9E427A7D48700F67771 /* ViewController.swift */,
-				D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */,
 				D58ABA0D27A7F64A00F67771 /* AddWorkoutViewController.swift */,
-				D551CB2227B0B4E100DB4845 /* UIViewController+KeyboardControl.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -182,6 +178,15 @@
 				D5C81EA827AF2F400036D386 /* Date+Format.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D5F8F14E27B10DDD007AF55B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */,
+				D551CB2227B0B4E100DB4845 /* UIViewController+KeyboardControl.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +269,6 @@
 				D58ABA0E27A7F64A00F67771 /* AddWorkoutViewController.swift in Sources */,
 				D5C81EA927AF2F400036D386 /* Date+Format.swift in Sources */,
 				D58AB9E127A7D48700F67771 /* AppDelegate.swift in Sources */,
-				D572720827A93F1700C45931 /* ObjectDidChangeNotification.swift in Sources */,
 				D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */,
 				D58AB9E327A7D48700F67771 /* SceneDelegate.swift in Sources */,
 				D551CB2327B0B4E100DB4845 /* UIViewController+KeyboardControl.swift in Sources */,
