@@ -10,7 +10,6 @@
 		D551CB2327B0B4E100DB4845 /* UIViewController+KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551CB2227B0B4E100DB4845 /* UIViewController+KeyboardControl.swift */; };
 		D551CB2627B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */; };
 		D572720227A93EB400C45931 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720127A93EB400C45931 /* Managed.swift */; };
-		D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720427A93EE100C45931 /* ManagedObjectObserver.swift */; };
 		D572720B27A9406400C45931 /* NSManagedObjectContext+Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */; };
 		D5894E8B27AD72E500C39CF1 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */; };
 		D5894E9427ADBD8400C39CF1 /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */; };
@@ -33,7 +32,6 @@
 		D551CB2227B0B4E100DB4845 /* UIViewController+KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+KeyboardControl.swift"; sourceTree = "<group>"; };
 		D551CB2527B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+KeyboardDismiss.swift"; sourceTree = "<group>"; };
 		D572720127A93EB400C45931 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
-		D572720427A93EE100C45931 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Insertion.swift"; sourceTree = "<group>"; };
 		D5894E8A27AD72E500C39CF1 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		D5894E9327ADBD8400C39CF1 /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				D572720127A93EB400C45931 /* Managed.swift */,
-				D572720427A93EE100C45931 /* ManagedObjectObserver.swift */,
 				D572720A27A9406400C45931 /* NSManagedObjectContext+Insertion.swift */,
 			);
 			path = Managed;
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58AB9E527A7D48700F67771 /* ViewController.swift in Sources */,
-				D572720527A93EE100C45931 /* ManagedObjectObserver.swift in Sources */,
 				D58ABA1527A7F84100F67771 /* TargetAreaCollectionViewCell.swift in Sources */,
 				D572720227A93EB400C45931 /* Managed.swift in Sources */,
 				D551CB2627B0B50F00DB4845 /* UIToolbar+KeyboardDismiss.swift in Sources */,

@@ -62,9 +62,9 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     @IBAction private func saveWorkout(_ sender: Any) {
         if nameTextField.text?.count != 0 && coachTextField.text?.count != 0 && selectedWorkoutType.count != 0 {
             if workout == nil {
-            self.managedObjectContext.performChanges {
-                let _ = Session.insert(into: self.managedObjectContext, name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
-            }
+                self.managedObjectContext.performChanges {
+                    let _ = Session.insert(into: self.managedObjectContext, name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
+                }
             }
             else {
                 let _ = Session.update(into: self.managedObjectContext, object: workout ?? Session() , name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
