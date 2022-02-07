@@ -10,10 +10,14 @@ import UIKit
 class TargetAreaCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var targetAreaLabel: UILabel!
+    private let selectedCellColor = "selectedCellColor"
+    private let cornerRadius: CGFloat = 15
+    private let borderWidth: CGFloat = 1
+    
     var isBeingSelected = false {
         didSet {
             if isBeingSelected {
-                backgroundColor = UIColor(named: "selectedCellColor")
+                backgroundColor = UIColor(named: selectedCellColor)
             }
             else {
                 backgroundColor = UIColor.white
@@ -33,7 +37,7 @@ class TargetAreaCollectionViewCell: UICollectionViewCell {
     func toggleCellColor() {
         isBeingSelected.toggle()
         if isBeingSelected {
-            backgroundColor = UIColor(named: "selectedCellColor")
+            backgroundColor = UIColor(named: selectedCellColor)
         }
         else {
             backgroundColor = UIColor.white
@@ -41,8 +45,8 @@ class TargetAreaCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupCellAppeatance() {
-        layer.cornerRadius = 15
-        layer.borderWidth = 1
-        layer.borderColor = UIColor(named: "selectedCellColor")?.cgColor
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
+        layer.borderColor = UIColor(named: selectedCellColor)?.cgColor
     }
 }

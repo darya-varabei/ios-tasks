@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddWorkoutViewController: UIViewController {
+class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var targetAreasCollection: UICollectionView!
@@ -30,6 +30,7 @@ class AddWorkoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         fillFields()
         setupCollectionView()
         defineDeletionButtonState()

@@ -39,11 +39,11 @@ final class Session: NSManagedObject {
         super.willSave()
         
         if self.id == 0 {
-            setPrimitiveValue(getAutoIncremenet(), forKey: "id")
+            setPrimitiveValue(getAutoIncrement(), forKey: "id")
         }
     }
     
-    func getAutoIncremenet() -> Int64   {
+    func getAutoIncrement() -> Int64   {
         let url = self.objectID.uriRepresentation()
         let urlString = url.absoluteString
         if let pN = urlString.components(separatedBy: "/").last {
