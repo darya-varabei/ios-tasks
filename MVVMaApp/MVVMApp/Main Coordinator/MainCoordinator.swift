@@ -23,7 +23,7 @@ enum FeaturedBooks {
     case detailScreen
 }
 
-class MainCoordinator: BaseCoordinator {
+class MainCoordinator: Coordinator {
     
     private enum TabBarItems {
         static let booksTitle = "Books"
@@ -32,17 +32,22 @@ class MainCoordinator: BaseCoordinator {
         static let starSymbol = "star"
     }
 
-    lazy var booksCoordinator: BooksCoordinator = BooksCoordinator()
-    lazy var featuredCoordinator: FeaturedCoordinator = FeaturedCoordinator()
-    lazy var rootViewController: UIViewController  = UITabBarController()
+    var rootViewController: UIViewController
+    var childCoordinators: [Coordinator] = []
     
+    init(tabBarController: UITabBarController) {
+        self.rootViewController = tabBarController
+    }
+
     func start() {
-        booksCoordinator.start()
-        let bookViewController = booksCoordinator.rootViewController
+        childCoordinators.append(BooksCoordinator())
+        childCoordinators.append(FeaturedCoordinator())
+        childCoordinators[1].start()
+        childCoordinators[0].start()
+        let bookViewController = childCoordinators[0].rootViewController
         bookViewController.tabBarItem = UITabBarItem(title: TabBarItems.booksTitle, image: UIImage(systemName: TabBarItems.bookSymbol), tag: 0)
         
-        featuredCoordinator.start()
-        let featuredViewController = featuredCoordinator.rootViewController
+        let featuredViewController = childCoordinators[1].rootViewController
         featuredViewController.tabBarItem = UITabBarItem(title: TabBarItems.favouriteTitle, image: UIImage(systemName: TabBarItems.starSymbol), tag: 1)
         
         (rootViewController as? UITabBarController)?.viewControllers = [bookViewController, featuredViewController]
@@ -59,9 +64,11 @@ class MainCoordinator: BaseCoordinator {
     
     private func goToFeaturedFlow(_ flow: AppFlow) {
         (rootViewController as? UITabBarController)?.selectedIndex = 1
+        //childCoordinators[1].start()
     }
     
     private func goToBooksFlow(_ flow: AppFlow) {
         (rootViewController as? UITabBarController)?.selectedIndex = 0
+        //childCoordinators[0].start()
     }
 }

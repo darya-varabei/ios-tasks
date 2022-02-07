@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BaseCoordinator: Coordinator {
-    var booksCoordinator: BooksCoordinator { get }
-    var featuredCoordinator: FeaturedCoordinator { get }
-}
+//protocol BaseCoordinator: Coordinator {
+//    var booksCoordinator: BooksCoordinator { get }
+//    var featuredCoordinator: FeaturedCoordinator { get }
+//}

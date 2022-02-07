@@ -11,6 +11,7 @@ import UIKit
 class FeaturedCoordinator: Coordinator, ControllerDelegate {
     
     var rootViewController: UIViewController = UIViewController()
+    var childCoordinators: [Coordinator] = []
     
     func start() {
         rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(delegate: self))

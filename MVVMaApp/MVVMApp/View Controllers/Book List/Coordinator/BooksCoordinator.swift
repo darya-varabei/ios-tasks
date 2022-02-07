@@ -10,7 +10,8 @@ import UIKit
 
 class BooksCoordinator: Coordinator, ControllerDelegate {
 
-    lazy var rootViewController: UIViewController = UIViewController()
+    var rootViewController: UIViewController = UIViewController()
+    var childCoordinators: [Coordinator] = []
     
     func start() {
         let viewModel = BookViewModel(delegate: self)
