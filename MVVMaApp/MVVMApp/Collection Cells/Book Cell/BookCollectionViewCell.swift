@@ -14,7 +14,7 @@ class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(viewModelGetObject: ViewModelGetObject?) {
+    func configure(viewModelGetObject: BookDetailViewModel?) {
         guard let thumbnail = cellViewModel?.thumbnail else { return }
         viewModelGetObject?.loadImage(url: thumbnail) { (image) in
             DispatchQueue.main.async {

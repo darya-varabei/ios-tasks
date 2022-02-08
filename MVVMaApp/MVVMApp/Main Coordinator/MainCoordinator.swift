@@ -53,7 +53,7 @@ class MainCoordinator: Coordinator {
         (rootViewController as? UITabBarController)?.viewControllers = [bookViewController, featuredViewController]
     }
         
-    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    func moveTo(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
         switch flow {
         case .books:
             goToBooksFlow(flow)

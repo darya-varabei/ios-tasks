@@ -22,7 +22,7 @@ class BooksCoordinator: Coordinator, ControllerDelegate {
         rootViewController = UINavigationController(rootViewController: BooksListViewController(viewModel: viewModel))
     }
     
-    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
         let detailViewController = BookDetailViewController( cellViewModel: cellViewModel, viewModelObject: viewModelObject)
         navigationRootViewController?.pushViewController(detailViewController, animated: true)
     }

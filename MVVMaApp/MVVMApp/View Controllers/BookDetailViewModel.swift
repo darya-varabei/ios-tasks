@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct ViewModelGetObject {
+struct BookDetailViewModel {
     
     private let book: Book
     private unowned let bookViewModel: BookViewModel

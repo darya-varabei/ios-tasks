@@ -27,11 +27,11 @@ class BookDetailViewController: UIViewController {
         static let backButtonTitle = "Back"
     }
     
-    private var viewModelObject: ViewModelGetObject?
+    private var viewModelObject: BookDetailViewModel?
     private var cellViewModel: BookCellViewModel?
     //private var bookViewModel: BookViewModel
     
-    init(cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) {
+    init(cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
         super.init(nibName: nil, bundle: nil)
         self.cellViewModel = cellViewModel
         self.viewModelObject = viewModelObject
@@ -55,7 +55,7 @@ class BookDetailViewController: UIViewController {
         getInformationFromModel()
     }
     
-    private func configure(viewModelGetObject: ViewModelGetObject?) {
+    private func configure(viewModelGetObject: BookDetailViewModel?) {
         viewModelObject = viewModelGetObject
         guard let thumbnail = cellViewModel?.thumbnail else { return }
         viewModelGetObject?.loadImage(url: thumbnail) { (image) in

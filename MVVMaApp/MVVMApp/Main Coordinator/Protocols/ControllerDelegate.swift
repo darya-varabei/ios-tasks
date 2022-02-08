@@ -8,6 +8,6 @@
 import Foundation
 
 protocol ControllerDelegate {
-    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: ViewModelGetObject?) 
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) 
     @discardableResult func resetToRoot(animated: Bool) -> Self
 }

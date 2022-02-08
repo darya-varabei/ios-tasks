@@ -59,7 +59,7 @@ class BookViewModel {
         return bookCellViewModels[indexPath.item]
     }
     
-    func getViewModel(index: Int) -> ViewModelGetObject {
+    func getViewModel(index: Int) -> BookDetailViewModel {
         var indexes: [String] = []
         var isFeatured = false
         for index in featuredIsbn {
@@ -69,7 +69,7 @@ class BookViewModel {
         if indexes.contains(books.value?[index].isbn ?? "") {
             isFeatured = true
         }
-        return ViewModelGetObject(book: books.value?[index], isFeatured: isFeatured, bookViewModel: self)
+        return BookDetailViewModel(book: books.value?[index], isFeatured: isFeatured, bookViewModel: self)
     }
     
     func filterBooks(on category: String, isSelected: Bool) {
@@ -109,7 +109,7 @@ class BookViewModel {
         return controllerDelegate
     }
     
-    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: ViewModelGetObject?) {
+    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: BookDetailViewModel?) {
         delegate.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelGetObject)
     }
     
@@ -178,8 +178,8 @@ class FeaturedBookViewModel: BookViewModel {
         bookCellViewModels = cellViewModel
     }
     
-    override func getViewModel(index: Int) -> ViewModelGetObject {
-        return ViewModelGetObject(book: books.value?[index], isFeatured: true, bookViewModel: self)
+    override func getViewModel(index: Int) -> BookDetailViewModel {
+        return BookDetailViewModel(book: books.value?[index], isFeatured: true, bookViewModel: self)
     }
     
     func filterFeaturedBooks() {
