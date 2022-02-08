@@ -9,13 +9,11 @@ import Foundation
 import UIKit
 
 struct BookDetailViewModel {
-    
-    private let book: Book
+   
     private unowned let bookViewModel: BookViewModel
     private var isFeatured: Bool
     
-    init(book: Book?, isFeatured: Bool, bookViewModel: BookViewModel) {
-        self.book = book!
+    init(isFeatured: Bool, bookViewModel: BookViewModel) {
         self.isFeatured = isFeatured
         self.bookViewModel = bookViewModel
     }
@@ -26,17 +24,6 @@ struct BookDetailViewModel {
     
     mutating func toggleFeaturedState() {
         isFeatured.toggle()
-    }
-    
-    func loadImage(url: String, completion: @escaping(UIImage?) -> Void) {
-        let urlString = url
-        guard let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            guard let data = data else { return }
-            let image = UIImage(data: data)
-            completion(image)
-        }.resume()
     }
     
     func updateFeaturedIndexes(isbn: String, setFeatured: Bool) {
@@ -67,10 +54,6 @@ struct BookDetailViewModel {
             break
         }
     }
-    
-//    func resetToRoot() {
-//        bookViewModel.getViewControllerDelegate()?.resetToRoot(animated: true)
-//    }
     
     func getBookViewModel() -> BookViewModel? {
         return bookViewModel

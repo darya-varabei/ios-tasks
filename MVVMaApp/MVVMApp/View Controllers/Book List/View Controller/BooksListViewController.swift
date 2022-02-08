@@ -65,16 +65,18 @@ class BooksListViewController: UIViewController {
     }
     
     private func initViewModel() {
-        viewModel.getBooks()
-        //viewModel.getAllBooks().bind(observer: {_ in
-        viewModel.reloadCollectionView = { [weak self] in
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        queue.sync {
+            viewModel.getBooks()
+        }
+        viewModel.getAllBooks().bind(observer: {_ in
             DispatchQueue.main.async {
-                guard let category = self?.selectedCategory else { return }
-                self?.booksCollection.reloadData()
-                self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks().value ?? [], selectedCategory: category)
-                self?.categoryCollection.reloadData()
+                guard let category = self.selectedCategory else { return }
+                self.booksCollection.reloadData()
+                self.categoryViewModel.getCategories(books: self.viewModel.getAllBooks().value ?? [], selectedCategory: category)
+                self.categoryCollection.reloadData()
             }
-        }//)
+        })
     }
 }
 

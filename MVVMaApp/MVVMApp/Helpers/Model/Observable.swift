@@ -28,14 +28,14 @@ public class Observable<T> {
 //    }
     
     var value: T? {
-            didSet {
-                observer?(value)
-            }
+        didSet {
+            observer?(value)
         }
-        
-        var observer: ((T?) -> ())?
-        
-        func bind(observer: @escaping (T?) -> ()) {
-            self.observer = observer
-        }
+    }
+    
+    var observer: ((T?) -> ())?
+    
+    func bind(observer: @escaping (T?) -> Void) {
+        self.observer = observer
+    }
 }

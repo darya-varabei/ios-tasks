@@ -47,7 +47,10 @@ class BookViewModel {
         self.books.value = books
         self.booksToCollection.value = books
         self.allBooks = books
-        createCellViewModel()
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        queue.sync {
+            createCellViewModel()
+        }
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -69,7 +72,7 @@ class BookViewModel {
         if indexes.contains(books.value?[index].isbn ?? "") {
             isFeatured = true
         }
-        return BookDetailViewModel(book: books.value?[index], isFeatured: isFeatured, bookViewModel: self)
+        return BookDetailViewModel(isFeatured: isFeatured, bookViewModel: self)
     }
     
     func filterBooks(on category: String, isSelected: Bool) {
@@ -116,36 +119,7 @@ class BookViewModel {
     func resetToRoot() {
         delegate.resetToRoot(animated: true)
     }
-    
-//    func updateFeaturedIndexes(isbn: String, setFeatured: Bool) {
-//        
-//        var indexes: [String] = []
-//        var featuredIsbn = getFeaturedIsbn()
-//        for index in getFeaturedIsbn() {
-//            indexes.append(index.isbn)
-//        }
-//        switch(setFeatured) {
-//        
-//        case true, !indexes.contains(isbn):
-//            featuredIsbn.append(Identifier(isbn: isbn))
-//            break
-//            
-//        case false, indexes.contains(isbn):
-//            for index in 0..<getFeaturedIsbn().count {
-//                if getFeaturedIsbn()[index].isbn == isbn {
-//                    featuredIsbn.remove(at: index)
-//                    break
-//                }
-//            }
-//           
-//            modifyIndexesFile(items: featuredIsbn)
-//            break
-//            
-//        default:
-//            break
-//        }
-//    }
-    
+ 
     private func createCellViewModel() {
         var cellViewModels = [BookCellViewModel]()
         for book in booksToCollection.value ?? [] {
@@ -179,7 +153,7 @@ class FeaturedBookViewModel: BookViewModel {
     }
     
     override func getViewModel(index: Int) -> BookDetailViewModel {
-        return BookDetailViewModel(book: books.value?[index], isFeatured: true, bookViewModel: self)
+        return BookDetailViewModel(isFeatured: true, bookViewModel: self)
     }
     
     func filterFeaturedBooks() {

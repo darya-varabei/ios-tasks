@@ -58,7 +58,7 @@ class FeaturedItemsViewController: UIViewController {
 
     private func initViewModel() {
         viewModel.getBooks()
-        viewModel.getAllBooks().bind(observer: {_ in//.reloadCollectionView = { [weak self] in
+        viewModel.getAllBooks().bind(observer: {_ in
             DispatchQueue.main.async {
                 self.featuredCollectionView.reloadData()
             }
@@ -67,10 +67,6 @@ class FeaturedItemsViewController: UIViewController {
 }
 
 extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getAllBooks().value?.count ?? 0
-    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
@@ -82,5 +78,9 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
     }
 }
