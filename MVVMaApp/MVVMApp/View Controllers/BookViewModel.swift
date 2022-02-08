@@ -17,6 +17,7 @@ class BookViewModel {
     private var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
+    private var allBooks = [Book]()
     
     var reloadCollectionView: (() -> Void)?
     
@@ -30,6 +31,7 @@ class BookViewModel {
         self.delegate = delegate
         self.bookService = bookService
         self.booksToCollection = books
+        self.allBooks = books.value ?? []
     }
     
     func getBooks() {
@@ -44,6 +46,7 @@ class BookViewModel {
     func fetchData(books: [Book]) {
         self.books.value = books
         self.booksToCollection.value = books
+        self.allBooks = books
         createCellViewModel()
     }
     
@@ -70,8 +73,8 @@ class BookViewModel {
     }
     
     func filterBooks(on category: String, isSelected: Bool) {
-        
-        booksToCollection.value?.removeAll()
+       
+        books.value = allBooks
         if !isSelected && !isBeingFiltered {
             booksToCollection.value = (books.value ?? []).filter { $0.categories.contains(category) }
         }
@@ -81,6 +84,7 @@ class BookViewModel {
         else {
             booksToCollection.value = (books.value ?? []).filter { $0.categories.contains(category) }
         }
+
         createCellViewModel()
         isBeingFiltered.toggle()
     }
@@ -112,6 +116,35 @@ class BookViewModel {
     func resetToRoot() {
         delegate.resetToRoot(animated: true)
     }
+    
+//    func updateFeaturedIndexes(isbn: String, setFeatured: Bool) {
+//        
+//        var indexes: [String] = []
+//        var featuredIsbn = getFeaturedIsbn()
+//        for index in getFeaturedIsbn() {
+//            indexes.append(index.isbn)
+//        }
+//        switch(setFeatured) {
+//        
+//        case true, !indexes.contains(isbn):
+//            featuredIsbn.append(Identifier(isbn: isbn))
+//            break
+//            
+//        case false, indexes.contains(isbn):
+//            for index in 0..<getFeaturedIsbn().count {
+//                if getFeaturedIsbn()[index].isbn == isbn {
+//                    featuredIsbn.remove(at: index)
+//                    break
+//                }
+//            }
+//           
+//            modifyIndexesFile(items: featuredIsbn)
+//            break
+//            
+//        default:
+//            break
+//        }
+//    }
     
     private func createCellViewModel() {
         var cellViewModels = [BookCellViewModel]()

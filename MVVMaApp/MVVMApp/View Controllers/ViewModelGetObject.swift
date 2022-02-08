@@ -68,11 +68,11 @@ struct ViewModelGetObject {
         }
     }
     
-    func resetToRoot() {
-        bookViewModel.getViewControllerDelegate()?.resetToRoot(animated: true)
-    }
+//    func resetToRoot() {
+//        bookViewModel.getViewControllerDelegate()?.resetToRoot(animated: true)
+//    }
     
-    func getBookViewModel() -> BookViewModel {
+    func getBookViewModel() -> BookViewModel? {
         return bookViewModel
     }
 }

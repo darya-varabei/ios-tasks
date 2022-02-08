@@ -17,7 +17,7 @@ class FeaturedItemsViewController: UIViewController {
 
     init(delegate: ControllerDelegate) {
         self.delegate = delegate
-        viewModel = FeaturedBookViewModel(delegate: delegate)
+        self.viewModel = FeaturedBookViewModel(delegate: delegate)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,11 +27,12 @@ class FeaturedItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegates()
         initViewModel()
+        setDelegates()
     }
 
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setupBackgroundColor()
         view.bringSubviewToFront(featuredCollectionView)
         view.bringSubviewToFront(featuredTitleLabel)
@@ -57,11 +58,11 @@ class FeaturedItemsViewController: UIViewController {
 
     private func initViewModel() {
         viewModel.getBooks()
-        viewModel.reloadCollectionView = { [weak self] in
+        viewModel.getAllBooks().bind(observer: {_ in//.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
-                self?.featuredCollectionView.reloadData()
+                self.featuredCollectionView.reloadData()
             }
-        }
+        })
     }
 }
 
