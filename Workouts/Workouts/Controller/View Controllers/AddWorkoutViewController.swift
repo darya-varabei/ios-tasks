@@ -19,14 +19,12 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     @IBOutlet private var infoTextArea: UITextView!
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var deleteWorkoutButton: UIBarButtonItem!
-    private let targetAreasItems = ["Pilates", "Stretching", "Cardio", "Legs strenght", "HIIT", "Crossfit", "Arms&Core", "Full body", "Aerobics", "Kids"]
-    private var selectedWorkoutType = ""
     
-    private enum Literals {
-        static let cellIdentifier = "TargetAreaCollectionViewCell"
-    }
     var managedObjectContext: NSManagedObjectContext!
     var workout: Session?
+    private let targetAreasItems = ["Pilates", "Stretching", "Cardio", "Legs strenght", "HIIT", "Crossfit", "Arms&Core", "Full body", "Aerobics", "Kids"]
+    private let cellIdentifier = "TargetAreaCollectionViewCell"
+    private var selectedWorkoutType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,7 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     private func setupCollectionView() {
         targetAreasCollection.delegate = self
         targetAreasCollection.dataSource = self
-        targetAreasCollection.register(UINib(nibName: Literals.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: Literals.cellIdentifier)
+        targetAreasCollection.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     }
     
     private func defineDeletionButtonState() {
@@ -79,9 +77,7 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     
     @IBAction func deleteWorkout(_ sender: Any) {
         guard let session = workout else { return }
-        session.managedObjectContext?.performChanges {
-            session.managedObjectContext?.delete(session)
-        }
+        let _ = Session.delete(session: session)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -92,12 +88,10 @@ extension AddWorkoutViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: TargetAreaCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: Literals.cellIdentifier, for: indexPath) as? TargetAreaCollectionViewCell) else { return TargetAreaCollectionViewCell() }
+        guard let cell: TargetAreaCollectionViewCell = (collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? TargetAreaCollectionViewCell) else { return TargetAreaCollectionViewCell() }
         cell.targetText = targetAreasItems[indexPath.item]
         
-        if selectedWorkoutType == targetAreasItems[indexPath.item] {
-            cell.isBeingSelected = true
-        }
+        if selectedWorkoutType == targetAreasItems[indexPath.item] { cell.isBeingSelected = true }
         else { cell.isBeingSelected = false }
         return cell
     }

@@ -35,6 +35,13 @@ final class Session: NSManagedObject {
         return object
     }
     
+    static func delete(session: Session) {
+       // guard let session = workout else { return }
+        session.managedObjectContext?.performChanges {
+            session.managedObjectContext?.delete(session)
+        }
+    }
+    
     public override func willSave() {
         super.willSave()
         

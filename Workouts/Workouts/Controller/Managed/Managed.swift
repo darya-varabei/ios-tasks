@@ -18,10 +18,11 @@ extension Managed {
         return []
     }
 
-    static var sortedFetchRequest: NSFetchRequest<Self> {
+    static func sortedFetchRequest(managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Self> {
         let request = NSFetchRequest<Self>(entityName: entityName)
         request.sortDescriptors = defaultSortDescriptors
-        return request
+        request.fetchBatchSize = 20
+        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
     }
 }
 

@@ -18,27 +18,13 @@ class ViewController: UIViewController, SegueHandler {
         case addWorkout = "addWorkout"
     }
     
-    var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: Literals.persistentContainer)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? { return }
-        })
-        return container
-    }()
-    
-    var managedObjectContext: NSManagedObjectContext!
-    
-    fileprivate var dataSource: CollectionViewDataSource<ViewController>!
-    
-    private enum Literals {
-        static let cellIdentifier = "SessionCollectionViewCell"
-        static let persistentContainer = "Model"
-        static let batchSize = 20
-    }
+    private let cellIdentifier = "SessionCollectionViewCell"
+    private var managedObjectContext: NSManagedObjectContext!
+    private var dataSource: CollectionViewDataSource<ViewController>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        managedObjectContext = persistentContainer.viewContext
+        managedObjectContext = SceneDelegate.persistentContainer.viewContext
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,24 +34,22 @@ class ViewController: UIViewController, SegueHandler {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segueIdentifier(for: segue) {
         case .workout:
-            guard let vc = segue.destination as? AddWorkoutViewController else { return }
-            guard let mood = dataSource.selectedObject else { return }
-            vc.workout = mood
-            vc.managedObjectContext = managedObjectContext
+            guard let viewController = segue.destination as? AddWorkoutViewController else { return }
+            guard let workout = dataSource.selectedObject else { return }
+            viewController.workout = workout
+            viewController.managedObjectContext = managedObjectContext
         case .addWorkout:
-            guard let vc = segue.destination as? AddWorkoutViewController else { return }
-            vc.managedObjectContext = managedObjectContext
+            guard let viewController = segue.destination as? AddWorkoutViewController else { return }
+            viewController.managedObjectContext = managedObjectContext
         case nil:
             break
         }
     }
     
     private func setupCollectionView() {
-        let request = Session.sortedFetchRequest
-        request.fetchBatchSize = Literals.batchSize
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: Literals.cellIdentifier, fetchedResultsController: frc, delegate: self)
-        if frc.fetchedObjects?.count != 0 {
+        let request = Session.sortedFetchRequest(managedObjectContext: managedObjectContext)
+        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: cellIdentifier, fetchedResultsController: request, delegate: self)
+        if request.fetchedObjects?.count != 0 {
             workoutsCollectionView.isHidden = false
             emptyCollectionLabel.isHidden = true
         } else {
