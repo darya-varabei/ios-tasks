@@ -28,6 +28,6 @@ extension Managed {
 
 
 extension Managed where Self: NSManagedObject {
-    static var entityName: String { return entity().name ?? "Session"  }
+    static var entityName: String { return entity().name ?? "Session" }
 }
 

@@ -36,7 +36,6 @@ final class Session: NSManagedObject {
     }
     
     static func delete(session: Session) {
-       // guard let session = workout else { return }
         session.managedObjectContext?.performChanges {
             session.managedObjectContext?.delete(session)
         }
