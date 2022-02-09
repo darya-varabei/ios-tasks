@@ -19,12 +19,11 @@ class ViewController: UIViewController, SegueHandler {
     }
     
     private let cellIdentifier = "SessionCollectionViewCell"
-    private var managedObjectContext: NSManagedObjectContext!
+    private let service = Service()
     private var dataSource: CollectionViewDataSource<ViewController>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        managedObjectContext = SceneDelegate.persistentContainer.viewContext
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,20 +35,17 @@ class ViewController: UIViewController, SegueHandler {
         case .workout:
             guard let viewController = segue.destination as? AddWorkoutViewController else { return }
             guard let workout = dataSource.selectedObject else { return }
-            viewController.workout = workout
-            viewController.managedObjectContext = managedObjectContext
+            viewController.getWorkoutObject(newWorkout: workout)
         case .addWorkout:
-            guard let viewController = segue.destination as? AddWorkoutViewController else { return }
-            viewController.managedObjectContext = managedObjectContext
+            guard let _ = segue.destination as? AddWorkoutViewController else { return }
         case nil:
             break
         }
     }
     
     private func setupCollectionView() {
-        let request = Session.sortedFetchRequest(managedObjectContext: managedObjectContext)
-        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: cellIdentifier, fetchedResultsController: request, delegate: self)
-        if request.fetchedObjects?.count != 0 {
+        dataSource = CollectionViewDataSource(collectionView: workoutsCollectionView, cellIdentifier: cellIdentifier, delegate: self)
+        if service.request?.fetchedObjects?.count != 0 {
             workoutsCollectionView.isHidden = false
             emptyCollectionLabel.isHidden = true
         } else {

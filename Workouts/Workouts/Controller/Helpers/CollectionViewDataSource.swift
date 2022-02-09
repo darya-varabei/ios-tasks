@@ -30,14 +30,16 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     
     fileprivate let collectionView: UICollectionView
     fileprivate let cellIdentifier: String
-    fileprivate let fetchedResultsController: NSFetchedResultsController<Object>
+    fileprivate let fetchedResultsController: NSFetchedResultsController<Session>
     fileprivate weak var delegate: Delegate!
     fileprivate var updates: [Update<Object>] = []
     
-    required init(collectionView: UICollectionView, cellIdentifier: String, fetchedResultsController: NSFetchedResultsController<Object>, delegate: Delegate) {
+    private let service = Service()
+    
+    required init(collectionView: UICollectionView, cellIdentifier: String, delegate: Delegate) {
         self.collectionView = collectionView
         self.cellIdentifier = cellIdentifier
-        self.fetchedResultsController = fetchedResultsController
+        self.fetchedResultsController = service.createRequest()//fetchedResultsController
         self.delegate = delegate
         super.init()
         fetchedResultsController.delegate = self
@@ -52,7 +54,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     }
     
     func objectAtIndexPath(_ indexPath: IndexPath) -> Object {
-        return fetchedResultsController.object(at: indexPath)
+        return fetchedResultsController.object(at: indexPath) as! CollectionViewDataSource<Delegate>.Object
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

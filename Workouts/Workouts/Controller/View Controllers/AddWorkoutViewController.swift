@@ -20,11 +20,11 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var deleteWorkoutButton: UIBarButtonItem!
     
-    var managedObjectContext: NSManagedObjectContext!
-    var workout: Session?
     private let targetAreasItems = ["Pilates", "Stretching", "Cardio", "Legs strenght", "HIIT", "Crossfit", "Arms&Core", "Full body", "Aerobics", "Kids"]
     private let cellIdentifier = "TargetAreaCollectionViewCell"
     private var selectedWorkoutType = ""
+    private var workout: Session?
+    private var service = Service()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,10 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
         fillFields()
         setupCollectionView()
         defineDeletionButtonState()
+    }
+    
+    func getWorkoutObject(newWorkout: Session?) {
+        workout = newWorkout
     }
     
     private func setupCollectionView() {
@@ -60,12 +64,10 @@ class AddWorkoutViewController: UIViewController, UITextViewDelegate, UITextFiel
     @IBAction private func saveWorkout(_ sender: Any) {
         if nameTextField.text?.count != 0 && coachTextField.text?.count != 0 && selectedWorkoutType.count != 0 {
             if workout == nil {
-                self.managedObjectContext.performChanges {
-                    let _ = Session.insert(into: self.managedObjectContext, name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
-                }
+                service.performInsert(name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
             }
             else {
-                let _ = Session.update(into: self.managedObjectContext, object: workout ?? Session() , name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
+                service.performUpdate(object: workout ?? Session(), name: self.nameTextField.text ?? "", time: self.timePicker.date, typeOfClass: self.selectedWorkoutType, info: self.infoTextArea.text, coach: self.coachTextField.text ?? "")
             }
             navigationController?.popViewController(animated: true)
             errorLabel.isHidden = true
