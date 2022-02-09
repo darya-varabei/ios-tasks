@@ -11,10 +11,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var categoryLabel: UILabel!
     
-    private enum Literals {
-        static let cornerRadius: CGFloat = 20
-        static let borderWidth: CGFloat = 2
-    }
+    private let borderWidth: CGFloat = 2
     
     private var color: UIColor? {
         didSet {
@@ -33,8 +30,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstantProperties() {
-        layer.borderWidth = Literals.borderWidth
+        layer.borderWidth = borderWidth
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = Literals.cornerRadius
+        layer.cornerRadius = bounds.height / 2
     }
 }

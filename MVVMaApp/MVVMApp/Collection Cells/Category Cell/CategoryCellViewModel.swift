@@ -20,7 +20,7 @@ struct CategoryCellViewModel {
         return category.name
     }
     
-    var isSelected: Bool {//Observable<Bool> {
+    var isSelected: Bool {
         return category.isSelected
     }
     
