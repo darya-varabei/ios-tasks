@@ -10,13 +10,7 @@ import UIKit
 
 class CategoryViewModel {
     private var categories: [String] = []
-    private var categoryCellViewModels = [CategoryCellViewModel]() {
-        didSet {
-            reloadCollectionView?()
-        }
-    }
-    
-    var reloadCollectionView: (() -> Void)?
+    private var categoryCellViewModels = [CategoryCellViewModel]() 
     
     func getCateroriesList() -> [String] {
         return categories
