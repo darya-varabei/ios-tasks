@@ -26,7 +26,7 @@ class FeaturedItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        setDelegates()
+        setupCollectionView()
     }
 
     override func viewDidLayoutSubviews() {
@@ -47,7 +47,7 @@ class FeaturedItemsViewController: UIViewController {
         view.layer.addSublayer(gradient)
     }
 
-    private func setDelegates() {
+    private func setupCollectionView() {
         featuredCollectionView.delegate = self
         featuredCollectionView.dataSource = self
         featuredCollectionView.backgroundColor = UIColor.clear
@@ -82,6 +82,6 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModel?.getAllBooks().value?.count ?? 0
     }
 }
