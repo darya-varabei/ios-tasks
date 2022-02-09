@@ -12,12 +12,10 @@ class FeaturedItemsViewController: UIViewController {
     @IBOutlet private var featuredTitleLabel: UILabel!
     @IBOutlet private var featuredCollectionView: UICollectionView!
     
-    private var delegate: ControllerDelegate
-    private var viewModel: FeaturedBookViewModel
+    private var viewModel: FeaturedBookViewModel?
 
-    init(delegate: ControllerDelegate) {
-        self.delegate = delegate
-        self.viewModel = FeaturedBookViewModel(delegate: delegate)
+    init(viewModel: FeaturedBookViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,12 +55,15 @@ class FeaturedItemsViewController: UIViewController {
     }
 
     private func initViewModel() {
-        viewModel.getBooks()
-        viewModel.getAllBooks().bind(observer: {_ in
-            DispatchQueue.main.async {
-                self.featuredCollectionView.reloadData()
-            }
-        })
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        queue.sync {
+            viewModel?.getBooks()
+            viewModel?.getAllBooks().bind(observer: {_ in
+                DispatchQueue.main.async { [weak self] in
+                    self?.featuredCollectionView.reloadData()
+                }
+            })
+        }
     }
 }
 
@@ -70,14 +71,14 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-        let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+        let cellViewModel = viewModel?.getCellViewModel(at: indexPath)
         cell.cellViewModel = cellViewModel
-        cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+        cell.configure(viewModelGetObject: viewModel?.getViewModel(index: indexPath.row))
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.goToDetailView(flow: .featured(.detailScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+        viewModel?.goToDetailView!(.featured(.detailScreen), viewModel?.getCellViewModel(at: indexPath), viewModel?.getViewModel(index: indexPath.row))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -8,17 +8,25 @@
 import Foundation
 import UIKit
 
-class FeaturedCoordinator: Coordinator, ControllerDelegate {
+class FeaturedCoordinator: Coordinator {
     
     var rootViewController: UIViewController = UIViewController()
     var childCoordinators: [Coordinator] = []
+    
+    var viewModel = FeaturedBookViewModel()
     
     init(tabBarController: UINavigationController) {
         self.rootViewController = tabBarController
     }
     
     func start() {
-        rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(delegate: self))
+        rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(viewModel: viewModel))
+        viewModel.goToDetailView = { flow, cellViewModel, viewModelObject in
+            self.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+        }
+        viewModel.resetToRoot = {
+            self.resetToRoot(animated: true)
+        }
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
@@ -34,8 +42,7 @@ extension FeaturedCoordinator {
         }
     }
     
-    func resetToRoot(animated: Bool) -> Self {
+    func resetToRoot(animated: Bool) {
         navigationRootViewController?.popToRootViewController(animated: animated)
-        return self
     }
 }

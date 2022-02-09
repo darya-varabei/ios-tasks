@@ -8,21 +8,19 @@
 import Foundation
 
 class BookViewModel {
-
+    
+    var goToDetailView: ((_ flow: AppFlow, _ cellViewModel: BookCellViewModel?, _ viewModelObject: BookDetailViewModel?) -> ())?
+    var resetToRoot: (() -> ())?
+    fileprivate var bookCellViewModels = [BookCellViewModel]()
     fileprivate var books = Observable<[Book]>()
     fileprivate var booksToCollection = Observable<[Book]>()
     fileprivate var featuredIsbn = [Identifier]()
 
-    private var delegate: ControllerDelegate
-    private var controllerDelegate: ControllerDelegate?
     private var bookService: BookServiceProtocol
     private var isBeingFiltered = false
     private var allBooks = [Book]()
     
-    var bookCellViewModels = [BookCellViewModel]() 
-    
-    init(bookService: BookServiceProtocol = BookService(), delegate: ControllerDelegate) {
-        self.delegate = delegate
+    init(bookService: BookServiceProtocol = BookService()) {
         self.bookService = bookService
         self.booksToCollection = books
         self.allBooks = books.value ?? []
@@ -41,10 +39,7 @@ class BookViewModel {
         self.books.value = books
         self.booksToCollection.value = books
         self.allBooks = books
-        let queue = DispatchQueue.global(qos: .userInteractive)
-        queue.sync {
-            createCellViewModel()
-        }
+        createCellViewModel()
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -101,18 +96,6 @@ class BookViewModel {
     func getFeaturedIsbn() -> [Identifier] {
         return featuredIsbn
     }
-    
-    func getViewControllerDelegate() -> ControllerDelegate? {
-        return controllerDelegate
-    }
-    
-    func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelGetObject: BookDetailViewModel?) {
-        delegate.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelGetObject)
-    }
-    
-    func resetToRoot() {
-        delegate.resetToRoot(animated: true)
-    }
  
     private func createCellViewModel() {
         var cellViewModels = [BookCellViewModel]()
@@ -130,10 +113,8 @@ class BookViewModel {
 
 class FeaturedBookViewModel: BookViewModel {
     
-    private var delegate: ControllerDelegate?
-    
-    override init(bookService: BookServiceProtocol = BookService(), delegate: ControllerDelegate) {
-        super.init(bookService: bookService, delegate: delegate)
+    override init(bookService: BookServiceProtocol = BookService()) {
+        super.init(bookService: bookService)
     }
     
     override  func fetchData(books: [Book]) {

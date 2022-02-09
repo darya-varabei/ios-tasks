@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BooksCoordinator: Coordinator, ControllerDelegate {
+class BooksCoordinator: Coordinator {
 
     var rootViewController: UIViewController
     var childCoordinators: [Coordinator] = []
@@ -18,8 +18,14 @@ class BooksCoordinator: Coordinator, ControllerDelegate {
     }
     
     func start() {
-        let viewModel = BookViewModel(delegate: self)
+        let viewModel = BookViewModel()
         rootViewController = UINavigationController(rootViewController: BooksListViewController(viewModel: viewModel))
+        viewModel.goToDetailView = { flow, cellViewModel, viewModelObject in
+            self.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelObject)
+        }
+        viewModel.resetToRoot = {
+            self.resetToRoot(animated: true)
+        }
     }
     
     func goToDetailView(flow: AppFlow, cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
@@ -35,8 +41,7 @@ extension BooksCoordinator {
         }
     }
     
-    func resetToRoot(animated: Bool) -> Self {
+    func resetToRoot(animated: Bool) {
         navigationRootViewController?.popToRootViewController(animated: animated)
-        return self
     }
 }

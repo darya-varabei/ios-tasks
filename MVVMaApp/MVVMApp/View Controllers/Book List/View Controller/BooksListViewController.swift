@@ -14,7 +14,7 @@ class BooksListViewController: UIViewController {
     
     private var bookCategories: Array<String> = []
     private var selectedCategory: String? = ""
-    private var viewModel: BookViewModel
+    private var viewModel: BookViewModel?
     
     private var categoryViewModel = {
         CategoryViewModel()
@@ -67,12 +67,12 @@ class BooksListViewController: UIViewController {
     private func initViewModel() {
         let queue = DispatchQueue.global(qos: .userInteractive)
         queue.sync {
-            viewModel.getBooks()
-            viewModel.getAllBooks().bind(observer: {_ in
+            viewModel?.getBooks()
+            viewModel?.getAllBooks().bind(observer: {_ in
                 DispatchQueue.main.async { [weak self] in
                     guard let category = self?.selectedCategory else { return }
                     self?.booksCollection.reloadData()
-                    self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks().value ?? [], selectedCategory: category)
+                    self?.categoryViewModel.getCategories(books: self?.viewModel?.getAllBooks().value ?? [], selectedCategory: category)
                     self?.categoryCollection.reloadData()
                 }
             })
@@ -84,7 +84,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-                return viewModel.getBooksForCollection().value?.count ?? 0
+            return viewModel?.getBooksForCollection().value?.count ?? 0
         }
         else {
             return categoryViewModel.getCateroriesList().count
@@ -95,9 +95,9 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Literals.bookCell, for: indexPath) as? BookCollectionViewCell else { fatalError(Literals.fatalErrorMessage) }
-            let cellViewModel = viewModel.getCellViewModel(at: indexPath)
+            let cellViewModel = viewModel?.getCellViewModel(at: indexPath)
             cell.cellViewModel = cellViewModel
-            cell.configure(viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+            cell.configure(viewModelGetObject: viewModel?.getViewModel(index: indexPath.row))
             return cell
         }
         else {
@@ -111,7 +111,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            viewModel.goToDetailView(flow: .books(.detailsScreen), cellViewModel: viewModel.getCellViewModel(at: indexPath), viewModelGetObject: viewModel.getViewModel(index: indexPath.row))
+            viewModel?.goToDetailView!(.books(.detailsScreen), viewModel?.getCellViewModel(at: indexPath), viewModel?.getViewModel(index: indexPath.row))
         }
         else {
             var cellViewModel = categoryViewModel.getCellViewModel(at: indexPath)
@@ -121,7 +121,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
             else {
                 selectedCategory = cellViewModel.name
             }
-            viewModel.filterBooks(on: cellViewModel.name, isSelected: cellViewModel.isSelected)
+            viewModel?.filterBooks(on: cellViewModel.name, isSelected: cellViewModel.isSelected)
             cellViewModel.toggleIfSelected()
         }
     }

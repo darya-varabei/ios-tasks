@@ -42,8 +42,7 @@ class MainCoordinator: Coordinator {
     func start() {
         childCoordinators.append(BooksCoordinator(tabBarController: UINavigationController()))
         childCoordinators.append(FeaturedCoordinator(tabBarController: UINavigationController()))
-        childCoordinators[1].start()
-        childCoordinators[0].start()
+        startViewControllers()
         let bookViewController = childCoordinators[0].rootViewController
         bookViewController.tabBarItem = UITabBarItem(title: TabBarItems.booksTitle, image: UIImage(systemName: TabBarItems.bookSymbol), tag: 0)
         
@@ -59,6 +58,12 @@ class MainCoordinator: Coordinator {
             goToBooksFlow(flow)
         case .featured:
             goToFeaturedFlow(flow)
+        }
+    }
+    
+    private func startViewControllers() {
+        for viewController in childCoordinators {
+            viewController.start()
         }
     }
     
