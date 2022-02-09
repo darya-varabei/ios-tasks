@@ -29,13 +29,11 @@ class BookDetailViewController: UIViewController {
     
     private var viewModelObject: BookDetailViewModel?
     private var cellViewModel: BookCellViewModel?
-    //private var bookViewModel: BookViewModel
     
     init(cellViewModel: BookCellViewModel?, viewModelObject: BookDetailViewModel?) {
         super.init(nibName: nil, bundle: nil)
         self.cellViewModel = cellViewModel
         self.viewModelObject = viewModelObject
-        //self.bookViewModel = bookViewModel
     }
     
     required init?(coder: NSCoder) {

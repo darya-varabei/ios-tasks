@@ -19,13 +19,7 @@ class BookViewModel {
     private var isBeingFiltered = false
     private var allBooks = [Book]()
     
-    var reloadCollectionView: (() -> Void)?
-    
-    var bookCellViewModels = [BookCellViewModel]() {
-        didSet {
-            reloadCollectionView?()
-        }
-    }
+    var bookCellViewModels = [BookCellViewModel]() 
     
     init(bookService: BookServiceProtocol = BookService(), delegate: ControllerDelegate) {
         self.delegate = delegate

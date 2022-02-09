@@ -32,7 +32,7 @@ class BooksListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        setDelegates()
+        setupCollectionViews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,7 +53,7 @@ class BooksListViewController: UIViewController {
         view.layer.addSublayer(gradient)
     }
     
-    private func setDelegates() {
+    private func setupCollectionViews() {
         categoryCollection.delegate = self
         booksCollection.delegate = self
         categoryCollection.dataSource = self
@@ -68,15 +68,15 @@ class BooksListViewController: UIViewController {
         let queue = DispatchQueue.global(qos: .userInteractive)
         queue.sync {
             viewModel.getBooks()
+            viewModel.getAllBooks().bind(observer: {_ in
+                DispatchQueue.main.async { [weak self] in
+                    guard let category = self?.selectedCategory else { return }
+                    self?.booksCollection.reloadData()
+                    self?.categoryViewModel.getCategories(books: self?.viewModel.getAllBooks().value ?? [], selectedCategory: category)
+                    self?.categoryCollection.reloadData()
+                }
+            })
         }
-        viewModel.getAllBooks().bind(observer: {_ in
-            DispatchQueue.main.async {
-                guard let category = self.selectedCategory else { return }
-                self.booksCollection.reloadData()
-                self.categoryViewModel.getCategories(books: self.viewModel.getAllBooks().value ?? [], selectedCategory: category)
-                self.categoryCollection.reloadData()
-            }
-        })
     }
 }
 
@@ -84,10 +84,7 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            if viewModel.getBooksForCollection().value?.count != nil {
                 return viewModel.getBooksForCollection().value?.count ?? 0
-            }
-            return 0
         }
         else {
             return categoryViewModel.getCateroriesList().count
