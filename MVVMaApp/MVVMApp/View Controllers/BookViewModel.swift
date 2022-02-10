@@ -29,17 +29,19 @@ class BookViewModel {
     func getBooks() {
         bookService.getAllBooks { model, success, identifiers, identifiersSuccess in
             if success ?? false, let books = model, let featuredModel = identifiers {
+                DispatchQueue.main.sync {
                 self.fetchFeaturedIsbn(featuredIsbn: featuredModel)
                 self.fetchData(books: books)
-            } 
+                }
+            }
         }
     }
     
     func fetchData(books: [Book]) {
         self.books.value = books
         self.booksToCollection.value = books
-        self.allBooks = books
         createCellViewModel()
+        self.allBooks = books
     }
     
     func createCellModel(book: Book) -> BookCellViewModel {
@@ -119,9 +121,10 @@ class FeaturedBookViewModel: BookViewModel {
     
     override  func fetchData(books: [Book]) {
         self.books.value = books
-        var cellViewModel = [BookCellViewModel]()
+        self.booksToCollection.value = books
         filterFeaturedBooks()
-        for book in books {
+        var cellViewModel = [BookCellViewModel]()
+        for book in booksToCollection.value ?? [] {
             cellViewModel.append(createCellModel(book: book))
         }
         bookCellViewModels = cellViewModel
@@ -136,7 +139,7 @@ class FeaturedBookViewModel: BookViewModel {
         for index in featuredIsbn {
             indexes.append(index.isbn)
         }
-        let bufferArray = (books.value ?? []).filter { indexes.contains($0.isbn ?? "") }
-        books.value = bufferArray
+        let bufferArray = (booksToCollection.value ?? []).filter { indexes.contains($0.isbn ?? "") }
+        booksToCollection.value = bufferArray
     }
 }

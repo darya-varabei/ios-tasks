@@ -71,9 +71,9 @@ class BooksListViewController: UIViewController {
             viewModel?.getAllBooks().bind(observer: {_ in
                 DispatchQueue.main.async { [weak self] in
                     guard let category = self?.selectedCategory else { return }
-                    self?.booksCollection.reloadData()
                     self?.categoryViewModel.getCategories(books: self?.viewModel?.getAllBooks().value ?? [], selectedCategory: category)
                     self?.categoryCollection.reloadData()
+                    self?.booksCollection.reloadData()
                 }
             })
         }
@@ -84,7 +84,8 @@ extension BooksListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.restorationIdentifier == Literals.bookCollectionIdentifier {
-            return viewModel?.getBooksForCollection().value?.count ?? 0
+            guard let counter = viewModel?.getBooksForCollection().value?.count else { return 0 }
+            return counter
         }
         else {
             return categoryViewModel.getCateroriesList().count

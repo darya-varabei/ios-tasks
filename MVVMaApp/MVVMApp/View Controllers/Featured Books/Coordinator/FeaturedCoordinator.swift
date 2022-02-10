@@ -13,13 +13,12 @@ class FeaturedCoordinator: Coordinator {
     var rootViewController: UIViewController = UIViewController()
     var childCoordinators: [Coordinator] = []
     
-    var viewModel = FeaturedBookViewModel()
-    
     init(tabBarController: UINavigationController) {
         self.rootViewController = tabBarController
     }
     
     func start() {
+        let viewModel = FeaturedBookViewModel()
         rootViewController = UINavigationController(rootViewController: FeaturedItemsViewController(viewModel: viewModel))
         viewModel.goToDetailView = { flow, cellViewModel, viewModelObject in
             self.goToDetailView(flow: flow, cellViewModel: cellViewModel, viewModelObject: viewModelObject)

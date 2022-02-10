@@ -82,6 +82,7 @@ extension FeaturedItemsViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.getAllBooks().value?.count ?? 0
+        guard let counter = viewModel?.getAllBooks().value?.count else { return 0 }
+        return counter
     }
 }
