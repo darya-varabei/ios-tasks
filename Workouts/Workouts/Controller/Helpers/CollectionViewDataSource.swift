@@ -39,7 +39,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     required init(collectionView: UICollectionView, cellIdentifier: String, delegate: Delegate) {
         self.collectionView = collectionView
         self.cellIdentifier = cellIdentifier
-        self.fetchedResultsController = service.createRequest()//fetchedResultsController
+        self.fetchedResultsController = service.createRequest()
         self.delegate = delegate
         super.init()
         fetchedResultsController.delegate = self
