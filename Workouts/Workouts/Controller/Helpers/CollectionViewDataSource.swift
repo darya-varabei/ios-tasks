@@ -31,7 +31,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     fileprivate let collectionView: UICollectionView
     fileprivate let cellIdentifier: String
     fileprivate let fetchedResultsController: NSFetchedResultsController<Session>
-    fileprivate weak var delegate: Delegate!
+    fileprivate weak var delegate: Delegate?
     fileprivate var updates: [Update<Object>] = []
     
     private let service = Service()
@@ -43,7 +43,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
         self.delegate = delegate
         super.init()
         fetchedResultsController.delegate = self
-        try! fetchedResultsController.performFetch()
+        try? fetchedResultsController.performFetch()
         collectionView.dataSource = self
         collectionView.reloadData()
     }
@@ -65,7 +65,7 @@ class CollectionViewDataSource<Delegate: CollectionViewDataSourceDelegate>: NSOb
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let object = objectAtIndexPath(indexPath)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? Cell else { return UICollectionViewCell() }
-        delegate.configure(cell, for: object)
+        delegate?.configure(cell, for: object)
         return cell
     }
     
