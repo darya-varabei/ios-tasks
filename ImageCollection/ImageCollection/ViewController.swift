@@ -12,14 +12,14 @@ class ViewController: UIViewController {
     @IBOutlet private var imagesCollectionView: UICollectionView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private let service = Service(numOfImages: 30)
-    var imageURLs: [URL]?
+    var images: [UIImage]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
         service.loadImages { [weak self] imageURLs in
-                self?.imageURLs = imageURLs
-                self?.imagesCollectionView.reloadData()
-            }
+            self?.images = imageURLs
+            self?.setupCollectionView()
+            self?.imagesCollectionView.reloadData()
+        }
     }
     
     private func setupCollectionView() {
@@ -31,12 +31,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return images?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else { fatalError("error") }
-        cell.getImage()
-        return UICollectionViewCell()
+        cell.getImage(newImage: images![indexPath.item])
+        return cell
     }
 }

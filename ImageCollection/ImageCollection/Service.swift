@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Service {
     
@@ -15,12 +16,13 @@ struct Service {
         self.numOfImages = numOfImages
     }
     
-    func loadImages(completion: @escaping ([URL]) -> Void) {
-        var imageLinks: [Int: URL] = [:]
+    func loadImages(completion: @escaping ([UIImage]) -> Void) {
+        //var imageLinks: [Int: URL] = [:]
+        var images: [UIImage] = []
         let group = DispatchGroup()
     
         for index in 0..<numOfImages {
-            let url = URL(string: "https://random.imagecdn.app/300/300")!
+            let url = URL(string: "https://random.imagecdn.app/500/150")!
             group.enter()
             URLSession.shared.dataTask(with: url) { data, response, error in
                 defer { group.leave() }
@@ -28,17 +30,18 @@ struct Service {
                 guard let data = data else { return }
 
                 do {
-                    let image = try JSONDecoder().decode(RandomImage.self, from: data)
-                    imageLinks[index] = image.link
-                } catch {
-                    print("JSON error: \(error.localizedDescription)")
-                }
+                    let image = UIImage(data: data)//try JSONDecoder().decode(RandomImage.self, from: data)
+                    images.append(image!)
+                    // imageLinks[index] = image.link
+                } //catch {
+                    //print("JSON error: \(error.localizedDescription)")//
+              //  }
             }.resume()
         }
 
         group.notify(queue: .main) {
-            let sortedLinks = (0..<numOfImages).compactMap { imageLinks[$0] }
-            completion(sortedLinks)
+            //let sortedLinks = (0..<numOfImages).compactMap { imageLinks[$0] }
+            completion(images)
         }
     }
 }

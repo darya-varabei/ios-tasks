@@ -13,7 +13,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func getImage() {
-        
+    func getImage(newImage: UIImage) {
+        photo.image = newImage
     }
 }
