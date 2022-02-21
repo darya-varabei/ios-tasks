@@ -30,6 +30,7 @@ extension ViewController {
         activityIndicator.style = .large
         activityIndicator.startAnimating()
         activityIndicator.tag = ActivityIndicatorParameters.tag
+        
         view.addSubview(activityIndicator)
     }
 

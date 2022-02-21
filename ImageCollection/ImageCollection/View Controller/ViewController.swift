@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func reloadImages(_ sender: Any) {
+        hideActivityIndicator()
         showActivityIndicator()
         getImages()
     }
