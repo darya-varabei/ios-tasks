@@ -11,32 +11,44 @@ class ViewController: UIViewController {
 
     @IBOutlet private var imagesCollectionView: UICollectionView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-    private let service = Service(numOfImages: 30)
-    var images: [UIImage]?
+    
+    static private let numberOfImages = 30
+    private let collectionCellIdentifier = "PhotoCollectionViewCell"
+    private let service = Service(numOfImages: numberOfImages)
+    private var images: [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.loadImages { [weak self] imageURLs in
-            self?.images = imageURLs
-            self?.setupCollectionView()
-            self?.imagesCollectionView.reloadData()
-        }
+        setupCollectionView()
+        getImages()
     }
     
     private func setupCollectionView() {
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
-        imagesCollectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
+        imagesCollectionView.register(UINib(nibName: collectionCellIdentifier, bundle: nil), forCellWithReuseIdentifier: collectionCellIdentifier)
+    }
+    
+    private func getImages() {
+        service.loadImages { [weak self] loadedImages in
+            self?.images = loadedImages
+            self?.imagesCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction private func reloadImages(_ sender: Any) {
+        getImages()
     }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images?.count ?? 0
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else { fatalError("error") }
-        cell.getImage(newImage: images![indexPath.item])
+        guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as? PhotoCollectionViewCell else { return PhotoCollectionViewCell() }
+        cell.getImage(newImage: images[indexPath.item])
         return cell
     }
 }

@@ -17,30 +17,21 @@ struct Service {
     }
     
     func loadImages(completion: @escaping ([UIImage]) -> Void) {
-        //var imageLinks: [Int: URL] = [:]
         var images: [UIImage] = []
         let group = DispatchGroup()
-    
-        for index in 0..<numOfImages {
-            let url = URL(string: "https://random.imagecdn.app/500/150")!
+        for _ in 0..<numOfImages {
+            guard let url = URL(string: "https://picsum.photos/500/300?random=1") else { fatalError() }
             group.enter()
             URLSession.shared.dataTask(with: url) { data, response, error in
                 defer { group.leave() }
 
                 guard let data = data else { return }
-
-                do {
-                    let image = UIImage(data: data)//try JSONDecoder().decode(RandomImage.self, from: data)
-                    images.append(image!)
-                    // imageLinks[index] = image.link
-                } //catch {
-                    //print("JSON error: \(error.localizedDescription)")//
-              //  }
+                guard let image = UIImage(data: data) else { fatalError() }
+                images.append(image)
             }.resume()
         }
 
         group.notify(queue: .main) {
-            //let sortedLinks = (0..<numOfImages).compactMap { imageLinks[$0] }
             completion(images)
         }
     }
