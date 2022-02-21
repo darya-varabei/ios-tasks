@@ -21,17 +21,20 @@ struct Service {
     func loadImages(completion: @escaping ([UIImage]) -> Void, group: DispatchGroup) {
         var images: [UIImage] = []
         for _ in 0..<numOfImages {
-            guard let url = URL(string: imageURL) else { fatalError() }
-            group.enter()
             
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                defer { group.leave() }
-
-                guard let data = data, let image = UIImage(data: data) else { return }
-                images.append(image)
-            }.resume()
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let url = URL(string: imageURL) else { fatalError() }
+                group.enter()
+                
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    defer { group.leave() }
+                    
+                    guard let data = data, let image = UIImage(data: data) else { return }
+                    images.append(image)
+                }.resume()
+            }
         }
-
+        
         group.notify(queue: .main) {
             completion(images)
         }
