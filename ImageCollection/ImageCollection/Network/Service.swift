@@ -10,7 +10,7 @@ import UIKit
 
 struct Service {
     
-    private let imageURL = "https://picsum.photos/500/300?random=1"
+    private let imageURL = "https://picsum.photos/500/500?random=1"
     private var numOfImages: Int
     
     init(numOfImages: Int) {

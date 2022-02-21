@@ -32,11 +32,13 @@ class ViewController: UIViewController {
         viewModel.getImages().bind(observer: {_ in
             DispatchQueue.main.async { [weak self] in
                 self?.imagesCollectionView.reloadData()
+                self?.activityIndicator.stopAnimating()
             }
         })
     }
     
     @IBAction private func reloadImages(_ sender: Any) {
+        activityIndicator.startAnimating()
         getImages()
     }
 }
