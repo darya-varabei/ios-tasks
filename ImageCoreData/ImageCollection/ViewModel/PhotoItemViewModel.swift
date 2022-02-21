@@ -1,0 +1,32 @@
+//
+//  PhotoItemViewModel.swift
+//  ImageCollection
+//
+//  Created by Дарья Воробей on 21.02.22.
+//
+
+import Foundation
+import UIKit
+
+class PhotoItemViewModel {
+    
+    static private let numberOfImages = 30
+    private let service = Service(numOfImages: numberOfImages)
+    private let dispatchGroup = DispatchGroup()
+    private var images = Observable<[UIImage]>()
+    
+    func loadImages() {
+        images.value = []
+        service.loadImages (completion: { [weak self] loadedImages in
+            self?.images.value = loadedImages
+        }, group: dispatchGroup)
+    }
+    
+    func getImages() -> Observable<[UIImage]> {
+        return images
+    }
+    
+    func changeState(newState: Bool) {
+        service.toggleLoadingState(newState: newState)
+    }
+}
