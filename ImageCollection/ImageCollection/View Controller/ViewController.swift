@@ -11,11 +11,9 @@ class ViewController: UIViewController {
 
     @IBOutlet private var imagesCollectionView: UICollectionView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-    
-    static private let numberOfImages = 30
+   
+    private let viewModel = PhotoItemViewModel()
     private let collectionCellIdentifier = "PhotoCollectionViewCell"
-    private let service = Service(numOfImages: numberOfImages)
-    private var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +28,12 @@ class ViewController: UIViewController {
     }
     
     private func getImages() {
-        service.loadImages { [weak self] loadedImages in
-            self?.images = loadedImages
-            self?.imagesCollectionView.reloadData()
-        }
+        viewModel.loadImages()
+        viewModel.getImages().bind(observer: {_ in
+            DispatchQueue.main.async { [weak self] in
+                self?.imagesCollectionView.reloadData()
+            }
+        })
     }
     
     @IBAction private func reloadImages(_ sender: Any) {
@@ -43,12 +43,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return viewModel.getImages().value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as? PhotoCollectionViewCell else { return PhotoCollectionViewCell() }
-        cell.getImage(newImage: images[indexPath.item])
+        guard let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as? PhotoCollectionViewCell, let image = viewModel.getImages().value?[indexPath.item] else { return PhotoCollectionViewCell() }
+        cell.getImage(newImage: image)
         return cell
     }
 }

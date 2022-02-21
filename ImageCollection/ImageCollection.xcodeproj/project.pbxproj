@@ -17,6 +17,7 @@
 		D51F311427C29F9100D9AC7B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F311327C29F9100D9AC7B /* Observable.swift */; };
 		D51F311927C2A4EF00D9AC7B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51F311727C2A4EF00D9AC7B /* PhotoCollectionViewCell.swift */; };
 		D51F311A27C2A4EF00D9AC7B /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51F311827C2A4EF00D9AC7B /* PhotoCollectionViewCell.xib */; };
+		D559938127C391C30084D8EB /* PhotoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D559938027C391C30084D8EB /* PhotoItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D51F311327C29F9100D9AC7B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D51F311727C2A4EF00D9AC7B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D51F311827C2A4EF00D9AC7B /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		D559938027C391C30084D8EB /* PhotoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +67,11 @@
 			isa = PBXGroup;
 			children = (
 				D51F30FB27C28D2100D9AC7B /* AppDelegate.swift */,
-				D51F311127C293B400D9AC7B /* Service.swift */,
-				D51F311327C29F9100D9AC7B /* Observable.swift */,
-				D51F311B27C2C24100D9AC7B /* PhotoCollectionViewCell */,
 				D51F30FD27C28D2100D9AC7B /* SceneDelegate.swift */,
-				D51F30FF27C28D2100D9AC7B /* ViewController.swift */,
+				D559938527C3986D0084D8EB /* View Controller */,
+				D559938327C398540084D8EB /* Network */,
+				D559938227C398420084D8EB /* ViewModel */,
+				D51F311B27C2C24100D9AC7B /* PhotoCollectionViewCell */,
 				D51F310127C28D2100D9AC7B /* Main.storyboard */,
 				D51F310427C28D2300D9AC7B /* Assets.xcassets */,
 				D51F310627C28D2300D9AC7B /* LaunchScreen.storyboard */,
@@ -85,6 +87,31 @@
 				D51F311827C2A4EF00D9AC7B /* PhotoCollectionViewCell.xib */,
 			);
 			path = PhotoCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D559938227C398420084D8EB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D51F311327C29F9100D9AC7B /* Observable.swift */,
+				D559938027C391C30084D8EB /* PhotoItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D559938327C398540084D8EB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D51F311127C293B400D9AC7B /* Service.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D559938527C3986D0084D8EB /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D51F30FF27C28D2100D9AC7B /* ViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +192,7 @@
 				D51F311927C2A4EF00D9AC7B /* PhotoCollectionViewCell.swift in Sources */,
 				D51F311427C29F9100D9AC7B /* Observable.swift in Sources */,
 				D51F30FE27C28D2100D9AC7B /* SceneDelegate.swift in Sources */,
+				D559938127C391C30084D8EB /* PhotoItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,8 @@ import UIKit
 
 struct Service {
     
-    var numOfImages: Int = 0
+    private let imageURL = "https://picsum.photos/500/300?random=1"
+    private var numOfImages: Int
     
     init(numOfImages: Int) {
         self.numOfImages = numOfImages
@@ -20,13 +21,12 @@ struct Service {
         var images: [UIImage] = []
         let group = DispatchGroup()
         for _ in 0..<numOfImages {
-            guard let url = URL(string: "https://picsum.photos/500/300?random=1") else { fatalError() }
+            guard let url = URL(string: imageURL) else { fatalError() }
             group.enter()
             URLSession.shared.dataTask(with: url) { data, response, error in
                 defer { group.leave() }
 
-                guard let data = data else { return }
-                guard let image = UIImage(data: data) else { fatalError() }
+                guard let data = data, let image = UIImage(data: data) else { return }
                 images.append(image)
             }.resume()
         }
