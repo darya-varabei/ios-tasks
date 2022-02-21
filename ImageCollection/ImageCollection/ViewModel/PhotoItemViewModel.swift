@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class PhotoItemViewModel {
+    
     static private let numberOfImages = 30
     private let service = Service(numOfImages: numberOfImages)
-    private var images: Observable<[UIImage]> = Observable<[UIImage]>()
+    private var images = Observable<[UIImage]>()
     
     func loadImages() {
         images.value = []

@@ -10,8 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet private var imagesCollectionView: UICollectionView!
-    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-   
+    
     private let viewModel = PhotoItemViewModel()
     private let collectionCellIdentifier = "PhotoCollectionViewCell"
     
@@ -28,17 +27,18 @@ class ViewController: UIViewController {
     }
     
     private func getImages() {
+        showActivityIndicator()
         viewModel.loadImages()
         viewModel.getImages().bind(observer: {_ in
             DispatchQueue.main.async { [weak self] in
                 self?.imagesCollectionView.reloadData()
-                self?.activityIndicator.stopAnimating()
+                self?.hideActivityIndicator()
             }
         })
     }
     
     @IBAction private func reloadImages(_ sender: Any) {
-        activityIndicator.startAnimating()
+        showActivityIndicator()
         getImages()
     }
 }

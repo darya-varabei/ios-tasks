@@ -8,10 +8,8 @@
 import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet private var photo: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     func getImage(newImage: UIImage) {
         photo.image = newImage
