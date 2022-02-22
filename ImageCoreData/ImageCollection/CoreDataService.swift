@@ -26,12 +26,6 @@ class CoreDataService {
         }
     }
     
-//    func performUpdate(object: Session, name: String, time: Date, typeOfClass: String, info: String, coach: String) {
-//        managedObjectContext.performChanges {
-//            let _ = Session.update(into: self.managedObjectContext, object: object , name: name, time: time, typeOfClass: typeOfClass, info: info, coach: coach)
-//        }
-//    }
-    
     func createRequest() -> NSFetchedResultsController<Photo> {
         request = Photo.sortedFetchRequest(managedObjectContext: managedObjectContext)
         guard let result = request else { fatalError() }
