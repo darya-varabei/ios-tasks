@@ -64,14 +64,30 @@
 		D5197F0827C4DA9F009ED648 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				D5BF924927C43CE6005E917C /* Model.xcdatamodeld */,
-				D5BF924C27C44582005E917C /* UIImage+toData.swift */,
-				D5BF924E27C4494E005E917C /* Photo.swift */,
-				D5BF925027C44A64005E917C /* CoreDataService.swift */,
-				D5BF925227C44B0F005E917C /* Managed.swift */,
-				D5BF925427C44B3A005E917C /* NSManagedObjectContext+Insertion.swift */,
+				D5197F0A27C50866009ED648 /* Service */,
+				D5197F0927C50848009ED648 /* Model */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		D5197F0927C50848009ED648 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF924927C43CE6005E917C /* Model.xcdatamodeld */,
+				D5BF924E27C4494E005E917C /* Photo.swift */,
+				D5BF924C27C44582005E917C /* UIImage+toData.swift */,
+				D5BF925227C44B0F005E917C /* Managed.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5197F0A27C50866009ED648 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF925027C44A64005E917C /* CoreDataService.swift */,
+				D5BF925427C44B3A005E917C /* NSManagedObjectContext+Insertion.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		D51F30EF27C28D2100D9AC7B = {

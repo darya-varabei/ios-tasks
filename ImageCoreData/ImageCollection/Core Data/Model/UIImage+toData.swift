@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    
     var toData: Data? {
         return pngData()
+    }
+}
+
+extension Data {
+    func toImage(data: Data) -> UIImage? {
+        return UIImage(data: data)
     }
 }

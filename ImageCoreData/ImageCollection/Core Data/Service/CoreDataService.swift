@@ -26,6 +26,12 @@ class CoreDataService {
         }
     }
     
+    func deleteAllObjects() {
+        for object in request?.fetchedObjects ?? [] {
+            managedObjectContext.delete(object)
+        }
+    }
+    
     func createRequest() -> NSFetchedResultsController<Photo> {
         request = Photo.sortedFetchRequest(managedObjectContext: managedObjectContext)
         guard let result = request else { fatalError() }
