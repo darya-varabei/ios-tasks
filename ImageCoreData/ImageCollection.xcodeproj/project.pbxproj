@@ -61,6 +61,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5197F0827C4DA9F009ED648 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF924927C43CE6005E917C /* Model.xcdatamodeld */,
+				D5BF924C27C44582005E917C /* UIImage+toData.swift */,
+				D5BF924E27C4494E005E917C /* Photo.swift */,
+				D5BF925027C44A64005E917C /* CoreDataService.swift */,
+				D5BF925227C44B0F005E917C /* Managed.swift */,
+				D5BF925427C44B3A005E917C /* NSManagedObjectContext+Insertion.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		D51F30EF27C28D2100D9AC7B = {
 			isa = PBXGroup;
 			children = (
@@ -82,12 +95,7 @@
 			children = (
 				D51F30FB27C28D2100D9AC7B /* AppDelegate.swift */,
 				D51F30FD27C28D2100D9AC7B /* SceneDelegate.swift */,
-				D5BF924E27C4494E005E917C /* Photo.swift */,
-				D5BF925027C44A64005E917C /* CoreDataService.swift */,
-				D5BF925227C44B0F005E917C /* Managed.swift */,
-				D5BF925427C44B3A005E917C /* NSManagedObjectContext+Insertion.swift */,
-				D5BF924927C43CE6005E917C /* Model.xcdatamodeld */,
-				D5BF924C27C44582005E917C /* UIImage+toData.swift */,
+				D5197F0827C4DA9F009ED648 /* Core Data */,
 				D559938527C3986D0084D8EB /* View Controller */,
 				D559938327C398540084D8EB /* Network */,
 				D559938227C398420084D8EB /* ViewModel */,
